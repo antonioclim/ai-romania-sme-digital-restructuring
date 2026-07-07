@@ -1,0 +1,19 @@
+[project]
+name = "ai-romania-sme-reproducibility-kit"
+version = "0.2.0"
+description = "Reproducible analysis kit for a survey of AI uptake and readiness in Romanian businesses with SME-focused analyses."
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+  {name = "Andrei Toma"},
+  {name = "Antonio Clim"},
+  {name = "Radu Constantinescu"},
+  {name = "Razvan Zota"}
+]
+keywords = ["AI adoption", "SMEs", "Romania", "survey", "reproducibility"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"

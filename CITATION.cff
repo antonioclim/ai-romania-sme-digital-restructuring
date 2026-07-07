@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "AI-related restructuring in Romanian SMEs: reproducible analysis kit"
+message: "Please cite the associated dataset, the software release and the final article."
+type: software
+authors:
+  - family-names: Toma
+    given-names: Andrei
+  - family-names: Clim
+    given-names: Antonio
+  - family-names: Constantinescu
+    given-names: Radu
+  - family-names: Zota
+    given-names: Razvan
+version: 1.0.0
+date-released: 2026-07-06
+license: MIT
+keywords:
+  - artificial intelligence
+  - SME digitalisation
+  - economic restructuring
+  - Romania
+  - survey analysis
+  - reproducible research
+repository-code: "TO_BE_INSERTED_AFTER_PUBLIC_GITHUB_RELEASE"
+identifiers:
+  - type: doi
+    value: "TO_BE_MINTED_AS_SOFTWARE_DOI"
+references:
+  - type: dataset
+    value: "https://doi.org/10.5281/zenodo.17021824"
