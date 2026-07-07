@@ -1,6 +1,20 @@
 # AI-related restructuring in Romanian SMEs: reproducible analysis kit
 
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21245180.svg)](https://doi.org/10.5281/zenodo.21245180)
+
 This repository reproduces the quantitative analysis for the article **Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs**. It contains a cleaned, de-identified quantitative survey dataset, Python scripts, source-data CSV files, generated tables and generated figures.
+
+## Citation and persistent identifiers
+
+Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+
+Repository URL: https://github.com/antonioclim/ai-romania-sme-digital-restructuring
+
+Release tag: `v1.0.0`
+
+Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+
+The software DOI identifies the reproducible analysis package. The dataset DOI identifies the associated de-identified quantitative survey dataset. Please cite both when reusing the software and data.
 
 ## What the kit reproduces
 
@@ -19,16 +33,21 @@ The survey is an engaged non-probability sample. It is not a national prevalence
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python scripts/run_all.py
-python -m pytest
 python scripts/verify_sha256sums.py SHA256SUMS.txt
+python scripts/run_all.py
+python -m compileall scripts tests
+python -m pytest -q
 ```
 
-The command regenerates `outputs/ecr/tables/`, `outputs/ecr/figures/`, `outputs/ecr/figure_source_data/` and the core analysis outputs used in the manuscript.
+The commands regenerate `outputs/ecr/tables/`, `outputs/ecr/figures/`, `outputs/ecr/figure_source_data/` and the core analysis outputs used in the manuscript.
+
+## GitHub Actions workflow
+
+The repository includes `.github/workflows/reproducibility-smoke-test.yml`. It verifies the release snapshot, installs the Python dependencies, runs the analysis pipeline and executes the test suite on push or manual dispatch.
 
 ## Data
 
-The public analysis file is `data/processed/public_quantitative_dataset_no_text_no_direct_identifiers.csv`. The associated dataset record is https://doi.org/10.5281/zenodo.17021824. This is the dataset DOI, not the software DOI for this repository. A software DOI should be minted only after the public GitHub release and Zenodo software deposit are created.
+The public analysis file is `data/processed/public_quantitative_dataset_no_text_no_direct_identifiers.csv`. The associated dataset record is https://doi.org/10.5281/zenodo.17021824. Raw LimeSurvey exports, IP addresses, technical metadata, timestamps and open-text responses are excluded from this public software release.
 
 ## Double-blind review
 

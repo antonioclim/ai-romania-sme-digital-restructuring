@@ -1,7 +1,7 @@
 # Checksum policy
 
-`SHA256SUMS.txt` is a stable source-and-metadata manifest. It excludes generated outputs, volatile logs, Python bytecode, caches and local runtime artefacts. It should pass before and after running the analysis.
+`SHA256SUMS.txt` records the packaged repository snapshot. It should pass immediately after cloning or downloading the release archive, before regeneration.
 
-`SHA256SUMS_GENERATED_OUTPUTS.txt` records generated non-log outputs after a full current reproduction run. It should be regenerated whenever analysis scripts are rerun intentionally.
+After `python scripts/run_all.py`, deterministic data tables and figures should be regenerated from the cleaned dataset. Some runtime files, especially logs and generation manifests with run-specific fields, may be refreshed by the pipeline. In that case, rerun `python scripts/verify_sha256sums.py SHA256SUMS.txt` only before regeneration, or regenerate the manifest intentionally for a new release.
 
-Volatile logs are preserved for audit where useful but are not part of the stable source checksum gate.
+The GitHub Actions workflow follows this order: verify the packaged snapshot, run the pipeline, compile sources and execute tests.

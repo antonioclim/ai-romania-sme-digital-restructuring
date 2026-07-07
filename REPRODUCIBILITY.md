@@ -1,5 +1,9 @@
 # Reproducibility notes
 
+Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+
+Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+
 The analysis uses relative paths and a cleaned quantitative dataset. No internet access is required for core reproduction.
 
 Recommended verification sequence:
@@ -8,10 +12,10 @@ Recommended verification sequence:
 python scripts/verify_sha256sums.py SHA256SUMS.txt
 python scripts/run_all.py
 python -m compileall scripts tests
-python -m pytest
+python -m pytest -q
 ```
 
-The table values are deterministic given identical inputs and package versions. Figure rendering may vary slightly across Matplotlib versions, but all figures are generated from source-data CSV files and the generation manifest reports the exported files and SHA-256 hashes.
+`SHA256SUMS.txt` verifies the packaged repository snapshot before regeneration. The analysis pipeline then rebuilds tables, figures and logs from the cleaned quantitative dataset.
 
 ## Figure reproduction
 
@@ -23,4 +27,4 @@ The table values are deterministic given identical inputs and package versions. 
 - `outputs/FIGURE_MANIFEST.csv`;
 - `outputs/FIGURE_VISUAL_QA.csv`.
 
-The optional conceptual figure is generated from explicit node and edge tables. It is not required for the manuscript unless the authors decide to use a conceptual visual.
+The optional conceptual figure is generated from explicit node and edge tables. It is not required for the manuscript unless the author decides to use a conceptual visual.

@@ -4,4 +4,6 @@ The public quantitative dataset used by this kit excludes open-text responses, d
 
 Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
 
+Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+
 Open-text responses and raw LimeSurvey exports should not be included in a public repository or software deposit without a separate manual re-identification review and a documented access-control decision.

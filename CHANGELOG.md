@@ -1,5 +1,12 @@
 # Changelog
 
+## Repository metadata after Zenodo publication
+
+- Added the published software DOI: https://doi.org/10.5281/zenodo.21245180.
+- Added repository and release URLs to citation and software metadata.
+- Added a GitHub Actions reproducibility smoke-test workflow.
+- Updated data/code access notes to distinguish the software DOI from the associated dataset DOI.
+
 ## 1.0.0
 
 - Rebuilt the public release around the cleaned quantitative dataset and relative-path scripts.

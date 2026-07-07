@@ -1,11 +1,15 @@
 # Zenodo deposit notes
 
+Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+
 Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
 
-Recommended deposit strategy:
+The software record identifies this reproducible analysis kit. The dataset record identifies the associated de-identified quantitative survey dataset.
 
-1. Publish a clean GitHub release from this repository.
-2. Deposit the clean release archive on Zenodo as software, either through the GitHub-Zenodo integration or manually as a software record.
-3. Link the software deposit to the existing dataset record using `isSupplementTo`.
-4. Do not upload raw LimeSurvey exports or open-text files to public Zenodo.
-5. Record the concept DOI and version DOI after Zenodo mints the software deposit DOI.
+Recommended repository strategy:
+
+1. Keep the GitHub release tag `v1.0.0` aligned with the archived software deposit.
+2. Use the default branch for metadata updates that point readers to the published software DOI.
+3. Do not upload raw LimeSurvey exports or open-text files to public Zenodo.
+4. If a future metadata-only release is needed, label it as such and create a separate Zenodo version.
+5. Record both the software DOI and dataset DOI in the final article after the double-blind review constraint no longer applies.

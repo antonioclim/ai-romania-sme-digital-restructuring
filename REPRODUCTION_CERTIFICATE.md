@@ -1,13 +1,19 @@
 # Reproduction certificate
 
-Generated UTC: 2026-07-06T18:08:46.008920+00:00
+Software archive DOI: https://doi.org/10.5281/zenodo.21245180
 
-## Environment
+Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+
+Repository: https://github.com/antonioclim/ai-romania-sme-digital-restructuring
+
+Release tag: `v1.0.0`
+
+## Environment used for package testing
 
 - Python: 3.13.5
 - Platform: Linux container
 
-## Commands executed during ECR rebuild
+## Commands executed during package testing
 
 ```bash
 python scripts/run_all.py
@@ -31,4 +37,4 @@ The default pipeline regenerates both the core cleaned-data outputs and the ECR-
 
 - The survey is non-probability based and does not estimate national prevalence.
 - Open-text responses are excluded from public release due to re-identification risk.
-- Public software DOI remains to be minted after a real GitHub/Zenodo release.
+- The software DOI and dataset DOI identify different research objects and should both be cited when code and data are reused.

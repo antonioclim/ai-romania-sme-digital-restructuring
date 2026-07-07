@@ -4,34 +4,23 @@
   "name": "AI-related restructuring in Romanian SMEs: reproducible analysis kit",
   "version": "1.0.0",
   "description": "Reproducible survey-analysis scripts and cleaned quantitative dataset for the article Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs.",
+  "identifier": "https://doi.org/10.5281/zenodo.21245180",
+  "url": "https://doi.org/10.5281/zenodo.21245180",
+  "codeRepository": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
   "license": "https://spdx.org/licenses/MIT",
   "programmingLanguage": "Python",
   "runtimePlatform": "Python >=3.10",
-  "codeRepository": "TO_BE_INSERTED_AFTER_GITHUB_RELEASE",
+  "datePublished": "2026-07-07",
   "author": [
     {
       "@type": "Person",
-      "givenName": "Andrei",
-      "familyName": "Toma"
-    },
-    {
-      "@type": "Person",
       "givenName": "Antonio",
-      "familyName": "Clim"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Radu",
-      "familyName": "Constantinescu"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Razvan",
-      "familyName": "Zota"
+      "familyName": "Clim",
+      "affiliation": "Bucharest University of Economic Studies"
     }
   ],
-  "identifier": "TO_BE_MINTED_AS_SOFTWARE_DOI",
   "relatedLink": [
-    "https://doi.org/10.5281/zenodo.17021824"
+    "https://doi.org/10.5281/zenodo.17021824",
+    "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/releases/tag/v1.0.0"
   ]
 }
