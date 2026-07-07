@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "AI-related restructuring in Romanian SMEs: reproducible analysis kit"
+message: "If you use this software, please cite the software DOI, the associated dataset DOI and the final article when available."
+type: software
+authors:
+  - family-names: Clim
+    given-names: Antonio
+version: 1.0.0
+date-released: 2026-07-07
+doi: 10.5281/zenodo.21245180
+url: "https://doi.org/10.5281/zenodo.21245180"
+repository-code: "https://github.com/antonioclim/ai-romania-sme-digital-restructuring"
+license: MIT
+keywords:
+  - artificial intelligence
+  - SME digitalisation
+  - economic restructuring
+  - transition economy
+  - Romania
+  - survey analysis
+  - reproducible research
+references:
+  - type: data
+    title: "Impact of AI on Romanian Businesses (survey dataset description)"
+    authors:
+      - family-names: Clim
+        given-names: Antonio
+    doi: 10.5281/zenodo.17021824
