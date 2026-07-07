@@ -1,36 +1,35 @@
 {
-  "title": "TEA-Sim v2.0.1: Auditable trust-evidence reference artefacts",
+  "title": "AI-related restructuring in Romanian SMEs: reproducible analysis kit",
   "upload_type": "software",
-  "description": "Reference implementation and reproducibility artefacts for auditable trust-evidence boundaries in health information systems. This archive is the published v2.0.1 software record associated with DOI 10.5281/zenodo.21226180. It does not claim production deployment, certification, legal compliance, clinical validation or complete formal verification.",
+  "description": "Reproducible analysis kit for the article 'Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs'. The kit reproduces quantitative survey tables and figures for SME-only and comparator analyses. Raw LimeSurvey exports, technical metadata and open-text responses are excluded from the public release.",
   "creators": [
     {
       "name": "Clim, Antonio",
-      "orcid": "0000-0003-4745-0431"
+      "affiliation": "Bucharest University of Economic Studies"
     }
   ],
-  "version": "2.0.1",
-  "license": "Apache-2.0",
+  "license": "MIT",
+  "access_right": "open",
   "keywords": [
-    "health information systems",
-    "auditability",
-    "FHIR",
-    "BALP",
-    "design science",
+    "artificial intelligence",
+    "SME digitalisation",
+    "economic restructuring",
+    "transition economy",
+    "Romania",
     "reproducibility"
   ],
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.21193829",
-      "relation": "isNewVersionOf",
-      "scheme": "doi",
-      "resource_type": "software"
+      "identifier": "10.5281/zenodo.17021824",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
     },
     {
-      "identifier": "https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1",
+      "identifier": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/releases/tag/v1.0.0",
       "relation": "isSupplementedBy",
-      "scheme": "url",
       "resource_type": "software"
     }
   ],
-  "notes": "Current version DOI: 10.5281/zenodo.21226180. Previous version DOI: 10.5281/zenodo.21193829. GitHub repository: https://github.com/antonioclim/TEA-Sim-TrustEvidence. GitHub release: https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1."
+  "version": "1.0.0",
+  "notes": "Software DOI: https://doi.org/10.5281/zenodo.21245180. Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824. The dataset DOI identifies the de-identified survey dataset; the software DOI identifies this reproducible analysis kit."
 }
