@@ -1,11 +1,11 @@
-path	bytes
+path	size_bytes
 .github/workflows/reproducibility-smoke-test.yml	1130
 .zenodo.json	1463
 CHANGELOG.md	895
 CHECKSUM_POLICY.md	710
 CITATION.cff	894
 DATA_ACCESS.md	555
-GITHUB_UPDATE_AFTER_ZENODO_DOI.md	1690
+FILE_MANIFEST.tsv	5691
 LICENSE	1069
 Makefile	415
 QUICKSTART.md	523
@@ -74,7 +74,7 @@ outputs/figures_editorial/Figure_3_SME_workforce_preparation.png	155355
 outputs/figures_editorial/Figure_4_workforce_governance_orientation.png	108704
 outputs/figures_editorial/Optional_Conceptual_Figure_capability_governance_model.png	156576
 outputs/figures_editorial/Supplementary_Figure_S1_capability_pressure.png	84233
-outputs/logs/pipeline.log	494
+outputs/logs/pipeline.log	1256
 outputs/reports/generated_tables_preview.md	3390
 outputs/reports/input_validation_summary.json	150
 outputs/reports/reference_data_validation_summary.json	293
@@ -107,7 +107,7 @@ scripts/10_generate_publication_figures.py	295
 scripts/11_generate_optional_conceptual_figure.py	304
 scripts/12_ecr_economic_evidence.py	21839
 scripts/run_all.py	796
-scripts/verify_sha256sums.py	905
+scripts/verify_sha256sums.py	1476
 tests/test_figure_generation.py	1288
 tests/test_input_schema.py	948
 tests/test_reproducibility.py	465

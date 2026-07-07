@@ -10,3 +10,13 @@ Generated markdown table preview
 Reference/data metadata validation written
 ECR economic evidence outputs generated in outputs/ecr
 Core ECR pipeline complete
+[2026-07-07T15:56:04.015077+00:00] Input validation: pass
+[2026-07-07T15:56:04.083380+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-07T15:56:04.153859+00:00] Constructed variables written
+[2026-07-07T15:56:04.245268+00:00] Descriptive tables written
+[2026-07-07T15:56:04.369194+00:00] Exploratory association tests written
+[2026-07-07T15:56:04.438317+00:00] Robustness checks written
+[2026-07-07T15:56:04.846382+00:00] Manuscript figure generation started
+[2026-07-07T15:56:06.104860+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-07T15:56:06.187870+00:00] Generated markdown table preview
+[2026-07-07T15:56:06.244977+00:00] Reference/data metadata validation written
