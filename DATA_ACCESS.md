@@ -1,9 +1,9 @@
-# Data access
+# Data and software availability
 
-The public quantitative dataset used by this kit excludes open-text responses, direct identifiers and raw technical metadata. It is suitable for reproducing the quantitative manuscript tables and figures.
+The distributed package contains synthetic or descriptor-derived local artefacts only. It does not redistribute restricted clinical data.
 
-Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+Synthea, BIG IDEAs and MIMIC-on-FHIR demo pathways are documented as externally informed workload sources. Full dataset extraction depends on the source licences, access requirements, file sizes and local maintainer execution. The package therefore provides descriptor tables and scripts rather than restricted or multi-gigabyte data files.
 
-Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+The published TEA-Sim v2.0.1 software record is archived on Zenodo with DOI `10.5281/zenodo.21226180`: <https://doi.org/10.5281/zenodo.21226180>. The associated GitHub repository is <https://github.com/antonioclim/TEA-Sim-TrustEvidence> and the release page is <https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1>.
 
-Open-text responses and raw LimeSurvey exports should not be included in a public repository or software deposit without a separate manual re-identification review and a documented access-control decision.
+The previous Zenodo version is `10.5281/zenodo.21193829`. Users should cite the v2.0.1 DOI for this archive.

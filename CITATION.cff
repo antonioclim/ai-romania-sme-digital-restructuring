@@ -1,28 +1,21 @@
 cff-version: 1.2.0
-title: "AI-related restructuring in Romanian SMEs: reproducible analysis kit"
-message: "If you use this software, please cite the software DOI, the associated dataset DOI and the final article when available."
+title: "TEA-Sim v2.0.1: Auditable trust-evidence reference artefacts"
+message: "If you use this software, please cite the Zenodo software record."
 type: software
+version: "2.0.1"
+date-released: "2026-07-06"
+abstract: "Reference implementation and reproducibility artefacts for auditable trust-evidence boundaries in health information systems."
+license: Apache-2.0
+repository-code: "https://github.com/antonioclim/TEA-Sim-TrustEvidence"
+url: "https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21226180"
+    description: "Published Zenodo version DOI for TEA-Sim v2.0.1."
+  - type: url
+    value: "https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1"
+    description: "GitHub release v2.0.1."
 authors:
-  - family-names: Clim
-    given-names: Antonio
-version: 1.0.0
-date-released: 2026-07-07
-doi: 10.5281/zenodo.21245180
-url: "https://doi.org/10.5281/zenodo.21245180"
-repository-code: "https://github.com/antonioclim/ai-romania-sme-digital-restructuring"
-license: MIT
-keywords:
-  - artificial intelligence
-  - SME digitalisation
-  - economic restructuring
-  - transition economy
-  - Romania
-  - survey analysis
-  - reproducible research
-references:
-  - type: data
-    title: "Impact of AI on Romanian Businesses (survey dataset description)"
-    authors:
-      - family-names: Clim
-        given-names: Antonio
-    doi: 10.5281/zenodo.17021824
+  - family-names: "Clim"
+    given-names: "Antonio"
+    orcid: "https://orcid.org/0000-0003-4745-0431"

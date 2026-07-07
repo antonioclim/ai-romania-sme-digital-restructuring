@@ -1,16 +1,13 @@
 # Changelog
 
-## Repository metadata after Zenodo publication
+## v2.0.1
 
-- Added the published software DOI: https://doi.org/10.5281/zenodo.21245180.
-- Added repository and release URLs to citation and software metadata.
-- Added a GitHub Actions reproducibility smoke-test workflow.
-- Updated data/code access notes to distinguish the software DOI from the associated dataset DOI.
+- Added script-generated manuscript figures in SVG, PDF and 300 dpi PNG formats.
+- Cleaned public metadata, repository wording and reviewer-facing documentation.
+- Retained cautious claim boundaries for standards-facing artefacts, backend execution, workload descriptors, property checks and expert-protocol materials.
+- Published the v2.0.1 Zenodo software record with DOI `10.5281/zenodo.21226180`.
+- Associated the public GitHub repository and release with the Zenodo record: <https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1>.
 
-## 1.0.0
+## v2.0.0
 
-- Rebuilt the public release around the cleaned quantitative dataset and relative-path scripts.
-- Separated full completed responses, SME-only responses and the large-firm comparator throughout the generated outputs.
-- Removed prior working files, raw exports, open-text responses, caches and direct or indirect respondent identifiers.
-- Added reproducible manuscript figure generation from data and source-data CSV files.
-- Added checksums, file manifest, data-access note, citation metadata and Zenodo metadata.
+- Public predecessor record: `10.5281/zenodo.21193829`.

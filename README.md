@@ -1,58 +1,42 @@
-# AI-related restructuring in Romanian SMEs: reproducible analysis kit
+# TEA-Sim v2.0.1: auditable trust-evidence reference artefacts
 
-[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21245180.svg)](https://doi.org/10.5281/zenodo.21245180)
+This archive contains the TEA-Sim reference implementation and supporting artefacts for an auditable trust-evidence boundary in health information systems. The package is intended for reviewer inspection and reproducible local evaluation.
 
-This repository reproduces the quantitative analysis for the article **Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs**. It contains a cleaned, de-identified quantitative survey dataset, Python scripts, source-data CSV files, generated tables and generated figures.
+The archive includes local reference implementation code, tests, generated figures, FHIR R4/BALP-facing draft artefacts, backend-evaluation workstreams, externally informed workload descriptors, property-validation artefacts and an expert-validation protocol. It does not claim production deployment, certification, legal compliance, clinical validation or full formal proof.
 
-## Citation and persistent identifiers
+## Public records and citation
 
-Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+Zenodo software record: `10.5281/zenodo.21226180`  
+DOI link: <https://doi.org/10.5281/zenodo.21226180>  
+GitHub repository: <https://github.com/antonioclim/TEA-Sim-TrustEvidence>  
+GitHub release: <https://github.com/antonioclim/TEA-Sim-TrustEvidence/releases/tag/v2.0.1>
 
-Repository URL: https://github.com/antonioclim/ai-romania-sme-digital-restructuring
+Recommended citation:
 
-Release tag: `v1.0.0`
+> Clim, A. (2026). TEA-Sim v2.0.1: Auditable trust-evidence reference artefacts (2.0.1). Zenodo. https://doi.org/10.5281/zenodo.21226180
 
-Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+The previous Zenodo version is `10.5281/zenodo.21193829`. The current archive is version `2.0.1` and should be cited using the v2.0.1 DOI above.
 
-The software DOI identifies the reproducible analysis package. The dataset DOI identifies the associated de-identified quantitative survey dataset. Please cite both when reusing the software and data.
-
-## What the kit reproduces
-
-Running the kit regenerates validation logs, constructed analysis datasets, descriptive tables, exploratory association screens, robustness tables and ECR-oriented manuscript figures. The main analytical scopes are:
-
-- full completed sample: n = 212;
-- SME-only analytical sample: n = 172;
-- large-firm comparator: n = 39;
-- unknown firm size: n = 1, excluded from size-specific estimates.
-
-The survey is an engaged non-probability sample. It is not a national prevalence estimate.
-
-## Quickstart
+## Quick start
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python scripts/verify_sha256sums.py SHA256SUMS.txt
-python scripts/run_all.py
-python -m compileall scripts tests
-python -m pytest -q
+python -m compileall src tests experiments scripts
+python -m pytest tests -q
+python figures/scripts/generate_jcis_figures.py
+make quick
+make evaluation-smoke
 ```
 
-The commands regenerate `outputs/ecr/tables/`, `outputs/ecr/figures/`, `outputs/ecr/figure_source_data/` and the core analysis outputs used in the manuscript.
+## Main directories
 
-## GitHub Actions workflow
+- `src/` - Python reference implementation modules.
+- `tests/` - public tests for core behaviour and local property checks.
+- `experiments/` - local experiment and result-validation scripts.
+- `evaluation_workstreams/` - standards-facing, backend, workload and property-validation artefacts.
+- `protocols/` - future expert-validation protocol materials.
+- `figures/` and `figure_sources/` - script-generated figures and source CSVs.
+- `docs/`, `tables/` and `references/` - supporting documentation, tables and bibliographic artefacts.
 
-The repository includes `.github/workflows/reproducibility-smoke-test.yml`. It verifies the release snapshot, installs the Python dependencies, runs the analysis pipeline and executes the test suite on push or manual dispatch.
+## Scope boundary
 
-## Data
-
-The public analysis file is `data/processed/public_quantitative_dataset_no_text_no_direct_identifiers.csv`. The associated dataset record is https://doi.org/10.5281/zenodo.17021824. Raw LimeSurvey exports, IP addresses, technical metadata, timestamps and open-text responses are excluded from this public software release.
-
-## Double-blind review
-
-Do not upload this unblinded release archive as the reviewer-facing archive if double-blind anonymity is required. Use the separate blinded reviewer archive provided with the submission package.
-
-## Licence
-
-Code is released under the MIT Licence. Dataset reuse must respect the dataset licence and the anonymisation limits documented in `docs/ethics_and_data_protection.md`.
+This is a design-science/reference-implementation package. It supports local reproducibility and claim-boundary inspection. It does not provide official FHIR/BALP conformance, PostgreSQL/A3 execution, real-world clinical deployment, legal compliance, expert consensus or complete formal verification.
