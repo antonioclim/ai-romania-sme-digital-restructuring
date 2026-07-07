@@ -4,19 +4,7 @@
   "description": "Reproducible analysis kit for the article 'Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs'. The kit reproduces quantitative survey tables and figures for SME-only and comparator analyses. Raw LimeSurvey exports, technical metadata and open-text responses are excluded from the public release.",
   "creators": [
     {
-      "name": "Toma, Andrei",
-      "affiliation": "Bucharest University of Economic Studies"
-    },
-    {
       "name": "Clim, Antonio",
-      "affiliation": "Bucharest University of Economic Studies"
-    },
-    {
-      "name": "Constantinescu, Radu",
-      "affiliation": "Bucharest University of Economic Studies"
-    },
-    {
-      "name": "Zota, Razvan",
       "affiliation": "Bucharest University of Economic Studies"
     }
   ],
@@ -37,11 +25,11 @@
       "resource_type": "dataset"
     },
     {
-      "identifier": "TO_BE_INSERTED_AFTER_ARTICLE_DOI",
-      "relation": "isSupplementTo",
-      "resource_type": "publication-article"
+      "identifier": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/releases/tag/v1.0.0",
+      "relation": "isSupplementedBy",
+      "resource_type": "software"
     }
   ],
   "version": "1.0.0",
-  "notes": "Software DOI not yet minted. The dataset DOI is an associated dataset DOI and must not be used as the software DOI for this repository."
+  "notes": "Software DOI: https://doi.org/10.5281/zenodo.21245180. Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824. The dataset DOI identifies the de-identified survey dataset; the software DOI identifies this reproducible analysis kit."
 }
