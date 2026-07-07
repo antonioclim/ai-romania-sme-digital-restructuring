@@ -1,0 +1,43 @@
+name: Reproducibility smoke test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify packaged repository snapshot
+        run: python scripts/verify_sha256sums.py SHA256SUMS.txt
+
+      - name: Run analysis pipeline
+        run: python scripts/run_all.py
+
+      - name: Compile scripts and tests
+        run: python -m compileall scripts tests
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Check generated ECR outputs exist
+        run: |
+          test -d outputs/ecr/tables
+          test -d outputs/ecr/figures
+          test -d outputs/ecr/figure_source_data
+          test -f outputs/ecr/tables/ECR_sample_scope.csv
+          test -f outputs/ecr/figures/ECR_Figure_1_SME_AI_restructuring_ladder.png
