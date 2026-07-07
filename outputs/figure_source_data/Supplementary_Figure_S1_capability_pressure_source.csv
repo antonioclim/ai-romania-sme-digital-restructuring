@@ -1,0 +1,4 @@
+﻿figure,category,sample,active_ai_use_n,denominator,percent,wilson_95_low,wilson_95_high,source_variables
+Supplementary Figure S1,Neither cost nor skill barrier,SME-only,6,7,85.7,48.7,97.4,is_sme; barrier_costuri_mari_de_implementare; barrier_lipsa_expertizei_tehnice; ai_active_use
+Supplementary Figure S1,One of cost/skill barriers,SME-only,25,43,58.1,43.3,71.6,is_sme; barrier_costuri_mari_de_implementare; barrier_lipsa_expertizei_tehnice; ai_active_use
+Supplementary Figure S1,Both cost and skill barriers,SME-only,23,122,18.9,12.9,26.7,is_sme; barrier_costuri_mari_de_implementare; barrier_lipsa_expertizei_tehnice; ai_active_use

@@ -1,0 +1,13 @@
+﻿model,outcome,term,odds_ratio,ci_95_low,ci_95_high,p_value,n,events,pseudo_r2_mcfadden,admissibility_note
+SME parsimonious logit,Active AI use,const,3.634,0.727,18.173,0.116093,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active AI use,small,1.491,0.447,4.969,0.515559,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active AI use,medium,1.369,0.425,4.403,0.598689,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active AI use,has_any_upskilling_measure,2.778,0.888,8.691,0.079182,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active AI use,resource_constraint_count,0.166,0.083,0.332,0.0,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active AI use,governance_support_strict_regulation,0.643,0.293,1.412,0.270981,172,54,0.18,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,const,7.765,0.902,66.83,0.061998,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,small,0.951,0.29,3.112,0.933359,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,medium,3.996,1.239,12.881,0.020372,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,has_any_upskilling_measure,14.061,3.703,53.394,0.000103,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,resource_constraint_count,0.087,0.027,0.283,4.9e-05,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.
+SME parsimonious logit,Active use or planning/testing/deployment,governance_support_strict_regulation,1.049,0.453,2.426,0.911225,172,105,0.344,Exploratory robustness model; association only; not causal; avoid main-text overinterpretation.

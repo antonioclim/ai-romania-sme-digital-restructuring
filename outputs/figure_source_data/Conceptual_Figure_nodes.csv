@@ -1,0 +1,22 @@
+﻿node_id,text,x,y,w,h
+N1,"National context
+Low official AI use
+lagging SME digitalisation",0.055,0.745,0.25,0.135
+N2,"Survey evidence
+Engaged respondents
+higher use and pipeline",0.375,0.745,0.25,0.135
+N3,"Governance pressure
+AI literacy
+ethical regulation",0.695,0.745,0.25,0.135
+N4,"Capacity constraints
+cost + expertise
+data + change",0.055,0.455,0.25,0.135
+N5,"Socio-technical readiness
+skills + routines
+trust + leadership",0.375,0.455,0.25,0.135
+N6,"Policy ecosystem
+funding + guidance
+capability infrastructure",0.695,0.455,0.25,0.135
+N7,"Capability pressure
+Convert awareness and experimentation into
+capability-backed, regulation-aware deployment",0.255,0.145,0.49,0.145

@@ -1,0 +1,9 @@
+﻿firm_size,outcome,n,denominator,percent,wilson_95_low,wilson_95_high
+Micro SMEs,Active AI use,7,36,19.4,9.8,35.0
+Micro SMEs,Active use or planning/testing/deployment,11,36,30.6,18.0,46.9
+Small SMEs,Active AI use,19,57,33.3,22.5,46.3
+Small SMEs,Active use or planning/testing/deployment,29,57,50.9,38.3,63.4
+Medium SMEs,Active AI use,28,79,35.4,25.8,46.4
+Medium SMEs,Active use or planning/testing/deployment,65,79,82.3,72.4,89.1
+Large comparator,Active AI use,19,39,48.7,33.9,63.8
+Large comparator,Active use or planning/testing/deployment,31,39,79.5,64.5,89.2

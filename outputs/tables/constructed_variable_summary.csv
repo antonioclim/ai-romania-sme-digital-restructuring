@@ -1,0 +1,6 @@
+﻿variable,description
+adoption_binary_active,1 if respondent selected active AI use; 0 otherwise
+adoption_binary_active_or_planning,1 if active AI use or projects in planning/deployment; 0 otherwise
+analysis_scope_sme_only,"1 if micro, small or medium; 0 otherwise"
+resource_constraint_count,count of cost and expertise barriers selected
+governance_support_strict_regulation,1 if stricter ethical regulation selected

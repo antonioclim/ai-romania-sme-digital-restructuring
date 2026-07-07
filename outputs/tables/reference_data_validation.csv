@@ -1,0 +1,3 @@
+﻿check,expected,observed,status
+associated_dataset_doi_present_in_zenodo_json,10.5281/zenodo.17021824,True,pass
+raw_data_excluded,data/raw contains README only,README_DO_NOT_EDIT.md,pass

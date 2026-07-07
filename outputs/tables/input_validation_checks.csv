@@ -1,0 +1,6 @@
+﻿check,expected,observed,status
+row_count_full_completed,212,212,pass
+sme_only_count,172,172,pass
+large_comparator_count,39,39,pass
+unknown_firm_size_count,1,1,pass
+forbidden_identifier_columns,0,0,pass

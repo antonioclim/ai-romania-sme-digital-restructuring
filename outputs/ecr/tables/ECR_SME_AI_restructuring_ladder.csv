@@ -1,0 +1,6 @@
+﻿stage,n,denominator,percent,wilson_95_low,wilson_95_high
+Not familiar at all,8,172,4.7,2.4,8.9
+Slightly familiar,27,172,15.7,11.0,21.9
+"Familiar, not yet using AI",32,172,18.6,13.5,25.1
+"Projects in planning, testing or deployment",51,172,29.7,23.3,36.9
+Active AI use,54,172,31.4,24.9,38.7

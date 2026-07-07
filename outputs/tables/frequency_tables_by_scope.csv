@@ -1,0 +1,195 @@
+﻿scope,variable,variable_label,category,n,denominator,percent
+full_completed,firm_size_category,Firm size,medium_50_249,79,212,37.3
+full_completed,firm_size_category,Firm size,small_10_49,57,212,26.9
+full_completed,firm_size_category,Firm size,large_250_plus,39,212,18.4
+full_completed,firm_size_category,Firm size,micro_1_9,36,212,17.0
+full_completed,firm_size_category,Firm size,nan,1,212,0.5
+full_completed,ai_familiarity_label,AI familiarity/adoption,Folosim tehnologii AI în mod activ,73,212,34.4
+full_completed,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, avem proiecte (în diverse faze – bugetare, testare, implementare) pentru implementări de tehnologii AI în companie",64,212,30.2
+full_completed,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, dar nu folosim tehnologii AI în companie",36,212,17.0
+full_completed,ai_familiarity_label,AI familiarity/adoption,Puțin familiarizat,30,212,14.2
+full_completed,ai_familiarity_label,AI familiarity/adoption,Deloc familiarizat,9,212,4.2
+full_completed,job_impact_expectation_label,Job impact,"AI va transforma rolurile actuale, dar nu le va elimina",172,212,81.1
+full_completed,job_impact_expectation_label,Job impact,Implementarea soluțiilor AI va crea mai multe locuri de muncă decât va înlocui,21,212,9.9
+full_completed,job_impact_expectation_label,Job impact,AI nu va avea un impact semnificativ asupra locurilor de muncă în domeniul meu de business,13,212,6.1
+full_completed,job_impact_expectation_label,Job impact,AI va înlocui mai multe locuri de muncă decât va crea implicit,6,212,2.8
+full_completed,regulation_view_label,Regulation view,AI are nevoie de reglementări mai stricte pentru a asigura o utilizare etică,148,212,69.8
+full_completed,regulation_view_label,Regulation view,Reglementările existente sunt suficiente,43,212,20.3
+full_completed,regulation_view_label,Regulation view,Nu sunt sigur,14,212,6.6
+full_completed,regulation_view_label,Regulation view,AI ar trebui dereglementată pentru a promova inovația,7,212,3.3
+full_completed,government_support_role_label,Government support role,"Moderat important – este util, dar nu este factorul decisiv",112,212,52.8
+full_completed,government_support_role_label,Government support role,Foarte important – sprijinul guvernamental este esențial,97,212,45.8
+full_completed,government_support_role_label,Government support role,Nu este important – sectorul privat ar trebui să conducă/impună modelul de adoptare AI,2,212,0.9
+full_completed,government_support_role_label,Government support role,Nu sunt sigur,1,212,0.5
+full_completed,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,"România este moderat competitivă și, implicit, necesită mai multe investiții private în acest domeniu",128,212,60.4
+full_completed,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este în urmă în adoptarea AI,72,212,34.0
+full_completed,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este foarte competitivă în adoptarea AI,10,212,4.7
+full_completed,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,Nu sunt sigur,2,212,0.9
+full_completed,motivation_reducerea_costurilor_and_imbunatatirea_eficie,Motivation,selected/yes,190,212,89.6
+full_completed,motivation_avantaj_competitive_strategic,Motivation,selected/yes,159,212,75.0
+full_completed,motivation_experienta_imbunatatita_pentru_clienti_and_pe,Motivation,selected/yes,126,212,59.4
+full_completed,motivation_facilitarea_deciziilor_bazate_pe_date,Motivation,selected/yes,181,212,85.4
+full_completed,motivation_altul_va_rugam_sa_specificati,Motivation,selected/yes,56,212,26.4
+full_completed,motivation_selection_count,Motivation,selected/yes,712,212,335.8
+full_completed,barrier_costuri_mari_de_implementare,Barrier,selected/yes,188,212,88.7
+full_completed,barrier_lipsa_expertizei_tehnice,Barrier,selected/yes,167,212,78.8
+full_completed,barrier_incertitudini_privind_impactul_ai,Barrier,selected/yes,99,212,46.7
+full_completed,barrier_ingrijorari_legate_de_reglementari_sau_etica,Barrier,selected/yes,123,212,58.0
+full_completed,barrier_rezistenta_din_partea_angajatilor,Barrier,selected/yes,93,212,43.9
+full_completed,barrier_nivelul_de_maturitate_al_noilor_tehnologii_es,Barrier,selected/yes,52,212,24.5
+full_completed,barrier_selection_count,Barrier,selected/yes,722,212,340.6
+full_completed,upskilling_programe_interne_de_mentorat_instruire_in_uti,Upskilling,selected/yes,147,212,69.3
+full_completed,upskilling_nu_avem_inca_masuri_specifice,Upskilling,selected/yes,54,212,25.5
+full_completed,upskilling_abonamente_suportate_de_angajator_pentru_unel,Upskilling,selected/yes,49,212,23.1
+full_completed,upskilling_decontarea_unor_certificari_cursuri_online_de,Upskilling,selected/yes,145,212,68.4
+full_completed,upskilling_angajarea_unor_consultanti_externi_pentru_cer,Upskilling,selected/yes,71,212,33.5
+full_completed,upskilling_parteneriate_cu_universitati_pentru_instruire,Upskilling,selected/yes,124,212,58.5
+full_completed,upskilling_positive_selection_count,Upskilling,selected/yes,536,212,252.8
+full_completed,sector_productie,Sector,selected/yes,41,212,19.3
+full_completed,sector_retail_and_comert_electronic,Sector,selected/yes,23,212,10.8
+full_completed,sector_finante_and_banci,Sector,selected/yes,12,212,5.7
+full_completed,sector_sanatate_and_industria_farmaceutica,Sector,selected/yes,15,212,7.1
+full_completed,sector_it_and_software,Sector,selected/yes,48,212,22.6
+full_completed,sector_transport_and_logistica,Sector,selected/yes,15,212,7.1
+full_completed,sector_agricultura,Sector,selected/yes,9,212,4.2
+full_completed,sector_energie,Sector,selected/yes,7,212,3.3
+full_completed,sector_altul_va_rugam_sa_specificati,Sector,selected/yes,49,212,23.1
+full_completed,role_ceo_proprietar_de_afacere,Role,selected/yes,36,212,17.0
+full_completed,role_manager_senior_director,Role,selected/yes,90,212,42.5
+full_completed,role_specialist_it_ai,Role,selected/yes,29,212,13.7
+full_completed,role_hr_dezvoltare_resurse_umane,Role,selected/yes,10,212,4.7
+full_completed,role_manager_de_operatiuni,Role,selected/yes,34,212,16.0
+full_completed,role_altul_va_rugam_sa_specificati,Role,selected/yes,33,212,15.6
+full_completed,app_potential_automatizarea_proceselor,AI application potential,selected/yes,194,212,91.5
+full_completed,app_potential_analize_si_prognoze_bazate_pe_ai,AI application potential,selected/yes,202,212,95.3
+full_completed,app_potential_chatbot_uri_pentru_servicii_clienti,AI application potential,selected/yes,94,212,44.3
+full_completed,app_potential_securitate_cibernetica_bazata_pe_ai,AI application potential,selected/yes,57,212,26.9
+full_completed,app_potential_marketing_imbunatatit_cu_ai,AI application potential,selected/yes,59,212,27.8
+full_completed,app_potential_altul_va_rugam_sa_specificati,AI application potential,selected/yes,75,212,35.4
+full_completed,app_potential_selection_count,AI application potential,selected/yes,681,212,321.2
+sme_only,firm_size_category,Firm size,medium_50_249,79,172,45.9
+sme_only,firm_size_category,Firm size,small_10_49,57,172,33.1
+sme_only,firm_size_category,Firm size,micro_1_9,36,172,20.9
+sme_only,ai_familiarity_label,AI familiarity/adoption,Folosim tehnologii AI în mod activ,54,172,31.4
+sme_only,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, avem proiecte (în diverse faze – bugetare, testare, implementare) pentru implementări de tehnologii AI în companie",51,172,29.7
+sme_only,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, dar nu folosim tehnologii AI în companie",32,172,18.6
+sme_only,ai_familiarity_label,AI familiarity/adoption,Puțin familiarizat,27,172,15.7
+sme_only,ai_familiarity_label,AI familiarity/adoption,Deloc familiarizat,8,172,4.7
+sme_only,job_impact_expectation_label,Job impact,"AI va transforma rolurile actuale, dar nu le va elimina",138,172,80.2
+sme_only,job_impact_expectation_label,Job impact,Implementarea soluțiilor AI va crea mai multe locuri de muncă decât va înlocui,18,172,10.5
+sme_only,job_impact_expectation_label,Job impact,AI nu va avea un impact semnificativ asupra locurilor de muncă în domeniul meu de business,13,172,7.6
+sme_only,job_impact_expectation_label,Job impact,AI va înlocui mai multe locuri de muncă decât va crea implicit,3,172,1.7
+sme_only,regulation_view_label,Regulation view,AI are nevoie de reglementări mai stricte pentru a asigura o utilizare etică,117,172,68.0
+sme_only,regulation_view_label,Regulation view,Reglementările existente sunt suficiente,39,172,22.7
+sme_only,regulation_view_label,Regulation view,Nu sunt sigur,12,172,7.0
+sme_only,regulation_view_label,Regulation view,AI ar trebui dereglementată pentru a promova inovația,4,172,2.3
+sme_only,government_support_role_label,Government support role,"Moderat important – este util, dar nu este factorul decisiv",100,172,58.1
+sme_only,government_support_role_label,Government support role,Foarte important – sprijinul guvernamental este esențial,69,172,40.1
+sme_only,government_support_role_label,Government support role,Nu este important – sectorul privat ar trebui să conducă/impună modelul de adoptare AI,2,172,1.2
+sme_only,government_support_role_label,Government support role,Nu sunt sigur,1,172,0.6
+sme_only,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,"România este moderat competitivă și, implicit, necesită mai multe investiții private în acest domeniu",106,172,61.6
+sme_only,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este în urmă în adoptarea AI,59,172,34.3
+sme_only,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este foarte competitivă în adoptarea AI,5,172,2.9
+sme_only,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,Nu sunt sigur,2,172,1.2
+sme_only,motivation_reducerea_costurilor_and_imbunatatirea_eficie,Motivation,selected/yes,151,172,87.8
+sme_only,motivation_avantaj_competitive_strategic,Motivation,selected/yes,127,172,73.8
+sme_only,motivation_experienta_imbunatatita_pentru_clienti_and_pe,Motivation,selected/yes,100,172,58.1
+sme_only,motivation_facilitarea_deciziilor_bazate_pe_date,Motivation,selected/yes,143,172,83.1
+sme_only,motivation_altul_va_rugam_sa_specificati,Motivation,selected/yes,42,172,24.4
+sme_only,motivation_selection_count,Motivation,selected/yes,563,172,327.3
+sme_only,barrier_costuri_mari_de_implementare,Barrier,selected/yes,150,172,87.2
+sme_only,barrier_lipsa_expertizei_tehnice,Barrier,selected/yes,137,172,79.7
+sme_only,barrier_incertitudini_privind_impactul_ai,Barrier,selected/yes,83,172,48.3
+sme_only,barrier_ingrijorari_legate_de_reglementari_sau_etica,Barrier,selected/yes,90,172,52.3
+sme_only,barrier_rezistenta_din_partea_angajatilor,Barrier,selected/yes,71,172,41.3
+sme_only,barrier_nivelul_de_maturitate_al_noilor_tehnologii_es,Barrier,selected/yes,46,172,26.7
+sme_only,barrier_selection_count,Barrier,selected/yes,577,172,335.5
+sme_only,upskilling_programe_interne_de_mentorat_instruire_in_uti,Upskilling,selected/yes,112,172,65.1
+sme_only,upskilling_nu_avem_inca_masuri_specifice,Upskilling,selected/yes,51,172,29.7
+sme_only,upskilling_abonamente_suportate_de_angajator_pentru_unel,Upskilling,selected/yes,38,172,22.1
+sme_only,upskilling_decontarea_unor_certificari_cursuri_online_de,Upskilling,selected/yes,111,172,64.5
+sme_only,upskilling_angajarea_unor_consultanti_externi_pentru_cer,Upskilling,selected/yes,56,172,32.6
+sme_only,upskilling_parteneriate_cu_universitati_pentru_instruire,Upskilling,selected/yes,91,172,52.9
+sme_only,upskilling_positive_selection_count,Upskilling,selected/yes,408,172,237.2
+sme_only,sector_productie,Sector,selected/yes,37,172,21.5
+sme_only,sector_retail_and_comert_electronic,Sector,selected/yes,19,172,11.0
+sme_only,sector_finante_and_banci,Sector,selected/yes,9,172,5.2
+sme_only,sector_sanatate_and_industria_farmaceutica,Sector,selected/yes,8,172,4.7
+sme_only,sector_it_and_software,Sector,selected/yes,40,172,23.3
+sme_only,sector_transport_and_logistica,Sector,selected/yes,11,172,6.4
+sme_only,sector_agricultura,Sector,selected/yes,9,172,5.2
+sme_only,sector_energie,Sector,selected/yes,3,172,1.7
+sme_only,sector_altul_va_rugam_sa_specificati,Sector,selected/yes,42,172,24.4
+sme_only,role_ceo_proprietar_de_afacere,Role,selected/yes,35,172,20.3
+sme_only,role_manager_senior_director,Role,selected/yes,71,172,41.3
+sme_only,role_specialist_it_ai,Role,selected/yes,21,172,12.2
+sme_only,role_hr_dezvoltare_resurse_umane,Role,selected/yes,8,172,4.7
+sme_only,role_manager_de_operatiuni,Role,selected/yes,30,172,17.4
+sme_only,role_altul_va_rugam_sa_specificati,Role,selected/yes,26,172,15.1
+sme_only,app_potential_automatizarea_proceselor,AI application potential,selected/yes,154,172,89.5
+sme_only,app_potential_analize_si_prognoze_bazate_pe_ai,AI application potential,selected/yes,163,172,94.8
+sme_only,app_potential_chatbot_uri_pentru_servicii_clienti,AI application potential,selected/yes,73,172,42.4
+sme_only,app_potential_securitate_cibernetica_bazata_pe_ai,AI application potential,selected/yes,39,172,22.7
+sme_only,app_potential_marketing_imbunatatit_cu_ai,AI application potential,selected/yes,49,172,28.5
+sme_only,app_potential_altul_va_rugam_sa_specificati,AI application potential,selected/yes,57,172,33.1
+sme_only,app_potential_selection_count,AI application potential,selected/yes,535,172,311.0
+large_comparator,firm_size_category,Firm size,large_250_plus,39,39,100.0
+large_comparator,ai_familiarity_label,AI familiarity/adoption,Folosim tehnologii AI în mod activ,19,39,48.7
+large_comparator,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, avem proiecte (în diverse faze – bugetare, testare, implementare) pentru implementări de tehnologii AI în companie",12,39,30.8
+large_comparator,ai_familiarity_label,AI familiarity/adoption,"Familiarizat, dar nu folosim tehnologii AI în companie",4,39,10.3
+large_comparator,ai_familiarity_label,AI familiarity/adoption,Puțin familiarizat,3,39,7.7
+large_comparator,ai_familiarity_label,AI familiarity/adoption,Deloc familiarizat,1,39,2.6
+large_comparator,job_impact_expectation_label,Job impact,"AI va transforma rolurile actuale, dar nu le va elimina",33,39,84.6
+large_comparator,job_impact_expectation_label,Job impact,AI va înlocui mai multe locuri de muncă decât va crea implicit,3,39,7.7
+large_comparator,job_impact_expectation_label,Job impact,Implementarea soluțiilor AI va crea mai multe locuri de muncă decât va înlocui,3,39,7.7
+large_comparator,regulation_view_label,Regulation view,AI are nevoie de reglementări mai stricte pentru a asigura o utilizare etică,30,39,76.9
+large_comparator,regulation_view_label,Regulation view,Reglementările existente sunt suficiente,4,39,10.3
+large_comparator,regulation_view_label,Regulation view,AI ar trebui dereglementată pentru a promova inovația,3,39,7.7
+large_comparator,regulation_view_label,Regulation view,Nu sunt sigur,2,39,5.1
+large_comparator,government_support_role_label,Government support role,Foarte important – sprijinul guvernamental este esențial,28,39,71.8
+large_comparator,government_support_role_label,Government support role,"Moderat important – este util, dar nu este factorul decisiv",11,39,28.2
+large_comparator,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,"România este moderat competitivă și, implicit, necesită mai multe investiții private în acest domeniu",21,39,53.8
+large_comparator,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este în urmă în adoptarea AI,13,39,33.3
+large_comparator,romania_ai_competitiveness_label,Perceived Romanian AI competitiveness,România este foarte competitivă în adoptarea AI,5,39,12.8
+large_comparator,motivation_reducerea_costurilor_and_imbunatatirea_eficie,Motivation,selected/yes,38,39,97.4
+large_comparator,motivation_avantaj_competitive_strategic,Motivation,selected/yes,31,39,79.5
+large_comparator,motivation_experienta_imbunatatita_pentru_clienti_and_pe,Motivation,selected/yes,25,39,64.1
+large_comparator,motivation_facilitarea_deciziilor_bazate_pe_date,Motivation,selected/yes,37,39,94.9
+large_comparator,motivation_altul_va_rugam_sa_specificati,Motivation,selected/yes,14,39,35.9
+large_comparator,motivation_selection_count,Motivation,selected/yes,145,39,371.8
+large_comparator,barrier_costuri_mari_de_implementare,Barrier,selected/yes,37,39,94.9
+large_comparator,barrier_lipsa_expertizei_tehnice,Barrier,selected/yes,29,39,74.4
+large_comparator,barrier_incertitudini_privind_impactul_ai,Barrier,selected/yes,15,39,38.5
+large_comparator,barrier_ingrijorari_legate_de_reglementari_sau_etica,Barrier,selected/yes,32,39,82.1
+large_comparator,barrier_rezistenta_din_partea_angajatilor,Barrier,selected/yes,22,39,56.4
+large_comparator,barrier_nivelul_de_maturitate_al_noilor_tehnologii_es,Barrier,selected/yes,6,39,15.4
+large_comparator,barrier_selection_count,Barrier,selected/yes,141,39,361.5
+large_comparator,upskilling_programe_interne_de_mentorat_instruire_in_uti,Upskilling,selected/yes,34,39,87.2
+large_comparator,upskilling_nu_avem_inca_masuri_specifice,Upskilling,selected/yes,3,39,7.7
+large_comparator,upskilling_abonamente_suportate_de_angajator_pentru_unel,Upskilling,selected/yes,10,39,25.6
+large_comparator,upskilling_decontarea_unor_certificari_cursuri_online_de,Upskilling,selected/yes,33,39,84.6
+large_comparator,upskilling_angajarea_unor_consultanti_externi_pentru_cer,Upskilling,selected/yes,15,39,38.5
+large_comparator,upskilling_parteneriate_cu_universitati_pentru_instruire,Upskilling,selected/yes,32,39,82.1
+large_comparator,upskilling_positive_selection_count,Upskilling,selected/yes,124,39,317.9
+large_comparator,sector_productie,Sector,selected/yes,4,39,10.3
+large_comparator,sector_retail_and_comert_electronic,Sector,selected/yes,4,39,10.3
+large_comparator,sector_finante_and_banci,Sector,selected/yes,3,39,7.7
+large_comparator,sector_sanatate_and_industria_farmaceutica,Sector,selected/yes,7,39,17.9
+large_comparator,sector_it_and_software,Sector,selected/yes,7,39,17.9
+large_comparator,sector_transport_and_logistica,Sector,selected/yes,4,39,10.3
+large_comparator,sector_agricultura,Sector,selected/yes,0,39,0.0
+large_comparator,sector_energie,Sector,selected/yes,4,39,10.3
+large_comparator,sector_altul_va_rugam_sa_specificati,Sector,selected/yes,7,39,17.9
+large_comparator,role_ceo_proprietar_de_afacere,Role,selected/yes,1,39,2.6
+large_comparator,role_manager_senior_director,Role,selected/yes,19,39,48.7
+large_comparator,role_specialist_it_ai,Role,selected/yes,7,39,17.9
+large_comparator,role_hr_dezvoltare_resurse_umane,Role,selected/yes,2,39,5.1
+large_comparator,role_manager_de_operatiuni,Role,selected/yes,4,39,10.3
+large_comparator,role_altul_va_rugam_sa_specificati,Role,selected/yes,7,39,17.9
+large_comparator,app_potential_automatizarea_proceselor,AI application potential,selected/yes,39,39,100.0
+large_comparator,app_potential_analize_si_prognoze_bazate_pe_ai,AI application potential,selected/yes,38,39,97.4
+large_comparator,app_potential_chatbot_uri_pentru_servicii_clienti,AI application potential,selected/yes,20,39,51.3
+large_comparator,app_potential_securitate_cibernetica_bazata_pe_ai,AI application potential,selected/yes,17,39,43.6
+large_comparator,app_potential_marketing_imbunatatit_cu_ai,AI application potential,selected/yes,9,39,23.1
+large_comparator,app_potential_altul_va_rugam_sa_specificati,AI application potential,selected/yes,18,39,46.2
+large_comparator,app_potential_selection_count,AI application potential,selected/yes,141,39,361.5

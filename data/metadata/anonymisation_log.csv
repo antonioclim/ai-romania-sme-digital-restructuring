@@ -1,0 +1,8 @@
+﻿field_or_group,original_location,action,risk_before,risk_after,residual_risk
+Response ID,raw column 0,removed from clean datasets; case_id assigned after randomised row ordering with no retained mapping table,direct/administrative identifier,low,rare covariate combinations remain possible
+"submitdate, startdate, datestamp","raw columns 1, 5, 6",exact timestamps removed from public dataset; completion_month retained,indirect identifier / temporal linkage,low-to-moderate,public month is coarse but all complete cases fall in August 2025
+ipaddr,raw column 7 and SEMANTICorr _ANNEXES CSV,removed from all survey-data reconstruction clean datasets,direct personal data / network identifier,removed,raw and archived copies must not be public
+seed,raw column 4,removed,platform linkage artefact,removed,none in clean datasets
+question-level timing and exact survey duration,columns 109-138,question/group timing excluded; exact total duration retained only in internal derived dataset; public dataset keeps quality flag only,behavioural trace,low in public dataset,duration diagnostics should remain internal unless a journal data editor requests them
+free-text/comment fields,comment columns plus G08Q18 and G01Q20,excluded from public quantitative dataset; redacted internal review file created,moderate/high due to rare contextual details,"moderate in internal redacted file, low in public quantitative file",manual review required before quotation or public release
+"firm size, sector and role","Q00, G01Q02, G01Q03",retained as key analytical covariates,quasi-identifiers in combination,moderate,avoid row-level text combined with firm-size/sector/role combinations

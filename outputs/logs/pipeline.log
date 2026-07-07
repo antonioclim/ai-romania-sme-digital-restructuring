@@ -1,0 +1,80 @@
+[2026-07-06T10:31:00.454576+00:00] Input validation: pass
+[2026-07-06T10:31:00.563456+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T10:31:00.726396+00:00] Constructed variables written
+[2026-07-06T10:31:00.861544+00:00] Descriptive tables written
+[2026-07-06T10:31:01.324072+00:00] Exploratory association tests written
+[2026-07-06T10:31:01.457406+00:00] Robustness checks written
+[2026-07-06T10:31:02.312357+00:00] Manuscript figure generation started
+[2026-07-06T10:31:06.569651+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T10:31:06.834787+00:00] Generated markdown table preview
+[2026-07-06T10:31:06.957020+00:00] Reference/data metadata validation written
+[2026-07-06T10:51:03.934780+00:00] Input validation: pass
+[2026-07-06T10:51:04.106822+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T10:51:04.248275+00:00] Constructed variables written
+[2026-07-06T10:51:04.415670+00:00] Descriptive tables written
+[2026-07-06T10:51:04.729442+00:00] Exploratory association tests written
+[2026-07-06T10:51:04.844830+00:00] Robustness checks written
+[2026-07-06T10:51:05.772292+00:00] Manuscript figure generation started
+[2026-07-06T10:51:09.479413+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T10:51:09.635946+00:00] Generated markdown table preview
+[2026-07-06T10:51:09.740111+00:00] Reference/data metadata validation written
+[2026-07-06T10:52:31.170955+00:00] Input validation: pass
+[2026-07-06T10:52:31.243009+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T10:52:31.313943+00:00] Constructed variables written
+[2026-07-06T10:52:31.410314+00:00] Descriptive tables written
+[2026-07-06T10:52:31.553209+00:00] Exploratory association tests written
+[2026-07-06T10:52:31.604410+00:00] Robustness checks written
+[2026-07-06T10:52:32.162249+00:00] Manuscript figure generation started
+[2026-07-06T10:52:35.146004+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T10:52:35.514070+00:00] Generated markdown table preview
+[2026-07-06T10:52:35.616149+00:00] Reference/data metadata validation written
+[2026-07-06T18:03:10.289796+00:00] Input validation: pass
+[2026-07-06T18:03:10.337752+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T18:03:10.379540+00:00] Constructed variables written
+[2026-07-06T18:03:10.436012+00:00] Descriptive tables written
+[2026-07-06T18:03:10.525427+00:00] Exploratory association tests written
+[2026-07-06T18:03:10.563192+00:00] Robustness checks written
+[2026-07-06T18:03:13.425889+00:00] Manuscript figure generation started
+[2026-07-06T18:03:14.551668+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T18:03:14.621819+00:00] Generated markdown table preview
+[2026-07-06T18:03:14.652414+00:00] Reference/data metadata validation written
+[2026-07-06T18:08:37.727219+00:00] Input validation: pass
+[2026-07-06T18:08:37.775386+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T18:08:37.817990+00:00] Constructed variables written
+[2026-07-06T18:08:37.874420+00:00] Descriptive tables written
+[2026-07-06T18:08:37.952930+00:00] Exploratory association tests written
+[2026-07-06T18:08:37.980336+00:00] Robustness checks written
+[2026-07-06T18:08:38.275067+00:00] Manuscript figure generation started
+[2026-07-06T18:08:39.391087+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T18:08:39.456480+00:00] Generated markdown table preview
+[2026-07-06T18:08:39.483151+00:00] Reference/data metadata validation written
+[2026-07-06T19:57:40.412480+00:00] Input validation: pass
+[2026-07-06T19:57:40.456449+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T19:57:40.489114+00:00] Constructed variables written
+[2026-07-06T19:57:40.537302+00:00] Descriptive tables written
+[2026-07-06T19:57:40.606474+00:00] Exploratory association tests written
+[2026-07-06T19:57:40.634650+00:00] Robustness checks written
+[2026-07-06T19:57:40.927627+00:00] Manuscript figure generation started
+[2026-07-06T19:57:42.028683+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T19:57:42.090740+00:00] Generated markdown table preview
+[2026-07-06T19:57:42.129098+00:00] Reference/data metadata validation written
+[2026-07-06T20:00:11.454484+00:00] Input validation: pass
+[2026-07-06T20:00:11.501093+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T20:00:11.555280+00:00] Constructed variables written
+[2026-07-06T20:00:11.610356+00:00] Descriptive tables written
+[2026-07-06T20:00:11.681660+00:00] Exploratory association tests written
+[2026-07-06T20:00:11.716312+00:00] Robustness checks written
+[2026-07-06T20:00:11.997717+00:00] Manuscript figure generation started
+[2026-07-06T20:00:13.149597+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T20:00:13.215908+00:00] Generated markdown table preview
+[2026-07-06T20:00:13.263916+00:00] Reference/data metadata validation written
+[2026-07-06T20:03:52.260648+00:00] Input validation: pass
+[2026-07-06T20:03:52.305909+00:00] Clean data written: 212 rows, 72 columns
+[2026-07-06T20:03:52.340268+00:00] Constructed variables written
+[2026-07-06T20:03:52.397910+00:00] Descriptive tables written
+[2026-07-06T20:03:52.473315+00:00] Exploratory association tests written
+[2026-07-06T20:03:52.508101+00:00] Robustness checks written
+[2026-07-06T20:03:52.796192+00:00] Manuscript figure generation started
+[2026-07-06T20:03:53.936873+00:00] Figures generated: 6; see outputs/figures_editorial, outputs/FIGURE_MANIFEST.csv and outputs/FIGURE_VISUAL_QA.csv
+[2026-07-06T20:03:53.993642+00:00] Generated markdown table preview
+[2026-07-06T20:03:54.034005+00:00] Reference/data metadata validation written

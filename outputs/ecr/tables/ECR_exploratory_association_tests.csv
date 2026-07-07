@@ -1,0 +1,8 @@
+﻿test_label,scope_n,row_variable,column_variable,chi_square,df,p_value,cramers_v,min_expected,admissibility
+Full sample firm-size gradient: active or planning,211,firm_size_category,adoption_binary_active_or_planning,37.4446,3,0.0,0.4213,12.7962,exploratory association only; no causal interpretation
+Full sample firm-size gradient: active use,211,firm_size_category,adoption_binary_active,7.1549,3,0.06712,0.1841,12.455,exploratory association only; no causal interpretation
+SME-only size strata: active or planning,172,firm_size_category,adoption_binary_active_or_planning,31.5297,2,0.0,0.4281,14.0233,exploratory association only; no causal interpretation
+SME-only size strata: active use,172,firm_size_category,adoption_binary_active,3.0875,2,0.213579,0.134,11.3023,exploratory association only; no causal interpretation
+SME-only upskilling and active use,172,has_any_upskilling_measure,adoption_binary_active,5.5152,1,0.018851,0.1791,11.9302,exploratory association only; no causal interpretation
+SME-only upskilling and active/planning frontier,172,has_any_upskilling_measure,adoption_binary_active_or_planning,37.2682,1,0.0,0.4655,14.8023,exploratory association only; no causal interpretation
+SME-only stricter regulation and active use,172,governance_support_strict_regulation,adoption_binary_active,0.0666,1,0.79636,0.0197,17.2674,exploratory association only; no causal interpretation

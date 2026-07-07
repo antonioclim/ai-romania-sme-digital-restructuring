@@ -1,0 +1,11 @@
+﻿metric,value,interpretation,recommended_manuscript_use
+Completed survey responses,212,Total finalised responses in the cleaned dataset.,Methods/sample description only; not SME denominator.
+SME-only analytical sample,172,"Micro, small and medium firms after excluding large comparator and unknown size.",Primary denominator for SME claims.
+Large-firm comparator,39,Large firms retained only for contrast and robustness.,Comparator only; never folded into SME claims.
+SME active AI use,54/172 = 31.4%,Current active use in the SME-only engaged sample.,Evidence of adoption frontier; not national prevalence.
+SME active use or planning/testing/deployment,105/172 = 61.0%,Broad frontier of AI-related digital restructuring in the engaged sample.,"Use as readiness/restructuring frontier, with sample caveat."
+SME high implementation costs,150/172 = 87.2%,Dominant economic constraint.,Core capability-pressure finding.
+SME lack of technical expertise,137/172 = 79.7%,Dominant skill/capability constraint.,Core skill-formation finding.
+SME any positive upskilling measure,134/172 = 77.9%,"Many engaged SMEs have begun skill formation, but not necessarily systematic AI capability.",Use cautiously; multiple response with overlap.
+"SME support for government role, very or moderately important",169/172 = 98.3%,Near-universal preference for some public support among engaged SMEs.,"Use as institutional-support demand, not policy evaluation."
+SME stricter ethical regulation support,117/172 = 68.0%,Governance demand coexists with capability pressure.,Use for responsible-AI governance framing.

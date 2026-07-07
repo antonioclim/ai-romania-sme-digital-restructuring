@@ -1,0 +1,7 @@
+﻿from_node,to_node
+N1,N4
+N2,N5
+N3,N6
+N4,N7
+N5,N7
+N6,N7

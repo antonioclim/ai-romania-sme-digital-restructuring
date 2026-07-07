@@ -1,0 +1,8 @@
+﻿candidate,decision,rationale
+Descriptive SME-only evidence,Main text eligible,All denominators are transparent and aligned to the SME research object; best fit for survey design.
+Firm-size cross-tabulations with effect sizes,Main text eligible if concise,Strongly relevant to capability and restructuring gradients; no causal claim required.
+Chi-square/Fisher association tests,Appendix or compact methods/results eligible,Useful for disciplined exploratory inference; p-values must be secondary to effect sizes and denominators.
+Parsimonious logistic regression,Supplementary robustness only at this stage,"Events-per-variable is borderline but acceptable for a small model; explanatory variables are self-reported and cross-sectional, so causal interpretation is inadmissible."
+High-dimensional sectoral or interaction models,Reject,"Sample size, multi-response sectors and sparse cells make these fragile for a Q1 economics submission."
+Causal policy evaluation,Reject,"No experimental, quasi-experimental or longitudinal identification exists in the survey."
+Population prevalence estimates for Romanian SMEs,Reject,"Non-probability engaged sample; official statistics should provide population context, not be replaced by this survey."
