@@ -1,16 +1,14 @@
 # Changelog
 
-## Repository metadata after Zenodo publication
+## 2.0.0
 
-- Added the published software DOI: https://doi.org/10.5281/zenodo.21245180.
-- Added repository and release URLs to citation and software metadata.
-- Added a GitHub Actions reproducibility smoke-test workflow.
-- Updated data/code access notes to distinguish the software DOI from the associated dataset DOI.
-
-## 1.0.0
-
-- Rebuilt the public release around the cleaned quantitative dataset and relative-path scripts.
-- Separated full completed responses, SME-only responses and the large-firm comparator throughout the generated outputs.
-- Removed prior working files, raw exports, open-text responses, caches and direct or indirect respondent identifiers.
-- Added reproducible manuscript figure generation from data and source-data CSV files.
-- Added checksums, file manifest, data-access note, citation metadata and Zenodo metadata.
+- Rebuilt the public research-software package from aggregate counts and low-dimensional contingency tables.
+- Removed respondent-level records from the public release architecture.
+- Reframed the analytical contract around outcome-definition sensitivity.
+- Preserved the 250+ employee band only for case-flow transparency.
+- Limited the association family to four question-linked diagnostics.
+- Added the reconstructed Romanian questionnaire, a British-English documentary translation, response-option metadata and a full variable dictionary.
+- Added a public explanation of free-text semantics, translation requirements and the public-controlled data boundary.
+- Added DOI-aware citation and software metadata for `10.5281/zenodo.21586875`.
+- Added deterministic source, output and full-manifest integrity checks.
+- Added a fail-closed audit that rejects respondent-level files, hidden document comments, revision markup, local paths and release-workflow debris.

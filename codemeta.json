@@ -1,26 +1,34 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
-  "name": "AI-related restructuring in Romanian SMEs: reproducible analysis kit",
-  "version": "1.0.0",
-  "description": "Reproducible survey-analysis scripts and cleaned quantitative dataset for the article Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs.",
-  "identifier": "https://doi.org/10.5281/zenodo.21245180",
-  "url": "https://doi.org/10.5281/zenodo.21245180",
-  "codeRepository": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
-  "license": "https://spdx.org/licenses/MIT",
-  "programmingLanguage": "Python",
-  "runtimePlatform": "Python >=3.10",
-  "datePublished": "2026-07-07",
   "author": [
     {
       "@type": "Person",
-      "givenName": "Antonio",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Department of Economic Informatics and Cybernetics, Bucharest University of Economic Studies"
+      },
       "familyName": "Clim",
-      "affiliation": "Bucharest University of Economic Studies"
+      "givenName": "Antonio"
     }
   ],
-  "relatedLink": [
-    "https://doi.org/10.5281/zenodo.17021824",
-    "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/releases/tag/v1.0.0"
-  ]
+  "codeRepository": "https://github.com/antonioclim/romanian-sme-ai-survey-analysis",
+  "description": "Aggregate-only research software that reproduces descriptive estimates, exploratory association diagnostics, tables and figures for an analysis of reported AI engagement among Romanian SME-classified responses. The package documents the reconstructed survey instrument and contains no respondent-level records.",
+  "identifier": "https://doi.org/10.5281/zenodo.21586875",
+  "issueTracker": "https://github.com/antonioclim/romanian-sme-ai-survey-analysis/issues",
+  "keywords": [
+    "artificial intelligence",
+    "small and medium-sized enterprises",
+    "innovation measurement",
+    "outcome definition",
+    "survey analysis",
+    "Romania",
+    "reproducible research"
+  ],
+  "license": "https://spdx.org/licenses/MIT",
+  "name": "Romanian SME AI survey analysis: aggregate reproducibility package",
+  "programmingLanguage": "Python",
+  "runtimePlatform": "Python 3.13",
+  "sameAs": "https://doi.org/10.5281/zenodo.21586875",
+  "version": "2.0.0"
 }

@@ -1,22 +1,3 @@
-[project]
-name = "ai-romania-sme-reproducibility-kit"
-version = "1.0.0"
-description = "Reproducible analysis kit for AI-related digital restructuring in Romanian SMEs."
-requires-python = ">=3.10"
-readme = "README.md"
-license = {text = "MIT"}
-authors = [
-  {name = "Antonio Clim"}
-]
-keywords = ["AI adoption", "SMEs", "Romania", "survey", "reproducibility", "economic restructuring"]
-
-[project.urls]
-Repository = "https://github.com/antonioclim/ai-romania-sme-digital-restructuring"
-Release = "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/releases/tag/v1.0.0"
-Software_DOI = "https://doi.org/10.5281/zenodo.21245180"
-Dataset_DOI = "https://doi.org/10.5281/zenodo.17021824"
-
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
 addopts = "-q"
+testpaths = ["tests"]

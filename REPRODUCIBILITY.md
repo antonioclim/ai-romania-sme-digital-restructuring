@@ -1,30 +1,17 @@
-# Reproducibility notes
+# Reproducibility scope
 
-Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+## Reproduced from public aggregate inputs
 
-Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
+The package recomputes the public tables, figures, descriptive percentages, Wilson intervals and exploratory association statistics from frozen aggregate counts and low-dimensional contingency tables. These inputs preserve the quantities required for the reported analysis without distributing respondent rows.
 
-The analysis uses relative paths and a cleaned quantitative dataset. No internet access is required for core reproduction.
+## Not reproduced publicly
 
-Recommended verification sequence:
+The public package does not reproduce respondent-level recoding, duplicate adjudication, free-text interpretation or the transformation from the original survey exports to aggregate counts. Those operations require controlled source material and institutional authority. Their absence is an explicit evidence boundary rather than an unreported gap.
 
-```bash
-python scripts/verify_sha256sums.py SHA256SUMS.txt
-python scripts/run_all.py
-python -m compileall scripts tests
-python -m pytest -q
-```
+## Deterministic workflow
 
-`SHA256SUMS.txt` verifies the packaged repository snapshot before regeneration. The analysis pipeline then rebuilds tables, figures and logs from the cleaned quantitative dataset.
+The canonical entry point is `scripts/build_aggregate.py`. `make all` verifies the aggregate inputs, checks generated metadata, validates the installed environment, rebuilds outputs, verifies output checksums, audits the public-release boundary, runs the test suite and checks the full manifest.
 
-## Figure reproduction
+## Reference environment
 
-`scripts/06_generate_figures.py` is the canonical figure generator. It reads the cleaned dataset and generated tables, then writes:
-
-- `outputs/figures_editorial/*.png` for manuscript embedding;
-- `outputs/figures/*.png` as compatibility copies;
-- `outputs/figure_source_data/*.csv` for per-figure source data;
-- `outputs/FIGURE_MANIFEST.csv`;
-- `outputs/FIGURE_VISUAL_QA.csv`.
-
-The optional conceptual figure is generated from explicit node and edge tables. It is not required for the manuscript unless the author decides to use a conceptual visual.
+The certified build uses Python 3.13 and the versions recorded in `requirements.lock.txt`. The release relies on exact package version pinning, deterministic input files and SHA-256 verification of source and generated outputs.

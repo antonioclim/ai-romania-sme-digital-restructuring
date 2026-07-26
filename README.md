@@ -1,58 +1,57 @@
-# AI-related restructuring in Romanian SMEs: reproducible analysis kit
+# Romanian SME AI survey analysis: aggregate reproducibility package
 
-[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21245180.svg)](https://doi.org/10.5281/zenodo.21245180)
+**Version:** 2.0.0  
+**DOI:** [10.5281/zenodo.21586875](https://doi.org/10.5281/zenodo.21586875)  
+**Repository:** [https://github.com/antonioclim/romanian-sme-ai-survey-analysis](https://github.com/antonioclim/romanian-sme-ai-survey-analysis)
 
-This repository reproduces the quantitative analysis for the article **Capability pressure and AI-related restructuring in a transition EU economy: Evidence from Romanian SMEs**. It contains a cleaned, de-identified quantitative survey dataset, Python scripts, source-data CSV files, generated tables and generated figures.
+## Purpose
 
-## Citation and persistent identifiers
+This repository reproduces the descriptive estimates, exploratory association diagnostics, tables and figures reported for a cross-sectional survey analysis of AI engagement among Romanian SME-classified responses. The analysis is deliberately organised around outcome-definition sensitivity: reported active use, a heterogeneous project-stage category and their combined sensitivity indicator are preserved as distinct quantities.
 
-Software archive DOI: https://doi.org/10.5281/zenodo.21245180
+The build operates exclusively from aggregate counts and low-dimensional contingency tables. It also documents the reconstructed Romanian questionnaire, a British-English documentary translation, response coding, case flow and the limits of the measures. The public tree contains no respondent-level records, open-text answers, direct identifiers, precise timestamps or paradata.
 
-Repository URL: https://github.com/antonioclim/ai-romania-sme-digital-restructuring
-
-Release tag: `v1.0.0`
-
-Associated dataset DOI: https://doi.org/10.5281/zenodo.17021824
-
-The software DOI identifies the reproducible analysis package. The dataset DOI identifies the associated de-identified quantitative survey dataset. Please cite both when reusing the software and data.
-
-## What the kit reproduces
-
-Running the kit regenerates validation logs, constructed analysis datasets, descriptive tables, exploratory association screens, robustness tables and ECR-oriented manuscript figures. The main analytical scopes are:
-
-- full completed sample: n = 212;
-- SME-only analytical sample: n = 172;
-- large-firm comparator: n = 39;
-- unknown firm size: n = 1, excluded from size-specific estimates.
-
-The survey is an engaged non-probability sample. It is not a national prevalence estimate.
-
-## Quickstart
+## Reproduce the outputs
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python scripts/verify_sha256sums.py SHA256SUMS.txt
-python scripts/run_all.py
-python -m compileall scripts tests
-python -m pytest -q
+python -m pip install --requirement requirements.lock.txt
+make all
 ```
 
-The commands regenerate `outputs/ecr/tables/`, `outputs/ecr/figures/`, `outputs/ecr/figure_source_data/` and the core analysis outputs used in the manuscript.
+The complete verification sequence checks frozen inputs, metadata, the Python environment, generated outputs, the public-release boundary, automated tests and the full manifest.
 
-## GitHub Actions workflow
+## Repository map
 
-The repository includes `.github/workflows/reproducibility-smoke-test.yml`. It verifies the release snapshot, installs the Python dependencies, runs the analysis pipeline and executes the test suite on push or manual dispatch.
+- `data/aggregate/` — aggregate inputs and contingency tables
+- `survey/` — reconstructed questionnaires, dictionaries and coding documentation
+- `scripts/` — deterministic build, metadata and integrity tools
+- `tests/` — analytical and release-boundary tests
+- `outputs/tables/` — generated analytical tables
+- `outputs/figure_source_data/` — source data for the figures
+- `outputs/figures/` — generated figures
+- `metadata/` — analysis contract, claim-evidence ledger and release metadata
 
-## Data
+## Evidential boundary
 
-The public analysis file is `data/processed/public_quantitative_dataset_no_text_no_direct_identifiers.csv`. The associated dataset record is https://doi.org/10.5281/zenodo.17021824. Raw LimeSurvey exports, IP addresses, technical metadata, timestamps and open-text responses are excluded from this public software release.
+The source contained 212 completed responses. The principal analysis comprises 172 completed responses classified through self-reported employee bands of 1–249 employees. The empirical unit is one completed response, not a verified unique firm. The package does not estimate national prevalence and does not identify causal effects, firm-level determinants, verified deployment or organisational restructuring.
 
-## Double-blind review
+Public aggregate inputs reproduce the following central counts:
 
-Do not upload this unblinded release archive as the reviewer-facing archive if double-blind anonymity is required. Use the separate blinded reviewer archive provided with the submission package.
+| Quantity | Count |
+|---|---:|
+| Reported active AI use | 54/172 |
+| Project-stage category | 51/172 |
+| Active use or project-stage engagement | 105/172 |
+| High implementation-cost constraint | 150/172 |
+| Lack of technical expertise | 137/172 |
+| At least one workforce-preparation measure | 134/172 |
+| Conservative workforce-preparation measure | 121/172 |
+
+See `survey/DESCRIPTIONS.md`, `DATA_AVAILABILITY.md` and `PROVENANCE.md` before reusing the material.
+
+## Citation
+
+The citation metadata are provided in `CITATION.cff`. The version-specific DOI is `10.5281/zenodo.21586875`.
 
 ## Licence
 
-Code is released under the MIT Licence. Dataset reuse must respect the dataset licence and the anonymisation limits documented in `docs/ethics_and_data_protection.md`.
+The software and associated documentation are distributed under the MIT Licence. The licence does not override ethical, legal or contractual restrictions governing respondent-level source material, which is not included in this release.
