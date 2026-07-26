@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_version_doi_and_repository_metadata():
     metadata = json.loads((ROOT / "metadata/release_metadata.json").read_text(encoding="utf-8"))
-    assert (ROOT / "VERSION").read_text(encoding="utf-8").strip() == "2.0.0" == metadata["software"]["version"]
+    assert (ROOT / "VERSION").read_text(encoding="utf-8").strip() == "2.0.1" == metadata["software"]["version"]
     assert metadata["software"]["repository_url"] == "https://github.com/antonioclim/ai-romania-sme-digital-restructuring"
     assert metadata["release"]["doi"] == "10.5281/zenodo.21586875"
 
@@ -21,7 +21,7 @@ def test_generated_metadata_is_current():
     codemeta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
     assert codemeta["identifier"] == "https://doi.org/10.5281/zenodo.21586875"
     zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
-    assert zenodo["access_right"] == "open" and zenodo["version"] == "2.0.0"
+    assert zenodo["access_right"] == "open" and zenodo["version"] == "2.0.1"
 
 
 def test_action_pins_and_permissions():
@@ -30,6 +30,8 @@ def test_action_pins_and_permissions():
     assert "actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405" in workflow
     assert not re.search(r"uses:\s*[^\s#]+@v\d", workflow)
     assert "permissions:\n  contents: read" in workflow
+    assert "MPLCONFIGDIR: /tmp/matplotlib" in workflow
+    assert "${{ runner.temp }}" not in workflow
 
 
 def test_questionnaire_documents_are_clean():

@@ -1,12 +1,18 @@
-# Release notes — version 2.0.0
+# Release notes — version 2.0.1
 
-Version 2.0.0 is a privacy-preserving rebuild of the reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses. It reproduces the public numerical results from aggregate inputs and documents the survey instrument without exposing respondent-level records.
+Version 2.0.1 is the corrected current release of the privacy-preserving reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses.
 
-This release is published as `v2.0.0` in the existing repository `antonioclim/ai-romania-sme-digital-restructuring`. It supersedes `v1.0.0` for current scholarly use while retaining the earlier release as historical provenance.
+## Patch correction
 
-## Relationship to version 1.0.0
+Version 2.0.1 corrects the GitHub Actions configuration included in version 2.0.0. The earlier workflow used the `runner` context inside `jobs.<job_id>.env`, where that context is not available during workflow validation. The corrected workflow uses `/tmp/matplotlib` on the declared Ubuntu runner and adds a regression test for this condition.
 
-This is a major-version replacement of the earlier public package in the same repository. Version 1.0.0 belongs to the superseded article framing and data-release architecture. Version 2.0.0 is the current aggregate-only release and should be used for the revised analysis, citation and reproducibility claims.
+The correction does not alter the aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation or reported numerical results.
+
+## Relationship to earlier releases
+
+- `v1.0.0` belongs to the superseded article framing and public-data architecture and is retained only as historical provenance.
+- `v2.0.0` introduced the aggregate-only rebuild but is superseded by `v2.0.1` because of the workflow configuration defect.
+- `v2.0.1` is the release to cite and archive for the current analysis.
 
 ## What is included
 

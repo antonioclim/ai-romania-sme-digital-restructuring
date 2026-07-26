@@ -1,12 +1,12 @@
 # Romanian SME AI survey analysis: aggregate reproducibility package
 
-**Version:** 2.0.0  
+**Version:** 2.0.1  
 **DOI:** [10.5281/zenodo.21586875](https://doi.org/10.5281/zenodo.21586875)  
 **Repository:** [https://github.com/antonioclim/ai-romania-sme-digital-restructuring](https://github.com/antonioclim/ai-romania-sme-digital-restructuring)
 
 ## Version lineage
 
-Version 2.0.0 is a major methodological and privacy-preserving rebuild of this repository. It supersedes version 1.0.0 for the current analysis and public reproducibility workflow. The earlier release is retained only as historical provenance and should not be used to support the claims, outcome definitions or data-release boundary of the current article.
+Version 2.0.1 is the corrected current release of the major methodological and privacy-preserving rebuild of this repository. It supersedes version 1.0.0 for the current analysis and public reproducibility workflow. The earlier release is retained only as historical provenance and should not be used to support the claims, outcome definitions or data-release boundary of the current article.
 
 ## Purpose
 
@@ -54,7 +54,7 @@ See `survey/DESCRIPTIONS.md`, `DATA_AVAILABILITY.md` and `PROVENANCE.md` before 
 
 ## Version continuity
 
-Version 2.0.0 is published in the existing repository as a major privacy-preserving rebuild. It supersedes version 1.0.0 for current scholarly use while retaining the earlier tag as historical provenance. The current release is aggregate-only and must not be interpreted as restoring or endorsing the earlier respondent-level public-data architecture.
+Version 2.0.1 is published in the existing repository as the corrected current release of the major privacy-preserving rebuild. It supersedes version 1.0.0 for current scholarly use while retaining the earlier tag as historical provenance. The current release is aggregate-only and must not be interpreted as restoring or endorsing the earlier respondent-level public-data architecture.
 
 ## Citation
 

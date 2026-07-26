@@ -8,4 +8,4 @@ The public package begins at the aggregate-count layer. It does not establish th
 
 ## Repository continuity
 
-The repository also contains an earlier release tagged `v1.0.0`. That release documents a superseded article framing and public-data architecture. The present `v2.0.0` tree is a major rebuild from aggregate inputs and is the only release intended to support the current article. Historical availability must not be interpreted as endorsement of the earlier claims or as permission to restore respondent-level material to the current release.
+The repository also contains an earlier release tagged `v1.0.0`. That release documents a superseded article framing and public-data architecture. The `v2.0.0` tree introduced the major rebuild from aggregate inputs but contained a GitHub Actions configuration defect. The present `v2.0.1` tree corrects that workflow without changing the aggregate inputs, analysis or numerical outputs and is the release intended to support the current article. Historical availability must not be interpreted as endorsement of the earlier claims or as permission to restore respondent-level material to the current release.

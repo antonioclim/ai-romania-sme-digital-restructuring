@@ -100,4 +100,4 @@ Removal of direct identifiers did not make the full structured profiles suitable
 
 Reuse should preserve the distinction between a completed response and a verified firm, between an employee-band classification and a full legal SME classification and between reported engagement categories and observed operational deployment. Derived claims should be traced to the aggregate input and canonical output named in the claim-evidence ledger.
 
-Version 2.0.0 is identified by DOI `10.5281/zenodo.21586875`. Cite the versioned software release and cite the associated article separately when it becomes available.
+Version 2.0.1 is identified by DOI `10.5281/zenodo.21586875`. Cite the versioned software release and cite the associated article separately when it becomes available.
