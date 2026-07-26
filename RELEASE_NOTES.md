@@ -2,6 +2,12 @@
 
 Version 2.0.0 is a privacy-preserving rebuild of the reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses. It reproduces the public numerical results from aggregate inputs and documents the survey instrument without exposing respondent-level records.
 
+This release is published as `v2.0.0` in the existing repository `antonioclim/ai-romania-sme-digital-restructuring`. It supersedes `v1.0.0` for current scholarly use while retaining the earlier release as historical provenance.
+
+## Relationship to version 1.0.0
+
+This is a major-version replacement of the earlier public package in the same repository. Version 1.0.0 belongs to the superseded article framing and data-release architecture. Version 2.0.0 is the current aggregate-only release and should be used for the revised analysis, citation and reproducibility claims.
+
 ## What is included
 
 - aggregate counts and low-dimensional contingency tables

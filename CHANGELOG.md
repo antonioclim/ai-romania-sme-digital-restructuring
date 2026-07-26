@@ -2,6 +2,7 @@
 
 ## 2.0.0
 
+- Established version 2.0.0 as the current release in the existing repository, while treating version 1.0.0 as historical provenance rather than current analytical evidence.
 - Rebuilt the public research-software package from aggregate counts and low-dimensional contingency tables.
 - Removed respondent-level records from the public release architecture.
 - Reframed the analytical contract around outcome-definition sensitivity.
