@@ -1,0 +1,23 @@
+{
+  "access_right": "open",
+  "creators": [
+    {
+      "affiliation": "Department of Economic Informatics and Cybernetics, Bucharest University of Economic Studies",
+      "name": "Clim, Antonio"
+    }
+  ],
+  "description": "Aggregate-only research software that reproduces descriptive estimates, exploratory association diagnostics, tables and figures for an analysis of reported AI engagement among Romanian SME-classified responses. The package documents the reconstructed survey instrument and contains no respondent-level records.",
+  "keywords": [
+    "artificial intelligence",
+    "small and medium-sized enterprises",
+    "innovation measurement",
+    "outcome definition",
+    "survey analysis",
+    "Romania",
+    "reproducible research"
+  ],
+  "license": "MIT",
+  "title": "Romanian SME AI survey analysis: aggregate reproducibility package",
+  "upload_type": "software",
+  "version": "2.0.0"
+}
