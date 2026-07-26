@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.2
+
+- Aligned the repository branch, Git tag, automatic source snapshot and archived release asset after the final PyYAML dependency declaration was committed after the `v2.0.1` tag.
+- Updated version-specific citation and software metadata to DOI `10.5281/zenodo.21603732`.
+- Recorded `10.5281/zenodo.21586875` as the immediately preceding version DOI.
+- Preserved every aggregate input, analytical definition, generated table, figure, questionnaire document and inferential limit from version 2.0.1.
+- Added release-integrity checks for the version chain and current DOI.
+
 ## 2.0.1
 
 - Corrected the GitHub Actions workflow by replacing an unsupported job-level `${{ runner.temp }}` expression with the fixed `/tmp/matplotlib` path on the declared Ubuntu runner.

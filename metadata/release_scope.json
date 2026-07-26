@@ -8,7 +8,7 @@
     "generated tables and figure-source data",
     "figures and release metadata"
   ],
-  "doi": "10.5281/zenodo.21586875",
+  "doi": "10.5281/zenodo.21603732",
   "empirical_unit": "one completed response",
   "excluded": [
     "respondent-level rows",
@@ -23,5 +23,5 @@
   "public_data_profile": "aggregate-only",
   "repository": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
   "row_level_data_present": false,
-  "version": "2.0.1"
+  "version": "2.0.2"
 }

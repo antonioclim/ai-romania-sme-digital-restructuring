@@ -14,7 +14,7 @@
   ],
   "codeRepository": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
   "description": "Aggregate-only research software that reproduces descriptive estimates, exploratory association diagnostics, tables and figures for an analysis of reported AI engagement among Romanian SME-classified responses. The package documents the reconstructed survey instrument and contains no respondent-level records.",
-  "identifier": "https://doi.org/10.5281/zenodo.21586875",
+  "identifier": "https://doi.org/10.5281/zenodo.21603732",
   "issueTracker": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/issues",
   "keywords": [
     "artificial intelligence",
@@ -29,6 +29,6 @@
   "name": "Romanian SME AI survey analysis: aggregate reproducibility package",
   "programmingLanguage": "Python",
   "runtimePlatform": "Python 3.13",
-  "sameAs": "https://doi.org/10.5281/zenodo.21586875",
-  "version": "2.0.1"
+  "sameAs": "https://doi.org/10.5281/zenodo.21603732",
+  "version": "2.0.2"
 }

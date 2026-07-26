@@ -1,12 +1,12 @@
 # Romanian SME AI survey analysis: aggregate reproducibility package
 
-**Version:** 2.0.1  
-**DOI:** [10.5281/zenodo.21586875](https://doi.org/10.5281/zenodo.21586875)  
+**Version:** 2.0.2  
+**DOI:** [10.5281/zenodo.21603732](https://doi.org/10.5281/zenodo.21603732)  
 **Repository:** [https://github.com/antonioclim/ai-romania-sme-digital-restructuring](https://github.com/antonioclim/ai-romania-sme-digital-restructuring)
 
 ## Version lineage
 
-Version 2.0.1 is the corrected current release of the major methodological and privacy-preserving rebuild of this repository. It supersedes version 1.0.0 for the current analysis and public reproducibility workflow. The earlier release is retained only as historical provenance and should not be used to support the claims, outcome definitions or data-release boundary of the current article.
+Version 2.0.2 is the current aligned patch release. It preserves the aggregate-only architecture and all scientific outputs of version 2.0.1 while aligning the repository branch, Git tag, automatic source snapshot and archived asset after the final PyYAML dependency declaration. Versions 1.0.0, 2.0.0 and 2.0.1 remain available only as historical provenance for the current workflow.
 
 ## Purpose
 
@@ -54,11 +54,11 @@ See `survey/DESCRIPTIONS.md`, `DATA_AVAILABILITY.md` and `PROVENANCE.md` before 
 
 ## Version continuity
 
-Version 2.0.1 is published in the existing repository as the corrected current release of the major privacy-preserving rebuild. It supersedes version 1.0.0 for current scholarly use while retaining the earlier tag as historical provenance. The current release is aggregate-only and must not be interpreted as restoring or endorsing the earlier respondent-level public-data architecture.
+Version 2.0.2 supersedes versions 2.0.0 and 2.0.1 for current scholarly use. The patch changes release engineering and version metadata only. It does not change the aggregate data, analysis, outputs or evidential boundaries. The earlier tags are retained as historical provenance and must not be interpreted as restoring or endorsing the earlier respondent-level public-data architecture.
 
 ## Citation
 
-The citation metadata are provided in `CITATION.cff`. The version-specific DOI is `10.5281/zenodo.21586875`.
+The citation metadata are provided in `CITATION.cff`. The version-specific DOI is `10.5281/zenodo.21603732`.
 
 ## Licence
 

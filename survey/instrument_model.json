@@ -1,6 +1,6 @@
 {
   "build_date": "2026-07-26",
-  "doi": "10.5281/zenodo.21586875",
+  "doi": "10.5281/zenodo.21603732",
   "limitations": [
     "The original LimeSurvey definition file was not located.",
     "Mandatory status and branch logic cannot be recovered with certainty from the exports.",
@@ -1889,5 +1889,5 @@
   },
   "status": "Verified documentary reconstruction from paired platform exports",
   "title": "Romanian SME AI survey: reconstructed instrument model",
-  "version": "2.0.1"
+  "version": "2.0.2"
 }

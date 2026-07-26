@@ -6,8 +6,8 @@
   },
   "release": {
     "article_doi": null,
-    "doi": "10.5281/zenodo.21586875",
-    "previous_version_doi": "10.5281/zenodo.21245180",
+    "doi": "10.5281/zenodo.21603732",
+    "previous_version_doi": "10.5281/zenodo.21586875",
     "public_data_profile": "aggregate-only"
   },
   "software": {
@@ -24,6 +24,6 @@
     "license": "MIT",
     "repository_url": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
     "title": "Romanian SME AI survey analysis: aggregate reproducibility package",
-    "version": "2.0.1"
+    "version": "2.0.2"
   }
 }

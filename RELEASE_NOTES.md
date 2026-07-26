@@ -1,20 +1,19 @@
-# Release notes — version 2.0.1
+# Release notes — version 2.0.2
 
-Version 2.0.1 is the corrected current release of the privacy-preserving reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses.
+Version 2.0.2 is the current aligned release of the privacy-preserving reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses.
 
-## Patch correction
+## Release-integrity correction
 
-Version 2.0.1 corrects the GitHub Actions configuration included in version 2.0.0. The earlier workflow used the `runner` context inside `jobs.<job_id>.env`, where that context is not available during workflow validation. The corrected workflow uses `/tmp/matplotlib` on the declared Ubuntu runner and adds a regression test for this condition.
+Version 2.0.1 corrected the GitHub Actions workflow and declared the PyYAML dependency required by the release-integrity tests. The final dependency declaration was committed after the `v2.0.1` tag had already been created. Consequently, the branch and attached release asset were correct, but GitHub's automatic source archives for that tag did not contain the final dependency declaration.
 
-The same patch declares `PyYAML==6.0.3` in every supported environment specification because the release-integrity test parses the CFF citation metadata. This resolves the CI collection failure caused by an undeclared test dependency.
+Version 2.0.2 creates a new, immutable alignment point in which the repository state, tag snapshot, automatic source archives and attached release asset contain the same tested files. The correction does not alter the aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation or reported numerical results.
 
-The correction does not alter the aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation or reported numerical results.
-
-## Relationship to earlier releases
+## Version lineage
 
 - `v1.0.0` belongs to the superseded article framing and public-data architecture and is retained only as historical provenance.
-- `v2.0.0` introduced the aggregate-only rebuild but is superseded by `v2.0.1` because of the workflow configuration defect.
-- `v2.0.1` is the release to cite and archive for the current analysis.
+- `v2.0.0` introduced the aggregate-only rebuild but contained an invalid GitHub Actions expression.
+- `v2.0.1` corrected the workflow and dependency declaration, but its tag preceded the final dependency commit.
+- `v2.0.2` is the release to cite and archive for the current analysis.
 
 ## What is included
 
@@ -26,7 +25,7 @@ The correction does not alter the aggregate inputs, analytical definitions, gene
 - question, response-option and variable dictionaries
 - coding, translation and semantic-review protocols
 - a claim-evidence ledger and explicit inferential limits
-- versioned citation metadata for DOI `10.5281/zenodo.21586875`
+- versioned citation metadata for DOI `10.5281/zenodo.21603732`
 
 ## What is not included
 

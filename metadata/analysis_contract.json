@@ -1,5 +1,5 @@
 {
-  "analysis_scope": "172 completed responses in self-reported employee bands of 1–249 employees",
+  "analysis_scope": "172 completed responses in self-reported employee bands of 1\u2013249 employees",
   "association_diagnostics": [
     "reported active AI use by employee band",
     "project-stage category by employee band",
@@ -35,5 +35,5 @@
   ],
   "respondent_level_data_present": false,
   "sme_classified_responses": 172,
-  "version": "2.0.1"
+  "version": "2.0.2"
 }

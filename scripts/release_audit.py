@@ -79,8 +79,10 @@ metadata = json.loads((ROOT / "metadata" / "release_metadata.json").read_text(en
 scope = json.loads((ROOT / "metadata" / "release_scope.json").read_text(encoding="utf-8"))
 if metadata["software"]["version"] != (ROOT / "VERSION").read_text(encoding="utf-8").strip():
     errors.append("version mismatch between release metadata and VERSION")
-if metadata["release"]["doi"] != "10.5281/zenodo.21586875":
+if metadata["release"]["doi"] != "10.5281/zenodo.21603732":
     errors.append("reserved version DOI is not integrated")
+if metadata["release"].get("previous_version_doi") != "10.5281/zenodo.21586875":
+    errors.append("previous version DOI is not integrated")
 if scope.get("row_level_data_present") is not False:
     errors.append("release scope does not assert row_level_data_present=false")
 
