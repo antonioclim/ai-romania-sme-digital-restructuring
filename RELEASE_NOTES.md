@@ -6,6 +6,8 @@ Version 2.0.1 is the corrected current release of the privacy-preserving reprodu
 
 Version 2.0.1 corrects the GitHub Actions configuration included in version 2.0.0. The earlier workflow used the `runner` context inside `jobs.<job_id>.env`, where that context is not available during workflow validation. The corrected workflow uses `/tmp/matplotlib` on the declared Ubuntu runner and adds a regression test for this condition.
 
+The same patch declares `PyYAML==6.0.3` in every supported environment specification because the release-integrity test parses the CFF citation metadata. This resolves the CI collection failure caused by an undeclared test dependency.
+
 The correction does not alter the aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation or reported numerical results.
 
 ## Relationship to earlier releases

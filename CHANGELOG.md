@@ -4,6 +4,7 @@
 
 - Corrected the GitHub Actions workflow by replacing an unsupported job-level `${{ runner.temp }}` expression with the fixed `/tmp/matplotlib` path on the declared Ubuntu runner.
 - Added an integrity test that rejects reintroduction of the unsupported expression.
+- Declared `PyYAML==6.0.3` consistently in the locked, direct-install and Conda environment specifications because the release-integrity test parses `CITATION.cff`.
 - Preserved all aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation and inferential limits from version 2.0.0.
 - Retained DOI `10.5281/zenodo.21586875` for the corrected version prepared before publication of the Zenodo record.
 

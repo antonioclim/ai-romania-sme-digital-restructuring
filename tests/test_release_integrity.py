@@ -34,6 +34,12 @@ def test_action_pins_and_permissions():
     assert "${{ runner.temp }}" not in workflow
 
 
+def test_pyyaml_dependency_is_declared_consistently():
+    assert "pyyaml==6.0.3" in (ROOT / "requirements.lock.txt").read_text(encoding="utf-8").lower()
+    assert "pyyaml==6.0.3" in (ROOT / "requirements.txt").read_text(encoding="utf-8").lower()
+    assert "pyyaml==6.0.3" in (ROOT / "environment.yml").read_text(encoding="utf-8").lower()
+
+
 def test_questionnaire_documents_are_clean():
     docs = list((ROOT / "survey").glob("*.docx"))
     assert len(docs) == 2
