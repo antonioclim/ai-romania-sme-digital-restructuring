@@ -1,0 +1,89 @@
+question_order,question_code,option_order,stored_code,source_column_code,option_label_ro,option_label_en,selection_storage,comment_storage,response_structure
+1,Q00,1,AO04,Q00,Microîntreprindere (1–9 angajați),Micro-enterprise (1-9 employees),AO04 = selected category; blank = missing,,single choice
+1,Q00,2,AO05,Q00,Întreprindere mică (10–49 angajați),Small enterprise (10-49 employees),AO05 = selected category; blank = missing,,single choice
+1,Q00,3,AO06,Q00,Întreprindere mijlocie (50–249 angajați),Medium-sized enterprise (50-249 employees),AO06 = selected category; blank = missing,,single choice
+1,Q00,4,AO07,Q00,Întreprindere mare (250+ angajați),Large enterprise (250 or more employees),AO07 = selected category; blank = missing,,single choice
+2,G01Q02,1,SQ001,G01Q02[SQ001],Producție,Manufacturing,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ001comment],multiple response
+2,G01Q02,2,SQ002,G01Q02[SQ002],Retail & Comerț electronic,Retail and e-commerce,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ002comment],multiple response
+2,G01Q02,3,SQ003,G01Q02[SQ003],Finanțe & Bănci,Finance and banking,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ003comment],multiple response
+2,G01Q02,4,SQ004,G01Q02[SQ004],Sănătate & Industria farmaceutică,Healthcare and pharmaceuticals,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ004comment],multiple response
+2,G01Q02,5,SQ005,G01Q02[SQ005],IT & Software,IT and software,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ005comment],multiple response
+2,G01Q02,6,SQ006,G01Q02[SQ006],Transport & Logistică,Transport and logistics,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ006comment],multiple response
+2,G01Q02,7,SQ007,G01Q02[SQ007],Agricultură,Agriculture,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ007comment],multiple response
+2,G01Q02,8,SQ008,G01Q02[SQ008],Energie,Energy,1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ008comment],multiple response
+2,G01Q02,9,SQ009,G01Q02[SQ009],Altul (vă rugăm să specificați),Other (please specify),1 = selected; 0 = not selected; blank = no stored value,G01Q02[SQ009comment],multiple response
+3,G01Q03,1,SQ001,G01Q03[SQ001],CEO / Proprietar de afacere,Chief executive or business owner,1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ001comment],multiple response
+3,G01Q03,2,SQ002,G01Q03[SQ002],Manager Senior / Director,Senior manager or director,1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ002comment],multiple response
+3,G01Q03,3,SQ003,G01Q03[SQ003],Specialist IT / AI,IT or AI specialist,1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ003comment],multiple response
+3,G01Q03,4,SQ004,G01Q03[SQ004],HR / Dezvoltare Resurse Umane,Human resources or workforce development,1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ004comment],multiple response
+3,G01Q03,5,SQ005,G01Q03[SQ005],Manager de Operațiuni,Operations manager,1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ005comment],multiple response
+3,G01Q03,6,SQ006,G01Q03[SQ006],Altul (vă rugăm să specificați),Other (please specify),1 = selected; 0 = not selected; blank = no stored value,G01Q03[SQ006comment],multiple response
+4,G02Q04,1,AO01,G02Q04,Deloc familiarizat,Not at all familiar,AO01 = selected category; blank = missing,G02Q04[comment],single choice
+4,G02Q04,2,AO02,G02Q04,Puțin familiarizat,Slightly familiar,AO02 = selected category; blank = missing,G02Q04[comment],single choice
+4,G02Q04,3,AO03,G02Q04,"Familiarizat, dar nu folosim tehnologii AI în companie","Familiar, but our company does not use AI technologies",AO03 = selected category; blank = missing,G02Q04[comment],single choice
+4,G02Q04,4,AO04,G02Q04,"Familiarizat, avem proiecte (în diverse faze – bugetare, testare, implementare) pentru implementări de tehnologii AI în companie","Familiar; our company has projects at various stages - budgeting, testing or implementation - to introduce AI technologies",AO04 = selected category; blank = missing,G02Q04[comment],single choice
+4,G02Q04,5,AO05,G02Q04,Folosim tehnologii AI în mod activ,We actively use AI technologies,AO05 = selected category; blank = missing,G02Q04[comment],single choice
+5,G01Q05,1,SQ001,G01Q05[SQ001],Reducerea costurilor & îmbunătățirea eficienței,Cost reduction and efficiency improvement,1 = selected; 0 = not selected; blank = no stored value,G01Q05[SQ001comment],multiple response
+5,G01Q05,2,SQ002,G01Q05[SQ002],Avantaj competitive/strategic,Competitive or strategic advantage,1 = selected; 0 = not selected; blank = no stored value,G01Q05[SQ002comment],multiple response
+5,G01Q05,3,SQ003,G01Q05[SQ003],Experiență îmbunătățită pentru clienți & personalizarea unor servicii,Improved customer experience and service personalisation,1 = selected; 0 = not selected; blank = no stored value,G01Q05[SQ003comment],multiple response
+5,G01Q05,4,SQ004,G01Q05[SQ004],Facilitarea deciziilor bazate pe date,Support for data-informed decision-making,1 = selected; 0 = not selected; blank = no stored value,G01Q05[SQ004comment],multiple response
+5,G01Q05,5,SQ005,G01Q05[SQ005],Altul (vă rugăm să specificați),Other (please specify),1 = selected; 0 = not selected; blank = no stored value,G01Q05[SQ005comment],multiple response
+6,G01Q06,1,SQ001,G01Q06[SQ001],Costuri mari de implementare,High implementation costs,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ001comment],multiple response
+6,G01Q06,2,SQ002,G01Q06[SQ002],Lipsa expertizei tehnice,Lack of technical expertise,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ002comment],multiple response
+6,G01Q06,3,SQ003,G01Q06[SQ003],Incertitudini privind impactul AI,Uncertainty about the impact of AI,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ003comment],multiple response
+6,G01Q06,4,SQ004,G01Q06[SQ004],Îngrijorări legate de reglementări sau etică,Regulatory or ethical concerns,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ004comment],multiple response
+6,G01Q06,5,SQ005,G01Q06[SQ005],Rezistență din partea angajaților,Employee resistance,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ005comment],multiple response
+6,G01Q06,6,SQ006,G01Q06[SQ006],Nivelul de maturitate al noilor tehnologii este inca scazut,The maturity of new technologies remains low,1 = selected; 0 = not selected; blank = no stored value,G01Q06[SQ006comment],multiple response
+7,G01Q07,1,AO01,G01Q07,Implementarea soluțiilor AI va crea mai multe locuri de muncă decât va înlocui,AI implementation will create more jobs than it displaces,AO01 = selected category; blank = missing,G01Q07[comment],single choice
+7,G01Q07,2,AO02,G01Q07,AI va înlocui mai multe locuri de muncă decât va crea implicit,AI will displace more jobs than it creates,AO02 = selected category; blank = missing,G01Q07[comment],single choice
+7,G01Q07,3,AO03,G01Q07,AI nu va avea un impact semnificativ asupra locurilor de muncă în domeniul meu de business,AI will not have a substantial effect on employment in my field of business,AO03 = selected category; blank = missing,G01Q07[comment],single choice
+7,G01Q07,4,AO04,G01Q07,"AI va transforma rolurile actuale, dar nu le va elimina","AI will transform existing roles, but will not eliminate them",AO04 = selected category; blank = missing,G01Q07[comment],single choice
+8,G04Q08,1,SQ001,G04Q08[SQ001],Programe (interne) de mentorat/instruire în utilizarea AI pentru angajați,Internal mentoring or training programmes on employee use of AI,1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ001comment],multiple response
+8,G04Q08,2,SQ003,G04Q08[SQ003],Nu avem încă măsuri specifice,We do not yet have specific measures,1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ003comment],multiple response
+8,G04Q08,3,SQ006,G04Q08[SQ006],"Abonamente (suportate de angajator) pentru unelte specifice: Copilot, CodiumAI, ChatGPT etc","Employer-funded subscriptions to specific tools such as Copilot, CodiumAI and ChatGPT",1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ006comment],multiple response
+8,G04Q08,4,SQ007,G04Q08[SQ007],Decontarea unor certificări/cursuri online de instruire în utilizarea AI pentru angajați,Reimbursement of certifications or online courses on employee use of AI,1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ007comment],multiple response
+8,G04Q08,5,SQ008,G04Q08[SQ008],Angajarea unor consultanți externi pentru certificări/cursuri de instruire în utilizarea AI pentru angajați,External consultants for certifications or training on employee use of AI,1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ008comment],multiple response
+8,G04Q08,6,SQ009,G04Q08[SQ009],Parteneriate cu universități pentru instruirea angajaților în utilizarea AI,Partnerships with universities for employee training in AI use,1 = selected; 0 = not selected; blank = no stored value,G04Q08[SQ009comment],multiple response
+9,G05Q09,1,SQ001,G05Q09[SQ001],Automatizarea proceselor,Process automation,1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ001comment],multiple response
+9,G05Q09,2,SQ002,G05Q09[SQ002],Analize și prognoze bazate pe AI,AI-based analytics and forecasting,1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ002comment],multiple response
+9,G05Q09,3,SQ003,G05Q09[SQ003],Chatbot-uri pentru servicii clienți,Customer-service chatbots,1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ003comment],multiple response
+9,G05Q09,4,SQ004,G05Q09[SQ004],Securitate cibernetică bazată pe AI,AI-based cybersecurity,1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ004comment],multiple response
+9,G05Q09,5,SQ005,G05Q09[SQ005],Marketing îmbunătățit cu AI,AI-enhanced marketing,1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ005comment],multiple response
+9,G05Q09,6,SQ006,G05Q09[SQ006],Altul (vă rugăm să specificați),Other (please specify),1 = selected; 0 = not selected; blank = no stored value,G05Q09[SQ006comment],multiple response
+10,G05Q10,1,AO01,G05Q10,"Da, AI ar putea genera o creștere economică fără precedent","Yes, AI could generate unprecedented economic growth",AO01 = selected category; blank = missing,G05Q10[comment],single choice
+10,G05Q10,2,AO02,G05Q10,"AI va stimula creșterea, dar în limitele tradiționale","AI will stimulate growth, but within traditional limits",AO02 = selected category; blank = missing,G05Q10[comment],single choice
+10,G05Q10,3,AO03,G05Q10,Impactul AI va fi moderat din cauza constrângerilor existente,The effect of AI will be moderate because of existing constraints,AO03 = selected category; blank = missing,G05Q10[comment],single choice
+10,G05Q10,4,AO04,G05Q10,AI va avea un efect redus asupra creșterii economice pe termen lung,AI will have little effect on long-term economic growth,AO04 = selected category; blank = missing,G05Q10[comment],single choice
+10,G05Q10,5,AO05,G05Q10,Am o opinie ușor diferită (vă rugăm să specificați),I hold a somewhat different view (please specify),AO05 = selected category; blank = missing,G05Q10[comment],single choice
+11,G06Q11,1,AO01,G06Q11,AI are nevoie de reglementări mai stricte pentru a asigura o utilizare etică,AI requires stricter regulation to ensure ethical use,AO01 = selected category; blank = missing,G06Q11[comment],single choice
+11,G06Q11,2,AO02,G06Q11,Reglementările existente sunt suficiente,Existing regulation is sufficient,AO02 = selected category; blank = missing,G06Q11[comment],single choice
+11,G06Q11,3,AO03,G06Q11,AI ar trebui dereglementată pentru a promova inovația,AI should be deregulated to promote innovation,AO03 = selected category; blank = missing,G06Q11[comment],single choice
+11,G06Q11,4,AO04,G06Q11,Nu sunt sigur,Not sure,AO04 = selected category; blank = missing,G06Q11[comment],single choice
+12,G01Q12,1,AO01,G01Q12,Părtinire și discriminare în AI,Bias and discrimination in AI,AO01 = selected category; blank = missing,G01Q12[comment],single choice
+12,G01Q12,2,AO02,G01Q12,Încălcarea confidențialității (ex. supravegherea AI),"Privacy infringement, for example AI-enabled surveillance",AO02 = selected category; blank = missing,G01Q12[comment],single choice
+12,G01Q12,3,AO03,G01Q12,Eliminarea locurilor de muncă,Job losses,AO03 = selected category; blank = missing,G01Q12[comment],single choice
+12,G01Q12,4,AO04,G01Q12,Monopolizarea AI de către marile corporații,Concentration of AI control among large corporations,AO04 = selected category; blank = missing,G01Q12[comment],single choice
+12,G01Q12,5,AO05,G01Q12,Altul (vă rugăm să specificați),Other (please specify),AO05 = selected category; blank = missing,G01Q12[comment],single choice
+13,G01Q13,1,AO01,G01Q13,România este foarte competitivă în adoptarea AI,Romania is highly competitive in AI adoption,AO01 = selected category; blank = missing,G01Q13[comment],single choice
+13,G01Q13,2,AO02,G01Q13,"România este moderat competitivă și, implicit, necesită mai multe investiții private în acest domeniu",Romania is moderately competitive and therefore requires greater private investment in this field,AO02 = selected category; blank = missing,G01Q13[comment],single choice
+13,G01Q13,3,AO03,G01Q13,România este în urmă în adoptarea AI,Romania is lagging in AI adoption,AO03 = selected category; blank = missing,G01Q13[comment],single choice
+13,G01Q13,4,AO04,G01Q13,Nu sunt sigur,Not sure,AO04 = selected category; blank = missing,G01Q13[comment],single choice
+14,G07Q14,1,AO01,G07Q14,Concentrarea investițiilor pentru cercetare și dezvoltare AI,Concentrate investment on AI research and development,AO01 = selected category; blank = missing,G07Q14[comment],single choice
+14,G07Q14,2,AO02,G07Q14,Concentrarea eforturilor pentru a deveni un centru pentru reglementarea și etica AI,Concentrate efforts on becoming a centre for AI regulation and ethics,AO02 = selected category; blank = missing,G07Q14[comment],single choice
+14,G07Q14,3,AO03,G07Q14,"Investiții concentrate în industrii bazate ceva mai puțin pe soluții AI (ex. producție, logistică, agricultură)","Concentrate investment in industries that rely somewhat less on AI solutions, for example manufacturing, logistics and agriculture",AO03 = selected category; blank = missing,G07Q14[comment],single choice
+14,G07Q14,4,AO04,G07Q14,Altul (vă rugăm să specificați),Other (please specify),AO04 = selected category; blank = missing,G07Q14[comment],single choice
+15,G08Q15,1,AO01,G08Q15,Nu suntem foarte îngrijorați – sustenabilitatea nu este o prioritate în acest moment (serviciile AI sunt externalizate),Not very concerned - sustainability is not currently a priority because AI services are outsourced,AO01 = selected category; blank = missing,G08Q15[comment],single choice
+15,G08Q15,2,AO02,G08Q15,Moderat îngrijorați – evaluăm opțiuni,Moderately concerned - we are evaluating options,AO02 = selected category; blank = missing,G08Q15[comment],single choice
+15,G08Q15,3,AO03,G08Q15,Foarte îngrijorați – avem inițiative de sustenabilitate,Very concerned - we have sustainability initiatives,AO03 = selected category; blank = missing,G08Q15[comment],single choice
+15,G08Q15,4,AO04,G08Q15,Nu sunt sigur,Not sure,AO04 = selected category; blank = missing,G08Q15[comment],single choice
+16,G01Q16,1,AO01,G01Q16,Foarte important – sprijinul guvernamental este esențial,Very important - government support is essential,AO01 = selected category; blank = missing,G01Q16[comment],single choice
+16,G01Q16,2,AO02,G01Q16,"Moderat important – este util, dar nu este factorul decisiv","Moderately important - useful, but not decisive",AO02 = selected category; blank = missing,G01Q16[comment],single choice
+16,G01Q16,3,AO03,G01Q16,Nu este important – sectorul privat ar trebui să conducă/impună modelul de adoptare AI,Not important - the private sector should lead the AI adoption model,AO03 = selected category; blank = missing,G01Q16[comment],single choice
+16,G01Q16,4,AO04,G01Q16,Nu sunt sigur,Not sure,AO04 = selected category; blank = missing,G01Q16[comment],single choice
+17,G01Q17,1,AO01,G01Q17,Transformare majoră – ne așteptăm la o revizuire completă a modelului de afaceri,Major transformation - we expect a comprehensive revision of the business model,AO01 = selected category; blank = missing,G01Q17[comment],single choice
+17,G01Q17,2,AO02,G01Q17,"Schimbări moderate – modelul de afaceri se va evolua, dar elementele de bază vor rămâne aceleași","Moderate change - the business model will evolve, but its core elements will remain the same",AO02 = selected category; blank = missing,G01Q17[comment],single choice
+17,G01Q17,3,AO03,G01Q17,Ajustări minore – ne așteptăm doar la modificări ușoare (practic subtile/neglijabile),Minor adjustments - we expect only limited changes,AO03 = selected category; blank = missing,G01Q17[comment],single choice
+19,G01Q19,1,AO01,G01Q19,"Folosim metrici cantitative (ex.: economii de costuri, creșteri de venit)","Use quantitative metrics, for example cost savings or revenue growth",AO01 = selected category; blank = missing,G01Q19[comment],single choice
+19,G01Q19,2,AO02,G01Q19,"Folosim evaluări calitative (ex.: satisfacția clienților, îmbunătățirea proceselor)","Use qualitative assessments, for example customer satisfaction or process improvement",AO02 = selected category; blank = missing,G01Q19[comment],single choice
+19,G01Q19,3,AO03,G01Q19,Combinăm metricile cantitative și calitative,Combine quantitative and qualitative metrics,AO03 = selected category; blank = missing,G01Q19[comment],single choice
+19,G01Q19,4,AO04,G01Q19,Nu am definit încă o strategie clară de măsurare a ROI,No clear return-on-investment measurement strategy has yet been defined,AO04 = selected category; blank = missing,G01Q19[comment],single choice
