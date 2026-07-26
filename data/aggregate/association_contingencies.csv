@@ -1,0 +1,25 @@
+test_id,test_label,row_level,column_level,n
+T1,Reported active AI use by employee band,micro_1_9,0,29
+T1,Reported active AI use by employee band,micro_1_9,1,7
+T1,Reported active AI use by employee band,small_10_49,0,38
+T1,Reported active AI use by employee band,small_10_49,1,19
+T1,Reported active AI use by employee band,medium_50_249,0,51
+T1,Reported active AI use by employee band,medium_50_249,1,28
+T2,Project-stage category by employee band,micro_1_9,0,32
+T2,Project-stage category by employee band,micro_1_9,1,4
+T2,Project-stage category by employee band,small_10_49,0,47
+T2,Project-stage category by employee band,small_10_49,1,10
+T2,Project-stage category by employee band,medium_50_249,0,42
+T2,Project-stage category by employee band,medium_50_249,1,37
+T3,Active use or project-stage engagement by employee band,micro_1_9,0,25
+T3,Active use or project-stage engagement by employee band,micro_1_9,1,11
+T3,Active use or project-stage engagement by employee band,small_10_49,0,28
+T3,Active use or project-stage engagement by employee band,small_10_49,1,29
+T3,Active use or project-stage engagement by employee band,medium_50_249,0,14
+T3,Active use or project-stage engagement by employee band,medium_50_249,1,65
+T4,Workforce preparation by employee band,micro_1_9,0,22
+T4,Workforce preparation by employee band,micro_1_9,1,14
+T4,Workforce preparation by employee band,small_10_49,0,11
+T4,Workforce preparation by employee band,small_10_49,1,46
+T4,Workforce preparation by employee band,medium_50_249,0,5
+T4,Workforce preparation by employee band,medium_50_249,1,74

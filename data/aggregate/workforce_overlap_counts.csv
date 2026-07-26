@@ -1,0 +1,7 @@
+response_pattern,n,denominator,interpretation
+Positive measure(s) selected; “no specific measures” not selected,121,172,Conservative positive-preparation classification
+Both positive measure(s) and “no specific measures” selected,13,172,Overlapping response retained in the primary indicator and reported separately
+Only “no specific measures” selected,38,172,No positive preparation selection
+Neither positive measure nor “no specific measures” selected,0,172,Not observed
+"Any positive preparation measure, irrespective of overlap",134,172,Primary descriptive indicator
+"Any positive preparation measure, excluding overlap",121,172,Conservative sensitivity indicator
