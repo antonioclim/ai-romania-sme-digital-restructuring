@@ -1,0 +1,8 @@
+scope,n,analytical_role,missing_or_excluded_n,handling
+All completed responses,212,Transparency scope; no partial records in the analysis file,0,No imputation
+SME-classified responses,172,Primary scope,0,Employee-band classification only
+Large-organisation responses,39,Case-flow transparency only; excluded from substantive comparisons,0,Not a control group
+Missing firm-size response,1,Excluded from size-specific estimates,1,No imputation
+Micro (1–9 employees),36,SME size stratum,0,Self-reported
+Small (10–49 employees),57,SME size stratum,0,Self-reported
+Medium (50–249 employees),79,SME size stratum,0,Self-reported

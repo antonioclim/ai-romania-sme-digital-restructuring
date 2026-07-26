@@ -1,0 +1,39 @@
+{
+  "analysis_scope": "172 completed responses in self-reported employee bands of 1–249 employees",
+  "association_diagnostics": [
+    "reported active AI use by employee band",
+    "project-stage category by employee band",
+    "active use or project-stage engagement by employee band",
+    "workforce preparation by employee band"
+  ],
+  "case_flow_only": {
+    "responses_in_250_plus_employee_band": 39,
+    "responses_missing_employee_band": 1
+  },
+  "claim_count": 51,
+  "completed_responses": 212,
+  "empirical_unit": "aggregate counts derived from completed responses",
+  "prohibited_interpretations": [
+    "national Romanian SME prevalence",
+    "causal effects",
+    "firm-level determinants",
+    "verified operational deployment",
+    "verified organisational restructuring",
+    "representative sampling",
+    "172 unique verified firms"
+  ],
+  "required_aggregate_inputs": [
+    "association_contingencies.csv",
+    "constraint_counts.csv",
+    "core_indicator_counts.csv",
+    "employee_band_counts.csv",
+    "engagement_stage_counts.csv",
+    "missingness_counts.csv",
+    "sample_scope_counts.csv",
+    "workforce_measure_counts.csv",
+    "workforce_overlap_counts.csv"
+  ],
+  "respondent_level_data_present": false,
+  "sme_classified_responses": 172,
+  "version": "2.0.0"
+}

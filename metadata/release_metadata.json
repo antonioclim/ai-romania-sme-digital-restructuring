@@ -1,0 +1,29 @@
+{
+  "author": {
+    "affiliation": "Department of Economic Informatics and Cybernetics, Bucharest University of Economic Studies",
+    "family_name": "Clim",
+    "given_name": "Antonio"
+  },
+  "release": {
+    "article_doi": null,
+    "doi": "10.5281/zenodo.21586875",
+    "previous_version_doi": "10.5281/zenodo.21245180",
+    "public_data_profile": "aggregate-only"
+  },
+  "software": {
+    "description": "Aggregate-only research software that reproduces descriptive estimates, exploratory association diagnostics, tables and figures for an analysis of reported AI engagement among Romanian SME-classified responses. The package documents the reconstructed survey instrument and contains no respondent-level records.",
+    "keywords": [
+      "artificial intelligence",
+      "small and medium-sized enterprises",
+      "innovation measurement",
+      "outcome definition",
+      "survey analysis",
+      "Romania",
+      "reproducible research"
+    ],
+    "license": "MIT",
+    "repository_url": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
+    "title": "Romanian SME AI survey analysis: aggregate reproducibility package",
+    "version": "2.0.0"
+  }
+}

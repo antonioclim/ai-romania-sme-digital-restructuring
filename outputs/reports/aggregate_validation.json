@@ -1,0 +1,18 @@
+{
+  "aggregate_source_files": 9,
+  "association_statistics_recomputed_from_contingency_counts": true,
+  "checks": {
+    "active_or_project_105": true,
+    "active_use_54": true,
+    "minimum_expected": true,
+    "project_51": true,
+    "sample_212": true,
+    "sme_172": true,
+    "workforce_134": true,
+    "workforce_conservative_121": true
+  },
+  "generated_figures": 3,
+  "generated_tables": 10,
+  "respondent_level_data_present": false,
+  "status": "PASS"
+}

@@ -1,0 +1,4 @@
+employee_band,n,active_use_n,project_engagement_n,active_or_project_n,workforce_n,workforce_conservative_n,both_constraints_n,active_use_percent,active_use_ci95_low,active_use_ci95_high,project_engagement_percent,project_engagement_ci95_low,project_engagement_ci95_high,active_or_project_percent,active_or_project_ci95_low,active_or_project_ci95_high,workforce_percent,workforce_ci95_low,workforce_ci95_high,workforce_conservative_percent,workforce_conservative_ci95_low,workforce_conservative_ci95_high,both_constraints_percent,both_constraints_ci95_low,both_constraints_ci95_high
+Micro (1–9),36,7,4,11,14,10,28,19.4,9.8,35.0,11.1,4.4,25.3,30.6,18.0,46.9,38.9,24.8,55.1,27.8,15.8,44.0,77.8,61.9,88.3
+Small (10–49),57,19,10,29,46,39,40,33.3,22.5,46.3,17.5,9.8,29.4,50.9,38.3,63.4,80.7,68.7,88.9,68.4,55.5,79.0,70.2,57.3,80.5
+Medium (50–249),79,28,37,65,74,72,54,35.4,25.8,46.4,46.8,36.2,57.7,82.3,72.4,89.1,93.7,86.0,97.3,91.1,82.8,95.6,68.4,57.5,77.6

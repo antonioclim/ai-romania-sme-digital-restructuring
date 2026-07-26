@@ -1,0 +1,27 @@
+{
+  "allowed": [
+    "aggregate counts",
+    "low-dimensional contingency tables",
+    "questionnaire documentation",
+    "response-option and variable dictionaries",
+    "analysis code and tests",
+    "generated tables and figure-source data",
+    "figures and release metadata"
+  ],
+  "doi": "10.5281/zenodo.21586875",
+  "empirical_unit": "one completed response",
+  "excluded": [
+    "respondent-level rows",
+    "native or replacement response identifiers",
+    "IP addresses",
+    "precise timestamps and paradata",
+    "open-text answers and translations",
+    "raw platform exports",
+    "editorial correspondence",
+    "private governance records"
+  ],
+  "public_data_profile": "aggregate-only",
+  "repository": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring",
+  "row_level_data_present": false,
+  "version": "2.0.0"
+}

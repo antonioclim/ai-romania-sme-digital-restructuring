@@ -1,0 +1,6 @@
+stage,n,denominator,percent,ci95_low,ci95_high
+Active AI use,54,172,31.4,24.9,38.7
+"Project-stage category (planning, testing or deployment)",51,172,29.7,23.3,36.9
+Familiar but not using AI,32,172,18.6,13.5,25.1
+Slightly familiar,27,172,15.7,11.0,21.9
+Not familiar,8,172,4.7,2.4,8.9

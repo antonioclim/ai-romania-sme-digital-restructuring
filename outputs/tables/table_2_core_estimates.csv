@@ -1,0 +1,9 @@
+indicator,n,denominator,percent,ci95_low,ci95_high
+Active AI use,54,172,31.4,24.9,38.7
+"Project-stage category (planning, testing or deployment)",51,172,29.7,23.3,36.9
+Active use or project-stage engagement,105,172,61.0,53.6,68.0
+High implementation costs,150,172,87.2,81.4,91.4
+Lack of technical expertise,137,172,79.7,73.0,85.0
+Both cost and technical-expertise constraints,122,172,70.9,63.7,77.2
+At least one workforce-preparation measure,134,172,77.9,71.1,83.5
+Workforce preparation excluding overlap with “no specific measures”,121,172,70.3,63.1,76.7

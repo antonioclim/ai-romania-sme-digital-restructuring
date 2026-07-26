@@ -1,0 +1,5 @@
+test_id,test,n,chi_square,df,p_value,p_display,cramers_v,minimum_expected_count
+T1,Reported active AI use by employee band,172,3.088,2,0.2135785375,0.214,0.134,11.3
+T2,Project-stage category by employee band,172,21.122,2,2.59094e-05,<0.001,0.35,10.67
+T3,Active use or project-stage engagement by employee band,172,31.53,2,1.424e-07,<0.001,0.428,14.02
+T4,Workforce preparation by employee band,172,43.507,2,4e-10,<0.001,0.503,7.95
