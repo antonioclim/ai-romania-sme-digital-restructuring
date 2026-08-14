@@ -1,0 +1,92 @@
+name: Materialise audited ODSA v3.0.0-rc1 tree
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - .github/rc1-bootstrap/READY
+
+permissions:
+  contents: write
+
+jobs:
+  materialise:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+      TZ: UTC
+      LC_ALL: C.UTF-8
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      MPLCONFIGDIR: /tmp/matplotlib
+    steps:
+      - name: Check out bootstrap branch
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.13"
+
+      - name: Verify and materialise audited tree
+        shell: bash
+        env:
+          BASE_COMMIT: da798446e190e7d38d8a59c664cb92deff031950
+          EXPECTED_XZ_SHA256: 56e25b0b28ae514393d1d6212e88ac8abb6c44504776a16e63dac7431428eb12
+          EXPECTED_PATCH_SHA256: 1b80c43345e2f980c684bf386e772354e4c27be3bf98d0e85329ccdc21db0693
+          EXPECTED_INTERMEDIATE_TREE: 6969398afab63ee34e050242432617878d33c29b
+          TARGET_BRANCH: im-v3.0.0-rc1
+        run: |
+          set -euo pipefail
+
+          current_head="$(git rev-parse HEAD)"
+          test "$(git merge-base "$BASE_COMMIT" HEAD)" = "$BASE_COMMIT"
+
+          git diff --quiet "$BASE_COMMIT" -- . \
+            ':(exclude).github/rc1-bootstrap/**' \
+            ':(exclude).github/workflows/materialise-rc1.yml'
+
+          cat .github/rc1-bootstrap/patch.xz.b64.part.* | base64 --decode > /tmp/odsa-rc1.patch.xz
+          echo "${EXPECTED_XZ_SHA256}  /tmp/odsa-rc1.patch.xz" | sha256sum --check --strict
+          xz --decompress --stdout /tmp/odsa-rc1.patch.xz > /tmp/odsa-rc1.patch
+          echo "${EXPECTED_PATCH_SHA256}  /tmp/odsa-rc1.patch" | sha256sum --check --strict
+
+          git worktree add --detach /tmp/odsa-rc1-tree "$BASE_COMMIT"
+          cd /tmp/odsa-rc1-tree
+
+          git apply --check --binary /tmp/odsa-rc1.patch
+          git apply --binary --index /tmp/odsa-rc1.patch
+
+          git rm -f \
+            outputs/figures/Figure_1_AI_response_categories.png \
+            outputs/figures/Figure_2_reported_constraints.png \
+            outputs/figures/Figure_3_outcome_definition_sensitivity.png
+
+          python -m pip install --requirement requirements.lock.txt
+          python -m pip install --editable . --no-deps
+          python scripts/build_examples.py
+          git add -A
+
+          actual_tree="$(git write-tree)"
+          test "$actual_tree" = "$EXPECTED_INTERMEDIATE_TREE"
+
+          additions="$(git diff --cached --name-status "$BASE_COMMIT" | awk '$1=="A"{n++} END{print n+0}')"
+          modifications="$(git diff --cached --name-status "$BASE_COMMIT" | awk '$1=="M"{n++} END{print n+0}')"
+          deletions="$(git diff --cached --name-status "$BASE_COMMIT" | awk '$1=="D"{n++} END{print n+0}')"
+          test "$additions" = "66"
+          test "$modifications" = "26"
+          test "$deletions" = "24"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          new_commit="$(printf '%s\n' 'Build ODSA methodology release candidate v3.0.0-rc1' | git commit-tree "$actual_tree" -p "$BASE_COMMIT")"
+          test "$(git rev-parse "${new_commit}^{tree}")" = "$EXPECTED_INTERMEDIATE_TREE"
+          test "$(git rev-parse "${new_commit}^")" = "$BASE_COMMIT"
+
+          git push --force-with-lease="refs/heads/${TARGET_BRANCH}:${current_head}" \
+            origin "${new_commit}:refs/heads/${TARGET_BRANCH}"
