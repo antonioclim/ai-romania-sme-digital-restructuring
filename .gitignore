@@ -1,18 +1,32 @@
+# Python
 __pycache__/
+*.py[cod]
+*.egg-info/
 .pytest_cache/
 .venv/
-*.pyc
-*.pyo
-*.tmp
-*.bak
-*~
+venv/
+
+# Generated version 3 outputs
+outputs_v3/
+dist/
+build/
+
+# Local environments and caches
+.env
+.env.*
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Operating-system and editor files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+
+# Private or controlled materials must never enter the public repository
 private/
-raw/
+controlled/
 restricted/
-controlled-data/
-data/controlled/
-responses_*.csv
-free_text_review_register.csv
-*.7z
+respondent_level/
+raw_exports/
