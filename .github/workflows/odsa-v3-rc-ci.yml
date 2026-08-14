@@ -8,46 +8,21 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      profile:
-        description: "Simulation profile"
-        required: true
-        default: "ci"
-        type: choice
-        options:
-          - smoke
-          - ci
-          - article
-          - group_count_robustness
-      replications:
-        description: "Replications per scenario"
-        required: true
-        default: "25"
-        type: string
-      shard_index:
-        description: "Zero-based shard index"
-        required: true
-        default: "0"
-        type: string
-      shard_count:
-        description: "Total number of shards"
-        required: true
-        default: "1"
-        type: string
 
 permissions:
   contents: read
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
+
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.13"
           cache: pip
@@ -57,6 +32,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[test]"
 
+      - name: Compile Python sources
+        run: python -m compileall -q odsa scripts simulations tests_v3
+
       - name: Run version 3 tests
         run: python -m pytest -q tests_v3
 
@@ -64,33 +42,13 @@ jobs:
         run: python scripts/run_study1.py
 
       - name: Run deterministic smoke simulation
+        run: python simulations/run_simulation.py --replications 2000 --seed 20260813
+
+      - name: Run candidate factorial protocol in CI mode
         run: |
-          python simulations/run_simulation.py \
-            --replications 2000 \
-            --seed 20260813
-
-      - name: Run pre-specified simulation profile
-        shell: bash
-        run: |
-          PROFILE="ci"
-          REPLICATIONS="3"
-          SHARD_INDEX="0"
-          SHARD_COUNT="1"
-
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            PROFILE="${{ inputs.profile }}"
-            REPLICATIONS="${{ inputs.replications }}"
-            SHARD_INDEX="${{ inputs.shard_index }}"
-            SHARD_COUNT="${{ inputs.shard_count }}"
-          fi
-
-          python simulations/run_article_simulation.py \
-            --profile "$PROFILE" \
-            --replications "$REPLICATIONS" \
-            --seed 20260814 \
-            --shard-index "$SHARD_INDEX" \
-            --shard-count "$SHARD_COUNT" \
-            --output "outputs_v3/simulation_${PROFILE}_shard_${SHARD_INDEX}"
+          python simulations/run_factorial_protocol.py \
+            --mode ci \
+            --output outputs_v3/factorial_protocol
 
       - name: Verify release-candidate version
         run: |
@@ -100,9 +58,26 @@ jobs:
           assert odsa.__version__ == "3.0.0rc1"
           PY
 
+      - name: Verify factorial audit boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          audit = json.loads(
+              Path("outputs_v3/factorial_protocol/protocol_run_audit.json")
+              .read_text(encoding="utf-8")
+          )
+          assert audit["status"] == "PASS"
+          assert audit["mode"] == "ci"
+          assert audit["manuscript_evidence"] is False
+          assert audit["replicate_row_count"] == 960
+          PY
+
       - name: Upload generated diagnostic outputs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: odsa-v3-rc1-diagnostics
           path: outputs_v3/
           if-no-files-found: error
+          retention-days: 30
