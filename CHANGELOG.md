@@ -1,31 +1,60 @@
 # Changelog
 
-## 2.0.2
+All notable changes to the public reproducibility workflow are documented here.
 
-- Aligned the repository branch, Git tag, automatic source snapshot and archived release asset after the final PyYAML dependency declaration was committed after the `v2.0.1` tag.
-- Updated version-specific citation and software metadata to DOI `10.5281/zenodo.21603732`.
-- Recorded `10.5281/zenodo.21586875` as the immediately preceding version DOI.
-- Preserved every aggregate input, analytical definition, generated table, figure, questionnaire document and inferential limit from version 2.0.1.
-- Added release-integrity checks for the version chain and current DOI.
+## [3.0.0-rc1] — 2026-08-14
 
-## 2.0.1
+### Added
 
-- Corrected the GitHub Actions workflow by replacing an unsupported job-level `${{ runner.temp }}` expression with the fixed `/tmp/matplotlib` path on the declared Ubuntu runner.
-- Added an integrity test that rejects reintroduction of the unsupported expression.
-- Declared `PyYAML==6.0.3` consistently in the locked, direct-install and Conda environment specifications because the release-integrity test parses `CITATION.cff`.
-- Preserved all aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation and inferential limits from version 2.0.0.
-- Retained DOI `10.5281/zenodo.21586875` for the corrected version prepared before publication of the Zenodo record.
+- a reusable Python package for Outcome-Definition Sensitivity Analysis;
+- validated state-space, outcome-definition and claim models;
+- definition-relation diagnostics for equal, nested, disjoint and overlapping mappings;
+- definition-specific level and Wilson interval calculations;
+- positive-state composition diagnostics;
+- group-rate, Pearson chi-square and Cramér's V diagnostics;
+- group-ranking and rank-reversal diagnostics;
+- a conservative claim-admissibility audit;
+- a command-line interface;
+- an aggregate-only Romanian organisational AI example;
+- deterministic simulation support;
+- version 3 methodological and regression tests;
+- an isolated GitHub Actions workflow for the RC branch;
+- formal method, reporting, ethics and AI-assistance documentation.
 
-## 2.0.0
+### Changed
 
-- Established version 2.0.0 as the major privacy-preserving rebuild in the existing repository, while treating version 1.0.0 as historical provenance rather than current analytical evidence.
-- Rebuilt the public research-software package from aggregate counts and low-dimensional contingency tables.
-- Removed respondent-level records from the public release architecture.
-- Reframed the analytical contract around outcome-definition sensitivity.
-- Preserved the 250+ employee band only for case-flow transparency.
-- Limited the association family to four question-linked diagnostics.
-- Added the reconstructed Romanian questionnaire, a British-English documentary translation, response-option metadata and a full variable dictionary.
-- Added a public explanation of free-text semantics, translation requirements and the public-controlled data boundary.
-- Added DOI-aware citation and software metadata for `10.5281/zenodo.21586875`.
-- Added deterministic source, output and full-manifest integrity checks.
-- Added a fail-closed audit that rejects respondent-level files, hidden document comments, revision markup, local paths and release-workflow debris.
+- repositioned the repository from article-specific aggregate reproduction towards a general Information Systems methodology;
+- changed the development version to `3.0.0-rc1`;
+- updated README, CFF, CodeMeta and Zenodo metadata for the version 3 line;
+- retained version 2.0.2 aggregate material during the RC period for compatibility and provenance.
+
+### Not yet final
+
+- the manuscript-final simulation design;
+- independent Study 2 replication;
+- final article-output crosswalk;
+- final Information & Management declarations;
+- version-specific Zenodo DOI;
+- the frozen `v3.0.0` release asset.
+
+## [2.0.2] — 2026-07-26
+
+- aligned the repository branch, Git tag, source archive and attached aggregate-only release asset;
+- preserved the analytical outputs of version 2.0.1;
+- corrected version metadata without changing scientific results.
+
+## [2.0.1] — 2026-07-26
+
+- corrected the GitHub Actions workflow;
+- declared the PyYAML dependency required by release-integrity tests.
+
+## [2.0.0] — 2026-07-26
+
+- rebuilt the public workflow around aggregate counts and low-dimensional contingency tables;
+- removed respondent-level material from the current public release line;
+- introduced explicit claim and evidence boundaries.
+
+## [1.0.0] — historical
+
+- superseded article framing and public-data architecture;
+- retained only as historical provenance pending separate governance decisions.
