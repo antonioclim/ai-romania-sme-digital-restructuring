@@ -1,61 +1,98 @@
-# Release notes — Outcome-Definition Sensitivity Analysis 3.0.0-rc1
+# Release notes — ODSA 3.0.0-rc1
 
 ## Status
 
-Version `3.0.0-rc1` is an executable development release candidate for the generic Outcome-Definition Sensitivity Analysis methodology. It is not the final archival `v3.0.0` release and no new DOI is claimed.
+`3.0.0-rc1` is a development release candidate for the generic Outcome-Definition Sensitivity Analysis methodology. It is not the final Zenodo release and does not claim a new DOI.
 
-## Methodological purpose
+## Major change from v2.0.2
 
-ODSA audits how alternative defensible definitions of a categorical outcome change:
+Version 2.0.2 is an aggregate reproduction package for one survey analysis. The version 3 line develops a reusable Information Systems method with formal properties, generic software, simulation support and independent-replication controls.
 
-- the reported level;
-- the positive-class composition;
-- association with an organisational descriptor;
-- group-specific rates and rankings;
-- the wording of claims that the outcome can support.
+## Implemented in the RC line
 
-The method is deliberately non-scalar. It does not combine these dimensions into a single quality score and it does not select one universally correct definition.
+### Generic method engine
 
-## Included in RC1
+- explicit finite state spaces;
+- named outcome definitions;
+- equal, nested, disjoint and overlapping definition relations;
+- definition-specific levels and Wilson intervals;
+- positive-class composition;
+- Pearson chi-square and Cramér's V;
+- group-rate and ranking diagnostics;
+- rank-reversal detection;
+- conservative claim-admissibility audit;
+- CLI and reproducible CSV/JSON outputs.
 
-- installable Python package `odsa`;
-- command-line interface;
-- formal state-space and definition registers;
-- nested, disjoint and overlapping definition diagnostics;
-- Wilson intervals, Pearson chi-square and Cramér's V;
-- composition, ranking and claim-admissibility diagnostics;
-- aggregate-only Study 1 example reproducing the locked Romanian organisational AI counts;
-- deterministic smoke simulation;
-- methodological and empirical regression tests;
-- GitHub Actions CI for the RC branch;
-- formal method, reporting, ethics, data-governance and AI-assistance documentation.
+### Formal consolidation added in IM-R2
 
-## Locked Study 1 regression values
+- exact nested-level increment diagnostics;
+- executable common-denominator monotonicity check;
+- state-coarsening transformation;
+- definition identifiability based on complete mapping fibres;
+- formal propositions and proofs;
+- constructive examples showing association strengthening, association weakening and rank reversal;
+- explicit separation of mathematical invariants, empirical diagnostics, information-loss findings and interpretive judgements.
 
-```text
-Active use:        54/172 = 31.4%; Cramér's V = 0.134
-Project stage:     51/172 = 29.7%; Cramér's V = 0.350
-Broad engagement: 105/172 = 61.0%; Cramér's V = 0.428
-```
+### Simulation study added in IM-R2
 
-The public example contains aggregate counts only. It does not establish national prevalence, unique firms, causal effects, verified deployment or realised business value.
+- five-state latent Information Systems engagement model;
+- five registered definitions, including one non-nested definition;
+- complete 864-cell factorial design;
+- sample-size, gradient, imbalance, misclassification, coarsening and denominator factors;
+- latent, observed and reported diagnostics;
+- measurement-bias and rank-disagreement metrics;
+- apparent denominator-driven monotonicity violations;
+- cell-level summaries and machine-readable global gates;
+- deterministic seeds and CI-scale replication settings.
 
-## Relationship to version 2.0.2
+### Empirical compatibility
 
-Version `2.0.2` remains the published aggregate reproduction package and is identified by DOI `10.5281/zenodo.21603732`. RC1 preserves that evidence boundary while developing a reusable methodology. Final `v3.0.0` will supersede `v2.0.2` only for the aligned Information & Management methodological article and release workflow.
+- aggregate-only Romanian Study 1 input files;
+- exact reproduction of active-use, project-stage and broad-engagement levels;
+- exact reproduction of the locked employee-band association diagnostics;
+- claim-admissibility checks aligned to the registered state meanings.
 
-## Remaining release gates
+### Governance and reporting
 
-The final `v3.0.0` release requires:
+- formal method specification;
+- simulation protocol;
+- Study 2 selection protocol;
+- Information & Management manuscript architecture;
+- reporting checklist;
+- ethics and data-governance boundary;
+- AI-assistance disclosure;
+- explicit RC branch status.
 
-1. a manuscript-final simulation design;
-2. independent Study 2 replication;
-3. exact article–code–table–figure parity;
-4. final ethics and data-governance wording;
-5. complete Elsevier AI disclosure;
-6. a frozen release asset and version-specific DOI;
-7. hostile internal review with no unresolved critical issue.
+## Reproducibility gate
 
-## Citation
+GitHub Actions must pass all of the following before the RC is considered technically coherent:
 
-Do not cite this branch as a final archived release. Use the final version-specific DOI after publication of `v3.0.0`.
+1. package installation;
+2. version 3 tests;
+3. Study 1 reproduction;
+4. constructive counterexample generation;
+5. deterministic smoke simulation;
+6. complete factorial simulation gate;
+7. version consistency;
+8. diagnostic artifact generation.
+
+## Data boundary
+
+The public RC contains no respondent-level survey rows, free-text responses, direct identifiers, precise timestamps, IP addresses or paradata. Study 1 uses aggregate counts. Simulation outputs are wholly synthetic.
+
+## Known limitations and hard gates
+
+The following remain unresolved and prevent a final `v3.0.0` release:
+
+- the manuscript-grade 500-replication-per-cell simulation run has not been frozen;
+- no independent Study 2 has yet passed the selection protocol;
+- the manuscript and article-output crosswalk are not final;
+- the institutional ethics determination remains external to the software release;
+- the final DOI has not been reserved;
+- the final hostile audit and submission preflight have not been completed.
+
+## Version lineage
+
+- `v2.0.2` remains the current published aggregate package with DOI `10.5281/zenodo.21603732`.
+- `3.0.0-rc1` is a non-archival development branch.
+- `v3.0.0` will supersede `v2.0.2` only for the final methodological article and aligned release workflow.
