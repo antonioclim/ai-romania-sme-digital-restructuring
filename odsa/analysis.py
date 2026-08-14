@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from math import sqrt
+from math import comb, isfinite, sqrt
 from typing import Any
 
 import numpy as np
@@ -203,23 +203,118 @@ def association_diagnostics(
     return result
 
 
-def ranking_signature(rows: Sequence[Mapping[str, Any]]) -> tuple[str, ...]:
-    """Return a stable descending group ranking with lexical tie-breaking."""
+def _rate_mapping(rows: Sequence[Mapping[str, Any]]) -> dict[str, float]:
+    mapping: dict[str, float] = {}
+    for row in rows:
+        group = str(row["group"])
+        if group in mapping:
+            raise ODSAValidationError(f"duplicate group in rate rows: {group!r}")
+        value = float(row["rate"])
+        if not isfinite(value):
+            raise ODSAValidationError("group rates must be finite")
+        mapping[group] = value
+    if len(mapping) < 2:
+        raise ODSAValidationError("at least two groups are required for ranking diagnostics")
+    return mapping
 
+
+def ranking_signature(rows: Sequence[Mapping[str, Any]]) -> tuple[str, ...]:
+    """Return a stable descending display order with lexical tie-breaking.
+
+    The signature is intended for deterministic presentation. Substantive
+    reversal detection uses :func:`pairwise_ranking_diagnostics`, which treats
+    ties explicitly rather than allowing lexical tie-breaking to create a
+    spurious reversal.
+    """
+
+    _rate_mapping(rows)
     return tuple(
         str(row["group"])
         for row in sorted(rows, key=lambda row: (-float(row["rate"]), str(row["group"])))
     )
 
 
+def pairwise_ranking_diagnostics(
+    left_rows: Sequence[Mapping[str, Any]],
+    right_rows: Sequence[Mapping[str, Any]],
+    *,
+    tolerance: float = 1e-12,
+) -> dict[str, Any]:
+    """Compare two group-rate orderings while handling ties explicitly.
+
+    A strict reversal requires a pair of groups to be ordered in opposite
+    directions under the two definitions. A tie appearing or disappearing is
+    reported separately and is not, by itself, labelled a strict reversal.
+    """
+
+    if tolerance < 0:
+        raise ODSAValidationError("ranking tolerance must be non-negative")
+    left = _rate_mapping(left_rows)
+    right = _rate_mapping(right_rows)
+    if set(left) != set(right):
+        raise ODSAValidationError("rankings must refer to the same groups")
+
+    groups = sorted(left)
+    total_pairs = comb(len(groups), 2)
+    concordant = 0
+    discordant = 0
+    tied_both = 0
+    tied_left_only = 0
+    tied_right_only = 0
+
+    def sign(value: float) -> int:
+        if abs(value) <= tolerance:
+            return 0
+        return 1 if value > 0 else -1
+
+    for index, first in enumerate(groups):
+        for second in groups[index + 1 :]:
+            left_sign = sign(left[first] - left[second])
+            right_sign = sign(right[first] - right[second])
+            if left_sign == 0 and right_sign == 0:
+                tied_both += 1
+            elif left_sign == 0:
+                tied_left_only += 1
+            elif right_sign == 0:
+                tied_right_only += 1
+            elif left_sign == right_sign:
+                concordant += 1
+            else:
+                discordant += 1
+
+    comparable_pairs = concordant + discordant
+    normalised_discordance = (
+        discordant / comparable_pairs if comparable_pairs else 0.0
+    )
+    tie_change_pairs = tied_left_only + tied_right_only
+    return {
+        "group_count": len(groups),
+        "total_pairs": total_pairs,
+        "comparable_pairs": comparable_pairs,
+        "concordant_pairs": concordant,
+        "discordant_pairs": discordant,
+        "tied_under_both": tied_both,
+        "tied_left_only": tied_left_only,
+        "tied_right_only": tied_right_only,
+        "tie_change_pairs": tie_change_pairs,
+        "tie_change_share": tie_change_pairs / total_pairs,
+        "strict_ranking_reversal": discordant > 0,
+        "normalised_discordance": normalised_discordance,
+    }
+
+
 def ranking_reversal(
     left_rows: Sequence[Mapping[str, Any]],
     right_rows: Sequence[Mapping[str, Any]],
+    *,
+    tolerance: float = 1e-12,
 ) -> bool:
-    """Report whether two definitions imply different group orderings."""
+    """Report whether at least one group pair reverses strictly."""
 
-    left_groups = {str(row["group"]) for row in left_rows}
-    right_groups = {str(row["group"]) for row in right_rows}
-    if left_groups != right_groups:
-        raise ODSAValidationError("rankings must refer to the same groups")
-    return ranking_signature(left_rows) != ranking_signature(right_rows)
+    return bool(
+        pairwise_ranking_diagnostics(
+            left_rows,
+            right_rows,
+            tolerance=tolerance,
+        )["strict_ranking_reversal"]
+    )
