@@ -1,0 +1,165 @@
+name: ODSA v3 frozen full simulation
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - simulations/full_run_trigger.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  stream:
+    name: stream-${{ matrix.stream }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        stream: [0, 1, 2, 3]
+
+    steps:
+      - name: Check out frozen RC branch
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-simulation.lock.txt
+
+      - name: Install frozen simulation environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-simulation.lock.txt
+          python -m pip install -e . --no-deps
+
+      - name: Verify frozen protocol and stream contract
+        run: |
+          python - <<'PY'
+          from simulations.full_execution import (
+              EXPECTED_PROTOCOL_SHA256,
+              child_stream_descriptor,
+              verify_frozen_protocol,
+          )
+          audit = verify_frozen_protocol()
+          assert audit["protocol_sha256"] == EXPECTED_PROTOCOL_SHA256
+          descriptor = child_stream_descriptor(${{ matrix.stream }})
+          assert descriptor["stream_index"] == ${{ matrix.stream }}
+          PY
+
+      - name: Execute frozen stream
+        run: |
+          python simulations/run_full_stream.py \
+            --stream-index ${{ matrix.stream }} \
+            --stream-count 4 \
+            --replications-per-cell 1000 \
+            --output outputs_v3/full_simulation/stream_${{ matrix.stream }}
+
+      - name: Verify stream audit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          index = ${{ matrix.stream }}
+          path = Path(
+              f"outputs_v3/full_simulation/stream_{index}/full_stream_audit.json"
+          )
+          audit = json.loads(path.read_text(encoding="utf-8"))
+          assert audit["status"] == "PASS"
+          assert audit["manuscript_evidence"] is False
+          assert audit["cell_count"] == 432
+          assert audit["replicate_row_count"] == 432000
+          assert audit["stream"]["stream_index"] == index
+          PY
+
+      - name: Upload stream component
+        uses: actions/upload-artifact@v7
+        with:
+          name: odsa-v3-full-stream-${{ matrix.stream }}
+          path: outputs_v3/full_simulation/stream_${{ matrix.stream }}/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+
+  aggregate:
+    name: aggregate-and-hostile-audit
+    needs: stream
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out frozen RC branch
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-simulation.lock.txt
+
+      - name: Install frozen simulation environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-simulation.lock.txt
+          python -m pip install -e . --no-deps
+
+      - name: Download four stream components
+        uses: actions/download-artifact@v7
+        with:
+          pattern: odsa-v3-full-stream-*
+          path: downloaded_streams
+          merge-multiple: false
+
+      - name: Pool streams and audit integrity
+        run: |
+          python simulations/aggregate_full_streams.py \
+            --streams-root downloaded_streams \
+            --output outputs_v3/full_simulation/pooled
+
+      - name: Build manuscript-facing summaries and hostile audit
+        run: |
+          python simulations/summarise_full_results.py \
+            --pooled-root outputs_v3/full_simulation/pooled
+
+      - name: Upload pooled simulation evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: odsa-v3-full-simulation-results
+          path: outputs_v3/full_simulation/pooled/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+
+      - name: Enforce final hostile gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("outputs_v3/full_simulation/pooled")
+          execution = json.loads(
+              (root / "pooled_execution_audit.json").read_text(encoding="utf-8")
+          )
+          hostile = json.loads(
+              (root / "hostile_full_simulation_audit.json")
+              .read_text(encoding="utf-8")
+          )
+          assert execution["mechanical_integrity"] == "PASS"
+          assert execution["replicate_row_count"] == 1728000
+          assert execution["cell_count"] == 432
+          if execution["scientific_gate"] == "FAIL":
+              raise SystemExit("Pooled execution scientific gate failed.")
+          if hostile["scientific_gate"] == "FAIL":
+              raise SystemExit("Hostile result audit failed.")
+          PY
