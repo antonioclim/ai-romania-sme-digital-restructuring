@@ -35,36 +35,37 @@ jobs:
           from pathlib import Path, PurePosixPath
 
           archive = Path('.github/im-r4-source-patch.zip')
-          expected_sha256 = '39713a91659625664e7ef1fb4b586123a0504d2d28a4612b25117cf856141992'
-          expected_paths = {
-              '.github/workflows/odsa-v3-full-simulation.yml',
-              'docs_v3/FULL_ENGINE_CONFORMANCE_AND_EXECUTION_CONTRACT.md',
-              'scripts/build_im_r4_results.py',
-              'simulations/aggregate_frozen_streams.py',
-              'simulations/finalise_frozen_results.py',
-              'simulations/frozen_full_run_common.py',
-              'simulations/full_run_execution_contract.json',
-              'simulations/render_frozen_results.py',
-              'simulations/run_frozen_stream.py',
-              'tests_v3/test_frozen_full_engine.py',
-              'BRANCH_STATUS.md',
-              'CHANGELOG.md',
-              'RELEASE_NOTES.md',
-              'pyproject.toml',
-              'simulations/run_factorial_protocol.py',
+          expected_archive_sha256 = '3eef67abdb10866f363af64ea4a06aa31082ddea5be753ba17aac928666ef129'
+          expected_files = {
+              '.github/workflows/odsa-v3-full-simulation.yml': 'fcaa0c9b05a62982dca30c23a108d236765fdecd349b7551bb905dfef4b36958',
+              'docs_v3/FULL_ENGINE_CONFORMANCE_AND_EXECUTION_CONTRACT.md': '95d6002219be9cc806c33eca12a4f96ef257c4749b57a497cc3c71a45f8233ea',
+              'scripts/build_im_r4_results.py': '5b90a58db82dd5ab206fb30ed2c50222120dc1228e56f2b7e6713fdbe055325d',
+              'simulations/aggregate_frozen_streams.py': 'b609eb5b27bca76b904a3f191cfd38bb94714dfc943ca36168ae614c42a02f3a',
+              'simulations/finalise_frozen_results.py': '6f390a8729fa3c4092881ba70b1d985cf072a4c87509f27fc307684c8332dbcb',
+              'simulations/frozen_full_run_common.py': '2157244e0f699cadd5b6e3ca75d7a4102e9847717c2353e6b7d66eb8ca867f78',
+              'simulations/full_run_execution_contract.json': '210174942c913da16c46ff704e205987e251b66b099f76fb56b70ee73451481a',
+              'simulations/render_frozen_results.py': 'fab4be5b8a6f76dcd601082483fcb764b773cb30fbf9bd8dd83c1689a1496705',
+              'simulations/run_frozen_stream.py': '5917866b0c2cb0d09505863009f1d34cfea5041d6c880ac4dfd92656867b17e7',
+              'tests_v3/test_frozen_full_engine.py': '9e56e1b25b8b7eed3850ee82df88aa30dc88a69b29b69674c2bd4d570dce882e',
+              'BRANCH_STATUS.md': '709520c3ac8168d0d99db4d8e0a323a5bf712a368ea3ca251baaca9c84c08d26',
+              'CHANGELOG.md': '139c725069b387bc417fd71c24454bcb8ceee67f875afaeb613ae89dbe6b4062',
+              'RELEASE_NOTES.md': '26154d69f52ee9f8d8ac5bd71890fbc905d2d737e4c24c292e2aeb5fd495fba3',
+              'pyproject.toml': '532683965dde66fafddabec1d8d676d1b7e926bfe4dccf6b1cd82eada1685f56',
+              'simulations/run_factorial_protocol.py': '2b65c9fdc18f0195dec41fbb12b53d1804d6454e1e0434bb43f783aebbba2623',
           }
 
-          actual = hashlib.sha256(archive.read_bytes()).hexdigest()
-          if actual != expected_sha256:
+          actual_archive_sha256 = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if actual_archive_sha256 != expected_archive_sha256:
               raise SystemExit(
-                  f'patch SHA-256 mismatch: expected {expected_sha256}, obtained {actual}'
+                  'patch SHA-256 mismatch: '
+                  f'expected {expected_archive_sha256}, obtained {actual_archive_sha256}'
               )
 
           with zipfile.ZipFile(archive) as handle:
               names = set(handle.namelist())
-              if names != expected_paths:
-                  missing = sorted(expected_paths - names)
-                  extra = sorted(names - expected_paths)
+              if names != set(expected_files):
+                  missing = sorted(set(expected_files) - names)
+                  extra = sorted(names - set(expected_files))
                   raise SystemExit(f'patch path mismatch; missing={missing}, extra={extra}')
               for info in handle.infolist():
                   pure = PurePosixPath(info.filename)
@@ -72,9 +73,17 @@ jobs:
                       raise SystemExit(f'unsafe archive member: {info.filename}')
                   if info.is_dir():
                       continue
+                  payload = handle.read(info)
+                  actual_file_sha256 = hashlib.sha256(payload).hexdigest()
+                  expected_file_sha256 = expected_files[info.filename]
+                  if actual_file_sha256 != expected_file_sha256:
+                      raise SystemExit(
+                          f'file SHA-256 mismatch for {info.filename}: '
+                          f'expected {expected_file_sha256}, obtained {actual_file_sha256}'
+                      )
                   target = Path(*pure.parts)
                   target.parent.mkdir(parents=True, exist_ok=True)
-                  target.write_bytes(handle.read(info))
+                  target.write_bytes(payload)
           PY
 
           rm -f .github/im-r4-source-patch.zip
