@@ -21,8 +21,23 @@ def test_protocol_design_validates() -> None:
     design = load_design(DESIGN_PATH)
     audit = validate_design(design)
     assert audit["status"] == "PASS"
-    assert audit["schema_version"] == "1.1"
+    assert audit["schema_version"] == "2.0"
     assert audit["scenario_count"] == 6
+
+    execution = design["execution"]
+    assert execution["full_replications_per_cell"] == 4000
+    assert execution["full_stream_count"] == 4
+    assert execution["full_replications_per_stream"] == 1000
+    assert execution["full_cell_count"] == 432
+    assert execution["full_replicate_row_count"] == 1_728_000
+    assert execution["ci_cell_count"] == 24
+    assert execution["ci_replicate_row_count"] == 960
+
+    precision = design["monte_carlo_precision"]
+    assert precision["event_probability_worst_case_mcse_target"] == 0.008
+    assert precision["event_probability_worst_case_mcse_at_4000"] < 0.008
+    assert design["freeze_contract"]["design_locked"] is True
+    assert design["freeze_contract"]["results_seen_before_freeze"] is False
 
 
 def test_controlled_scenario_mechanisms_are_exact() -> None:
