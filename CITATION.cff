@@ -1,21 +1,26 @@
 cff-version: 1.2.0
-title: "Romanian SME AI survey analysis: aggregate reproducibility package"
-message: "If you use this software, cite the versioned software release. Cite the associated article separately when available."
+message: "Do not cite the release-candidate branch as the final archival release. Cite the final version-specific DOI after v3.0.0 is published."
+title: "Outcome-Definition Sensitivity Analysis: Information Systems methodology and reproducibility package"
 type: software
 authors:
   - family-names: Clim
     given-names: Antonio
-    affiliation: "Department of Economic Informatics and Cybernetics, Bucharest University of Economic Studies"
-version: "2.0.2"
-doi: "10.5281/zenodo.21603732"
-url: "https://doi.org/10.5281/zenodo.21603732"
+    orcid: "https://orcid.org/0000-0003-4745-0431"
+version: "3.0.0-rc1"
+date-released: "2026-08-14"
 repository-code: "https://github.com/antonioclim/ai-romania-sme-digital-restructuring"
 license: MIT
 keywords:
-  - artificial intelligence
-  - small and medium-sized enterprises
-  - innovation measurement
-  - outcome definition
-  - survey analysis
-  - Romania
-  - reproducible research
+  - outcome-definition sensitivity
+  - information systems
+  - measurement validity
+  - technology adoption
+  - reproducibility
+references:
+  - type: software
+    title: "Romanian SME AI survey analysis: aggregate reproducibility package"
+    authors:
+      - family-names: Clim
+        given-names: Antonio
+    version: "2.0.2"
+    doi: "10.5281/zenodo.21603732"
