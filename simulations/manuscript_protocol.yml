@@ -1,0 +1,165 @@
+schema_version: "1.1"
+protocol_status: "IM-R2 design candidate; full manuscript execution not yet authorised"
+seed: 20260814
+
+states:
+  - active_use
+  - project_stage
+  - other
+
+groups:
+  - small
+  - medium
+  - large
+
+definitions:
+  active_use:
+    - active_use
+  project_stage:
+    - project_stage
+  broad_engagement:
+    - active_use
+    - project_stage
+
+primary_contrast:
+  left: active_use
+  right: broad_engagement
+  expected_relation: strict_subset
+
+execution:
+  full_replications_per_cell: 1000
+  ci_replications_per_cell: 40
+  full_sample_sizes_per_group: [50, 100, 250, 500]
+  ci_sample_sizes_per_group: [60, 150]
+  full_allocation_profiles: [balanced, skewed]
+  ci_allocation_profiles: [balanced]
+  full_misclassification_profiles:
+    - none
+    - active_project_swap_10
+    - project_other_swap_10
+  ci_misclassification_profiles:
+    - none
+    - active_project_swap_10
+  full_missingness_profiles:
+    - none
+    - state_independent_10
+    - project_heavy
+  ci_missingness_profiles: [none]
+  full_scenarios:
+    - null_same_mixture
+    - aligned_gradient
+    - project_only_gradient
+    - compensating_gradient
+    - rank_reversal
+    - mixed_order
+  ci_scenarios:
+    - null_same_mixture
+    - aligned_gradient
+    - project_only_gradient
+    - compensating_gradient
+    - rank_reversal
+    - mixed_order
+
+allocation_profiles:
+  balanced: [1.0, 1.0, 1.0]
+  skewed: [0.5, 1.0, 2.0]
+
+misclassification_profiles:
+  none:
+    description: "No state misclassification."
+    matrix:
+      - [1.0, 0.0, 0.0]
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  active_project_swap_10:
+    description: "Ten per cent symmetric swapping between active use and project stage. Conditional on retention, the broad positive count is preserved exactly because the mapping remains inside the broad set."
+    matrix:
+      - [0.9, 0.1, 0.0]
+      - [0.1, 0.9, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  project_other_swap_10:
+    description: "Ten per cent symmetric swapping between project stage and other. This mapping crosses the broad-outcome boundary."
+    matrix:
+      - [1.0, 0.0, 0.0]
+      - [0.0, 0.9, 0.1]
+      - [0.0, 0.1, 0.9]
+
+missingness_profiles:
+  none:
+    description: "No missingness."
+    state_probabilities: [0.0, 0.0, 0.0]
+
+  state_independent_10:
+    description: "Ten per cent missingness in every state."
+    state_probabilities: [0.1, 0.1, 0.1]
+
+  project_heavy:
+    description: "Five per cent missingness for active use and other and fifteen per cent for project stage."
+    state_probabilities: [0.05, 0.15, 0.05]
+
+scenarios:
+  null_same_mixture:
+    interpretation: "No generating between-group difference in active use or broad engagement."
+    probabilities:
+      small: [0.20, 0.20, 0.60]
+      medium: [0.20, 0.20, 0.60]
+      large: [0.20, 0.20, 0.60]
+
+  aligned_gradient:
+    interpretation: "Active use and project-stage engagement increase together across groups."
+    probabilities:
+      small: [0.10, 0.10, 0.80]
+      medium: [0.25, 0.25, 0.50]
+      large: [0.40, 0.40, 0.20]
+
+  project_only_gradient:
+    interpretation: "Active-use probability is constant while project-stage engagement increases."
+    probabilities:
+      small: [0.20, 0.05, 0.75]
+      medium: [0.20, 0.25, 0.55]
+      large: [0.20, 0.45, 0.35]
+
+  compensating_gradient:
+    interpretation: "Active use decreases while project-stage engagement increases by the same amount, leaving broad engagement constant."
+    probabilities:
+      small: [0.40, 0.10, 0.50]
+      medium: [0.25, 0.25, 0.50]
+      large: [0.10, 0.40, 0.50]
+
+  rank_reversal:
+    interpretation: "Active-use ordering decreases across groups while broad-engagement ordering increases."
+    probabilities:
+      small: [0.40, 0.05, 0.55]
+      medium: [0.25, 0.30, 0.45]
+      large: [0.10, 0.60, 0.30]
+
+  mixed_order:
+    interpretation: "Active use and broad engagement imply partially different orderings and a generating broad-outcome tie."
+    probabilities:
+      small: [0.15, 0.30, 0.55]
+      medium: [0.40, 0.05, 0.55]
+      large: [0.25, 0.30, 0.45]
+
+primary_outputs:
+  - delta_level_broad_minus_active
+  - delta_cramers_v_broad_minus_active
+  - cross_definition_pairwise_disagreement_share
+  - cross_definition_strict_reversal_share
+  - added_state_share_of_right_positive
+  - project_share_of_broad_positive
+  - active_level_total_error
+  - broad_level_total_error
+  - active_association_total_error
+  - broad_association_total_error
+  - missing_share
+
+reporting_rules:
+  - "Report every prespecified cell or document its failure."
+  - "Use generating population parameters, sampled true values and observed values as separate layers."
+  - "Do not interpret a positive or negative delta in Cramer's V as a universal quality ranking."
+  - "Do not collapse ODSA diagnostics into one scalar score."
+  - "Treat project share within a broad outcome as composition, not as error unless the broad outcome is mislabelled as active use."
+  - "Report undefined association margins rather than silently deleting them."
+  - "The CI mode verifies software mechanics only and must not be cited as manuscript evidence."

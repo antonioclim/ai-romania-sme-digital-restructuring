@@ -1,198 +1,245 @@
-# ODSA simulation-study protocol
+# Candidate manuscript simulation protocol
+
+## Status
+
+This is the IM-R2 design candidate for the simulation study. The accompanying
+`ci` execution verifies implementation mechanics only. It is not manuscript
+evidence and must not be cited as a completed Monte Carlo study. The full
+design will be frozen and executed only after the novelty boundary and
+statistical design have passed separate hostile audits.
 
 ## 1. Purpose
 
-The simulation study evaluates properties of Outcome-Definition Sensitivity Analysis that cannot be established from the Romanian application alone. It is designed to distinguish mathematical invariants from contingent empirical behaviour and to identify conditions under which outcome broadening changes levels, associations, group rankings and recoverable claims.
+The simulation is not intended to prove the arithmetic fact that a nested
+broader definition has an equal or higher level. Its purpose is to establish
+the conditions under which alternative categorical outcome definitions alter:
 
-The simulation is not used to manufacture support for ODSA. Its role is to expose both the method's value and its boundary conditions.
+- association strength;
+- subgroup order;
+- positive-class composition;
+- sensitivity to missingness;
+- sensitivity to state misclassification.
 
-## 2. Research questions
+It also separates three evidential layers that must not be conflated:
 
-### RQ-S1 — Level sensitivity
+1. the generating population parameter;
+2. the sampled true value before observation error;
+3. the observed value after missingness and misclassification.
 
-How much does the reported level change as positive-state sets are broadened, and does the implementation preserve the common-denominator monotonicity invariant?
+## 2. Simulation questions
 
-### RQ-S2 — Association sensitivity
+### SQ1 — association direction
 
-Under what state distributions does broadening strengthen, weaken or leave unchanged the association between the outcome and an organisational grouping variable?
+Under which controlled state distributions does broadening strengthen, weaken
+or leave unchanged Cramér's \(V\)?
 
-### RQ-S3 — Ranking sensitivity
+### SQ2 — subgroup order
 
-How often do defensible alternative definitions imply different group orderings?
+When do active-use and broad-engagement definitions imply different pairwise
+subgroup orders?
 
-### RQ-S4 — Measurement error
+### SQ3 — composition
 
-How do adjacent-state misclassification and source-item coarsening affect definition-specific levels, associations and rankings?
+How does the project-stage share of the broad positive class vary across
+mechanisms and sample sizes?
 
-### RQ-S5 — Denominator drift
+### SQ4 — within-broad misclassification
 
-How often can definition-dependent analytic availability produce an apparent violation of level monotonicity when the underlying positive-state sets are nested?
+How does active/project swapping affect the narrow outcomes while preserving
+the broad positive boundary?
 
-### RQ-S6 — Recoverability
+### SQ5 — boundary-crossing misclassification
 
-Which definitions remain identifiable when implementation, testing and planning are collapsed into one project-stage category?
+How does project/other swapping affect both level and association for broad
+engagement?
 
-## 3. Latent state space
+### SQ6 — missingness
 
-The manuscript-grade design uses five mutually exclusive latent states:
+How do state-independent and project-heavy missingness alter level,
+association and subgroup-order diagnostics?
 
-1. `active_use` — current operational use;
-2. `deployed` — deployed but not established as active routine use;
-3. `testing` — testing or pilot activity;
-4. `planning` — planning, budgeting or preparation;
-5. `no_engagement` — none of the preceding states.
+### SQ7 — error decomposition
 
-The states are ordered for the purpose of adjacent-stage misclassification, but ODSA does not treat them as a validated scalar maturity scale.
+How much observed deviation is attributable to finite sampling and how much
+is attributable to the observation process?
 
-## 4. Registered definitions
+## 3. Controlled scenario families
 
-| Definition | Positive latent states | Intended question |
-|---|---|---|
-| `active_use` | active use | Is the technology currently used operationally? |
-| `implemented` | active use, deployed | Has implementation reached deployment or use? |
-| `tested_or_beyond` | active use, deployed, testing | Has activity reached testing or a later state? |
-| `broad_engagement` | active use, deployed, testing, planning | Is there any current organisational engagement? |
-| `experimental_activity` | active use, testing | Is there active or experimental activity? |
+| Scenario | Active-use mechanism | Project-stage mechanism | Diagnostic role |
+|---|---|---|---|
+| `null_same_mixture` | equal across groups | equal across groups | finite-sample baseline and null bias |
+| `aligned_gradient` | increases | increases | definitions broadly agree on direction |
+| `project_only_gradient` | constant | increases | broad association emerges while active association remains null |
+| `compensating_gradient` | decreases | increases by the same amount | active association remains while broad association is null |
+| `rank_reversal` | decreases | increases strongly | active and broad group orders reverse |
+| `mixed_order` | non-monotone | non-monotone | partial disagreement and a generating broad-outcome tie |
 
-The final definition is deliberately non-nested relative to `implemented`. It tests whether the software and reporting language correctly distinguish partial overlap from broadening.
+These are controlled mechanisms, not fitted approximations to the Romanian
+response set.
 
-## 5. Organisational groups
+## 4. Factorial design candidate
 
-Three generic groups are simulated. They are labels rather than claims about real firm sizes or sectors:
+### Full candidate
 
-- Group A;
-- Group B;
-- Group C.
+- per-group base sample size: 50, 100, 250 and 500;
+- allocation: balanced and skewed;
+- misclassification: none, 10% active/project swapping and 10%
+  project/other swapping;
+- missingness: none, 10% state-independent and project-heavy;
+- scenario: six controlled mechanisms;
+- replications per cell: 1,000.
 
-The group variable supplies the categorical descriptor for Cramér's V and rate-ranking diagnostics.
+The design contains 432 cells and 432,000 candidate replicates.
 
-## 6. Factorial design
+At 1,000 replications, the maximum Monte Carlo standard error for an event
+probability is approximately 0.0158, corresponding to an approximate 95%
+half-width of 0.031 at \(p=0.5\). The final freeze must decide whether this
+precision is adequate for every planned event estimate.
 
-The full design crosses the following factors.
+### Continuous-integration subset
 
-| Factor | Levels |
-|---|---|
-| Nominal sample size per group | 60, 180, 600 |
-| Active-use gradient | flat, ascending, descending |
-| Added-state gradient | flat, ascending, descending, middle-concentrated |
-| Group-size balance | balanced, imbalanced |
-| Adjacent-state misclassification rate | 0, 0.05, 0.15 |
-| Coarsening | none, project stages collapsed |
-| Denominator regime | common, definition-dependent |
+The `ci` mode uses:
 
-The complete factorial contains 864 design cells. The default manuscript run uses 500 replications per cell and a fixed seed. The release-candidate continuous-integration run uses fewer replications per cell but traverses the complete design.
+- all six scenario mechanisms;
+- per-group base sizes 60 and 150;
+- balanced allocation;
+- no misclassification and 10% active/project swapping;
+- no missingness;
+- 40 replications per cell.
 
-## 7. Probability-generating process
+It verifies parsing, deterministic seeding, output completeness and test
+integration only.
 
-The baseline latent distribution is:
+## 5. Observation model
 
-| State | Probability |
-|---|---:|
-| Active use | 0.12 |
-| Deployed | 0.08 |
-| Testing | 0.10 |
-| Planning | 0.15 |
-| No engagement | 0.55 |
+For each group and replicate:
 
-The active-use gradient shifts probability between `active_use` and `no_engagement`. The added-state gradient shifts probability between the combined deployed/testing/planning mass and `no_engagement`. Added-state shifts are distributed across deployment, testing and planning using fixed documented weights.
+1. draw true state counts from the scenario-specific multinomial distribution;
+2. calculate sampled true levels and associations;
+3. apply state-specific missingness;
+4. apply a row-stochastic misclassification matrix to retained cases;
+5. calculate observed levels, associations, compositions and subgroup orders.
 
-This construction allows active-use and project-stage gradients to align, oppose one another, remain flat or concentrate in the middle group. It therefore creates conditions in which broadening can strengthen, weaken or reverse descriptive patterns.
+The active/project swap remains within the broad positive set. Conditional on
+retention, it preserves the broad positive count exactly while potentially
+biasing the narrow active-use and project-stage outcomes. The project/other
+swap crosses the broad boundary and can bias broad engagement.
 
-## 8. Group-size balance
+## 6. Population parameters and errors
 
-Under the balanced regime, all three groups use the nominal sample size. Under the imbalanced regime, group sizes are approximately:
+For each cell, generating population levels are weighted averages of the
+group-specific positive probabilities using the actual rounded group sizes.
+
+Population Cramér's \(V\) is calculated from the joint probability table for
+group and binary outcome, without introducing an arbitrary total sample size.
+
+Each replicate records:
 
 \[
-0.5n,\quad n,\quad 2n.
+\text{sampling error}
+=
+\text{sampled true value}
+-
+\text{population value},
 \]
 
-This factor tests whether unequal precision and group contribution alter the frequency of apparent sensitivity.
+\[
+\text{observation error}
+=
+\text{observed value}
+-
+\text{sampled true value},
+\]
 
-## 9. Misclassification
+\[
+\text{total error}
+=
+\text{observed value}
+-
+\text{population value}.
+\]
 
-Misclassification is adjacent in the registered state order. With probability \(1-m\), an observation remains in its latent state. With probability \(m\), it moves to an adjacent state; internal states split the error probability equally between their two neighbours.
+This decomposition prevents observation-process bias from being confused with
+ordinary finite-sample variability.
 
-The rates 0, 0.05 and 0.15 represent no error, modest error and an intentionally adverse stress condition. They are not estimates of error in the Romanian survey.
+## 7. Primary outputs
 
-## 10. Coarsening
+The full design will report, by cell:
 
-Under `project_collapsed`, `deployed`, `testing` and `planning` are mapped to one observed category, `project_stage`.
+- broad-minus-active level contrast;
+- broad-minus-active Cramér's \(V\) contrast;
+- cross-definition pairwise subgroup-order disagreement;
+- strict cross-definition reversal;
+- share of right-only added states within the broader positive class;
+- project-stage share of broad positives for the present application;
+- level sampling, observation and total error;
+- association sampling, observation and total error;
+- active and broad subgroup-order error against the generating order;
+- missing-data share;
+- number of undefined association replicates.
 
-The simulation reports whether each fine-state definition is identifiable under this map. The expected result follows the fibre criterion:
+For continuous metrics, the report will include the number defined, mean,
+standard deviation, median and 5th and 95th percentiles. For event metrics, it
+will include the Monte Carlo estimate, the number defined and Monte Carlo
+standard error.
 
-- active use remains identifiable;
-- broad engagement remains identifiable;
-- implemented, tested-or-beyond and experimental activity do not remain identifiable.
+## 8. Prespecified interpretation rules
 
-Coarsening is treated as an information-loss mechanism, not as random measurement error.
+1. A positive \(\Delta V\) does not mean that the broader definition is
+   superior.
+2. A negative \(\Delta V\) does not mean that the narrower definition is
+   superior.
+3. Project share within a broad outcome is composition, not error, unless the
+   broad outcome is labelled as active use.
+4. Rank disagreement matters only when the metric is used for ranking,
+   prioritisation or allocation.
+5. Every prespecified cell must be reported or its failure documented.
+6. Undefined margins must be counted, not silently deleted.
+7. ODSA diagnostics must not be collapsed into one scalar score.
+8. No universal threshold for material sensitivity will be selected after
+   examining the results.
+9. Claims about managerial decision quality require a separate decision model
+   or experiment.
 
-## 11. Denominator regimes
+## 9. Statistical audit required before the full run
 
-### Common denominator
+Before the full execution:
 
-All registered definitions are evaluated on the same observed counts. Nested level monotonicity must hold in every replication.
+- decide whether 1,000 replications per cell provide adequate Monte Carlo
+  precision;
+- run convergence checks using at least two independent seed streams;
+- prespecify treatment of sparse and undefined margins;
+- decide whether Cramér's \(V\) remains the sole primary association measure
+  or is accompanied by pairwise risk differences;
+- confirm the tie tolerance for population and observed subgroup rates;
+- verify that allocation and sample-size factors are not redundant;
+- lock the reporting order before reading full results;
+- define graphical summaries before execution;
+- record exact dependency versions and runner environment;
+- confirm that the simulation contains no human-participant records.
 
-### Definition-dependent analytic availability
+## 10. Reproducibility contract
 
-The narrow and broad outcomes are evaluated on deliberately different retained subsets generated by documented state-dependent retention probabilities. This is an adversarial stress test of denominator drift. It demonstrates that apparent monotonicity violations can arise from changing analysis sets even though the underlying definitions remain nested.
+The simulation engine must produce:
 
-These retention probabilities are simulation parameters, not claims about the empirical survey.
+- an exact protocol snapshot;
+- a design-validation audit;
+- one row per replicate;
+- one summary row per cell;
+- deterministic outputs for a fixed seed and design;
+- a non-zero exit status for invalid probabilities, matrices or factor names;
+- an explicit flag that CI output is not manuscript evidence.
 
-## 12. Replication-level outcomes
+## 11. Claims permitted at the end of IM-R2
 
-Each replication records:
+This phase establishes that:
 
-- latent, observed and reported levels for active use and broad engagement;
-- level bias induced by measurement error;
-- latent, observed and reported Cramér's V;
-- the difference in Cramér's V between broad and narrow definitions;
-- latent, observed and reported rank-reversal indicators;
-- disagreement between latent and observed rank-reversal status;
-- common-denominator monotonicity violations;
-- apparent monotonicity violations under definition-dependent denominators;
-- the number and identity of definitions identifiable after coarsening.
+- the scenario mechanisms are encoded;
+- the CI subset is deterministic and executable;
+- level, association and subgroup order are distinct diagnostics;
+- nested definitions do not constrain association direction or subgroup
+  order;
+- the full design is specified but not executed as manuscript evidence.
 
-## 13. Cell-level summaries
-
-For each design cell, the workflow reports:
-
-- mean levels and biases;
-- mean, median and 5th/95th percentiles of the association difference;
-- share of replications in which broad association is stronger;
-- share in which broad association is weaker;
-- share with a group-rank reversal;
-- share with measurement-induced rank-reversal disagreement;
-- share with an apparent denominator-driven monotonicity violation;
-- common-denominator invariant violations;
-- mean number of identifiable definitions.
-
-## 14. Global gates
-
-A simulation run passes the implementation gate only if:
-
-1. common-denominator monotonicity violations equal zero;
-2. at least one design condition produces a stronger broad association;
-3. at least one condition produces a weaker broad association;
-4. at least one rank reversal occurs;
-5. the definition-dependent regime produces at least one apparent monotonicity violation;
-6. coarsening reduces the number of identifiable fine-state definitions as predicted;
-7. identical seeds and configurations produce identical outputs.
-
-The first condition is an invariant. Conditions 2–6 confirm that the design traversed the intended stress cases rather than proving a universal empirical frequency.
-
-## 15. Analysis and reporting principles
-
-The simulation will not be reported as evidence that one definition is generally superior. Results will be stratified by design factors and interpreted as boundary-condition evidence.
-
-The article will distinguish:
-
-- deterministic mathematical results;
-- Monte Carlo frequencies conditional on the specified generating process;
-- empirical findings from Study 1;
-- findings from an independent Study 2.
-
-No simulation frequency will be described as a real-world prevalence estimate.
-
-## 16. Reproducibility
-
-The design is stored in `simulations/design.yml`. The executable study is `simulations/run_simulation_study.py`. Outputs include the enumerated design cells, replication-level metrics, cell summaries and a machine-readable gate report. Seeds, dependency versions and command-line parameters are recorded in every run summary.
+It does not establish final Monte Carlo probabilities, robustness thresholds,
+managerial benefit or empirical validation of ODSA.

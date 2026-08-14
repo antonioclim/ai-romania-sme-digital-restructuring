@@ -2,202 +2,127 @@
 
 ## 1. Scope
 
-Outcome-Definition Sensitivity Analysis (ODSA) is a non-scalar audit for categorical outcomes. It examines how defensible alternative definitions alter:
+ODSA audits categorical outcomes for which more than one substantively
+defensible mapping from observed states to a reported outcome exists. It is
+intended for settings in which labels such as adoption, use, implementation or
+engagement may include states with different evidential meanings.
 
-1. the reported outcome level;
-2. the internal composition of the positive class;
-3. association with a declared descriptor;
-4. group-rate ordering;
-5. the claims the measure can support;
-6. the definitions that remain recoverable after state coarsening.
-
-ODSA does not select one universally correct definition and does not replace construct validation, reliability assessment, measurement invariance, causal identification or substantive theory.
+ODSA is not a psychometric validation method, causal estimator, maturity model
+or automatic selector of one correct definition. It makes the consequences
+and inference boundaries of registered definitions inspectable.
 
 ## 2. Required inputs
 
-### 2.1 State space
+A complete audit requires:
 
-A finite set of mutually exclusive recorded states
+1. a finite observed state register;
+2. a count for every registered state;
+3. one or more named outcome definitions;
+4. the intended question for each definition;
+5. a common denominator or an explicit explanation of denominator changes;
+6. an optional group-by-state table for association and order diagnostics;
+7. optional claim wording and allowed-state sets.
 
-\[
-S=\{s_1,\ldots,s_K\}.
-\]
+Irrecoverable source coarsening must be recorded rather than silently
+reconstructed.
 
-The state register must preserve the original wording or provide an auditable harmonisation.
+## 3. Formal core
 
-### 2.2 Definition register
-
-Each definition \(d_j\subseteq S\) includes:
-
-- a unique name;
-- its positive states;
-- a human-readable label;
-- the research question it answers;
-- the claims it may support;
-- its relation to every other definition.
-
-### 2.3 Locked analytical denominator
-
-All primary definition comparisons use the same analytical cases. Alternative sample restrictions or missing-data rules are separate sensitivity layers.
-
-### 2.4 Optional descriptor
-
-A categorical descriptor \(X\) enables association, group-rate and ranking diagnostics.
-
-### 2.5 Optional claim register
-
-Each claim \(q\) declares an evidential support set \(E_q\). The current admissibility rule is:
+Let \(S=\{s_1,\ldots,s_K\}\) be mutually exclusive observed states and let a
+definition be a non-empty subset \(d\subseteq S\). It induces
 
 \[
-\Gamma(q,d)=\mathbb{1}\{d\subseteq E_q\}.
+Y_i(d)=\mathbb{1}(s_i\in d).
 \]
 
-### 2.6 Optional coarsening register
+ODSA keeps five dimensions separate:
 
-A map \(g:S\rightarrow T\) records how fine states were collapsed into reported states.
+- **level**: \(L(d)\);
+- **composition**: \(C_s(d)\);
+- **association**: \(A(d;X)\);
+- **subgroup order**: pairwise ordering of \(R_g(d)\);
+- **claim admissibility**: \(\Gamma(q,d)\).
 
-## 3. Core diagnostics
+The proofs and counterexamples are given in
+`FORMAL_PROPERTIES_AND_PROOFS.md`.
 
-### 3.1 Definition relation
+## 4. Definition relations and level decomposition
 
-For each pair, ODSA reports equal, strict subset, strict superset, disjoint or overlap. A definition is called broader only under a superset relation.
+Pairs are classified as equal, strict subset, strict superset, disjoint or
+partially overlapping.
 
-### 3.2 Level
+For any pair under a common denominator,
 
 \[
-L_n(d)=\frac{1}{n}\sum_{i=1}^{n}\mathbb{1}\{Z_i\in d\}.
+L(d_b)-L(d_a)
+=
+P(d_b\setminus d_a)-P(d_a\setminus d_b).
 \]
 
-For nested definitions, level monotonicity is guaranteed when the denominator is locked.
+This identity prevents a non-nested contrast from being reported as if it only
+added states.
 
-### 3.3 Composition
+## 5. Composition
 
-For \(s\in d\):
+Positive-class composition reports which states constitute each positive
+outcome. ODSA may also report total variation distance between two composition
+vectors. This is descriptive and must not be interpreted as a validity score.
+
+## 6. Association and subgroup order
+
+The current implementation reports Pearson's chi-square and bias-unadjusted
+Cramér's \(V\) for a categorical descriptor. The same diagnostic must be used
+across definitions.
+
+Association is not monotone under broadening. Subgroup order is also not
+invariant. Pairwise-order diagnostics separate strict reversals from tie
+changes and avoid forcing ties through lexical ordering.
+
+## 7. Claim admissibility
+
+A claim \(q\) registers the set \(S_q\) of observed states compatible with its
+wording. The conservative rule is
 
 \[
-C_{n,s}(d)=
-\frac{\sum_i\mathbb{1}\{Z_i=s\}}
-{\sum_i\mathbb{1}\{Z_i\in d\}}.
+\Gamma(q,d)=1 \iff d\subseteq S_q.
 \]
 
-Composition identifies which states contribute to a broader headline.
+A passing result is necessary but not sufficient for construct validity. A
+failure identifies the positive states that make the wording too narrow.
 
-### 3.4 Association
+## 8. Six-step protocol
 
-For categorical descriptors, the reference implementation reports Pearson's chi-square and bias-unadjusted Cramér's \(V\). The method does not assume that association is monotone under definition nesting.
+1. register observed states and lost distinctions;
+2. register definitions, denominators and intended questions;
+3. compare levels and decompose level contrasts;
+4. decompose positive classes;
+5. compare association and subgroup order using common diagnostics;
+6. audit claims and state the inference boundary.
 
-### 3.5 Group-rate and ranking sensitivity
+## 9. Simulation role
 
-ODSA reports definition-specific group rates, deterministic rank signatures, rank-reversal indicators and a normalised Kendall inversion distance.
+The candidate factorial simulation separates generating population
+parameters, sampled true values and observed values after missingness and
+misclassification. CI mode is a mechanics test only. Full simulation results
+must not enter the manuscript before the design is frozen and executed.
 
-### 3.6 Claim admissibility
+## 10. Boundary conditions
 
-A positive class may support claim \(q\) only if every state coded positive is within \(E_q\). This is a semantic audit and depends on a defensible claim register.
+ODSA cannot:
 
-### 3.7 Recoverability
+- recover states erased by coarsening;
+- repair selection bias or possible duplicate units;
+- establish a sampling frame;
+- prove causal effects;
+- replace longitudinal or multi-informant evidence;
+- validate readiness, capability or maturity scales;
+- justify one scalar sensitivity score.
 
-A fine-state definition is recoverable after coarsening only when membership is constant within every fibre of the coarsening map. Non-recoverable definitions are reported, not silently imputed.
+ODSA adds little when alternatives contain the same states, answer the same
+question and produce decision-irrelevant diagnostic differences.
 
-### 3.8 Misclassification
+## 11. RC status
 
-With true state-probability vector \(p\) and row-stochastic transition matrix \(M\), expected recorded probabilities are \(pM\). ODSA separates this measurement process from deliberate outcome broadening.
-
-## 4. Minimum workflow
-
-1. Freeze the analytical sample and denominator.
-2. Register observed states without conflating them with claims.
-3. Register all substantively defensible definitions before inspecting their results.
-4. Record pairwise definition relations.
-5. Compute definition-specific levels and uncertainty intervals.
-6. Decompose every multi-state positive class.
-7. Compute descriptor associations and group rates.
-8. Audit rankings and signed group contrasts.
-9. Audit claims against positive-state membership.
-10. Audit definition recoverability under any coarsening.
-11. Report results that remain stable and results that change.
-12. State what ODSA cannot recover or establish.
-
-## 5. Interpretation rules
-
-### 5.1 Broader does not mean less valid
-
-A broad definition may be appropriate for a broad question, such as any organisational engagement. The problem arises when it is interpreted as evidence of a narrower state such as active operational use.
-
-### 5.2 Stability is not validity
-
-A result that is stable across definitions may still rest on an invalid state measure. A result that changes may reveal a genuine difference in the phenomenon represented.
-
-### 5.3 Statistical significance is secondary
-
-ODSA focuses on the definition-specific estimand, magnitude, composition, ranking and claim boundary. It does not use p-value changes as the sole criterion of sensitivity.
-
-### 5.4 Non-recoverability is a result
-
-When coarsening prevents an exact definition from being reconstructed, the correct output is an explicit recoverability failure.
-
-## 6. Formal properties
-
-The method relies on the following proved or counterexample-supported properties:
-
-1. nested definitions guarantee level monotonicity;
-2. level differences equal the mass of added states;
-3. broad composition explains the narrow-to-broad level ratio;
-4. association is not monotone under nesting;
-5. group rankings can reverse;
-6. claim admissibility is a subset condition;
-7. recoverability is equivalent to membership constancy within coarsening fibres;
-8. misclassification changes levels through net flows across a definition boundary;
-9. overlapping definitions require pairwise difference-set interpretation;
-10. denominator locking is required to attribute sensitivity to definition choice.
-
-Complete statements and proofs are in `docs_v3/FORMAL_PROPOSITIONS.md`.
-
-## 7. Output contract
-
-A complete ODSA implementation should produce:
-
-```text
-definition_levels.csv
-definition_composition.csv
-definition_relations.csv
-claim_admissibility.csv
-group_rates.csv
-association_diagnostics.csv
-ranking_sensitivity.csv
-recoverability_audit.csv
-odsa_run_summary.json
-```
-
-Files that are not applicable may be omitted only when the run summary states why.
-
-## 8. Failure conditions
-
-An ODSA run must fail or return an explicit non-estimable status when:
-
-- the state register is incomplete;
-- state counts are negative;
-- definitions contain unknown states;
-- the primary denominator changes across definitions;
-- a group has no observations;
-- a contingency table has an empty margin;
-- a coarsening map omits or adds fine states;
-- a non-recoverable definition is requested as if it were exact;
-- output provenance or version metadata are missing.
-
-## 9. Boundary conditions
-
-ODSA adds little when:
-
-- only one substantively defensible definition exists;
-- candidate definitions are semantically equivalent;
-- all diagnostics are stable and claims remain admissible;
-- the outcome is intrinsically continuous and categorisation is unnecessary;
-- the focal construct is latent and cannot be represented as declared observable states.
-
-Additional caution is required for non-exclusive states, repeated observations, hierarchical outcomes, survey weights, severe missingness, very sparse groups and definitions chosen after results are known.
-
-## 10. Relationship to the simulation and empirical studies
-
-The formal propositions specify what must or need not occur. The simulation estimates how frequently different forms of sensitivity occur under controlled conditions. Study 1 provides an aggregate-only empirical application and Study 2 will provide an independently selected replication.
-
-The three evidence types are reported separately.
+Version `3.0.0-rc1` now contains the formal-property tests and a candidate
+factorial protocol. Independent replication, full simulation execution and
+journal-facing manuscript integration remain open.

@@ -1,40 +1,48 @@
-# Branch status: im-v3.0.0-rc1
+# Branch status — `im-v3.0.0-rc1`
 
-## Purpose
-
-This branch develops the generic Outcome-Definition Sensitivity Analysis methodology for a prospective Information & Management submission.
+This branch is the active development branch for Outcome-Definition
+Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-```text
-phase: IM-R2
-version: 3.0.0-rc1
-status: formal method and simulation design implemented
-```
+IM-R2 formal-method and candidate simulation-protocol consolidation is
+implemented.
 
-## Completed on this branch
+The branch now contains:
 
-- generic ODSA package;
-- aggregate-only Study 1 example;
-- claim-admissibility audit;
-- coarsening and exact recoverability audit;
-- deterministic misclassification and simulation framework;
-- formal propositions and counterexamples;
-- 972-scenario article profile;
-- 144-scenario group-count robustness profile;
-- Study 2 dataset selection protocol;
-- Information & Management manuscript architecture;
-- continuous-integration tests and diagnostic artefacts.
+- formal definition-pair decompositions;
+- executable counterexamples and property tests;
+- subgroup-order diagnostics without arbitrary tie-breaking;
+- an adjacent-methods novelty boundary;
+- a candidate factorial simulation design;
+- deterministic CI execution separating population, sampled true and observed
+  layers;
+- a manuscript integration blueprint.
 
-## Not yet claimed
+## Isolation
 
-- the final article simulation is not yet frozen as journal evidence;
-- no Study 2 dataset has yet been selected;
-- no final Information & Management manuscript has yet been submitted;
-- no new Zenodo DOI has been reserved;
-- no tag or final GitHub release has been published;
-- the institutional ethics determination remains external to this software.
+- base lineage: published `v2.0.2`;
+- default branch `main`: not modified by RC development;
+- final tag `v3.0.0`: not created;
+- final GitHub release: not created;
+- final Zenodo version and DOI: not created.
 
-## Release boundary
+## Release-candidate boundary
 
-Do not merge this branch into `main`, create tag `v3.0.0` or publish a Zenodo version until the final hostile audit returns GO.
+The branch is executable but not manuscript-final. Open gates include:
+
+- literature-collision and journal-conversation lock;
+- hostile statistical review and full simulation freeze;
+- full simulation execution;
+- independent Study 2;
+- final article-output crosswalk;
+- ethics determination and final journal declarations.
+
+CI and smoke simulation results are engineering evidence only and must not be
+reported as final scientific results.
+
+## Public-data boundary
+
+No respondent-level data, free-text responses, direct identifiers, IP
+addresses, precise timestamps or paradata may be added to the version 3 public
+workflow.

@@ -1,90 +1,69 @@
 # ODSA reporting checklist
 
-## State and denominator
+A study reporting Outcome-Definition Sensitivity Analysis should disclose the
+items below.
 
-- [ ] The empirical unit is explicit.
-- [ ] The analytical denominator is locked across primary definitions.
-- [ ] Missing-data and exclusion rules are reported.
-- [ ] Every observed state is defined using source-faithful wording.
-- [ ] Mutually exclusive and non-exclusive state structures are distinguished.
-- [ ] Any weighting or clustering is documented.
+## State and instrument register
+
+- [ ] Observed states are listed exactly as collected or derived.
+- [ ] Mutually exclusive and overlapping states are distinguished.
+- [ ] Many-to-one source categories and irrecoverable coarsening are identified.
+- [ ] The empirical unit and denominator are stated.
+- [ ] Missingness, exclusions and possible duplicate units are reported.
+- [ ] No unobserved fine state is retrospectively invented.
 
 ## Definition register
 
-- [ ] Every definition has a unique name and label.
-- [ ] Positive states are listed explicitly.
-- [ ] The intended research question is stated.
-- [ ] Pairwise relations distinguish nesting, overlap and disjointness.
-- [ ] Definitions were registered before inspecting the focal results or the timing is disclosed.
+- [ ] Every definition has a stable name and positive-state set.
+- [ ] The intended question for every definition is stated.
+- [ ] Denominators are common or denominator changes are explained.
+- [ ] Pairwise relations are reported as equal, nested, disjoint or overlapping.
+- [ ] Non-nested level contrasts are decomposed by symmetric difference.
 
-## Core diagnostics
+## Diagnostics
 
-- [ ] Definition-specific levels and denominators are reported.
-- [ ] Multi-state positive classes are decomposed.
-- [ ] Association diagnostics are reported separately by definition.
-- [ ] Group rates and ordering are shown where relevant.
-- [ ] Rank reversals and direction reversals are disclosed.
-- [ ] Stable findings and definition-sensitive findings are both reported.
+- [ ] Definition-specific levels and uncertainty are reported.
+- [ ] Broader outcomes are decomposed by positive state.
+- [ ] Any composition-distance diagnostic is labelled descriptive.
+- [ ] The same association statistic is used across compared definitions.
+- [ ] Group-specific rates are reported when ranking or allocation is relevant.
+- [ ] Strict reversals and tie changes are distinguished.
+- [ ] Differences between dependent statistics are not presented as formal
+      tests unless an appropriate procedure is used.
+- [ ] Undefined or sparse association margins are counted and disclosed.
+- [ ] Diagnostics are not collapsed into an unvalidated scalar score.
 
-## Claim admissibility
+## Claims and interpretation
 
-- [ ] Each central claim has an evidential support set.
-- [ ] The positive states of the cited definition are compatible with the claim.
-- [ ] Project, trial or planning states are not described as realised use without evidence.
-- [ ] Causal claims are not inferred from descriptive association.
-- [ ] Claim boundaries are stated in tables, figures and prose.
+- [ ] Claim wording is registered separately from outcome coding.
+- [ ] Positive states incompatible with a claim are listed.
+- [ ] Passing claim admissibility is not called construct validity.
+- [ ] Adoption, implementation, routine use, capability and realised value are
+      not treated as interchangeable.
+- [ ] Population, causal and firm-level claims are limited to the design.
+- [ ] A broader outcome is not described with a narrower label.
+- [ ] Materiality is tied to a prespecified decision context or criterion.
 
-## Coarsening and recoverability
+## Simulation
 
-- [ ] The fine-to-reported state map is documented.
-- [ ] Recoverability is checked before a fine definition is estimated.
-- [ ] Non-recoverable definitions are reported as such.
-- [ ] No proportional reconstruction or imputation is hidden.
-- [ ] The analytical denominator is preserved after coarsening.
+- [ ] Generating population, sampled true and observed layers are separated.
+- [ ] Sampling error and observation error are reported separately.
+- [ ] Scenario mechanisms and factor levels are prespecified.
+- [ ] Misclassification matrices are row-stochastic and published.
+- [ ] Missingness mechanisms are explicit.
+- [ ] Replication count and Monte Carlo precision are justified.
+- [ ] Every prespecified cell is reported or its failure documented.
+- [ ] CI or smoke output is not presented as manuscript evidence.
+- [ ] Full outputs include exact protocol and environment snapshots.
 
-## Formal-method checks
+## Reproducibility and governance
 
-- [ ] The state space is explicit and finite.
-- [ ] Mathematical guarantees are separated from empirical patterns.
-- [ ] Association non-monotonicity is supported by counterexample.
-- [ ] Claim admissibility is tied to an explicit support set.
-- [ ] Coarsening recoverability is tied to membership constancy within fibres.
-- [ ] Overlapping definitions are not described as nested broadening.
-
-## Simulation-study checks
-
-- [ ] The profile, scenario registry, seed and replication count are frozen.
-- [ ] Core and supplementary estimands are distinguished.
-- [ ] Misclassification and deliberate broadening are reported separately.
-- [ ] Non-recoverable definitions are not estimated silently.
-- [ ] Scenario summaries report Monte Carlo standard errors for proportions.
-- [ ] Simulation replications are not treated as empirical organisations.
-- [ ] Counterexamples are selected by pre-specified rules.
-- [ ] Every shard contains the expected scenarios and replications.
-
-## Study 1 checks
-
-- [ ] Results are described as applying to the response set.
-- [ ] National prevalence is not claimed.
-- [ ] A completed response is not called a verified unique firm.
-- [ ] The project-stage category is described at its actual granularity.
-- [ ] The informed-consent and ethics status are reported factually.
-- [ ] Public outputs remain aggregate-only.
-
-## Study 2 checks
-
-- [ ] Dataset selection precedes inspection of ODSA results.
-- [ ] Legal, privacy and ethics status are documented.
-- [ ] State granularity and coding are reconstructible.
-- [ ] The dataset is independent of Study 1.
-- [ ] All candidates and exclusion reasons are retained.
-- [ ] Results that weaken the practical importance of ODSA are reported.
-
-## Reproducibility and release
-
-- [ ] Software version, commit and DOI are mutually consistent.
-- [ ] Tables and figures map to versioned outputs.
-- [ ] The release contains no prohibited respondent-level material.
-- [ ] A fresh environment reproduces the documented outputs.
-- [ ] The claim–evidence ledger matches the final manuscript.
-- [ ] AI assistance is disclosed in Methods, captions and declarations as applicable.
+- [ ] State-to-definition mappings are machine-readable.
+- [ ] Tables and figures are generated from registered inputs.
+- [ ] Article claims map to code, inputs and outputs.
+- [ ] Public and controlled data boundaries are explicit.
+- [ ] No respondent-level material is included without authorisation.
+- [ ] Ethics approval, exemption or non-review status is described factually.
+- [ ] Informed-consent procedures are described.
+- [ ] AI-assisted code, text or figure preparation is disclosed according to
+      publisher policy.
