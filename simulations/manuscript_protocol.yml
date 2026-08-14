@@ -1,6 +1,40 @@
-schema_version: "1.1"
-protocol_status: "IM-R2 design candidate; full manuscript execution not yet authorised"
+schema_version: "2.0"
+protocol_status: "FROZEN DESIGN for IM-R4 execution; no full manuscript results have been generated"
+freeze_date: "2026-08-14"
+root_seed: 20260814
 seed: 20260814
+
+freeze_contract:
+  design_locked: true
+  results_seen_before_freeze: false
+  ci_outputs_are_manuscript_evidence: false
+  change_control: "Any post-freeze change requires a versioned amendment, rationale, updated SHA-256 and rerun of all affected cells."
+
+ademp:
+  aims:
+    - "Map when defensible categorical outcome definitions change level, positive-class composition, association and subgroup order."
+    - "Separate finite-sampling error from observation-process error caused by missingness and misclassification."
+    - "Identify conditions under which a broad outcome and a narrow outcome answer materially different empirical questions."
+  data_generating_mechanisms:
+    - "Six prespecified group-by-state probability mechanisms."
+    - "Four per-group base sample sizes and two allocation profiles."
+    - "Three nondifferential misclassification profiles."
+    - "Three missingness profiles."
+  estimands:
+    - "Generating-population level under each definition."
+    - "Generating-population Cramer's V for group by binary outcome."
+    - "Generating subgroup-rate order under each definition."
+    - "Positive-class composition under each definition."
+  methods:
+    - "Outcome-Definition Sensitivity Analysis diagnostics implemented in the version 3 software line."
+    - "Pearson chi-square and bias-unadjusted Cramer's V as the primary omnibus association diagnostic."
+    - "Pairwise subgroup-order disagreement and strict reversal diagnostics."
+  performance_measures:
+    - "Broad-minus-active level contrast."
+    - "Broad-minus-active Cramer's V contrast."
+    - "Cross-definition pairwise order disagreement and strict reversal."
+    - "Sampling, observation-process and total error for level and association."
+    - "Undefined-association frequency and Monte Carlo standard errors."
 
 states:
   - active_use
@@ -26,8 +60,15 @@ primary_contrast:
   right: broad_engagement
   expected_relation: strict_subset
 
+scope_boundary:
+  primary_simulation_family: "Nested narrow-versus-broad definitions with a common denominator."
+  non_nested_generality: "Established by exact identities, constructive counterexamples and property tests rather than by the primary factorial simulation."
+  reason: "The article-facing empirical application has a nested active-use versus broad-engagement contrast. Expanding the main simulation to substantively artificial non-nested labels would add complexity without strengthening the primary IS claim."
+
 execution:
-  full_replications_per_cell: 1000
+  full_replications_per_cell: 4000
+  full_stream_count: 4
+  full_replications_per_stream: 1000
   ci_replications_per_cell: 40
   full_sample_sizes_per_group: [50, 100, 250, 500]
   ci_sample_sizes_per_group: [60, 150]
@@ -59,6 +100,58 @@ execution:
     - compensating_gradient
     - rank_reversal
     - mixed_order
+  full_cell_count: 432
+  full_replicate_row_count: 1728000
+  ci_cell_count: 24
+  ci_replicate_row_count: 960
+
+seed_stream_policy:
+  generator: "numpy.random.SeedSequence"
+  root_entropy: 20260814
+  stream_count: 4
+  stream_labels:
+    - stream_01
+    - stream_02
+    - stream_03
+    - stream_04
+  replications_per_stream_per_cell: 1000
+  pooling_rule: "Pool the four independently spawned streams only after each stream passes completeness and convergence checks."
+  implementation_gate: "The full engine must implement this policy before manuscript execution; the current CI run remains a mechanics check."
+
+monte_carlo_precision:
+  event_probability_worst_case_mcse_target: 0.008
+  event_probability_worst_case_mcse_at_4000: 0.007905694150420948
+  approximate_95_half_width_at_4000: 0.015495160233035846
+  report_event_mcse: true
+  report_continuous_mean_mcse: true
+  continuous_mean_mcse_formula: "sample standard deviation across replications divided by sqrt(number defined)"
+  rationale: "Four thousand pooled replications estimate a worst-case event probability near 0.5 with MCSE below 0.008."
+
+undefined_result_policy:
+  report_every_undefined_result: true
+  condition_summaries_on_defined_values: true
+  warning_fraction: 0.01
+  no_claim_fraction: 0.05
+  minimum_defined_fraction_for_cell_claim: 0.95
+  rule: "A cell with more than 5% undefined values for a primary diagnostic may be described as sparse or unstable but cannot support a comparative scientific claim for that diagnostic."
+
+order_policy:
+  population_tie_tolerance: 1.0e-12
+  observed_ties: "Exact equality of observed rational rates; no post-result practical tie threshold."
+  primary_order_outputs:
+    - pairwise_disagreement_share
+    - strict_reversal_share
+  interpretation: "Order diagnostics are decision-relevant only when the outcome is used to rank, prioritise or allocate."
+
+association_policy:
+  primary_omnibus_measure: "bias-unadjusted Cramer's V from a common group-by-binary-outcome table"
+  secondary_interpretable_outputs:
+    - "definition-specific group-rate vectors"
+    - "maximum absolute change in a group rate between the two definitions"
+    - "mean absolute change in group rates between the two definitions"
+    - "pairwise subgroup-order disagreement"
+  no_quality_ranking_from_delta_v: true
+  no_hypothesis_tests_across_simulation_cells: true
 
 allocation_profiles:
   balanced: [1.0, 1.0, 1.0]
@@ -154,6 +247,33 @@ primary_outputs:
   - active_association_total_error
   - broad_association_total_error
   - missing_share
+  - undefined_association_fraction
+
+secondary_outputs:
+  - max_absolute_group_rate_change
+  - mean_absolute_group_rate_change
+  - active_order_error_share
+  - broad_order_error_share
+  - sampling_error_components
+  - observation_process_error_components
+
+reporting_order:
+  - design_validation_and_completeness
+  - generating_population_parameters
+  - definition_specific_levels_and_composition
+  - association_contrasts
+  - subgroup_order_disagreement
+  - sampling_and_observation_error
+  - missingness_and_misclassification_robustness
+  - undefined_result_audit
+
+figure_plan:
+  - "Figure S1: design map of scenario, sample-size and observation-process factors."
+  - "Figure 4: heatmap of mean broad-minus-active Cramer's V by scenario and observation profile."
+  - "Figure 5: strict subgroup-order reversal probability with Monte Carlo uncertainty."
+  - "Figure S2: sampling versus observation-process error decomposition."
+  - "Figure S3: undefined-association frequency and sparse-cell warnings."
+  - "No cell may be selected for a figure solely because it is visually striking."
 
 reporting_rules:
   - "Report every prespecified cell or document its failure."
@@ -162,4 +282,20 @@ reporting_rules:
   - "Do not collapse ODSA diagnostics into one scalar score."
   - "Treat project share within a broad outcome as composition, not as error unless the broad outcome is mislabelled as active use."
   - "Report undefined association margins rather than silently deleting them."
+  - "Report Monte Carlo standard errors for event probabilities and means."
+  - "Do not use p-values across simulation replications or cells."
   - "The CI mode verifies software mechanics only and must not be cited as manuscript evidence."
+  - "The full run is not authorised until the engine implements four independently spawned seed streams and passes the protocol-hash test."
+
+change_control:
+  amendment_required_for:
+    - "any change to scenario probabilities"
+    - "any change to sample sizes, allocation, missingness or misclassification profiles"
+    - "any change to primary estimands or reporting order"
+    - "any change to replication count or seed-stream policy"
+  amendment_record_must_include:
+    - "date"
+    - "reason"
+    - "files changed"
+    - "old and new SHA-256"
+    - "whether any full results had already been viewed"
