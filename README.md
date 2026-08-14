@@ -1,65 +1,75 @@
-# Romanian SME AI survey analysis: aggregate reproducibility package
+# Outcome-Definition Sensitivity Analysis (ODSA)
 
-**Version:** 2.0.2  
-**DOI:** [10.5281/zenodo.21603732](https://doi.org/10.5281/zenodo.21603732)  
-**Repository:** [https://github.com/antonioclim/ai-romania-sme-digital-restructuring](https://github.com/antonioclim/ai-romania-sme-digital-restructuring)
-
-## Version lineage
-
-Version 2.0.2 is the current aligned patch release. It preserves the aggregate-only architecture and all scientific outputs of version 2.0.1 while aligning the repository branch, Git tag, automatic source snapshot and archived asset after the final PyYAML dependency declaration. Versions 1.0.0, 2.0.0 and 2.0.1 remain available only as historical provenance for the current workflow.
+**Development version:** 3.0.0-rc1  
+**Target release:** 3.0.0  
+**Status:** release candidate for methodological consolidation and independent validation  
+**Repository:** https://github.com/antonioclim/ai-romania-sme-digital-restructuring
 
 ## Purpose
 
-This repository reproduces the descriptive estimates, exploratory association diagnostics, tables and figures reported for a cross-sectional survey analysis of AI engagement among Romanian SME-classified responses. The analysis is deliberately organised around outcome-definition sensitivity: reported active use, a heterogeneous project-stage category and their combined sensitivity indicator are preserved as distinct quantities.
+Outcome-Definition Sensitivity Analysis (ODSA) audits how defensible alternative definitions of a categorical outcome change its reported level, internal composition, association with organisational descriptors and the claims that the measure can support.
 
-The build operates exclusively from aggregate counts and low-dimensional contingency tables. It also documents the reconstructed Romanian questionnaire, a British-English documentary translation, response coding, case flow and the limits of the measures. The public tree contains no respondent-level records, open-text answers, direct identifiers, precise timestamps or paradata.
+The version 3 line generalises the earlier aggregate reproduction workflow into a reusable Information Systems methodology. It preserves the privacy-protective, aggregate-only architecture of version 2.0.2 while adding a formal state-space model, definition relations, claim-admissibility checks, group-ranking diagnostics, simulation support and reusable command-line tooling.
 
-## Reproduce the outputs
+## Current evidential status
+
+Version `3.0.0-rc1` is a development release candidate. It is not the final Zenodo release and it does not claim a new DOI. The final `3.0.0` release will be frozen only after the simulation design, independent replication, article-output crosswalk and journal-facing documentation pass the complete hostile audit.
+
+The Romanian organisational AI example uses aggregate counts only. The empirical unit is one completed response, not a verified unique firm. The example does not estimate national prevalence, identify causal effects, establish verified deployment or demonstrate realised organisational value.
+
+## Quick start
 
 ```bash
-python -m pip install --requirement requirements.lock.txt
-make all
+python -m pip install --upgrade pip
+python -m pip install -e ".[test]"
+python -m pytest -q
+python scripts/run_study1.py
+python simulations/run_simulation.py --replications 2000 --seed 20260813
 ```
 
-The complete verification sequence checks frozen inputs, metadata, the Python environment, generated outputs, the public-release boundary, automated tests and the full manifest.
+The command-line interface is available as:
 
-## Repository map
+```bash
+odsa --help
+```
 
-- `data/aggregate/` — aggregate inputs and contingency tables
-- `survey/` — reconstructed questionnaires, dictionaries and coding documentation
-- `scripts/` — deterministic build, metadata and integrity tools
-- `tests/` — analytical and release-boundary tests
-- `outputs/tables/` — generated analytical tables
-- `outputs/figure_source_data/` — source data for the figures
-- `outputs/figures/` — generated figures
-- `metadata/` — analysis contract, claim-evidence ledger and release metadata
+## Repository structure
 
-## Evidential boundary
+- `odsa/` — generic ODSA implementation
+- `examples/romanian_ai_engagement/` — aggregate-only Study 1 inputs
+- `simulations/` — deterministic methodological simulation
+- `scripts/` — reproducible study and release entry points
+- `tests_v3/` — methodological and regression tests for the version 3 line
+- `docs_v3/` — method specification, reporting guidance and governance documentation
+- `data/aggregate/`, `metadata/` and `outputs/` — preserved version 2.0.2 compatibility material during the RC period
 
-The source contained 212 completed responses. The principal analysis comprises 172 completed responses classified through self-reported employee bands of 1–249 employees. The empirical unit is one completed response, not a verified unique firm. The package does not estimate national prevalence and does not identify causal effects, firm-level determinants, verified deployment or organisational restructuring.
+## Core diagnostics
 
-Public aggregate inputs reproduce the following central counts:
+Given an observed state space `S` and an outcome definition `d ⊆ S`, ODSA reports:
 
-| Quantity | Count |
-|---|---:|
-| Reported active AI use | 54/172 |
-| Project-stage category | 51/172 |
-| Active use or project-stage engagement | 105/172 |
-| High implementation-cost constraint | 150/172 |
-| Lack of technical expertise | 137/172 |
-| At least one workforce-preparation measure | 134/172 |
-| Conservative workforce-preparation measure | 121/172 |
+1. the definition register and relations among definitions;
+2. definition-specific outcome levels;
+3. the state composition of broader outcomes;
+4. definition-specific associations with a descriptor;
+5. group-rate ordering and rank reversals;
+6. claim admissibility and explicit inference boundaries.
 
-See `survey/DESCRIPTIONS.md`, `DATA_AVAILABILITY.md` and `PROVENANCE.md` before reusing the material.
+ODSA does not select one universally correct definition. A definition is evaluated against the question and claim it is intended to support.
 
-## Version continuity
+## Privacy and reproducibility boundary
 
-Version 2.0.2 supersedes versions 2.0.0 and 2.0.1 for current scholarly use. The patch changes release engineering and version metadata only. It does not change the aggregate data, analysis, outputs or evidential boundaries. The earlier tags are retained as historical provenance and must not be interpreted as restoring or endorsing the earlier respondent-level public-data architecture.
+The public version 3 workflow contains no respondent-level survey rows, free-text answers, direct identifiers, precise timestamps, IP addresses or paradata. Study 1 is reproducible from frozen aggregate counts and low-dimensional group-by-state tables. Respondent-level recoding, duplicate adjudication and linkage to unique organisations are outside the public evidence boundary.
+
+## Version lineage
+
+- `v2.0.2` remains the current published aggregate reproduction package and is identified by DOI `10.5281/zenodo.21603732`.
+- `3.0.0-rc1` is the development branch for the generic ODSA methodology.
+- `v3.0.0` will supersede `v2.0.2` only for the final Information & Management methodology article and its aligned reproducibility workflow.
 
 ## Citation
 
-The citation metadata are provided in `CITATION.cff`. The version-specific DOI is `10.5281/zenodo.21603732`.
+Do not cite the RC branch as a final archival release. Citation metadata are provided in `CITATION.cff`; a version-specific DOI will be added only after reservation and final release freezing.
 
 ## Licence
 
-The software and associated documentation are distributed under the MIT Licence. The licence does not override ethical, legal or contractual restrictions governing respondent-level source material, which is not included in this release.
+Software and documentation are distributed under the MIT Licence. The licence does not override ethical, legal or contractual restrictions applying to non-public source material.
