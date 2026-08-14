@@ -1,0 +1,10 @@
+group,state,count
+Micro (1–9),active_use,7
+Micro (1–9),project_stage,4
+Micro (1–9),other,25
+Small (10–49),active_use,19
+Small (10–49),project_stage,10
+Small (10–49),other,28
+Medium (50–249),active_use,28
+Medium (50–249),project_stage,37
+Medium (50–249),other,14
