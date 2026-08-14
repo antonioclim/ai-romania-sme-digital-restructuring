@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "protocol_path": "simulations/manuscript_protocol.yml",
+  "protocol_sha256": "157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3",
+  "freeze_date": "2026-08-14",
+  "phase": "IM-R3",
+  "status": "FROZEN DESIGN; full execution not yet authorised",
+  "full_cell_count": 432,
+  "replications_per_cell": 4000,
+  "full_replicate_row_count": 1728000,
+  "stream_count": 4,
+  "replications_per_stream_per_cell": 1000,
+  "root_seed": 20260814,
+  "ci_output_is_manuscript_evidence": false,
+  "implementation_gate": "Full engine must implement SeedSequence-spawned streams before full execution."
+}
