@@ -1,0 +1,103 @@
+schema_version: "1.0"
+design_name: odsa_manuscript_factorial_v1
+role: manuscript-grade methodological simulation
+seed: 20260814
+default_replications_per_cell: 500
+ci_replications_per_cell: 5
+
+states:
+  - active_use
+  - deployed
+  - testing
+  - planning
+  - no_engagement
+
+groups:
+  - Group A
+  - Group B
+  - Group C
+
+base_probabilities:
+  active_use: 0.12
+  deployed: 0.08
+  testing: 0.10
+  planning: 0.15
+  no_engagement: 0.55
+
+active_shift_strength: 0.04
+added_state_shift_strength: 0.09
+added_state_weights:
+  deployed: 0.25
+  testing: 0.35
+  planning: 0.40
+
+gradient_patterns:
+  flat: [0.0, 0.0, 0.0]
+  ascending: [-1.0, 0.0, 1.0]
+  descending: [1.0, 0.0, -1.0]
+  middle_concentrated: [-0.5, 1.0, -0.5]
+
+factorial:
+  sample_size_per_group: [60, 180, 600]
+  active_gradient: [flat, ascending, descending]
+  added_state_gradient: [flat, ascending, descending, middle_concentrated]
+  group_balance: [balanced, imbalanced]
+  misclassification_rate: [0.0, 0.05, 0.15]
+  coarsening: [none, project_collapsed]
+  denominator_regime: [common, definition_dependent]
+
+group_size_multipliers:
+  balanced: [1.0, 1.0, 1.0]
+  imbalanced: [0.5, 1.0, 2.0]
+
+coarsening_maps:
+  none:
+    active_use: active_use
+    deployed: deployed
+    testing: testing
+    planning: planning
+    no_engagement: no_engagement
+  project_collapsed:
+    active_use: active_use
+    deployed: project_stage
+    testing: project_stage
+    planning: project_stage
+    no_engagement: no_engagement
+
+definition_dependent_retention:
+  active_use:
+    active_use: 0.98
+    deployed: 0.90
+    testing: 0.88
+    planning: 0.85
+    project_stage: 0.88
+    no_engagement: 0.55
+  broad_engagement:
+    active_use: 0.75
+    deployed: 0.70
+    testing: 0.70
+    planning: 0.70
+    project_stage: 0.70
+    no_engagement: 0.98
+
+latent_definitions:
+  active_use: [active_use]
+  implemented: [active_use, deployed]
+  tested_or_beyond: [active_use, deployed, testing]
+  broad_engagement: [active_use, deployed, testing, planning]
+  experimental_activity: [active_use, testing]
+
+analysis_definitions:
+  none:
+    active_use: [active_use]
+    broad_engagement: [active_use, deployed, testing, planning]
+  project_collapsed:
+    active_use: [active_use]
+    broad_engagement: [active_use, project_stage]
+
+gates:
+  common_denominator_monotonicity_violations: 0
+  require_positive_and_negative_association_differences: true
+  require_rank_reversal: true
+  require_definition_dependent_apparent_violation: true
+  expected_identifiable_definitions_after_project_collapse: 2
