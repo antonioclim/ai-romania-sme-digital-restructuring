@@ -1,49 +1,26 @@
-.PHONY: verify-source metadata-check environment-check build verify-outputs audit manifest-write test manifest-check all ci clean
+PYTHON ?= python
 
-.NOTPARALLEL:
+.PHONY: install test study1 simulation v3-all ci legacy-v2
 
-verify-source:
-	python scripts/verify_package.py --scope source
-
-metadata-check:
-	python scripts/generate_metadata.py --check
-
-environment-check:
-	python scripts/check_environment.py
-
-build:
-	python scripts/build_aggregate.py
-
-verify-outputs:
-	python scripts/verify_package.py --scope outputs
-
-audit:
-	python scripts/release_audit.py
-	python scripts/scan_package.py
-
-manifest-write:
-	python scripts/generate_manifests.py --write
+install:
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install -e ".[test]"
 
 test:
-	python -m pytest -q
+	$(PYTHON) -m pytest -q tests_v3
 
-manifest-check:
-	python scripts/generate_manifests.py --check
+study1:
+	$(PYTHON) scripts/run_study1.py
 
-all:
-	$(MAKE) verify-source
-	$(MAKE) metadata-check
-	$(MAKE) environment-check
-	$(MAKE) build
-	$(MAKE) verify-outputs
-	$(MAKE) audit
-	$(MAKE) manifest-write
-	$(MAKE) test
-	$(MAKE) manifest-check
+simulation:
+	$(PYTHON) simulations/run_simulation.py --replications 2000 --seed 20260813
 
-ci:
-	$(MAKE) clean
-	$(MAKE) all
+v3-all: test study1 simulation
 
-clean:
-	rm -rf outputs/tables outputs/figures outputs/figure_source_data outputs/reports OUTPUT_SHA256SUMS.txt
+ci: install v3-all
+	@test "$$(tr -d '\r\n' < VERSION)" = "3.0.0-rc1"
+
+# The version 2.0.2 workflow remains available during the RC period for
+# compatibility and provenance. It is not the canonical v3 methodology build.
+legacy-v2:
+	$(PYTHON) scripts/build_aggregate.py
