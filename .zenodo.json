@@ -1,23 +1,33 @@
 {
-  "access_right": "open",
+  "title": "Outcome-Definition Sensitivity Analysis: Information Systems methodology and reproducibility package",
+  "description": "Development release candidate for a reusable Outcome-Definition Sensitivity Analysis methodology. The package formalises state spaces, alternative categorical outcome definitions, level and composition diagnostics, definition-specific association and ranking sensitivity and conservative claim-admissibility checks. It includes an aggregate-only organisational AI example and a deterministic methodological smoke simulation. This release candidate is not the final archival v3.0.0 release and does not claim a new DOI.",
   "creators": [
     {
-      "affiliation": "Department of Economic Informatics and Cybernetics, Bucharest University of Economic Studies",
-      "name": "Clim, Antonio"
+      "name": "Clim, Antonio",
+      "affiliation": "Bucharest University of Economic Studies",
+      "orcid": "0000-0003-4745-0431"
     }
   ],
-  "description": "Aggregate-only research software that reproduces descriptive estimates, exploratory association diagnostics, tables and figures for an analysis of reported AI engagement among Romanian SME-classified responses. The package documents the reconstructed survey instrument and contains no respondent-level records.",
   "keywords": [
-    "artificial intelligence",
-    "small and medium-sized enterprises",
-    "innovation measurement",
-    "outcome definition",
-    "survey analysis",
-    "Romania",
-    "reproducible research"
+    "outcome-definition sensitivity",
+    "information systems",
+    "measurement validity",
+    "technology adoption",
+    "reproducibility"
   ],
   "license": "MIT",
-  "title": "Romanian SME AI survey analysis: aggregate reproducibility package",
   "upload_type": "software",
-  "version": "2.0.2"
+  "version": "3.0.0-rc1",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21603732",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/antonioclim/ai-romania-sme-digital-restructuring/tree/im-v3.0.0-rc1",
+      "relation": "isIdenticalTo",
+      "scheme": "url"
+    }
+  ]
 }
