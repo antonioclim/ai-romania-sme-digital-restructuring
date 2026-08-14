@@ -1,0 +1,128 @@
+name: Materialise IM-R4 source patch
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - .github/im-r4-source-patch.zip
+      - .github/workflows/materialise-im-r4.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialise:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out isolated RC branch
+        uses: actions/checkout@v6
+        with:
+          ref: im-v3.0.0-rc1
+          fetch-depth: 0
+
+      - name: Verify and extract the audited patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          archive = Path('.github/im-r4-source-patch.zip')
+          expected_sha256 = '39713a91659625664e7ef1fb4b586123a0504d2d28a4612b25117cf856141992'
+          expected_paths = {
+              '.github/workflows/odsa-v3-full-simulation.yml',
+              'docs_v3/FULL_ENGINE_CONFORMANCE_AND_EXECUTION_CONTRACT.md',
+              'scripts/build_im_r4_results.py',
+              'simulations/aggregate_frozen_streams.py',
+              'simulations/finalise_frozen_results.py',
+              'simulations/frozen_full_run_common.py',
+              'simulations/full_run_execution_contract.json',
+              'simulations/render_frozen_results.py',
+              'simulations/run_frozen_stream.py',
+              'tests_v3/test_frozen_full_engine.py',
+              'BRANCH_STATUS.md',
+              'CHANGELOG.md',
+              'RELEASE_NOTES.md',
+              'pyproject.toml',
+              'simulations/run_factorial_protocol.py',
+          }
+
+          actual = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if actual != expected_sha256:
+              raise SystemExit(
+                  f'patch SHA-256 mismatch: expected {expected_sha256}, obtained {actual}'
+              )
+
+          with zipfile.ZipFile(archive) as handle:
+              names = set(handle.namelist())
+              if names != expected_paths:
+                  missing = sorted(expected_paths - names)
+                  extra = sorted(names - expected_paths)
+                  raise SystemExit(f'patch path mismatch; missing={missing}, extra={extra}')
+              for info in handle.infolist():
+                  pure = PurePosixPath(info.filename)
+                  if pure.is_absolute() or '..' in pure.parts:
+                      raise SystemExit(f'unsafe archive member: {info.filename}')
+                  if info.is_dir():
+                      continue
+                  target = Path(*pure.parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(handle.read(info))
+          PY
+
+          rm -f .github/im-r4-source-patch.zip
+          rm -f .github/workflows/materialise-im-r4.yml
+
+      - name: Verify exact materialised change set
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import subprocess
+
+          expected = {
+              '.github/workflows/odsa-v3-full-simulation.yml',
+              'docs_v3/FULL_ENGINE_CONFORMANCE_AND_EXECUTION_CONTRACT.md',
+              'scripts/build_im_r4_results.py',
+              'simulations/aggregate_frozen_streams.py',
+              'simulations/finalise_frozen_results.py',
+              'simulations/frozen_full_run_common.py',
+              'simulations/full_run_execution_contract.json',
+              'simulations/render_frozen_results.py',
+              'simulations/run_frozen_stream.py',
+              'tests_v3/test_frozen_full_engine.py',
+              'BRANCH_STATUS.md',
+              'CHANGELOG.md',
+              'RELEASE_NOTES.md',
+              'pyproject.toml',
+              'simulations/run_factorial_protocol.py',
+              '.github/im-r4-source-patch.zip',
+              '.github/workflows/materialise-im-r4.yml',
+          }
+          output = subprocess.check_output(
+              ['git', 'status', '--porcelain=v1'], text=True
+          )
+          changed = {line[3:] for line in output.splitlines() if line.strip()}
+          if changed != expected:
+              raise SystemExit(
+                  f'materialised change-set mismatch; expected={sorted(expected)}, '
+                  f'obtained={sorted(changed)}'
+              )
+          PY
+
+      - name: Commit the IM-R4 engine atomically
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Implement IM-R4 four-stream frozen simulation engine'
+          git push origin HEAD:im-v3.0.0-rc1
