@@ -1,0 +1,42 @@
+state_space_label: Reported organisational AI engagement state
+states:
+  - active_use
+  - project_stage
+  - other
+
+definitions:
+  - name: active_use
+    label: Reported active AI use
+    positive_states:
+      - active_use
+    intended_question: Which responses report current active AI use?
+
+  - name: project_stage
+    label: Reported project-stage engagement
+    positive_states:
+      - project_stage
+    intended_question: Which responses report planning, testing or deployment activity?
+
+  - name: broad_engagement
+    label: Reported active use or project-stage engagement
+    positive_states:
+      - active_use
+      - project_stage
+    intended_question: Which responses report contact with an active or project-stage AI initiative?
+
+claims:
+  - name: current_active_use
+    wording: The response reports current active AI use.
+    allowed_positive_states:
+      - active_use
+
+  - name: project_pipeline
+    wording: The response reports an AI initiative in planning, testing or deployment.
+    allowed_positive_states:
+      - project_stage
+
+  - name: broad_ai_engagement
+    wording: The response reports active use or project-stage engagement with AI.
+    allowed_positive_states:
+      - active_use
+      - project_stage
