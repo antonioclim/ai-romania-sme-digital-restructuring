@@ -1,0 +1,56 @@
+name: ODSA v3 release-candidate CI
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[test]"
+
+      - name: Run version 3 tests
+        run: python -m pytest -q tests_v3
+
+      - name: Reproduce Study 1
+        run: python scripts/run_study1.py
+
+      - name: Run deterministic smoke simulation
+        run: python simulations/run_simulation.py --replications 2000 --seed 20260813
+
+      - name: Verify release-candidate version
+        run: |
+          test "$(tr -d '\r\n' < VERSION)" = "3.0.0-rc1"
+          python - <<'PY'
+          import odsa
+          assert odsa.__version__ == "3.0.0rc1"
+          PY
+
+      - name: Upload generated diagnostic outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: odsa-v3-rc1-diagnostics
+          path: outputs_v3/
+          if-no-files-found: error
