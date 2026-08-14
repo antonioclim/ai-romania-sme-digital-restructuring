@@ -23,19 +23,21 @@ jobs:
           ref: im-v3.0.0-rc1
           fetch-depth: 0
 
-      - name: Verify and extract the audited patch
+      - name: Decode, verify and extract the audited patch
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from __future__ import annotations
 
+          import base64
           import hashlib
+          import io
           import zipfile
           from pathlib import Path, PurePosixPath
 
-          archive = Path('.github/im-r4-source-patch.zip')
-          expected_archive_sha256 = '3eef67abdb10866f363af64ea4a06aa31082ddea5be753ba17aac928666ef129'
+          staged = Path('.github/im-r4-source-patch.zip')
+          expected_decoded_sha256 = '39713a91659625664e7ef1fb4b586123a0504d2d28a4612b25117cf856141992'
           expected_files = {
               '.github/workflows/odsa-v3-full-simulation.yml': 'fcaa0c9b05a62982dca30c23a108d236765fdecd349b7551bb905dfef4b36958',
               'docs_v3/FULL_ENGINE_CONFORMANCE_AND_EXECUTION_CONTRACT.md': '95d6002219be9cc806c33eca12a4f96ef257c4749b57a497cc3c71a45f8233ea',
@@ -54,14 +56,20 @@ jobs:
               'simulations/run_factorial_protocol.py': '2b65c9fdc18f0195dec41fbb12b53d1804d6454e1e0434bb43f783aebbba2623',
           }
 
-          actual_archive_sha256 = hashlib.sha256(archive.read_bytes()).hexdigest()
-          if actual_archive_sha256 != expected_archive_sha256:
+          encoded = ''.join(staged.read_text(encoding='utf-8').split())
+          try:
+              decoded = base64.b64decode(encoded, validate=True)
+          except Exception as exc:
+              raise SystemExit(f'staged patch is not valid base64: {exc}') from exc
+
+          actual_decoded_sha256 = hashlib.sha256(decoded).hexdigest()
+          if actual_decoded_sha256 != expected_decoded_sha256:
               raise SystemExit(
-                  'patch SHA-256 mismatch: '
-                  f'expected {expected_archive_sha256}, obtained {actual_archive_sha256}'
+                  'decoded patch SHA-256 mismatch: '
+                  f'expected {expected_decoded_sha256}, obtained {actual_decoded_sha256}'
               )
 
-          with zipfile.ZipFile(archive) as handle:
+          with zipfile.ZipFile(io.BytesIO(decoded)) as handle:
               names = set(handle.namelist())
               if names != set(expected_files):
                   missing = sorted(set(expected_files) - names)
