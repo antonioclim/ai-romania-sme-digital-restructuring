@@ -1,39 +1,61 @@
-# Release notes — version 2.0.2
+# Release notes — Outcome-Definition Sensitivity Analysis 3.0.0-rc1
 
-Version 2.0.2 is the current aligned release of the privacy-preserving reproducibility package associated with the analysis of reported AI engagement among Romanian SME-classified responses.
+## Status
 
-## Release-integrity correction
+Version `3.0.0-rc1` is an executable development release candidate for the generic Outcome-Definition Sensitivity Analysis methodology. It is not the final archival `v3.0.0` release and no new DOI is claimed.
 
-Version 2.0.1 corrected the GitHub Actions workflow and declared the PyYAML dependency required by the release-integrity tests. The final dependency declaration was committed after the `v2.0.1` tag had already been created. Consequently, the branch and attached release asset were correct, but GitHub's automatic source archives for that tag did not contain the final dependency declaration.
+## Methodological purpose
 
-Version 2.0.2 creates a new, immutable alignment point in which the repository state, tag snapshot, automatic source archives and attached release asset contain the same tested files. The correction does not alter the aggregate inputs, analytical definitions, generated tables, figures, questionnaire documentation or reported numerical results.
+ODSA audits how alternative defensible definitions of a categorical outcome change:
 
-## Version lineage
+- the reported level;
+- the positive-class composition;
+- association with an organisational descriptor;
+- group-specific rates and rankings;
+- the wording of claims that the outcome can support.
 
-- `v1.0.0` belongs to the superseded article framing and public-data architecture and is retained only as historical provenance.
-- `v2.0.0` introduced the aggregate-only rebuild but contained an invalid GitHub Actions expression.
-- `v2.0.1` corrected the workflow and dependency declaration, but its tag preceded the final dependency commit.
-- `v2.0.2` is the release to cite and archive for the current analysis.
+The method is deliberately non-scalar. It does not combine these dimensions into a single quality score and it does not select one universally correct definition.
 
-## What is included
+## Included in RC1
 
-- aggregate counts and low-dimensional contingency tables
-- deterministic analysis and validation code
-- generated tables, figure-source data and figures
-- the reconstructed Romanian questionnaire
-- a British-English documentary translation of the questionnaire
-- question, response-option and variable dictionaries
-- coding, translation and semantic-review protocols
-- a claim-evidence ledger and explicit inferential limits
-- versioned citation metadata for DOI `10.5281/zenodo.21603732`
+- installable Python package `odsa`;
+- command-line interface;
+- formal state-space and definition registers;
+- nested, disjoint and overlapping definition diagnostics;
+- Wilson intervals, Pearson chi-square and Cramér's V;
+- composition, ranking and claim-admissibility diagnostics;
+- aggregate-only Study 1 example reproducing the locked Romanian organisational AI counts;
+- deterministic smoke simulation;
+- methodological and empirical regression tests;
+- GitHub Actions CI for the RC branch;
+- formal method, reporting, ethics, data-governance and AI-assistance documentation.
 
-## What is not included
+## Locked Study 1 regression values
 
-- respondent-level rows
-- open-text answers or translations of those answers
-- direct or replacement response identifiers
-- IP addresses, precise timestamps or paradata
-- raw platform exports
-- editorial correspondence or private governance material
+```text
+Active use:        54/172 = 31.4%; Cramér's V = 0.134
+Project stage:     51/172 = 29.7%; Cramér's V = 0.350
+Broad engagement: 105/172 = 61.0%; Cramér's V = 0.428
+```
 
-The empirical unit is one completed response. The release does not support national-prevalence, causal, firm-level determinant or verified-deployment claims.
+The public example contains aggregate counts only. It does not establish national prevalence, unique firms, causal effects, verified deployment or realised business value.
+
+## Relationship to version 2.0.2
+
+Version `2.0.2` remains the published aggregate reproduction package and is identified by DOI `10.5281/zenodo.21603732`. RC1 preserves that evidence boundary while developing a reusable methodology. Final `v3.0.0` will supersede `v2.0.2` only for the aligned Information & Management methodological article and release workflow.
+
+## Remaining release gates
+
+The final `v3.0.0` release requires:
+
+1. a manuscript-final simulation design;
+2. independent Study 2 replication;
+3. exact article–code–table–figure parity;
+4. final ethics and data-governance wording;
+5. complete Elsevier AI disclosure;
+6. a frozen release asset and version-specific DOI;
+7. hostile internal review with no unresolved critical issue.
+
+## Citation
+
+Do not cite this branch as a final archived release. Use the final version-specific DOI after publication of `v3.0.0`.
