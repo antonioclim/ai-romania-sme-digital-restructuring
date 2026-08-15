@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7A-C1",
+  "status": "FROZEN_CORRECTIVE_IMPLEMENTATION_AMENDMENT_AFTER_FAILED_RUN",
+  "amendment_file": "examples/study2_fat_production_planning/outcome_analysis_implementation_amendment_01.yml",
+  "amendment_sha256": "03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef",
+  "prior_outcome_analysis_freeze_sha256": "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be",
+  "definitions_file_sha256": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa",
+  "effective_contract_sha256": "f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87",
+  "quarantined_failed_run_report_sha256": "c2331d544a131d414736aa049ba13fbce723b56c3889030ef2fb069ea9c777ae",
+  "expected_aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "aggregates_were_rendered_before_correction": true,
+  "analytical_definitions_changed": false,
+  "denominator_membership_rule_changed": false,
+  "weighting_policy_changed": false,
+  "estimands_changed": false,
+  "thresholds_changed": false,
+  "suppression_rules_changed": false,
+  "result_interpretation_permitted": false
+}
