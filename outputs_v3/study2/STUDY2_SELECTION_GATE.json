@@ -1,0 +1,36 @@
+{
+  "phase": "IM-R5",
+  "status": "COMPLETE",
+  "gate": "GO_CONDITIONAL",
+  "submission_gate": "NO-GO",
+  "search_date": "2026-08-15",
+  "candidate_count": 5,
+  "eligible_candidate_count": 3,
+  "automatically_excluded_candidate_count": 2,
+  "selected_candidate_id": "fat_production_planning",
+  "selected_dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "selected_dataset_doi": "10.48529/assd-3j65",
+  "selected_score": 20,
+  "minimum_required_score": 17,
+  "selection_frozen": true,
+  "selection_precedes_microdata_acquisition": true,
+  "selection_precedes_outcome_inspection": true,
+  "microdata_acquired": false,
+  "study2_results_generated": false,
+  "structural_acquisition_gate": "PENDING",
+  "replication_status": "NOT_STARTED",
+  "public_source_microdata_redistribution": "PROHIBITED",
+  "reserve_order": [
+    "us_census_abs_2018_technology",
+    "eurostat_digital_intensity"
+  ],
+  "open_gates": [
+    "browser-based World Bank account login and lawful microdata acquisition",
+    "download version and checksum capture",
+    "structural field and state-mapping verification",
+    "secondary-use ethics and data-governance wording",
+    "locked replication execution",
+    "hostile Study 2 result audit",
+    "cross-study manuscript integration"
+  ]
+}
