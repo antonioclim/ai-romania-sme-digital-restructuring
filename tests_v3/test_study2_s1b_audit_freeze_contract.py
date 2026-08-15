@@ -40,9 +40,20 @@ def test_study2_s1b_audit_freeze_contract() -> None:
         in text
     )
 
-    assert gate["status"] == "DOCUMENTATION_AND_LOCAL_AUDIT_OPEN"
+    assert gate["status"] in {
+        "DOCUMENTATION_AND_LOCAL_AUDIT_OPEN",
+        "COMPLETE_MAPPING_REJECTED",
+    }
     assert gate["outcome_analysis_gate"] == "NO-GO"
     assert gate["submission_gate"] == "NO-GO"
-    assert gate["candidate_mapping_status"] == "NOT_ACCEPTED"
-    assert gate["outcome_fields_permitted"] == []
+
+    if gate["status"] == "DOCUMENTATION_AND_LOCAL_AUDIT_OPEN":
+        assert gate["candidate_mapping_status"] == "NOT_ACCEPTED"
+        assert gate["outcome_fields_permitted"] == []
+    else:
+        assert gate["candidate_mapping_status"] == "REJECTED"
+        assert gate["d9_status"] == "FAIL"
+        assert gate["size_diagnostics"] == "DISABLED"
+        assert gate["outcome_fields_inspected"] == []
+
     assert gate["s1b_audit_freeze_sha256"] == record["freeze_sha256"]
