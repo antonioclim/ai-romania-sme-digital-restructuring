@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7B",
+  "public_summary_file": "outputs_v3/study2/STUDY2_PUBLIC_RESULT_SUMMARY.json",
+  "public_summary_sha256": "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3",
+  "public_result_contract_file": "examples/study2_fat_production_planning/public_result_contract.yml",
+  "public_result_contract_sha256": "bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018",
+  "authoritative_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+  "authoritative_aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "full_internal_report_publication": "PROHIBITED",
+  "next_phase": "IM-R7C"
+}
