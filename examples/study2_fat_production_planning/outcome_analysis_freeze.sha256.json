@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7-A",
+  "status": "FROZEN_BEFORE_STUDY2_OUTCOME_EXECUTION",
+  "freeze_file": "examples/study2_fat_production_planning/outcome_analysis_freeze.yml",
+  "freeze_sha256": "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be",
+  "definitions_file_sha256": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa",
+  "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+  "s1b_final_decision_sha256": "b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b",
+  "outcome_results_inspected_before_freeze": false,
+  "size_based_diagnostics_enabled": false,
+  "candidate_definitions_changed": false,
+  "required_next_evidence": [
+    "IM_R7A_STUDY2_AGGREGATE_RESULT_REPORT_*.json",
+    "screenshots of the execution gate and E1–E12"
+  ],
+  "change_rule": "Any later analytical change requires a dated amendment with the old and new hashes and an explicit statement of whether Study 2 outcomes had already been inspected."
+}
