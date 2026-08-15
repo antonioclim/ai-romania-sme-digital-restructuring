@@ -1,0 +1,74 @@
+schema_version: "1.0"
+phase: "IM-R6D"
+status: "FROZEN_BEFORE_LOCAL_S1B_AUDIT_AND_OUTCOME_INSPECTION"
+freeze_date: "2026-08-15"
+source:
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  pooled_file: "fat0_raw_data_qje.csv"
+  pooled_file_sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
+  official_dictionary:
+    title: "Data Dictionary"
+    record: 8209
+    download_id: 356712
+    expected_format: "XLSX"
+    public_documentation: true
+outcome_access:
+  outcome_fields_read_by_im_r6d: false
+  outcome_results_inspected: false
+  outcome_analysis_permitted: false
+candidate_mapping:
+  status: "PENDING_OFFICIAL_DICTIONARY_CONFIRMATION"
+  codes:
+    "1": "small sampling-frame size stratum"
+    "2": "medium sampling-frame size stratum"
+    "3": "large sampling-frame size stratum"
+  numeric_worker_count_interpretation: false
+  current_size_interpretation: false
+local_audit:
+  fields_permitted:
+    - country
+    - s1b
+    - s7
+    - e1
+  outcome_fields_permitted: []
+  expected_source_label_count: 16
+  documented_country_count: 15
+  expected_s1b_codes:
+    - 1
+    - 2
+    - 3
+  missing_s1b_permitted: false
+  minimum_cell_n_for_displayed_agreement: 30
+  small_cell_suppression_threshold: 5
+  candidate_worker_bands:
+    "1":
+      minimum: 5
+      maximum: 19
+    "2":
+      minimum: 20
+      maximum: 99
+    "3":
+      minimum: 100
+      maximum: null
+decision_rule:
+  official_value_labels_required: true
+  exact_numeric_concordance_required: false
+  local_code_domain_invariance_required: true
+  structural_order_reversal_prohibits_acceptance: true
+  accepted_label_if_all_conditions_pass: "categorical sampling-frame size stratum"
+  failure_action: "Disable all Study 2 size-based diagnostics."
+  prohibited_fallbacks:
+    - "s7"
+    - "e1 as primary"
+    - "s1b as numeric worker count"
+    - "post-outcome relabelling"
+public_boundary:
+  source_microdata_in_repository: false
+  source_microdata_in_zenodo: false
+  row_level_extracts: false
+  permitted_outputs:
+    - public_official_dictionary
+    - structural_code_domains
+    - non_outcome_aggregate_cross_tabs
+    - frozen_analysis_code
