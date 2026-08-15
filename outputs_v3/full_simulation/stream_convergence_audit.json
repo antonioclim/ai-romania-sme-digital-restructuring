@@ -1,0 +1,9 @@
+{
+  "comparison_count": 8640,
+  "failure_count": 0,
+  "failure_threshold": 5.0,
+  "maximum_standardised_stream_deviation": 4.0847414393907515,
+  "status": "PASS",
+  "warning_count": 1,
+  "warning_threshold": 4.0
+}

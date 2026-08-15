@@ -1,0 +1,43 @@
+{
+  "cell_count": 432,
+  "checks": {
+    "aligned_population_delta_positive": true,
+    "boundary_crossing_swap_changes_broad_association_rank_reversal": true,
+    "compensating_population_broad_zero": true,
+    "convergence_failures_zero": true,
+    "event_mcse_meets_frozen_target": true,
+    "independent_full_rerun_core_outputs_byte_identical": true,
+    "nested_level_violations_zero": true,
+    "no_undefined_primary_associations": true,
+    "project_only_population_active_zero": true,
+    "rank_reversal_population_delta_negative": true,
+    "rank_reversal_sample_strict_reversal_probability_one": true,
+    "within_broad_swap_preserves_broad_association_rank_reversal": true,
+    "within_broad_swap_preserves_broad_level_rank_reversal": true
+  },
+  "convergence_failure_count": 0,
+  "convergence_warning_count": 1,
+  "core_rerun_byte_identical": true,
+  "full_simulation_status": "PASS",
+  "gate": "GO",
+  "maximum_event_probability_mcse": 0.007905694150420948,
+  "maximum_standardised_stream_deviation": 4.0847414393907515,
+  "nested_level_violation_count": 0,
+  "open_scientific_gates": [
+    "independent Study 2",
+    "article reconstruction",
+    "ethics determination",
+    "article-code-table-figure parity",
+    "final release and Zenodo DOI"
+  ],
+  "phase": "IM-R4",
+  "protocol_sha256": "157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3",
+  "replicate_row_count": 1728000,
+  "replications_per_cell": 4000,
+  "reporting_specification_sha256": "fc1491f4b1bfc2b3bc5a27e266a2aa11ef1c7f6540e68be6032cb52756a4d7c6",
+  "status": "COMPLETE",
+  "stream_count": 4,
+  "submission_gate": "NO-GO",
+  "undefined_no_claim_cell_count": 0,
+  "undefined_warning_cell_count": 0
+}

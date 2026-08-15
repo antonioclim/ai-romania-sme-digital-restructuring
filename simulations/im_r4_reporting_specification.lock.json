@@ -1,0 +1,7 @@
+{
+  "note": "The selections are direct materialisations of the reporting order and figure plan frozen before full results.",
+  "schema_version": "1.0",
+  "source_protocol_sha256": "157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3",
+  "specification_path": "im_r4_reporting_specification.yml",
+  "specification_sha256": "fc1491f4b1bfc2b3bc5a27e266a2aa11ef1c7f6540e68be6032cb52756a4d7c6"
+}

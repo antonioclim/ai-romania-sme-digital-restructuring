@@ -1,0 +1,115 @@
+{
+  "cell_count": 432,
+  "cell_registry_sha256": "b3408a9a23f67a56800be1b8babfbe318fcd4536ca4f5ef1af05eebb5640da1f",
+  "column_count": 49,
+  "convergence_audit_sha256": "a4c8375ea9a1980a69924b40943d1084c1c96388b1a97e9a008326e77d46880e",
+  "convergence_csv_sha256": "f77f6ca3be8385caabe4462845c2c6fedb7dcbae88c07ff837e56eaf9b623b84",
+  "convergence_failure_count": 0,
+  "convergence_warning_count": 1,
+  "elapsed_seconds": 6.031309254000007,
+  "event_probability_mcse_target": 0.008,
+  "freeze_record_sha256": "308b95e46c4b0b28f043956e1f44d07ee3ee246de4d9cdae174ce144e4bb964c",
+  "manuscript_evidence": true,
+  "maximum_event_probability_mcse": 0.007905694150420948,
+  "maximum_standardised_stream_deviation": 4.0847414393907515,
+  "nested_level_violation_count": 0,
+  "pooled_cell_summary_sha256": "6bc71f1497cad988062df2884b2259c736c52a3c67dc67429db28de740a4a0aa",
+  "protocol_sha256": "157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3",
+  "replicate_row_count": 1728000,
+  "replications_per_cell": 4000,
+  "replications_per_stream_per_cell": 1000,
+  "role": "frozen manuscript-grade four-stream simulation",
+  "root_entropy": 20260814,
+  "status": "PASS",
+  "stream_audits": [
+    {
+      "cell_count": 432,
+      "cell_summary_sha256": "24bd1a204e794a6240868ce034f634905773e95db05233d7a9faefa4e71fe39a",
+      "column_count": 49,
+      "elapsed_seconds": 8.136689538999917,
+      "manuscript_evidence": true,
+      "matrix_filename": "replicates.npy",
+      "matrix_sha256": "7fca908953dc7e0d3e81ce1c041bc879d977d27ef8168e1cad85c5ffdc6a51b7",
+      "matrix_size_bytes": 169344128,
+      "replicate_row_count": 432000,
+      "replications_per_cell": 1000,
+      "role": "independent full-simulation seed stream",
+      "spawn_key": [
+        0
+      ],
+      "status": "PASS",
+      "stream_index": 1
+    },
+    {
+      "cell_count": 432,
+      "cell_summary_sha256": "445373c3d5ac8d1e1e3a716000cf76b97a2d9128913213ed5317d9d093762472",
+      "column_count": 49,
+      "elapsed_seconds": 8.48685802500006,
+      "manuscript_evidence": true,
+      "matrix_filename": "replicates.npy",
+      "matrix_sha256": "caa3786040b3399c9a6ed566a6255ab29079d6d2879369e2173702575643d5fc",
+      "matrix_size_bytes": 169344128,
+      "replicate_row_count": 432000,
+      "replications_per_cell": 1000,
+      "role": "independent full-simulation seed stream",
+      "spawn_key": [
+        1
+      ],
+      "status": "PASS",
+      "stream_index": 2
+    },
+    {
+      "cell_count": 432,
+      "cell_summary_sha256": "0e7a048fd27a734ef0aa5df0a9761cae2b94118424d9fe75a362af534071c7ef",
+      "column_count": 49,
+      "elapsed_seconds": 8.449956332000056,
+      "manuscript_evidence": true,
+      "matrix_filename": "replicates.npy",
+      "matrix_sha256": "78162668c63ca7985501f2d554925f4ace7f31ee3a93c8165556fd9fa611cc0f",
+      "matrix_size_bytes": 169344128,
+      "replicate_row_count": 432000,
+      "replications_per_cell": 1000,
+      "role": "independent full-simulation seed stream",
+      "spawn_key": [
+        2
+      ],
+      "status": "PASS",
+      "stream_index": 3
+    },
+    {
+      "cell_count": 432,
+      "cell_summary_sha256": "99bc7a5e6d93bbe15bb1c93ff87b79919871e0a06aff6b041a4f2fd230ace160",
+      "column_count": 49,
+      "elapsed_seconds": 8.868644664000044,
+      "manuscript_evidence": true,
+      "matrix_filename": "replicates.npy",
+      "matrix_sha256": "eeaf8ca194b9d903873cf61e74a0c38a4cf63c51f6bf530763e3c98b7759a7fc",
+      "matrix_size_bytes": 169344128,
+      "replicate_row_count": 432000,
+      "replications_per_cell": 1000,
+      "role": "independent full-simulation seed stream",
+      "spawn_key": [
+        3
+      ],
+      "status": "PASS",
+      "stream_index": 4
+    }
+  ],
+  "stream_count": 4,
+  "stream_spawn_keys": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ]
+  ],
+  "undefined_no_claim_cell_count": 0,
+  "undefined_warning_cell_count": 0
+}

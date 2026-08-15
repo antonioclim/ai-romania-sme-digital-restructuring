@@ -1,0 +1,12 @@
+{
+  "finaliser_sha256": "c628e0bed0b1b8741351ca5b31c7bd1e37ca55caad92aae93698f7a5d9e416aa",
+  "full_engine_sha256": "30b3e71878fe5057b4ff70f8669f1cc328db83465ef46a99cda62dcd4a9d22d1",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "protocol_sha256": "157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "pyyaml": "6.0.3",
+  "result_builder_sha256": "da8e94956be60b7fb2761c925372d916c1b3a4f9b87035b1e609fd3620c43f02",
+  "schema_version": "1.0",
+  "scipy": "1.17.0"
+}

@@ -1,0 +1,8 @@
+claim_id,claim,evidence,status,boundary
+SIM-C01,"For nested definitions, the broader level never fell below the narrower level in any replicate.",full_simulation_audit.json,SUPPORTED,Arithmetic invariant under a common observed denominator.
+SIM-C02,Nested outcome broadening did not constrain the sign of the association contrast.,reference_process_n250.csv; reference_process_by_sample_size.csv,SUPPORTED,Conditional on the six frozen mechanisms and Cramers V.
+SIM-C03,Strict subgroup-order reversals can occur under nested outcome definitions.,rank_reversal scenario in reference_process_n250.csv,SUPPORTED,Population reversal is encoded only in the rank_reversal mechanism; tie-driven sample instability must be distinguished.
+SIM-C04,Misclassification confined within the broad positive set can alter the narrow association while preserving the broad boundary.,observation_process_n250_balanced.csv,SUPPORTED,Exact for the active/project swap under no missingness in the frozen three-state design.
+SIM-C05,Boundary-crossing misclassification can alter the broad outcome level and association.,observation_process_n250_balanced.csv,SUPPORTED,Conditional on the symmetric 10 per cent project/other profile.
+SIM-C06,ODSA improves managerial decisions.,none,NOT SUPPORTED,Requires a separate decision model or prospective experiment.
+SIM-C07,The simulated probabilities are universal properties of ODSA.,none,PROHIBITED,All frequencies are conditional on the frozen design.

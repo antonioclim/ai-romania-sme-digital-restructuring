@@ -1,0 +1,2 @@
+cell_id,scenario,sample_size_per_group,allocation_profile,misclassification_profile,missingness_profile,metric,stream_index,stream_mean,pooled_mean,standardised_stream_deviation,status
+212,project_only_gradient,500,skewed,active_project_swap_10,project_heavy,cross_definition_pairwise_disagreement_share,2,0.1726666666666667,0.14925,4.0847414393907515,WARNING

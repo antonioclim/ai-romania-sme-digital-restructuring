@@ -1,0 +1,37 @@
+schema_version: '1.0'
+phase: IM-R4
+status: materialisation of selections already fixed by the frozen IM-R3 protocol
+source_protocol_sha256: 157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3
+source_pooled_summary_sha256: 6bc71f1497cad988062df2884b2259c736c52a3c67dc67429db28de740a4a0aa
+reference_process:
+  allocation_profile: balanced
+  misclassification_profile: none
+  missingness_profile: none
+reference_sample_size_per_group: 250
+sample_size_trace:
+- 50
+- 100
+- 250
+- 500
+observation_process_subset:
+  sample_size_per_group: 250
+  allocation_profile: balanced
+  include_all_misclassification_profiles: true
+  include_all_missingness_profiles: true
+figure_data:
+  Figure_4: reference process; all six scenarios and four sample sizes; mean broad-minus-active
+    Cramers V with mean MCSE
+  Figure_5: reference process; all six scenarios and four sample sizes; probability
+    of any strict cross-definition reversal with event MCSE
+  Figure_S2: n=250 balanced; all observation-process profiles; active and broad association
+    observation error
+  Figure_S3: all 432 cells; undefined association fraction and frozen warning/no-claim
+    thresholds
+interpretive_boundaries:
+- No p-values across simulation cells or replications.
+- No quality ranking from the sign of delta V.
+- Sample rank reversals under a generating population tie are instability, not population
+  reversal.
+- The simulation is conditional on the frozen mechanisms and is not empirical prevalence
+  evidence.
+- Managerial decision-quality claims require a separate decision model or experiment.

@@ -2,7 +2,7 @@
 
 **Development version:** 3.0.0-rc1  
 **Target release:** 3.0.0  
-**Status:** formal-method and simulation-protocol release candidate  
+**Status:** full-engine and frozen-simulation release candidate; Study 2 pending  
 **Repository:** `antonioclim/ai-romania-sme-digital-restructuring`
 
 ## Purpose
@@ -23,9 +23,7 @@ public boundary of version 2.0.2.
 ## Current evidential status
 
 Version `3.0.0-rc1` is not a final archival release and does not claim a new
-DOI. The final `3.0.0` release will be frozen only after the full simulation,
-independent replication, article-output crosswalk and journal-facing
-documentation pass hostile audit.
+DOI. The frozen full simulation has passed engine conformance, four-stream execution and hostile result audit. The final `3.0.0` release will be frozen only after independent Study 2, the article-output crosswalk and journal-facing documentation pass hostile audit.
 
 The Romanian organisational AI example uses aggregate counts only. Its
 empirical unit is one completed response, not a verified unique firm. It does
@@ -49,7 +47,7 @@ the current branch implements:
 
 ODSA does not combine these diagnostics into one score.
 
-## Candidate simulation protocol
+## Frozen simulation and full-result status
 
 The branch includes:
 
@@ -58,9 +56,11 @@ The branch includes:
 - within-broad and boundary-crossing misclassification;
 - state-independent and project-heavy missingness;
 - separation of generating population, sampled true and observed values;
-- a deterministic CI subset.
+- four independently spawned seed streams;
+- 432 cells, 4,000 pooled replications per cell and 1,728,000 replicate rows;
+- compact result, convergence, undefined-margin and claim-boundary audits.
 
-CI output verifies software mechanics only. It is not manuscript evidence.
+The full frozen run is manuscript evidence under its prespecified design. CI and smoke output verify software mechanics only.
 
 ## Quick start
 
@@ -71,6 +71,7 @@ python -m pytest -q tests_v3
 python scripts/run_study1.py
 python simulations/run_simulation.py --replications 2000 --seed 20260813
 python simulations/run_factorial_protocol.py --mode ci
+# The manuscript-grade full run is already frozen and audited; do not rerun casually.
 ```
 
 The command-line interface is available as:
@@ -87,7 +88,7 @@ odsa --help
 - `scripts/` — reproducible study entry points
 - `tests_v3/` — regression, formal-property and protocol tests
 - `docs_v3/` — formal specification, novelty boundary and reporting guidance
-- `outputs_v3/` — generated CI diagnostics; not manuscript-final evidence
+- `outputs_v3/` — CI diagnostics and compact frozen full-simulation evidence
 - `data/aggregate/`, `metadata/` and `outputs/` — version 2.0.2 compatibility
   material retained during the RC period
 
@@ -104,6 +105,8 @@ See:
 - `docs_v3/ADJACENT_METHODS_AND_NOVELTY_BOUNDARY.md`
 - `docs_v3/SIMULATION_PROTOCOL.md`
 - `docs_v3/REPORTING_CHECKLIST.md`
+- `docs_v3/IM_R4_FULL_ENGINE_CONFORMANCE_CONTRACT.md`
+- `docs_v3/IM_R4_HOSTILE_RESULT_AUDIT.md`
 
 ## Privacy and reproducibility boundary
 
