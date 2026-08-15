@@ -1,6 +1,6 @@
-schema_version: "1.1"
+schema_version: "1.2"
 phase: "IM-R6B"
-status: "ACQUIRED_STRUCTURAL_GATE_PENDING"
+status: "STRUCTURAL_GATE_VERIFIED_PREANALYSIS_FREEZE_PENDING"
 dataset:
   title: "Technology Sophistication Across Establishments"
   reference_id: "WLD_2019-2023_FAT_v01_M"
@@ -22,23 +22,38 @@ acquisition_evidence:
   main_csv:
     name: "fat0_raw_data_qje.csv"
     uncompressed_bytes: 19633172
+    sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
     crc32: "4418a02b"
   auxiliary_csv:
     name: "isic_data.csv"
     uncompressed_bytes: 376982
     crc32: "8b0bff2d"
 structural_gate:
-  status: "PENDING_LOCAL_BROWSER_EXECUTION"
+  status: "PASS_WITH_MANDATORY_PREANALYSIS_CAVEATS"
+  source_report_sha256: "cadd83d52f66560430b1c9b1e3d05e00b6ce0827fb0a2fc3985c6692e3e4050d"
   result_inspection_permitted: false
+  data_rows: 21055
+  columns: 723
   required_fields:
-    - country
-    - e1
-    - base_wt
-  required_state_source:
-    - direct_b9b
-    - complete_documented_ib9b_most_used_family
-  prohibited_substitute:
-    - db9a_adoption_family_alone
-  mapping_failure_maximum_share: 0.005
-  minimum_primary_denominator: 5000
-  minimum_countries_with_100_valid_cases: 10
+    country: true
+    e1: true
+    base_wt: true
+  state_source: "complete_onehot_ib9b1_to_ib9b5"
+  direct_b9b_present: false
+  separate_other_field_present: false
+  mapping_attempted: 20069
+  mapping_failures: 0
+  primary_eligible_denominator: 20069
+  unresolved_all_zero_rows: 986
+  source_stratum_labels: 16
+  documented_countries: 15
+  employment_numeric_valid: 13399
+  employment_missing: 7656
+  weight_positive_numeric: 21054
+  weight_missing: 1
+preanalysis_freeze_required:
+  - "India and India_Wave2_New source-stratum treatment"
+  - "s1b, s7 and e1 completeness comparison"
+  - "primary size descriptor and source-stratum eligibility thresholds"
+  - "within-stratum weight use and across-stratum synthesis"
+  - "treatment and wording of unresolved all-zero rows"
