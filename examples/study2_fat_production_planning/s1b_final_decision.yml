@@ -1,0 +1,54 @@
+schema_version: "1.0"
+phase: "IM-R6D-B"
+status: "FROZEN_FINAL_BEFORE_STUDY2_OUTCOME_INSPECTION"
+freeze_date: "2026-08-15"
+source:
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  pooled_file_sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
+evidence:
+  local_s1b_report:
+    file: "IM_R6D_S1B_INVARIANCE_REPORT_20260815T111930Z.json"
+    sha256: "cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2"
+    outcome_fields_read: false
+  official_data_dictionary:
+    file: "data_dictionary_fat_qje_final.xlsx"
+    size_bytes: 114881
+    sha256: "bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac"
+    workbook_sheets:
+      - "Data Dictionary"
+      - "Categorical variables_ polan"
+    s1b_row_present: false
+    sampling_size_value_labels_present: false
+    s7_documentation_present: true
+  online_catalog:
+    s1b_label: "Sampling size"
+    value_labels_available: false
+frozen_decision:
+  d9_official_value_label_gate: "FAIL"
+  s1b_candidate_mapping: "REJECTED_FOR_THIS_STUDY2_ANALYSIS"
+  rejection_reason: "The official pooled XLSX does not contain s1b or value labels for codes 1, 2 and 3. Structural concordance cannot replace official semantic labels."
+  s1b_numeric_worker_count_interpretation: false
+  s1b_current_size_interpretation: false
+  s1b_sampling_frame_size_stratum_analysis: false
+  s7_primary_numeric_descriptor: false
+  e1_primary_or_secondary_size_analysis: false
+  all_study2_size_based_diagnostics: "DISABLED"
+  threshold_relaxation_or_post_outcome_relabelling: "PROHIBITED"
+outcome_access:
+  outcomes_inspected_before_final_decision: false
+  outcome_analysis_permitted_now: false
+permitted_next_analysis_scope:
+  - "weighted and unweighted outcome-definition levels within source stratum"
+  - "positive-class composition within source stratum"
+  - "exact level contrasts between frozen definitions"
+  - "source-stratum ordering and ordering changes across definitions"
+  - "cross-stratum descriptive synthesis without a pooled global prevalence"
+prohibited_analysis_scope:
+  - "size-band outcome rates"
+  - "size-based Cramer's V"
+  - "firm-size effects or determinants"
+  - "claims that s1b measures current establishment size"
+  - "post-outcome restoration of s7, e1 or s1b size diagnostics"
+next_phase: "IM-R7-A"
+next_phase_description: "Freeze and implement the Study 2 outcome analysis without any size-based diagnostic."
