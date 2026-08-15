@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R5",
+  "status": "FROZEN_BEFORE_MICRODATA_ACQUISITION_AND_OUTCOME_INSPECTION",
+  "freeze_date": "2026-08-15",
+  "selected_candidate_id": "fat_production_planning",
+  "selected_dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "selected_dataset_doi": "10.48529/assd-3j65",
+  "selected_score": 20,
+  "selection_protocol_git_blob_sha": "c0f5c0dced5112cfe42a13fce3b56fb060ce20f0",
+  "outcome_results_inspected": false,
+  "microdata_acquired": false,
+  "replication_executed": false,
+  "reserve_order": [
+    "us_census_abs_2018_technology",
+    "eurostat_digital_intensity"
+  ],
+  "files": {
+    "docs_v3/STUDY2_CANDIDATE_REGISTER.csv": "7caa8c2e2325971c398c03221350efdc940e507b1b75e8df9f56002a96e991ee",
+    "docs_v3/STUDY2_SELECTION_DECISION.md": "7e17502bc38ede855c1de88f4fdf3abc4a886dd2ff754e8e0ebe405657bcffd4",
+    "docs_v3/STUDY2_SOURCE_EVIDENCE.md": "77c63cec94b79a50016cae11af1f26df53fbe386641cf6b6293fec5af98397af",
+    "examples/study2_fat_production_planning/selection_registry.yml": "a81c0dafb34915581de69722f043e341c88f60e797837203d99d0c6cd7b6aee6",
+    "examples/study2_fat_production_planning/definitions.yml": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa"
+  },
+  "amendment_rule": "Any change requires a dated amendment recording the reason, the old and new hashes and whether any Study 2 outcome had been inspected. A failed structural acquisition gate activates the prespecified reserve order."
+}
