@@ -1,0 +1,93 @@
+name: Verify and close IM-R7C remote synchronisation
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - '.github/workflows/verify-im-r7c-sync.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release-candidate branch
+        uses: actions/checkout@v4
+        with:
+          ref: im-v3.0.0-rc1
+          fetch-depth: 0
+
+      - name: Materialise patch if still required
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -f outputs_v3/study2/STUDY2_PUBLIC_RESULT_SUMMARY.json ]]; then
+            cat .github/im-r7c-sync-patch.part* | tr -d '[:space:]' > /tmp/im-r7c-patch.b64
+            base64 --decode --ignore-garbage /tmp/im-r7c-patch.b64 > /tmp/im-r7c-patch.tar.gz
+            gzip -t /tmp/im-r7c-patch.tar.gz
+            tar -xzf /tmp/im-r7c-patch.tar.gz -C .
+          fi
+
+      - name: Verify hardened public and IM-R7C state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f outputs_v3/study2/STUDY2_PUBLIC_RESULT_SUMMARY.json
+          test -f examples/study2_fat_production_planning/public_result_contract.yml
+          grep -q 'IM-R7C' BRANCH_STATUS.md
+          echo 'f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3  outputs_v3/study2/STUDY2_PUBLIC_RESULT_SUMMARY.json' | sha256sum --check --strict
+          echo 'bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018  examples/study2_fat_production_planning/public_result_contract.yml' | sha256sum --check --strict
+          find . -type f -name '*IM_R7C*.html' -print0 | xargs -0 sha256sum | grep -q '^72f4dea52a586f8c59c5fc60fe9834154c1ba3065d517ada930d2c83593549c8  '
+          find . -type f -name '*.yml' -print0 | xargs -0 sha256sum | grep -q '^b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc  '
+          ! find . -type f -name 'IM_R7A_C1_STUDY2_AGGREGATE_RESULT_REPORT*' | grep -q .
+          ! find . -type f \( -name 'fat0_raw_data_qje.csv' -o -name 'WLD_2019-2023_FAT_v01_M_CSV.zip' \) | grep -q .
+
+      - name: Run complete version 3 test suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pytest -q
+
+      - name: Record verified remote state and remove transfer scaffolding
+        shell: bash
+        run: |
+          set -euo pipefail
+          verified_tree_head="$(git rev-parse HEAD)"
+          cat > outputs_v3/study2/STUDY2_IM_R7C_REMOTE_STATE.json <<EOF
+          {
+            "schema_version": "1.0",
+            "phase": "IM-R7C",
+            "status": "REMOTE_SYNCHRONISATION_VERIFIED",
+            "verified_tree_head_before_state_commit": "${verified_tree_head}",
+            "public_summary_sha256": "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3",
+            "public_result_contract_sha256": "bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018",
+            "weighted_missingness_freeze_sha256": "b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc",
+            "local_browser_tool_sha256": "72f4dea52a586f8c59c5fc60fe9834154c1ba3065d517ada930d2c83593549c8",
+            "complete_pytest_suite": "PASS",
+            "full_internal_corrected_report_publication": "PROHIBITED",
+            "source_microdata_present": false,
+            "user_local_execution": "PENDING",
+            "result_interpretation_gate": "NO-GO",
+            "submission_gate": "NO-GO"
+          }
+          EOF
+          git rm -f .github/im-r7c-sync-patch.part* || true
+          git rm -f .github/im-r7c-sync-diagnostic.txt || true
+          git rm -f .github/workflows/materialise-im-r7c.yml || true
+          git rm -f .github/workflows/materialise-im-r7c-v2.yml || true
+          git rm -f .github/workflows/diagnose-im-r7c.yml || true
+          git rm .github/workflows/verify-im-r7c-sync.yml
+
+      - name: Commit verified IM-R7C state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Verify the IM-R7B audit and IM-R7C frozen state'
+          git push origin HEAD:im-v3.0.0-rc1
