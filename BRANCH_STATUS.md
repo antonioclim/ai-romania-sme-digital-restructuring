@@ -5,8 +5,8 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R5 independent Study 2 discovery, selection audit and replication lock are
-complete.
+IM-R6 browser-only World Bank acquisition has been prepared and is waiting for
+the user-controlled download and sanitised local evidence report.
 
 The branch now contains:
 
@@ -22,7 +22,10 @@ The branch now contains:
 - locked Study 2 states, definitions, denominator, weighting strategy and
   structural acquisition gate;
 - a SHA-256 selection freeze that precedes microdata acquisition and outcome
-  inspection.
+  inspection;
+- a browser-only acquisition and non-redistribution protocol;
+- a pending acquisition gate that prohibits result inspection before
+  structural verification.
 
 ## Full-execution status
 
@@ -39,7 +42,7 @@ convergence failures:               0
 independent core rerun:              byte-identical
 ```
 
-## Study 2 selection status
+## Study 2 acquisition status
 
 ```text
 selected source:        World Bank Technology Sophistication Across Establishments
@@ -47,15 +50,20 @@ survey reference:       WLD_2019-2023_FAT_v01_M
 dataset DOI:            10.48529/assd-3j65
 focal function:         production-planning MOST-used method
 selection score:        20/21
+browser guide:          prepared
+local hash tool:        prepared outside the repository
 microdata acquired:     no
+microdata redistributed:no
 outcomes inspected:     no
+structural gate:        NOT_STARTED
 replication executed:   no
-selection gate:         GO_CONDITIONAL
+acquisition gate:       CONDITIONAL_GO
 submission gate:        NO-GO
 ```
 
-Selection is conditional on the structural acquisition gate. The source
-microdata must not be added to the public repository.
+Only a sanitised report containing file metadata, SHA-256 and archive member
+names may be shared for verification. The source microdata and extracted files
+must remain under the authorised user's control.
 
 ## Isolation
 
@@ -67,7 +75,8 @@ microdata must not be added to the public repository.
 
 ## Open scientific gates
 
-- browser-based lawful acquisition of the selected Study 2 source;
+- user-controlled browser acquisition of the exact pooled Study 2 source;
+- checksum and container-inventory verification;
 - structural field, denominator and state-mapping verification;
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
@@ -87,4 +96,5 @@ addresses, precise timestamps or paradata may be added to the version 3 public
 workflow.
 
 The selected Study 2 source microdata are governed by the World Bank
-Microdata Library terms and must not be redistributed through GitHub or Zenodo.
+Microdata Library terms and must not be redistributed through GitHub, Zenodo,
+email, cloud storage or an AI service without prior written permission.
