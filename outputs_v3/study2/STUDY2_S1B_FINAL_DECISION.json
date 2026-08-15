@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6D-B",
+  "status": "COMPLETE_MAPPING_REJECTED",
+  "gate": "GO_TO_IM_R7_A_WITHOUT_SIZE_DIAGNOSTICS",
+  "outcome_analysis_gate": "NO-GO",
+  "submission_gate": "NO-GO",
+  "dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "evidence": {
+    "official_dictionary": {
+      "name": "data_dictionary_fat_qje_final.xlsx",
+      "size_bytes": 114881,
+      "sha256": "bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac",
+      "sheet_names": [
+        "Data Dictionary",
+        "Categorical variables_ polan"
+      ],
+      "s1b_present": false,
+      "sampling_size_value_labels_present": false,
+      "s7_present": true
+    },
+    "local_audit": {
+      "sha256": "cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2",
+      "d1_to_d8": "PASS",
+      "d9": "FAIL_AFTER_EXTERNAL_REVIEW",
+      "d10": "PASS",
+      "observed_codes": [
+        "1",
+        "2",
+        "3"
+      ],
+      "missing_count": 0,
+      "invalid_count": 0,
+      "s7_reversed_source_strata": 0,
+      "e1_reversed_source_strata": 0
+    }
+  },
+  "final_decision": {
+    "candidate_mapping_status": "REJECTED",
+    "size_diagnostics": "DISABLED",
+    "s1b_numeric_interpretation": "PROHIBITED",
+    "s1b_categorical_size_analysis": "DISABLED",
+    "s7_size_analysis": "DISABLED",
+    "e1_size_analysis": "DISABLED",
+    "reason": "The official pooled dictionary does not provide s1b value labels. Structural agreement is insufficient to establish semantic equivalence."
+  },
+  "outcomes_inspected": false,
+  "next_phase": "IM-R7-A",
+  "next_phase_scope": "Study 2 outcome-analysis freeze and browser-only execution without size-based diagnostics"
+}
