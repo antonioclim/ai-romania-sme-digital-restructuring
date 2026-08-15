@@ -1,0 +1,116 @@
+schema_version: '1.0'
+phase: IM-R5
+protocol_status: FROZEN_BEFORE_MICRODATA_ACQUISITION
+selection_date: '2026-08-15'
+selection_basis: metadata_documentation_access_terms_and_state_architecture_only
+outcome_results_inspected: false
+microdata_acquired: false
+selected_candidate:
+  candidate_id: fat_production_planning
+  title: Technology Sophistication Across Establishments
+  survey_reference: WLD_2019-2023_FAT_v01_M
+  dataset_doi: 10.48529/assd-3j65
+  version_date: '2026-01-30'
+  collection_period: 2019-06-01/2023-12-30
+  provider: World Bank Microdata Library
+  unit_of_analysis: establishment
+  documented_cases: 21055
+  documented_countries: 15
+  focal_business_function: production_planning
+  associated_article_doi: 10.1093/qje/qjag018
+  reproducibility_package_doi: 10.60572/xw8f-0k41
+source_field_priority:
+- priority: 1
+  rule: Use the direct categorical b9b field only if it is present in the acquired
+    pooled file and its labels match the official source documentation.
+- priority: 2
+  rule: Otherwise reconstruct the state only from a complete documented pooled MOST-used
+    indicator family after dictionary verification and a one-state-per-valid-row invariant
+    check.
+- priority: 3
+  rule: Do not reconstruct the most-used state from db9a1-db9a5 adopted-any indicators.
+confirmed_metadata_fields:
+- country
+- firmid
+- base_wt
+- e1
+- db9a1
+- db9a2
+- db9a3
+- db9a4
+- db9a5
+- ib9b4
+primary_denominator:
+  included_states:
+  - handwritten_processes
+  - standard_software
+  - mobile_apps_or_digital_platforms
+  - specialised_software
+  - erp
+  excluded_source_states:
+  - other
+  excluded_values:
+  - missing
+  - dont_know
+  - not_applicable
+  - structurally_ineligible
+  report_all_exclusions: true
+primary_descriptor:
+  source_field: e1
+  groups:
+    small: 5-19
+    medium: 20-99
+    large: 100_or_more
+secondary_descriptor: country
+weighting_policy:
+  primary: country_specific_using_base_wt_where_documented_and_valid
+  cross_country:
+  - country_count
+  - median
+  - interquartile_range
+  - minimum
+  - maximum
+  - direction_count
+  - ranking_stability_count
+  forbidden: naive_pooled_world_prevalence
+  unweighted_pooled_role: computational_sensitivity_only
+structural_acquisition_gate:
+- id: G1
+  condition: acquired_record_matches_WLD_2019-2023_FAT_v01_M
+- id: G2
+  condition: downloaded_version_and_checksum_recorded
+- id: G3
+  condition: country_e1_and_base_wt_present_and_interpretable
+- id: G4
+  condition: direct_b9b_or_complete_documented_most_used_equivalent_exists
+- id: G5
+  condition: valid_rows_map_to_exactly_one_locked_state
+- id: G6
+  condition: state_mapping_failure_share_lte_0.005
+- id: G7
+  condition: primary_denominator_n_gte_5000
+- id: G8
+  condition: at_least_10_countries_have_n_gte_100
+- id: G9
+  condition: source_labels_match_official_questionnaire_and_dictionary
+- id: G10
+  condition: public_reproducibility_does_not_require_source_microdata_redistribution
+reserve_order:
+- us_census_abs_2018_technology
+- eurostat_digital_intensity
+public_release_boundary:
+  include:
+  - source_citation
+  - acquisition_instructions
+  - source_version
+  - permitted_checksum
+  - transformation_code
+  - state_register
+  - definition_register
+  - derived_aggregates
+  - tests
+  - claim_evidence_mapping
+  exclude:
+  - source_microdata
+  - identifiers
+  - row_level_extracts
