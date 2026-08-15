@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6C",
+  "status": "PENDING_LOCAL_NON_OUTCOME_AUDIT",
+  "gate": "CONDITIONAL_GO_TO_LOCAL_PREANALYSIS_AUDIT",
+  "outcome_analysis_gate": "NO-GO",
+  "submission_gate": "NO-GO",
+  "dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+  "preanalysis_freeze_sha256": "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727",
+  "fields_permitted_for_local_audit": [
+    "country",
+    "s1b",
+    "s7",
+    "e1",
+    "base_wt"
+  ],
+  "outcome_fields_permitted": [],
+  "required_next_evidence": [
+    "IM_R6C_PREANALYSIS_AUDIT_REPORT_*.json",
+    "screenshot of the local decision and gates"
+  ],
+  "user_action": "Run the local browser-only audit on fat0_raw_data_qje.csv.",
+  "source_microdata_must_remain_local": true
+}
