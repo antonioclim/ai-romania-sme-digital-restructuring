@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6C",
+  "status": "FROZEN_BEFORE_STUDY2_OUTCOME_INSPECTION",
+  "freeze_file": "examples/study2_fat_production_planning/preanalysis_freeze.yml",
+  "freeze_sha256": "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727",
+  "outcome_results_inspected_before_freeze": false,
+  "source_report_basis": "IM-R6B structural metadata only",
+  "amendment": "Primary size candidate changed from e1 to s7 before outcome inspection because e1 missingness was 36.36%.",
+  "change_rule": "Any later change requires a dated amendment with old and new hashes and disclosure of whether outcomes had been inspected."
+}
