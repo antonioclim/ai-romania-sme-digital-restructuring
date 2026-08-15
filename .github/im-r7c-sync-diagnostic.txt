@@ -1,0 +1,24 @@
+EXPECTED PARTS
+part01 8000 a6c42084987c8037edbb854bc403ce6f98cc4df30d029623e75cd5fc6543b336
+part02 8000 48d229df1c89793547c94d1fd1dd48cb75fc1386e109790a33c9ff6fcdfdb00d
+part03 8000 097f0b47def76133280d50b8d4cac98583af8531e679a0434e1621330077a9be
+part04 8000 6b75d1d4cd6e38fb937567af27a566afde6a23edc49c40a35a0b1e62f1e00146
+part05 7668 e39ef82c7244d97dd49571e72062cfe60491ac148446231782a2c07143b89576
+
+OBSERVED PARTS
+im-r7c-sync-patch.part01 8000 c0c00214d267e3373785636ac4e64267cb19d7f796b37689569b436bc897aed7
+im-r7c-sync-patch.part02 8000 0b1f31f1aef279ed1a31fa24fbce9e0668072836214b985c11f0c6ed8105503b
+im-r7c-sync-patch.part03 8000 2d671df73374ab1718fd93be6754a8d4062895cbb3da2c92521bd70a05a926d5
+im-r7c-sync-patch.part04 8002 06453404f9225553526573e792a06da18d334029acb2f18001b8663a4188aafd
+im-r7c-sync-patch.part05 7752 5e3ac9ea32e1fe4cfc4e60f77d8bb7cae5788b0f03e45ace775081c59e40feaf
+
+raw_chars 39754
+clean_chars 39649
+base64: invalid input
+decode_status 1
+decoded_sha256 478f9a4aea0ded2ef227010fd3c8b6d8128062ce689971704b39144782005b2e
+
+gzip: /tmp/patch.tar.gz: invalid compressed data--crc error
+
+gzip: /tmp/patch.tar.gz: invalid compressed data--length error
+gzip_status 1
