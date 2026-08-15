@@ -1,27 +1,23 @@
 {
-  "schema_version": "1.0",
-  "phase": "IM-R6D",
-  "status": "DOCUMENTATION_AND_LOCAL_AUDIT_OPEN",
-  "gate": "CONDITIONAL_GO_TO_BROWSER_ONLY_S1B_AUDIT",
+  "schema_version": "1.1",
+  "phase": "IM-R6D-B",
+  "status": "COMPLETE_MAPPING_REJECTED",
+  "gate": "GO_TO_IM_R7_A_WITHOUT_SIZE_DIAGNOSTICS",
   "outcome_analysis_gate": "NO-GO",
   "submission_gate": "NO-GO",
   "dataset_reference": "WLD_2019-2023_FAT_v01_M",
   "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
   "s1b_audit_freeze_sha256": "1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88",
-  "official_mapping_status": "PENDING_PUBLIC_XLSX_REVIEW",
-  "candidate_mapping_status": "NOT_ACCEPTED",
-  "fields_permitted_for_local_audit": [
-    "country",
-    "s1b",
-    "s7",
-    "e1"
-  ],
-  "outcome_fields_permitted": [],
-  "required_next_evidence": [
-    "public World Bank Data Dictionary XLSX from record 8209",
-    "IM_R6D_S1B_INVARIANCE_REPORT_*.json",
-    "screenshots of D1-D10"
-  ],
+  "s1b_final_decision_sha256": "b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b",
+  "official_dictionary_status": "REVIEWED_S1B_VALUE_LABELS_NOT_PROVIDED",
+  "official_dictionary_sha256": "bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac",
+  "local_audit_status": "PASS_WITH_D9_EXTERNAL_FAILURE",
+  "local_audit_sha256": "cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2",
+  "candidate_mapping_status": "REJECTED",
+  "d9_status": "FAIL",
+  "size_diagnostics": "DISABLED",
+  "outcome_fields_inspected": [],
+  "outcome_fields_permitted_before_im_r7_a": [],
   "source_microdata_must_remain_local": true,
-  "next_phase_after_evidence": "IM-R6D-B_FINAL_DECISION"
+  "next_phase": "IM-R7-A"
 }
