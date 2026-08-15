@@ -5,23 +5,18 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6C is complete. The authorised user executed the frozen browser-only
-pre-analysis audit on the non-outcome fields `country`, `s1b`, `s7`, `e1` and
-`base_wt`. The tool read no production-planning technology field and no Study 2
-outcome result has been inspected.
+IM-R6D-A is open. IM-R6C remains closed with a frozen descriptor failure:
+1,538 of 21,055 valid `s7` values (7.305%) were below the prespecified
+five-worker universe threshold, exceeding the frozen 1% maximum. `s7` is
+therefore disabled as the primary numeric size descriptor, the threshold will
+not be relaxed and `e1` will not be promoted to primary after the failure.
 
-The audit returned `NO-GO` because 1,538 of 21,055 valid `s7` values (7.305%)
-are below the prespecified five-worker universe threshold, exceeding the frozen
-1% maximum. In accordance with the preanalysis freeze, `s7` is disabled as the
-primary numeric size descriptor. The threshold will not be relaxed, the
-below-five cases will not be repaired by assumption and `e1` will not be
-promoted to the primary descriptor after the failure.
-
-The next phase is IM-R6D: official code-label verification and cross-source-
-stratum invariance audit for `s1b`. `s1b` may be considered only as a
-categorical sampling-frame size stratum, never as a numeric worker count. If
-its official mapping cannot be verified and frozen before outcome inspection,
-all size-based Study 2 diagnostics remain disabled.
+IM-R6D asks whether `s1b` may be used only as a categorical sampling-frame size
+stratum. The candidate mapping `1/2/3 → small/medium/large` has been frozen but
+is **not accepted**. Acceptance requires both a browser-only local invariance
+audit and review of the official pooled World Bank Data Dictionary XLSX. `s1b`
+will never be interpreted as a numeric worker count or current establishment
+size. No production-planning outcome has been inspected.
 
 The branch contains:
 
@@ -39,8 +34,9 @@ The branch contains:
   inspection;
 - browser-only acquisition, non-redistribution and structural-gate protocols;
 - verified sanitised acquisition and structural evidence;
-- a frozen pre-analysis harmonisation protocol;
 - the sanitised IM-R6C audit and hostile external review;
+- a frozen IM-R6D `s1b` documentation and invariance protocol;
+- an official-source audit that does not assume cross-country design identity;
 - executable regression tests preserving the Study 2 outcome-analysis NO-GO
   gate.
 
@@ -88,17 +84,21 @@ preanalysis freeze SHA-256: 8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd
 IM-R6C report SHA-256:     f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
 s7 valid / below five:    21,055 / 1,538
 s7 below-five share:      7.305%
-IM-R6C frozen gate:       NO-GO
 primary numeric descriptor: DISABLED
 s7 threshold relaxation:  PROHIBITED
 e1 promotion to primary:  PROHIBITED
-s1b observed codes:       1, 2, 3; official categorical mapping audit pending
-analysis gate:            NO-GO
+s1b observed codes:       1, 2, 3
+s1b candidate mapping:    1/2/3 → small/medium/large frame strata
+s1b candidate status:     NOT ACCEPTED
+s1b audit freeze SHA-256: 1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88
+official pooled dictionary: PENDING PUBLIC XLSX REVIEW
+local IM-R6D audit:       PENDING
+a nalysis gate:           NO-GO
 replication executed:     no
 submission gate:          NO-GO
 ```
 
-## Frozen consequences of IM-R6C
+## Frozen consequences of IM-R6C and IM-R6D
 
 1. `s7` is not used as a cross-source-stratum primary numeric descriptor.
 2. The 1% below-universe threshold is not relaxed after audit inspection.
@@ -106,16 +106,18 @@ submission gate:          NO-GO
    assumption.
 4. `e1` is not promoted to the primary descriptor; any complete-case role
    remains secondary and requires a final scope decision.
-5. `s1b` is never interpreted as a numeric worker count.
-6. `s1b` may be considered only as a categorical sampling-frame size stratum
-   after official code-label and cross-source-stratum invariance verification.
-7. `India` and `India_Wave2_New` remain separate analytical source strata and
+5. `s1b` is never interpreted as a numeric worker count or current firm size.
+6. The candidate `s1b` mapping remains unaccepted until the official pooled
+   Data Dictionary and local invariance report are jointly reviewed.
+7. If the mapping cannot be verified before outcome inspection, all Study 2
+   size-based diagnostics are disabled.
+8. `India` and `India_Wave2_New` remain separate analytical source strata and
    map to one reporting country.
-8. No pooled global prevalence or pooled cross-country association is
+9. No pooled global prevalence or pooled cross-country association is
    permitted.
-9. The 986 unresolved all-zero outcome rows remain outside the primary
-   denominator and are not labelled `Other`, missing or non-users by
-   assumption.
+10. The 986 unresolved all-zero outcome rows remain outside the primary
+    denominator and are not labelled `Other`, missing or non-users by
+    assumption.
 
 ## Isolation
 
@@ -127,7 +129,9 @@ submission gate:          NO-GO
 
 ## Open scientific gates
 
-- IM-R6D official `s1b` mapping and categorical-descriptor decision;
+- public pooled Data Dictionary XLSX review;
+- browser-only IM-R6D local `s1b` invariance audit;
+- final categorical-descriptor decision and SHA-256 closure;
 - final Study 2 analysis-specification closure;
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
@@ -148,4 +152,6 @@ workflow.
 
 The selected Study 2 source microdata are governed by the World Bank Microdata
 Library terms and must not be redistributed through GitHub, Zenodo, email,
-cloud storage or an AI service without prior written permission.
+cloud storage or an AI service without prior written permission. The public
+Data Dictionary XLSX is documentation and may be reviewed separately from the
+restricted microdata.
