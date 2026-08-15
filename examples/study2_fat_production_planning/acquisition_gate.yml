@@ -1,6 +1,6 @@
-schema_version: "1.0"
-phase: "IM-R6"
-status: "PENDING_BROWSER_ACQUISITION"
+schema_version: "1.1"
+phase: "IM-R6B"
+status: "ACQUIRED_STRUCTURAL_GATE_PENDING"
 dataset:
   title: "Technology Sophistication Across Establishments"
   reference_id: "WLD_2019-2023_FAT_v01_M"
@@ -9,18 +9,26 @@ dataset:
   selected_function: "Production Planning — MOST-used method"
 access:
   login_required: true
-  user_must_accept_displayed_terms_personally: true
+  terms_accepted_by_authorised_user: true
   source_microdata_redistribution: "PROHIBITED_WITHOUT_PRIOR_WRITTEN_AGREEMENT"
   permitted_public_outputs: "derived aggregate outputs and non-disclosive documentation"
 acquisition_evidence:
-  acquired: false
-  exact_filename: null
-  size_bytes: null
-  sha256: null
-  container_status: null
-  member_count: null
+  acquired: true
+  exact_filename: "WLD_2019-2023_FAT_v01_M_CSV.zip"
+  size_bytes: 1752618
+  sha256: "6d77d3ffb9dcef2ca4534e1c438ddd2e0b357eb852e6c5b48aa5fa6c3cbe2f0e"
+  container_status: "PASS"
+  member_count: 2
+  main_csv:
+    name: "fat0_raw_data_qje.csv"
+    uncompressed_bytes: 19633172
+    crc32: "4418a02b"
+  auxiliary_csv:
+    name: "isic_data.csv"
+    uncompressed_bytes: 376982
+    crc32: "8b0bff2d"
 structural_gate:
-  status: "NOT_STARTED"
+  status: "PENDING_LOCAL_BROWSER_EXECUTION"
   result_inspection_permitted: false
   required_fields:
     - country
@@ -28,7 +36,9 @@ structural_gate:
     - base_wt
   required_state_source:
     - direct_b9b
-    - complete_documented_most_used_family
+    - complete_documented_ib9b_most_used_family
+  prohibited_substitute:
+    - db9a_adoption_family_alone
   mapping_failure_maximum_share: 0.005
   minimum_primary_denominator: 5000
   minimum_countries_with_100_valid_cases: 10
