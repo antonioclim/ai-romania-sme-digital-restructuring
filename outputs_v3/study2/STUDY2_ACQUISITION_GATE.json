@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6",
+  "status": "PENDING_USER_BROWSER_ACQUISITION",
+  "gate": "CONDITIONAL_GO",
+  "submission_gate": "NO-GO",
+  "dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "dataset_doi": "10.48529/assd-3j65",
+  "microdata_acquired": false,
+  "microdata_uploaded_to_repository": false,
+  "outcome_results_inspected": false,
+  "structural_gate": "NOT_STARTED",
+  "required_next_evidence": [
+    "pre-download screenshot",
+    "local sanitised acquisition JSON",
+    "post-hash screenshot"
+  ],
+  "redistribution_rule": "Do not upload or redistribute source microdata without prior written agreement."
+}
