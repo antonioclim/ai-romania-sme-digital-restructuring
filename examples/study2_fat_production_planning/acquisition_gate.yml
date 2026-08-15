@@ -1,0 +1,34 @@
+schema_version: "1.0"
+phase: "IM-R6"
+status: "PENDING_BROWSER_ACQUISITION"
+dataset:
+  title: "Technology Sophistication Across Establishments"
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  version_date: "2026-01-30"
+  selected_function: "Production Planning — MOST-used method"
+access:
+  login_required: true
+  user_must_accept_displayed_terms_personally: true
+  source_microdata_redistribution: "PROHIBITED_WITHOUT_PRIOR_WRITTEN_AGREEMENT"
+  permitted_public_outputs: "derived aggregate outputs and non-disclosive documentation"
+acquisition_evidence:
+  acquired: false
+  exact_filename: null
+  size_bytes: null
+  sha256: null
+  container_status: null
+  member_count: null
+structural_gate:
+  status: "NOT_STARTED"
+  result_inspection_permitted: false
+  required_fields:
+    - country
+    - e1
+    - base_wt
+  required_state_source:
+    - direct_b9b
+    - complete_documented_most_used_family
+  mapping_failure_maximum_share: 0.005
+  minimum_primary_denominator: 5000
+  minimum_countries_with_100_valid_cases: 10
