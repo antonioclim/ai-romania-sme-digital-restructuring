@@ -1,0 +1,78 @@
+schema_version: '1.0'
+status: FROZEN_BEFORE_OUTCOME_INSPECTION
+source_business_function: production_planning_most_used_method
+source_categories:
+- code: 1
+  state: handwritten_processes
+  label: Production Planning - Handwritten processes
+- code: 2
+  state: standard_software
+  label: Production Planning - Computers (standard software)
+- code: 3
+  state: mobile_apps_or_digital_platforms
+  label: Production Planning - Mobile Apps or digital platforms
+- code: 4
+  state: specialised_software
+  label: Production Planning - Specialised software
+- code: 5
+  state: erp
+  label: Production Planning - ERP
+- code: 6
+  state: other
+  label: Production Planning - Other
+definitions:
+  integrated_planning:
+    positive_states:
+    - erp
+    question: Is ERP the establishment's most-used production-planning method?
+    supports:
+    - most_used_production_planning_method_is_erp
+    does_not_support:
+    - enterprise_wide_digital_transformation
+    - causal_performance_effect
+  specialised_planning:
+    positive_states:
+    - specialised_software
+    - erp
+    question: Is the most-used production-planning method specialised or integrated
+      software?
+    supports:
+    - most_used_method_is_specialised_or_integrated_software
+    does_not_support:
+    - all_positive_establishments_use_erp
+    - enterprise_wide_digital_transformation
+  digitally_enabled_planning:
+    positive_states:
+    - standard_software
+    - mobile_apps_or_digital_platforms
+    - specialised_software
+    - erp
+    question: Is the most-used production-planning method computer- or platform-enabled
+      rather than handwritten?
+    supports:
+    - most_used_method_is_computer_or_platform_enabled
+    does_not_support:
+    - all_positive_establishments_use_specialised_software
+    - all_positive_establishments_use_erp
+    - integrated_planning_architecture
+locked_relations:
+- integrated_planning_strict_subset_specialised_planning
+- specialised_planning_strict_subset_digitally_enabled_planning
+primary_denominator_states:
+- handwritten_processes
+- standard_software
+- mobile_apps_or_digital_platforms
+- specialised_software
+- erp
+excluded_from_primary_denominator:
+- other
+- missing
+- dont_know
+- not_applicable
+- structurally_ineligible
+prohibited_interpretations:
+- one_universally_correct_definition
+- erp_is_intrinsically_best
+- global_prevalence
+- firm_size_causality
+- unweighted_pooled_population_estimate
