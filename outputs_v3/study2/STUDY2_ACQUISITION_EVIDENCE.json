@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6A",
+  "status": "ACQUISITION_EVIDENCE_VERIFIED",
+  "privacy_statement": "This report contains file metadata and container member names only. It contains no microdata rows and no file content.",
+  "processing_location": "local browser tab",
+  "network_upload_performed": false,
+  "user_confirmation_original_unmodified": true,
+  "dataset": {
+    "title": "Technology Sophistication Across Establishments",
+    "reference_id": "WLD_2019-2023_FAT_v01_M",
+    "doi": "10.48529/assd-3j65",
+    "source_record": "https://microdata.worldbank.org/catalog/8209",
+    "selected_study2_function": "Production Planning — MOST-used method"
+  },
+  "file": {
+    "name": "WLD_2019-2023_FAT_v01_M_CSV.zip",
+    "size_bytes": 1752618,
+    "browser_mime_type": "application/x-zip-compressed",
+    "last_modified_utc": "2026-08-15T05:34:18.886Z",
+    "sha256": "6d77d3ffb9dcef2ca4534e1c438ddd2e0b357eb852e6c5b48aa5fa6c3cbe2f0e"
+  },
+  "container": {
+    "status": "PASS",
+    "declared_entry_count": 2,
+    "entries": [
+      {
+        "name": "fat0_raw_data_qje.csv",
+        "compressed_bytes": 1654763,
+        "uncompressed_bytes": 19633172,
+        "crc32": "4418a02b",
+        "compression_method": 8,
+        "encrypted": false
+      },
+      {
+        "name": "isic_data.csv",
+        "compressed_bytes": 97613,
+        "uncompressed_bytes": 376982,
+        "crc32": "8b0bff2d",
+        "compression_method": 8,
+        "encrypted": false
+      }
+    ]
+  },
+  "microdata_in_repository": false,
+  "outcome_results_inspected": false
+}
