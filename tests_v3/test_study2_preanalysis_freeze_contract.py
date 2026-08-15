@@ -23,7 +23,9 @@ def test_study2_preanalysis_freeze_contract() -> None:
     assert hashlib.sha256(freeze_path.read_bytes()).hexdigest() == record[
         "freeze_sha256"
     ]
-    assert record["freeze_sha256"] == "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727"
+    assert record["freeze_sha256"] == (
+        "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727"
+    )
     assert record["outcome_results_inspected_before_freeze"] is False
 
     text = freeze_path.read_text(encoding="utf-8")
@@ -34,15 +36,35 @@ def test_study2_preanalysis_freeze_contract() -> None:
     assert 'pooled_world_estimate: false' in text
     assert 'outcome_analysis_permitted: false' in text
 
-    assert gate["status"] == "PENDING_LOCAL_NON_OUTCOME_AUDIT"
+    # The original freeze remains immutable even after its deterministic local
+    # audit has been completed. The gate may advance from PENDING to the
+    # recorded failure state, but it must never open outcome analysis.
+    assert gate["status"] in {
+        "PENDING_LOCAL_NON_OUTCOME_AUDIT",
+        "COMPLETE_WITH_FROZEN_DESCRIPTOR_FAILURE",
+    }
     assert gate["outcome_analysis_gate"] == "NO-GO"
     assert gate["submission_gate"] == "NO-GO"
-    assert gate["fields_permitted_for_local_audit"] == [
-        "country",
-        "s1b",
-        "s7",
-        "e1",
-        "base_wt",
-    ]
-    assert gate["outcome_fields_permitted"] == []
     assert gate["preanalysis_freeze_sha256"] == record["freeze_sha256"]
+
+    if gate["status"] == "PENDING_LOCAL_NON_OUTCOME_AUDIT":
+        assert gate["fields_permitted_for_local_audit"] == [
+            "country",
+            "s1b",
+            "s7",
+            "e1",
+            "base_wt",
+        ]
+        assert gate["outcome_fields_permitted"] == []
+    else:
+        assert gate["fields_read"] == [
+            "country",
+            "s1b",
+            "s7",
+            "e1",
+            "base_wt",
+        ]
+        assert gate["outcome_fields_read"] == []
+        assert gate["descriptor_decision"]["s7_primary_numeric_descriptor"] == "DISABLED"
+        assert gate["descriptor_decision"]["s7_threshold_relaxation"] == "PROHIBITED"
+        assert gate["next_phase"] == "IM-R6D"
