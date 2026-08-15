@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7A",
+  "status": "QUARANTINED_FAILED_EXECUTION",
+  "report_name": "IM_R7A_STUDY2_AGGREGATE_RESULT_REPORT_20260815T172946Z.json",
+  "report_sha256": "c2331d544a131d414736aa049ba13fbce723b56c3889030ef2fb069ea9c777ae",
+  "generated_at_utc": "2026-08-15T17:29:36.246Z",
+  "overall_gate": "NO-GO",
+  "failed_gates": [
+    {
+      "id": "E4",
+      "status": "FAIL",
+      "criterion": "Exact one-hot mapping totals and zero mapping failures",
+      "evidence": "20069 mapped; 0 all-zero; 0 multiple-positive; 986 invalid"
+    }
+  ],
+  "mapped_common_denominator": 20069,
+  "misclassified_invalid_binary_rows": 986,
+  "prior_structural_evidence": {
+    "mapped_complete_one_hot_rows": 20069,
+    "mapping_failures": 0,
+    "unmapped_or_structurally_missing_rows": 986
+  },
+  "aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "interpretation_or_release_permitted": false,
+  "manuscript_use_permitted": false,
+  "corrective_rerun_required": true
+}
