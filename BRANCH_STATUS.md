@@ -1,22 +1,14 @@
 # Branch status — `im-v3.0.0-rc1`
 
-This branch is the active development branch for Outcome-Definition
-Sensitivity Analysis version `3.0.0-rc1`.
+This branch is the active development branch for Outcome-Definition Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6D-A is open. IM-R6C remains closed with a frozen descriptor failure:
-1,538 of 21,055 valid `s7` values (7.305%) were below the prespecified
-five-worker universe threshold, exceeding the frozen 1% maximum. `s7` is
-disabled as the primary numeric size descriptor, the threshold will not be
-relaxed and `e1` will not be promoted to primary after the failure.
+IM-R6D-B is complete. The browser-only local audit passed its structural checks but the official pooled World Bank Data Dictionary XLSX does not contain `s1b` or value labels for codes 1, 2 and 3. The prespecified official-label gate D9 therefore failed.
 
-IM-R6D asks whether `s1b` may be used only as a categorical sampling-frame size
-stratum. The candidate mapping `1/2/3 → small/medium/large` has been frozen but
-is **not accepted**. Acceptance requires both a browser-only local invariance
-audit and review of the official pooled World Bank Data Dictionary XLSX. `s1b`
-will never be interpreted as a numeric worker count or current establishment
-size. No production-planning outcome has been inspected.
+The candidate mapping `1/2/3 → small/medium/large sampling-frame size strata` is rejected for the current Study 2 analysis. All Study 2 size-based diagnostics are disabled before any production-planning outcome is inspected.
+
+The next phase is IM-R7-A: freeze and implement the Study 2 outcome analysis without a size descriptor.
 
 ## Core package status
 
@@ -48,19 +40,21 @@ unresolved all-zero rows:          986
 source labels / countries:         16 / 15
 microdata in repository:           no
 outcomes inspected:                no
-IM-R6C report SHA-256:              f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
+IM-R6C report SHA-256:             f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
 s7 valid / below five:             21,055 / 1,538
 s7 below-five share:               7.305%
-primary numeric descriptor:        DISABLED
+s7 primary numeric descriptor:     DISABLED
 s7 threshold relaxation:           PROHIBITED
-e1 promotion to primary:           PROHIBITED
+e1 size analysis:                  DISABLED
 s1b observed codes:                1, 2, 3
-s1b candidate mapping:             1/2/3 → small/medium/large frame strata
-s1b candidate status:              NOT ACCEPTED
+s1b local report SHA-256:           cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2
+official dictionary SHA-256:       bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac
+s1b official value labels:         NOT PROVIDED
+s1b candidate mapping:             REJECTED
+all size-based diagnostics:        DISABLED
 s1b audit freeze SHA-256:          1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88
-official pooled dictionary review: PENDING
-local IM-R6D audit:                PENDING
-analysis gate:                     NO-GO
+s1b final decision SHA-256:        b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b
+analysis gate:                     NO-GO pending IM-R7-A freeze
 replication executed:              no
 submission gate:                   NO-GO
 ```
@@ -69,29 +63,30 @@ submission gate:                   NO-GO
 
 1. `s7` is not used as a cross-source-stratum primary numeric descriptor.
 2. The 1% below-universe threshold is not relaxed after audit inspection.
-3. The 1,538 below-five `s7` values are not dropped, repaired or relabelled by
-   assumption.
-4. `e1` is not promoted to the primary descriptor.
+3. The 1,538 below-five `s7` values are not dropped, repaired or relabelled by assumption.
+4. `e1` is not used for a primary or secondary Study 2 size analysis.
 5. `s1b` is never interpreted as a numeric worker count or current firm size.
-6. The candidate `s1b` mapping remains unaccepted until the official pooled
-   Data Dictionary and local invariance report are jointly reviewed.
-7. If that mapping cannot be verified before outcome inspection, all Study 2
-   size-based diagnostics are disabled.
-8. `India` and `India_Wave2_New` remain separate analytical source strata and
-   map to one reporting country.
-9. No pooled global prevalence or pooled cross-country association is
-   permitted.
-10. The 986 unresolved all-zero outcome rows remain outside the primary
-    denominator and are not relabelled by assumption.
+6. `s1b` is not used as a categorical size descriptor because the official pooled dictionary does not provide its value labels.
+7. No size-band outcome rate, size-based Cramér's V or size-effect claim is permitted.
+8. `India` and `India_Wave2_New` remain separate analytical source strata and map to one reporting country.
+9. No pooled global prevalence or pooled cross-country association is permitted.
+10. The 986 unresolved all-zero outcome rows remain outside the primary denominator and are not relabelled by assumption.
+
+## Retained Study 2 scope
+
+The next prespecified analysis may include:
+
+- weighted and unweighted outcome-definition levels within source stratum;
+- positive-class composition within source stratum;
+- exact contrasts between the frozen outcome definitions;
+- source-stratum ordering and ordering changes across definitions;
+- cross-stratum descriptive synthesis without a pooled global prevalence.
 
 ## Open scientific gates
 
-- public pooled Data Dictionary XLSX review;
-- browser-only IM-R6D local `s1b` invariance audit;
-- final categorical-descriptor decision and SHA-256 closure;
-- final Study 2 analysis-specification closure;
+- IM-R7-A outcome-analysis specification and SHA-256 freeze without size diagnostics;
+- browser-only Study 2 execution and hostile result audit;
 - secondary-use ethics and data-governance wording;
-- locked Study 2 execution and hostile result audit;
 - reconstruction of the Information & Management manuscript;
 - article–code–table–figure parity and final release audit;
 - final Elsevier disclosure and submission preflight.
@@ -102,7 +97,5 @@ submission gate:                   NO-GO
 - default branch `main`: not modified by RC development;
 - final tag `v3.0.0`: not created;
 - final GitHub release and Zenodo version: not created;
-- no respondent-level Study 1 data or World Bank microdata may enter the public
-  workflow;
-- the public World Bank Data Dictionary XLSX may be reviewed separately from
-  the restricted source microdata.
+- no respondent-level Study 1 data or World Bank microdata may enter the public workflow;
+- the public World Bank Data Dictionary XLSX was reviewed only as documentation and is not required in the release.
