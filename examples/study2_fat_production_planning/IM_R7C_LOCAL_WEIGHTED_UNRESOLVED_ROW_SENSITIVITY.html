@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IM-R7C Local Weighted Unresolved-Row Sensitivity</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;max-width:1220px;margin:28px auto;padding:0 18px;background:#f6f7f8;color:#1b1b1b;line-height:1.45}
+.card{background:#fff;border:1px solid #d7dce1;border-radius:10px;padding:22px;margin:16px 0}
+h1{font-size:27px;margin-top:0}h2{font-size:20px}h3{font-size:17px}
+.warning{border-left:6px solid #a40000;background:#fff2f2;padding:14px}
+.info{border-left:6px solid #285f9a;background:#f0f7ff;padding:14px}
+.ok{border-left:6px solid #176b32;background:#f1fff5;padding:14px}
+.bad{border-left:6px solid #a40000;background:#fff2f2;padding:14px}
+.pending{border-left:6px solid #875900;background:#fff9e8;padding:14px}
+button{padding:11px 16px;margin:8px 8px 8px 0;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+input[type=file]{display:block;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid #c9cdd2;padding:7px;text-align:left;vertical-align:top}
+th{background:#eef1f4}
+.mono{font-family:Consolas,monospace;word-break:break-all}
+.small{font-size:13px;color:#444}
+.pass{font-weight:bold;color:#176b32}.fail{font-weight:bold;color:#a40000}.warn{font-weight:bold;color:#875900}
+progress{width:100%;height:22px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f3f3;padding:12px;border-radius:6px}
+.scroll{overflow:auto;max-height:650px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>IM-R7C Local Weighted Unresolved-Row Sensitivity</h1>
+<div class="warning"><strong>Local processing only.</strong> No selected file is uploaded. This is a post-outcome hostile sensitivity that reads only <code>country</code>, <code>base_wt</code> and <code>ib9b1</code>–<code>ib9b5</code>. The corrected complete-case analysis remains primary and unchanged.</div>
+<p class="small">Expected source: <strong>WLD_2019-2023_FAT_v01_M</strong> · corrected aggregate fingerprint: <span id="primaryShort" class="mono"></span> · IM-R7C freeze: <span id="freezeShort" class="mono"></span></p>
+<p id="selfTest" class="pending">Built-in weighted-bound and row-taxonomy self-test: running…</p>
+</div>
+
+<div class="card">
+<h2>1. Select the local pooled CSV</h2>
+<input id="file" type="file" accept=".csv,text/csv">
+<label><input id="confirm" type="checkbox"> I confirm that this is the unmodified <code>fat0_raw_data_qje.csv</code> extracted from the verified World Bank ZIP.</label><br>
+<button id="run">Run frozen weighted unresolved-row sensitivity</button>
+<button id="download" disabled>Download sanitised weighted-sensitivity report</button>
+<progress id="progress" value="0" max="100"></progress>
+<p id="status">No file has been processed.</p>
+</div>
+
+<div id="executionPanel" class="card" hidden>
+<h2>2. Execution gate</h2>
+<table><tbody>
+<tr><th>Execution gate</th><td id="xGate"></td></tr>
+<tr><th>Result interpretation</th><td>BLOCKED UNTIL IM-R7D EXTERNAL AUDIT</td></tr>
+<tr><th>File SHA-256</th><td id="xSha" class="mono"></td></tr>
+<tr><th>Mapped common denominator</th><td id="xMapped"></td></tr>
+<tr><th>Unresolved total</th><td id="xUnresolved"></td></tr>
+<tr><th>Positive-weight unresolved rows</th><td id="xUnresolvedWeights"></td></tr>
+<tr><th>Missing-weight row location</th><td id="xMissingLocation"></td></tr>
+<tr><th>Primary aggregate fingerprint</th><td id="xPayload" class="mono"></td></tr>
+<tr><th>Source strata / reporting countries</th><td id="xSources"></td></tr>
+<tr><th>Size fields read</th><td>NONE</td></tr>
+<tr><th>Global pooled prevalence generated</th><td>NO</td></tr>
+</tbody></table>
+</div>
+
+<div id="gatePanel" class="card" hidden>
+<h2>3. M1–M14 weighted-sensitivity gates</h2>
+<table><thead><tr><th>Gate</th><th>Status</th><th>Criterion</th><th>Evidence</th></tr></thead><tbody id="gateRows"></tbody></table>
+</div>
+
+<div id="previewPanel" class="card" hidden>
+<h2>4. Disclosure-screened source-stratum bound preview</h2>
+<p class="small">Rates are percentages. Source-level counts and weight sums are deliberately not displayed or exported. “suppressed” carries forward the corrected primary small-cell rule.</p>
+<div class="scroll">
+<table>
+<thead><tr>
+<th>Source stratum</th><th>Definition</th><th>Complete-case</th><th>Lower</th><th>Upper</th><th>Width</th>
+<th>All handwritten</th><th>All broad-only</th><th>All specialised</th><th>All ERP</th>
+</tr></thead>
+<tbody id="previewRows"></tbody>
+</table>
+</div>
+</div>
+
+<div id="synthesisPanel" class="card" hidden>
+<h2>5. Cross-stratum weighted-bound synthesis</h2>
+<div class="scroll">
+<table><thead><tr><th>Definition</th><th>Metric</th><th>Eligible strata</th><th>Median</th><th>Q1</th><th>Q3</th><th>Min</th><th>Max</th></tr></thead><tbody id="synthesisRows"></tbody></table>
+</div>
+<h3>Robust separation under marginal worst cases</h3>
+<table><thead><tr><th>Comparison</th><th>Eligible common strata</th><th>Lower broad/middle exceeds upper narrow</th><th>Share</th></tr></thead><tbody id="separationRows"></tbody></table>
+<h3>Pairwise source-stratum ordering determinacy</h3>
+<table><thead><tr><th>Definition</th><th>Pairs</th><th>Determinate</th><th>Overlapping intervals</th><th>Determinate share</th></tr></thead><tbody id="determinacyRows"></tbody></table>
+</div>
+
+<div id="detailsPanel" class="card" hidden>
+<h2>6. Locked sensitivity details</h2>
+<pre id="detailsText"></pre>
+</div>
+<script>
+"use strict";
+
+const IM_R7C_FREEZE_SHA="b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc";
+const CORRECTED_REPORT_SHA="020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0";
+const ORIGINAL_FREEZE_SHA="2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be";
+const AMENDMENT_SHA="03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef";
+const EFFECTIVE_CONTRACT_SHA="f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87";
+const DEFINITIONS_SHA="100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa";
+const EXPECTED_AGGREGATE_FINGERPRINT="b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0";
+const EXPECTED={
+  fileName:"fat0_raw_data_qje.csv",
+  fileSize:19633172,
+  sha256:"f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+  crc32:"4418a02b",
+  rows:21055,
+  columns:723,
+  mapped:20069,
+  unresolvedTotal:986,
+  ambiguousPositiveWithMissing:0,
+  multiplePositive:0,
+  invalidNonbinary:0,
+  sourceLabels:16,
+  reportingCountries:15,
+  weightPositiveAll:21054,
+  weightMissingAll:1
+};
+const READ_FIELDS=["country","base_wt","ib9b1","ib9b2","ib9b3","ib9b4","ib9b5"];
+const FIELDS_NOT_READ=["firmid","s1b","s7","e1"];
+const STATE_NAMES=[
+  "handwritten_processes",
+  "standard_software",
+  "mobile_apps_or_digital_platforms",
+  "specialised_software",
+  "erp"
+];
+const DEFINITIONS={
+  integrated_planning:{states:[4],label:"ERP"},
+  specialised_planning:{states:[3,4],label:"Specialised software or ERP"},
+  digitally_enabled_planning:{states:[1,2,3,4],label:"Computer- or platform-enabled"}
+};
+const DEFINITION_ORDER=["integrated_planning","specialised_planning","digitally_enabled_planning"];
+const CONTRASTS=[
+  {left:"integrated_planning",right:"specialised_planning",added:[3]},
+  {left:"specialised_planning",right:"digitally_enabled_planning",added:[1,2]},
+  {left:"integrated_planning",right:"digitally_enabled_planning",added:[1,2,3]}
+];
+const REPORTING_COUNTRY={
+  Bangladesh:"Bangladesh",Brazil:"Brazil",BurkinaFaso:"Burkina Faso",
+  Cambodia:"Cambodia",Chile:"Chile",Croatia:"Croatia",Ethiopia:"Ethiopia",
+  Georgia:"Georgia",Ghana:"Ghana",India:"India",India_Wave2_New:"India",
+  Kenya:"Kenya",Korea:"Republic of Korea",Poland:"Poland",Senegal:"Senegal",
+  Vietnam:"Viet Nam"
+};
+const MISSING_TEXT=new Set(["","na","n/a","nan","null","none",".","sysmiss"]);
+const SMALL_MIN=1,SMALL_MAX=4,MIN_COMPOSITION_N=30,MIN_SUMMARY_STRATA=10;
+const ORDER_TOL=1e-12,IDENTITY_TOL=1e-12,WEIGHT_NEAR_ZERO=0.01;
+let report=null;
+
+class Sha256 {
+  constructor() {
+    this.h=new Uint32Array([0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19]);
+    this.k=new Uint32Array([0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2]);
+    this.buf=new Uint8Array(64);this.bufLen=0;this.bytesHashed=0;this.finished=false;
+  }
+  rotr(x,n){return (x>>>n)|(x<<(32-n));}
+  process(chunk){
+    const w=new Uint32Array(64);
+    for(let i=0;i<16;i++){const j=i*4;w[i]=((chunk[j]<<24)|(chunk[j+1]<<16)|(chunk[j+2]<<8)|chunk[j+3])>>>0;}
+    for(let i=16;i<64;i++){const x=w[i-15],y=w[i-2];const s0=(this.rotr(x,7)^this.rotr(x,18)^(x>>>3))>>>0;const s1=(this.rotr(y,17)^this.rotr(y,19)^(y>>>10))>>>0;w[i]=(w[i-16]+s0+w[i-7]+s1)>>>0;}
+    let [a,b,c,d,e,f,g,h]=this.h;
+    for(let i=0;i<64;i++){const S1=(this.rotr(e,6)^this.rotr(e,11)^this.rotr(e,25))>>>0;const ch=((e&f)^((~e)&g))>>>0;const t1=(h+S1+ch+this.k[i]+w[i])>>>0;const S0=(this.rotr(a,2)^this.rotr(a,13)^this.rotr(a,22))>>>0;const maj=((a&b)^(a&c)^(b&c))>>>0;const t2=(S0+maj)>>>0;h=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0;}
+    this.h[0]=(this.h[0]+a)>>>0;this.h[1]=(this.h[1]+b)>>>0;this.h[2]=(this.h[2]+c)>>>0;this.h[3]=(this.h[3]+d)>>>0;this.h[4]=(this.h[4]+e)>>>0;this.h[5]=(this.h[5]+f)>>>0;this.h[6]=(this.h[6]+g)>>>0;this.h[7]=(this.h[7]+h)>>>0;
+  }
+  update(data){let p=0;this.bytesHashed+=data.length;while(p<data.length){const take=Math.min(data.length-p,64-this.bufLen);this.buf.set(data.subarray(p,p+take),this.bufLen);this.bufLen+=take;p+=take;if(this.bufLen===64){this.process(this.buf);this.bufLen=0;}}}
+  digestHex(){if(!this.finished){const bits=this.bytesHashed*8;this.buf[this.bufLen++]=0x80;if(this.bufLen>56){while(this.bufLen<64)this.buf[this.bufLen++]=0;this.process(this.buf);this.bufLen=0;}while(this.bufLen<56)this.buf[this.bufLen++]=0;const hi=Math.floor(bits/0x100000000),lo=bits>>>0;for(let i=0;i<4;i++)this.buf[56+i]=(hi>>>(24-i*8))&255;for(let i=0;i<4;i++)this.buf[60+i]=(lo>>>(24-i*8))&255;this.process(this.buf);this.finished=true;}return Array.from(this.h).map(x=>x.toString(16).padStart(8,"0")).join("");}
+}
+function sha256Bytes(bytes){const h=new Sha256();h.update(bytes);return h.digestHex();}
+function crcTable(){const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xedb88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;}
+const CRC_TABLE=crcTable();
+function crc32(bytes){let c=0xffffffff;for(let i=0;i<bytes.length;i++)c=CRC_TABLE[(c^bytes[i])&255]^(c>>>8);return ((c^0xffffffff)>>>0).toString(16).padStart(8,"0");}
+
+function normHeader(x){return x.replace(/^\uFEFF/,"").trim().toLowerCase();}
+function rawMissing(x){const s=String(x??"").trim().toLowerCase();return MISSING_TEXT.has(s)||/^\.[a-z]?$/.test(s);}
+function binaryValue(x){
+  if(rawMissing(x))return {status:"missing",value:null};
+  const s=String(x).trim().toLowerCase();
+  if(s==="0"||s==="0.0"||s==="false"||s==="no")return {status:"valid",value:0};
+  if(s==="1"||s==="1.0"||s==="true"||s==="yes")return {status:"valid",value:1};
+  return {status:"invalid",value:null};
+}
+function weightValue(x){
+  if(rawMissing(x))return {status:"missing",value:null};
+  const n=Number(String(x).trim());
+  if(!Number.isFinite(n))return {status:"invalid",value:null};
+  if(n<=0)return {status:"nonpositive",value:n};
+  return {status:"positive",value:n};
+}
+function firstRecord(text){let out="",q=false;for(let i=0;i<text.length;i++){const ch=text[i];if(ch==='"'){if(q&&text[i+1]==='"'){out+='""';i++;continue;}q=!q;out+=ch;continue;}if(!q&&(ch==="\n"||ch==="\r"))break;out+=ch;}return out;}
+function countDelim(r,d){let n=0,q=false;for(let i=0;i<r.length;i++){const ch=r[i];if(ch==='"'){if(q&&r[i+1]==='"'){i++;continue;}q=!q;}else if(!q&&ch===d)n++;}return n;}
+function detectDelimiter(text){const r=firstRecord(text),c=[",",";","\t"];c.sort((a,b)=>countDelim(r,b)-countDelim(r,a));return c[0];}
+function parseCsv(text,d,onRow){let row=[],f="",q=false,rn=0;for(let i=0;i<text.length;i++){const ch=text[i];if(q){if(ch==='"'){if(text[i+1]==='"'){f+='"';i++;}else q=false;}else f+=ch;}else{if(ch==='"')q=true;else if(ch===d){row.push(f);f="";}else if(ch==="\n"){row.push(f);f="";if(!(row.length===1&&row[0]==="")){onRow(row,rn);rn++;}row=[];}else if(ch==="\r"){if(text[i+1]==="\n")continue;row.push(f);f="";if(!(row.length===1&&row[0]==="")){onRow(row,rn);rn++;}row=[];}else f+=ch;}}if(f.length||row.length){row.push(f);if(!(row.length===1&&row[0]===""))onRow(row,rn);}}
+function isSmall(n){return Number.isInteger(n)&&n>=SMALL_MIN&&n<=SMALL_MAX;}
+function quantile(values,p){if(!values.length)return null;const a=[...values].sort((x,y)=>x-y);if(a.length===1)return a[0];const h=(a.length-1)*p,lo=Math.floor(h),hi=Math.ceil(h);return a[lo]+(h-lo)*(a[hi]-a[lo]);}
+function summary(values){const a=values.filter(v=>Number.isFinite(v));if(!a.length)return null;return {n:a.length,median:quantile(a,.5),q1:quantile(a,.25),q3:quantile(a,.75),minimum:Math.min(...a),maximum:Math.max(...a)};}
+function rateSign(a,b,tol=ORDER_TOL){const d=a-b;if(Math.abs(d)<=tol)return 0;return d>0?1:-1;}
+function pairwiseDisagreement(leftRows,rightRows){
+  const left=Object.fromEntries(leftRows.map(r=>[r.group,r.rate])),right=Object.fromEntries(rightRows.map(r=>[r.group,r.rate]));
+  const groups=Object.keys(left).filter(g=>g in right).sort();
+  let concordant=0,tieChanges=0,strictReversals=0,totalPairs=0;
+  for(let i=0;i<groups.length;i++)for(let j=i+1;j<groups.length;j++){
+    const a=groups[i],b=groups[j],ls=rateSign(left[a],left[b]),rs=rateSign(right[a],right[b]);totalPairs++;
+    if(ls===rs)concordant++;
+    else if(ls===0||rs===0)tieChanges++;
+    else strictReversals++;
+  }
+  return {
+    comparable_strata:groups.length,total_pairs:totalPairs,concordant_pairs:concordant,
+    tie_changes:tieChanges,strict_reversals:strictReversals,
+    strict_reversal_share:totalPairs?strictReversals/totalPairs:null,
+    total_instability_share:totalPairs?(strictReversals+tieChanges)/totalPairs:null
+  };
+}
+function stableRanking(rows){return [...rows].sort((a,b)=>(b.rate-a.rate)||a.group.localeCompare(b.group)).map((r,i)=>({rank:i+1,source_label:r.group,rate:r.rate}));}
+function fmtRate(v){return v===null||v===undefined?"suppressed":`${(100*v).toFixed(2)}%`;}
+function safeCount(n){return isSmall(n)?null:n;}
+function gate(id,ok,criterion,evidence){return {id,status:ok?"PASS":"FAIL",criterion,evidence};}
+function stableStringify(x){
+  if(x===null||typeof x!=="object")return JSON.stringify(x);
+  if(Array.isArray(x))return "["+x.map(stableStringify).join(",")+"]";
+  return "{"+Object.keys(x).sort().map(k=>JSON.stringify(k)+":"+stableStringify(x[k])).join(",")+"}";
+}
+function classifyIndicatorFamily(values){
+  if(values.some(v=>v.status==="invalid"))return {status:"invalid_nonbinary",state:null};
+  const positives=[];values.forEach((v,i)=>{if(v.status==="valid"&&v.value===1)positives.push(i);});
+  const hasMissing=values.some(v=>v.status==="missing");
+  if(positives.length>1)return {status:"multiple_positive",state:null};
+  if(positives.length===1&&hasMissing)return {status:"ambiguous_positive_with_missing",state:null};
+  if(positives.length===1)return {status:"mapped",state:positives[0]};
+  if(hasMissing)return {status:"unresolved_structurally_missing",state:null};
+  return {status:"unresolved_all_zero",state:null};
+}
+function downloadJson(obj){const stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");const blob=new Blob([JSON.stringify(obj,null,2)+"\n"],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`IM_R7C_STUDY2_WEIGHTED_UNRESOLVED_SENSITIVITY_REPORT_${stamp}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}
+
+function computeDefinition(st,defName){
+  const states=DEFINITIONS[defName].states;
+  const positive=states.reduce((s,i)=>s+st.stateCounts[i],0),negative=st.mappedN-positive;
+  const suppressed=isSmall(positive)||isSmall(negative);
+  const positiveWeight=states.reduce((s,i)=>s+st.stateWeights[i],0);
+  const weightedRate=(!suppressed&&st.weightSum>0)?positiveWeight/st.weightSum:null;
+  const unweightedRate=(!suppressed&&st.mappedN>0)?positive/st.mappedN:null;
+  const componentCounts=states.map(i=>st.stateCounts[i]);
+  const compositionSuppressed=positive<MIN_COMPOSITION_N||componentCounts.some(isSmall);
+  let composition=null;
+  if(!compositionSuppressed&&positive>0){
+    const weightedPositive=positiveWeight;
+    composition=states.map(i=>({
+      state:STATE_NAMES[i],
+      unweighted_count:safeCount(st.stateCounts[i]),
+      unweighted_share:st.stateCounts[i]/positive,
+      weighted_share:weightedPositive>0?st.stateWeights[i]/weightedPositive:null
+    }));
+  }
+  return {
+    definition:defName,label:DEFINITIONS[defName].label,
+    disclosure_status:suppressed?"SUPPRESSED_SMALL_CELL":"RELEASED",
+    unweighted:{
+      denominator_n:st.mappedN,
+      positive_n:suppressed?null:positive,
+      negative_n:suppressed?null:negative,
+      rate:unweightedRate
+    },
+    weighted:{
+      valid_weight_n:st.validWeightN,
+      denominator_weight:(!suppressed&&st.weightSum>0)?st.weightSum:null,
+      positive_weight:(!suppressed&&st.weightSum>0)?positiveWeight:null,
+      rate:weightedRate
+    },
+    composition_status:compositionSuppressed?"SUPPRESSED_OR_SPARSE":"RELEASED",
+    positive_class_composition:composition
+  };
+}
+function compositionVector(result,weighting){
+  if(!result.positive_class_composition)return null;
+  const out=Object.fromEntries(STATE_NAMES.map(s=>[s,0]));
+  for(const row of result.positive_class_composition)out[row.state]=weighting==="weighted"?row.weighted_share:row.unweighted_share;
+  if(Object.values(out).some(v=>v===null))return null;
+  return out;
+}
+function compositionTv(left,right,weighting){
+  const a=compositionVector(left,weighting),b=compositionVector(right,weighting);
+  if(!a||!b)return null;
+  return .5*STATE_NAMES.reduce((s,k)=>s+Math.abs(a[k]-b[k]),0);
+}
+function computeContrast(st,leftResult,rightResult,definition){
+  const addedCount=definition.added.reduce((s,i)=>s+st.stateCounts[i],0);
+  const addedWeight=definition.added.reduce((s,i)=>s+st.stateWeights[i],0);
+  const suppressed=isSmall(addedCount)||leftResult.disclosure_status!=="RELEASED"||rightResult.disclosure_status!=="RELEASED";
+  const unweightedDelta=suppressed?null:rightResult.unweighted.rate-leftResult.unweighted.rate;
+  const weightedDelta=suppressed?null:rightResult.weighted.rate-leftResult.weighted.rate;
+  const expectedUnweighted=suppressed?null:addedCount/st.mappedN;
+  const expectedWeighted=suppressed||st.weightSum<=0?null:addedWeight/st.weightSum;
+  return {
+    left_definition:definition.left,right_definition:definition.right,
+    added_states:definition.added.map(i=>STATE_NAMES[i]),
+    disclosure_status:suppressed?"SUPPRESSED_SMALL_CELL":"RELEASED",
+    added_state_count:suppressed?null:addedCount,
+    unweighted_delta:unweightedDelta,
+    weighted_delta:weightedDelta,
+    unweighted_identity_residual:suppressed?null:unweightedDelta-expectedUnweighted,
+    weighted_identity_residual:suppressed?null:weightedDelta-expectedWeighted
+  };
+}
+function buildStratumResult(label,st){
+  const defs={};
+  for(const d of DEFINITION_ORDER)defs[d]=computeDefinition(st,d);
+  const contrasts={};
+  for(const c of CONTRASTS)contrasts[`${c.left}__to__${c.right}`]=computeContrast(st,defs[c.left],defs[c.right],c);
+  const tv={};
+  for(const c of CONTRASTS){
+    const key=`${c.left}__to__${c.right}`;
+    tv[key]={
+      unweighted:compositionTv(defs[c.left],defs[c.right],"unweighted"),
+      weighted:compositionTv(defs[c.left],defs[c.right],"weighted")
+    };
+  }
+  return {
+    source_label:label,reporting_country:REPORTING_COUNTRY[label]||label,
+    mapped_n:st.mappedN,valid_weight_n:st.validWeightN,
+    definitions:defs,contrasts,
+    composition_total_variation:tv
+  };
+}
+
+function sensitivityDefinition(st,primaryResult,defName){
+  const released=primaryResult.disclosure_status==="RELEASED";
+  if(!released||st.weightSum<=0)return {
+    definition:defName,disclosure_status:"SUPPRESSED_PRIMARY_SMALL_CELL",
+    complete_case:null,lower:null,upper:null,width:null,
+    coherent_scenarios:{all_handwritten:null,all_broad_only:null,all_specialised:null,all_erp:null}
+  };
+  const states=DEFINITIONS[defName].states;
+  const p=states.reduce((s,i)=>s+st.stateWeights[i],0);
+  const d=st.weightSum,u=st.unresolvedWeightSum,du=d+u;
+  const complete=p/d,lower=du>0?p/du:null,upper=du>0?(p+u)/du:null,width=du>0?u/du:null;
+  const scenarioState={all_handwritten:0,all_broad_only:1,all_specialised:3,all_erp:4};
+  const coherent={};
+  for(const [name,state] of Object.entries(scenarioState))coherent[name]=du>0?(p+(states.includes(state)?u:0))/du:null;
+  return {
+    definition:defName,disclosure_status:"RELEASED",
+    complete_case:complete,lower,upper,width,
+    coherent_scenarios:coherent
+  };
+}
+function buildSensitivityResult(label,st,primary){
+  const definitions={};
+  for(const d of DEFINITION_ORDER)definitions[d]=sensitivityDefinition(st,primary.definitions[d],d);
+  return {source_label:label,definitions};
+}
+function intervalOrdering(rows){
+  let determinate=0,overlap=0,total=0;
+  for(let i=0;i<rows.length;i++)for(let j=i+1;j<rows.length;j++){
+    total++;
+    const a=rows[i],b=rows[j];
+    if(a.upper<b.lower-IDENTITY_TOL||b.upper<a.lower-IDENTITY_TOL)determinate++;
+    else overlap++;
+  }
+  return {eligible_strata:rows.length,total_pairs:total,determinate_pairs:determinate,overlapping_pairs:overlap,determinate_share:total?determinate/total:null};
+}
+function robustSeparation(rows,left,right){
+  let eligible=0,robust=0;
+  for(const sr of rows){
+    const l=sr.definitions[left],r=sr.definitions[right];
+    if(l.disclosure_status!=="RELEASED"||r.disclosure_status!=="RELEASED")continue;
+    eligible++;if(r.lower>l.upper+IDENTITY_TOL)robust++;
+  }
+  return {left_definition:left,right_definition:right,eligible_common_strata:eligible,robust_separation_strata:robust,robust_share:eligible?robust/eligible:null};
+}
+
+function selfTest(){
+  const abc=new TextEncoder().encode("abc"),crcInput=new TextEncoder().encode("123456789");
+  if(sha256Bytes(abc)!=="ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad")throw new Error("SHA-256 vector");
+  if(crc32(crcInput)!=="cbf43926")throw new Error("CRC-32 vector");
+  const st={mappedN:100,validWeightN:100,weightSum:100,unresolvedWeightSum:20,stateCounts:[50,20,10,10,10],stateWeights:[50,20,10,10,10]};
+  const primary=buildStratumResult("Synthetic",st),sens=buildSensitivityResult("Synthetic",st,primary);
+  const x=sens.definitions.integrated_planning;
+  if(Math.abs(x.complete_case-.1)>1e-12)throw new Error("complete-case bound test");
+  if(Math.abs(x.lower-(10/120))>1e-12)throw new Error("lower bound test");
+  if(Math.abs(x.upper-(30/120))>1e-12)throw new Error("upper bound test");
+  if(Math.abs((x.upper-x.lower)-x.width)>1e-12)throw new Error("bound-width identity");
+  for(const scenario of Object.keys(x.coherent_scenarios)){
+    const rates=DEFINITION_ORDER.map(d=>sens.definitions[d].coherent_scenarios[scenario]);
+    if(!(rates[0]<=rates[1]+1e-12&&rates[1]<=rates[2]+1e-12))throw new Error("scenario nesting");
+  }
+  const V=(value)=>({status:"valid",value}),M={status:"missing",value:null},I={status:"invalid",value:null};
+  if(classifyIndicatorFamily([V(0),V(0),V(0),V(0),V(1)]).status!=="mapped")throw new Error("mapped taxonomy");
+  if(classifyIndicatorFamily([V(0),M,V(0),V(0),V(0)]).status!=="unresolved_structurally_missing")throw new Error("unresolved taxonomy");
+  if(classifyIndicatorFamily([V(1),M,V(0),V(0),V(0)]).status!=="ambiguous_positive_with_missing")throw new Error("ambiguous taxonomy");
+  if(classifyIndicatorFamily([V(0),I,V(0),V(0),V(0)]).status!=="invalid_nonbinary")throw new Error("invalid taxonomy");
+  const parsed=[];parseCsv('a,b\n"x,y",2\n',",",(row,n)=>parsed.push([n,row]));
+  if(parsed.length!==2||parsed[1][1][0]!=="x,y")throw new Error("CSV quoted cell");
+  return true;
+}
+
+document.getElementById("freezeShort").textContent=IM_R7C_FREEZE_SHA.slice(0,16)+"…";
+document.getElementById("primaryShort").textContent=EXPECTED_AGGREGATE_FINGERPRINT.slice(0,16)+"…";
+try{
+  selfTest();
+  document.getElementById("selfTest").className="ok";
+  document.getElementById("selfTest").textContent="Built-in weighted-bound and row-taxonomy self-test: PASS";
+}catch(err){
+  document.getElementById("selfTest").className="bad";
+  document.getElementById("selfTest").textContent=`Built-in weighted-bound and row-taxonomy self-test: FAIL — ${err.message}`;
+}
+
+const fileInput=document.getElementById("file"),confirmBox=document.getElementById("confirm"),runBtn=document.getElementById("run"),downloadBtn=document.getElementById("download"),progress=document.getElementById("progress"),status=document.getElementById("status");
+
+runBtn.addEventListener("click",async()=>{
+  const file=fileInput.files[0];
+  if(!file){alert("Choose fat0_raw_data_qje.csv first.");return;}
+  if(!confirmBox.checked){alert("Confirm that the file is the unmodified extracted World Bank member.");return;}
+  runBtn.disabled=true;downloadBtn.disabled=true;progress.value=0;
+  ["executionPanel","gatePanel","previewPanel","synthesisPanel","detailsPanel"].forEach(id=>document.getElementById(id).hidden=true);
+  try{
+    status.className="info";status.textContent="Reading file locally…";
+    const buffer=await file.arrayBuffer(),bytes=new Uint8Array(buffer);
+    progress.value=12;status.textContent="Computing local SHA-256 and CRC-32…";
+    const sha=sha256Bytes(bytes),crc=crc32(bytes);
+    progress.value=24;status.textContent="Decoding CSV…";
+    const text=new TextDecoder("utf-8",{fatal:false}).decode(buffer),delimiter=detectDelimiter(text);
+
+    let headers=[],idx={},rows=0,badWidth=0;
+    let mapped=0,unresolvedAllZero=0,unresolvedStructurallyMissing=0,ambiguousPositiveWithMissing=0,multiplePositive=0,invalidNonbinary=0,countryMissing=0;
+    let weightPositiveAll=0,weightMissingAll=0,weightInvalidAll=0,weightNonpositiveAll=0;
+    const fieldsSeen=new Set(),strata={};
+
+    parseCsv(text,delimiter,(row,rn)=>{
+      if(rn===0){
+        headers=row.map(normHeader);
+        headers.forEach((h,i)=>{if(!(h in idx))idx[h]=i;});
+        READ_FIELDS.forEach(h=>{if(h in idx)fieldsSeen.add(h);});
+        return;
+      }
+      rows++;if(row.length!==headers.length)badWidth++;
+      const get=h=>(h in idx)?(row[idx[h]]??""):"";
+      const label=String(get("country")).trim();
+      if(!label)countryMissing++;
+      const source=label||"(missing)";
+      if(!strata[source])strata[source]={
+        totalRows:0,mappedN:0,unresolvedAllZeroN:0,unresolvedStructurallyMissingN:0,ambiguousPositiveWithMissingN:0,invalidN:0,multipleN:0,
+        validWeightN:0,weightSum:0,mappedMissingWeightN:0,unresolvedPositiveWeightN:0,unresolvedWeightSum:0,unresolvedMissingWeightN:0,stateCounts:[0,0,0,0,0],stateWeights:[0,0,0,0,0]
+      };
+      const st=strata[source];st.totalRows++;
+
+      const weight=weightValue(get("base_wt"));
+      if(weight.status==="positive")weightPositiveAll++;
+      else if(weight.status==="missing")weightMissingAll++;
+      else if(weight.status==="nonpositive")weightNonpositiveAll++;
+      else weightInvalidAll++;
+
+      const values=["ib9b1","ib9b2","ib9b3","ib9b4","ib9b5"].map(h=>binaryValue(get(h)));
+      const rowClass=classifyIndicatorFamily(values);
+      if(rowClass.status==="invalid_nonbinary"){invalidNonbinary++;st.invalidN++;return;}
+      if(rowClass.status==="multiple_positive"){multiplePositive++;st.multipleN++;return;}
+      if(rowClass.status==="ambiguous_positive_with_missing"){ambiguousPositiveWithMissing++;st.ambiguousPositiveWithMissingN++;return;}
+      if(rowClass.status==="unresolved_structurally_missing"||rowClass.status==="unresolved_all_zero"){
+        if(rowClass.status==="unresolved_structurally_missing"){unresolvedStructurallyMissing++;st.unresolvedStructurallyMissingN++;}
+        else {unresolvedAllZero++;st.unresolvedAllZeroN++;}
+        if(weight.status==="positive"){st.unresolvedPositiveWeightN++;st.unresolvedWeightSum+=weight.value;}
+        else if(weight.status==="missing")st.unresolvedMissingWeightN++;
+        return;
+      }
+
+      const state=rowClass.state;mapped++;st.mappedN++;st.stateCounts[state]++;
+      if(weight.status==="positive"){
+        st.validWeightN++;st.weightSum+=weight.value;st.stateWeights[state]+=weight.value;
+      }else if(weight.status==="missing")st.mappedMissingWeightN++;
+
+      if(rows%2500===0){progress.value=Math.min(86,24+(rows/EXPECTED.rows)*62);status.textContent=`Calculating frozen weighted sensitivity locally: ${rows.toLocaleString("en-GB")} rows…`;}
+    });
+
+    const sourceLabels=Object.keys(strata).filter(x=>x!=="(missing)").sort();
+    const reportingCountries=[...new Set(sourceLabels.map(x=>REPORTING_COUNTRY[x]||x))].sort();
+    const sourceResults=sourceLabels.map(label=>buildStratumResult(label,strata[label]));
+
+    let monotonic=true,contrastIdentity=true,compositionIdentity=true;
+    for(const sr of sourceResults){
+      const a=sr.definitions.integrated_planning,b=sr.definitions.specialised_planning,c=sr.definitions.digitally_enabled_planning;
+      for(const weighting of ["unweighted","weighted"]){
+        const rates=[a[weighting].rate,b[weighting].rate,c[weighting].rate];
+        if(rates.every(v=>v!==null)&&!(rates[0]<=rates[1]+1e-12&&rates[1]<=rates[2]+1e-12))monotonic=false;
+      }
+      for(const con of Object.values(sr.contrasts)){
+        if(con.unweighted_identity_residual!==null&&Math.abs(con.unweighted_identity_residual)>IDENTITY_TOL)contrastIdentity=false;
+        if(con.weighted_identity_residual!==null&&Math.abs(con.weighted_identity_residual)>IDENTITY_TOL)contrastIdentity=false;
+      }
+      for(const d of DEFINITION_ORDER){
+        const comp=sr.definitions[d].positive_class_composition;
+        if(comp){
+          const u=comp.reduce((s,x)=>s+x.unweighted_share,0),w=comp.reduce((s,x)=>s+(x.weighted_share??0),0);
+          if(Math.abs(u-1)>IDENTITY_TOL||Math.abs(w-1)>IDENTITY_TOL)compositionIdentity=false;
+        }
+      }
+    }
+
+    const cross={weighted:{definitions:{},contrasts:{},composition:{},composition_tv:{}},unweighted:{definitions:{},contrasts:{},composition:{},composition_tv:{}}};
+    const weightingSensitivity={definitions:{}};
+    for(const weighting of ["weighted","unweighted"]){
+      for(const d of DEFINITION_ORDER){
+        const vals=sourceResults.map(sr=>sr.definitions[d][weighting].rate).filter(v=>v!==null);
+        cross[weighting].definitions[d]=summary(vals);
+      }
+      for(const c of CONTRASTS){
+        const key=`${c.left}__to__${c.right}`;
+        const vals=sourceResults.map(sr=>sr.contrasts[key][`${weighting}_delta`]).filter(v=>v!==null);
+        cross[weighting].contrasts[key]=summary(vals);
+        const tvVals=sourceResults.map(sr=>sr.composition_total_variation[key][weighting]).filter(v=>v!==null);
+        cross[weighting].composition_tv[key]=summary(tvVals);
+      }
+      for(const d of DEFINITION_ORDER){
+        cross[weighting].composition[d]={};
+        for(const state of DEFINITIONS[d].states.map(i=>STATE_NAMES[i])){
+          const vals=[];
+          for(const sr of sourceResults){
+            const comp=sr.definitions[d].positive_class_composition;
+            if(!comp)continue;
+            const row=comp.find(x=>x.state===state);
+            if(row&&row[`${weighting}_share`]!==null)vals.push(row[`${weighting}_share`]);
+          }
+          cross[weighting].composition[d][state]=summary(vals);
+        }
+      }
+    }
+    for(const d of DEFINITION_ORDER){
+      const diffs=sourceResults.map(sr=>{
+        const w=sr.definitions[d].weighted.rate,u=sr.definitions[d].unweighted.rate;
+        return w!==null&&u!==null?w-u:null;
+      }).filter(v=>v!==null);
+      weightingSensitivity.definitions[d]={
+        difference_summary:summary(diffs),
+        absolute_difference_summary:summary(diffs.map(Math.abs)),
+        weighted_higher_count:diffs.filter(v=>v>WEIGHT_NEAR_ZERO).length,
+        unweighted_higher_count:diffs.filter(v=>v<-WEIGHT_NEAR_ZERO).length,
+        near_zero_count:diffs.filter(v=>Math.abs(v)<=WEIGHT_NEAR_ZERO).length,
+        near_zero_threshold:WEIGHT_NEAR_ZERO
+      };
+    }
+
+    const ordering={weighted:{},unweighted:{}};
+    for(const weighting of ["weighted","unweighted"]){
+      for(const c of CONTRASTS){
+        const key=`${c.left}__to__${c.right}`;
+        const leftRows=sourceResults.map(sr=>({group:sr.source_label,rate:sr.definitions[c.left][weighting].rate})).filter(r=>r.rate!==null);
+        const rightRows=sourceResults.map(sr=>({group:sr.source_label,rate:sr.definitions[c.right][weighting].rate})).filter(r=>r.rate!==null);
+        const pd=pairwiseDisagreement(leftRows,rightRows);
+        ordering[weighting][key]={
+          ...pd,
+          left_ranking:stableRanking(leftRows),
+          right_ranking:stableRanking(rightRows)
+        };
+      }
+    }
+
+    const claimBoundaries={
+      integrated_planning:{
+        supports:"ERP is the most-used production-planning method.",
+        does_not_support:["enterprise-wide transformation","causal performance effect"]
+      },
+      specialised_planning:{
+        supports:"Specialised or integrated software is the most-used method.",
+        does_not_support:["all positive establishments use ERP","enterprise-wide transformation"]
+      },
+      digitally_enabled_planning:{
+        supports:"The most-used method is computer- or platform-enabled rather than handwritten.",
+        does_not_support:["all positive establishments use specialised software","all positive establishments use ERP","integrated planning architecture"]
+      }
+    };
+    const aggregatePayload={
+      source_stratum_results:sourceResults,
+      cross_stratum_synthesis:cross,
+      ordering_diagnostics:ordering,
+      weighting_sensitivity:weightingSensitivity,
+      claim_boundaries:claimBoundaries
+    };
+    const aggregatePayloadFingerprint=sha256Bytes(
+      new TextEncoder().encode(stableStringify(aggregatePayload))
+    );
+    const aggregatePayloadMatchesExpected=
+      aggregatePayloadFingerprint===EXPECTED_AGGREGATE_FINGERPRINT;
+
+    const sensitivityResults=sourceLabels.map(label=>buildSensitivityResult(label,strata[label],sourceResults.find(sr=>sr.source_label===label)));
+    const sensitivityCross={definitions:{},unresolved_weight_share:summary(sourceLabels.map(label=>{
+      const st=strata[label],du=st.weightSum+st.unresolvedWeightSum;return du>0?st.unresolvedWeightSum/du:null;
+    }).filter(v=>v!==null))};
+    for(const d of DEFINITION_ORDER){
+      sensitivityCross.definitions[d]={};
+      for(const metric of ["lower","complete_case","upper","width"]){
+        const vals=sensitivityResults.map(sr=>sr.definitions[d][metric]).filter(v=>v!==null);
+        sensitivityCross.definitions[d][metric]=summary(vals);
+      }
+      sensitivityCross.definitions[d].coherent_scenarios={};
+      for(const scenario of ["all_handwritten","all_broad_only","all_specialised","all_erp"]){
+        const vals=sensitivityResults.map(sr=>sr.definitions[d].coherent_scenarios[scenario]).filter(v=>v!==null);
+        sensitivityCross.definitions[d].coherent_scenarios[scenario]=summary(vals);
+      }
+    }
+    const robustSeparationDiagnostics={
+      integrated_to_specialised:robustSeparation(sensitivityResults,"integrated_planning","specialised_planning"),
+      specialised_to_digitally_enabled:robustSeparation(sensitivityResults,"specialised_planning","digitally_enabled_planning"),
+      integrated_to_digitally_enabled:robustSeparation(sensitivityResults,"integrated_planning","digitally_enabled_planning")
+    };
+    const intervalOrderingDeterminacy={};
+    for(const d of DEFINITION_ORDER){
+      const rows=sensitivityResults.map(sr=>({group:sr.source_label,...sr.definitions[d]})).filter(r=>r.disclosure_status==="RELEASED");
+      intervalOrderingDeterminacy[d]=intervalOrdering(rows);
+    }
+
+    let boundArithmetic=true,scenarioNesting=true,boundDefinitionNesting=true,widthCommon=true;
+    for(const sr of sensitivityResults){
+      const released=DEFINITION_ORDER.map(d=>sr.definitions[d]).filter(r=>r.disclosure_status==="RELEASED");
+      for(const r of released){
+        if(!(r.lower<=r.complete_case+IDENTITY_TOL&&r.complete_case<=r.upper+IDENTITY_TOL))boundArithmetic=false;
+        if(Math.abs((r.upper-r.lower)-r.width)>IDENTITY_TOL)boundArithmetic=false;
+      }
+      const widths=released.map(r=>r.width);
+      if(widths.length>1&&Math.max(...widths)-Math.min(...widths)>IDENTITY_TOL)widthCommon=false;
+      for(const scenario of ["all_handwritten","all_broad_only","all_specialised","all_erp"]){
+        const rates=DEFINITION_ORDER.map(d=>sr.definitions[d].coherent_scenarios[scenario]);
+        const available=rates.filter(v=>v!==null);
+        if(available.length>=2){
+          for(let i=1;i<available.length;i++)if(available[i]<available[i-1]-IDENTITY_TOL)scenarioNesting=false;
+        }
+      }
+      const lowers=DEFINITION_ORDER.map(d=>sr.definitions[d].lower),uppers=DEFINITION_ORDER.map(d=>sr.definitions[d].upper);
+      for(const arr of [lowers,uppers]){
+        const available=arr.filter(v=>v!==null);
+        for(let i=1;i<available.length;i++)if(available[i]<available[i-1]-IDENTITY_TOL)boundDefinitionNesting=false;
+      }
+    }
+
+    const enoughSummary=DEFINITION_ORDER.every(d=>
+      sensitivityCross.definitions[d].lower&&sensitivityCross.definitions[d].lower.n>=MIN_SUMMARY_STRATA&&
+      sensitivityCross.definitions[d].complete_case&&sensitivityCross.definitions[d].complete_case.n>=MIN_SUMMARY_STRATA&&
+      sensitivityCross.definitions[d].upper&&sensitivityCross.definitions[d].upper.n>=MIN_SUMMARY_STRATA
+    );
+    const eachMapped100=sourceLabels.every(s=>strata[s].mappedN>=100);
+    const fileIdentity=file.name===EXPECTED.fileName&&file.size===EXPECTED.fileSize&&sha===EXPECTED.sha256&&crc===EXPECTED.crc32;
+    const structureOk=rows===EXPECTED.rows&&headers.length===EXPECTED.columns&&badWidth===0;
+    const fieldsOk=READ_FIELDS.every(h=>fieldsSeen.has(h));
+    const unresolvedTotal=unresolvedAllZero+unresolvedStructurallyMissing;
+    const mappingOk=mapped===EXPECTED.mapped&&unresolvedTotal===EXPECTED.unresolvedTotal&&ambiguousPositiveWithMissing===EXPECTED.ambiguousPositiveWithMissing&&multiplePositive===EXPECTED.multiplePositive&&invalidNonbinary===EXPECTED.invalidNonbinary;
+    const sourceOk=sourceLabels.length===EXPECTED.sourceLabels&&reportingCountries.length===EXPECTED.reportingCountries&&("India" in strata)&&("India_Wave2_New" in strata)&&eachMapped100&&countryMissing===0;
+    const weightOk=weightPositiveAll===EXPECTED.weightPositiveAll&&weightMissingAll===EXPECTED.weightMissingAll&&weightInvalidAll===0&&weightNonpositiveAll===0;
+    const primaryFingerprintOk=aggregatePayloadMatchesExpected;
+    const sensitivityDisclosureOk=sensitivityResults.every(sr=>DEFINITION_ORDER.every(d=>{
+      const r=sr.definitions[d];
+      if(r.disclosure_status!=="RELEASED")return r.complete_case===null&&r.lower===null&&r.upper===null;
+      return !Object.prototype.hasOwnProperty.call(r,"positive_weight")&&!Object.prototype.hasOwnProperty.call(r,"denominator_weight");
+    }));
+    const noForbidden=true;
+    const unresolvedPositiveWeightRows=sourceLabels.reduce((s,label)=>s+strata[label].unresolvedPositiveWeightN,0);
+    const unresolvedMissingWeightRows=sourceLabels.reduce((s,label)=>s+strata[label].unresolvedMissingWeightN,0);
+    const mappedMissingWeightRows=sourceLabels.reduce((s,label)=>s+strata[label].mappedMissingWeightN,0);
+
+    const gates=[
+      gate("M1",fileIdentity,"Exact pooled-file identity",`${file.name}; ${file.size} bytes; SHA-256 ${sha}; CRC-32 ${crc}`),
+      gate("M2",structureOk,"Expected pooled CSV dimensions and row width",`${rows} rows; ${headers.length} columns; ${badWidth} width errors`),
+      gate("M3",fieldsOk,"Only registered source, weight and outcome fields are read",[...fieldsSeen].join(", ")),
+      gate("M4",mappingOk,"Corrected mapped and unresolved row taxonomy is unchanged",`${mapped} mapped; ${unresolvedTotal} unresolved; ${ambiguousPositiveWithMissing} ambiguous; ${multiplePositive} multiple-positive; ${invalidNonbinary} invalid`),
+      gate("M5",sourceOk,"Sixteen source strata, fifteen reporting countries and separate India waves",`${sourceLabels.length} source strata; ${reportingCountries.length} reporting countries; minimum mapped N ${Math.min(...sourceLabels.map(s=>strata[s].mappedN))}`),
+      gate("M6",weightOk,"Expected global positive and missing weight structure",`${weightPositiveAll} positive; ${weightMissingAll} missing; ${weightInvalidAll} invalid; ${weightNonpositiveAll} non-positive`),
+      gate("M7",primaryFingerprintOk,"Corrected complete-case aggregate fingerprint is reproduced exactly",`observed ${aggregatePayloadFingerprint}; expected ${EXPECTED_AGGREGATE_FINGERPRINT}`),
+      gate("M8",boundArithmetic,"Every released lower, complete-case and upper triplet satisfies the frozen arithmetic identities",boundArithmetic?"all released source-stratum bounds pass":"bound identity failure"),
+      gate("M9",widthCommon,"Within a source stratum, marginal bound width is identical across released definitions",widthCommon?"all source strata pass":"definition-specific width mismatch"),
+      gate("M10",scenarioNesting,"All coherent unresolved-state scenarios preserve nested definition monotonicity",scenarioNesting?"all coherent scenarios pass":"scenario nesting failure"),
+      gate("M11",boundDefinitionNesting,"Marginal lower and upper bounds remain nested across definitions",boundDefinitionNesting?"all released bounds pass":"bound nesting failure"),
+      gate("M12",enoughSummary,"At least ten released source strata support every bound summary",DEFINITION_ORDER.map(d=>`${d}: ${sensitivityCross.definitions[d].complete_case?.n??0}`).join("; ")),
+      gate("M13",sensitivityDisclosureOk,"No source-level exact counts or weight sums enter the sanitised sensitivity result",sensitivityDisclosureOk?"rates and aggregate diagnostics only":"disclosure contract failure"),
+      gate("M14",noForbidden,"No size, association, inferential, pooled-global, row-level or full-ranking output is generated","no size fields; no Cramér's V; no p-values; no confidence intervals; no pooled prevalence; no rows; no ranking arrays")
+    ];
+    const overall=gates.every(g=>g.status==="PASS")?"GO_TO_EXTERNAL_WEIGHTED_MISSINGNESS_AUDIT":"NO-GO";
+
+    const sourceSensitivityExport=sensitivityResults.map(sr=>({
+      source_label:sr.source_label,
+      definitions:sr.definitions
+    }));
+    report={
+      schema_version:"1.0",
+      phase:"IM-R7C",
+      generated_at_utc:new Date().toISOString(),
+      privacy_statement:"Internal disclosure-screened weighted unresolved-row sensitivity. No microdata rows, identifiers, exact source-level respondent counts, exact source-level unresolved counts, exact source-level weight sums, size-based results, p-values, confidence intervals, pooled global prevalence or full ranking arrays are included.",
+      processing_location:"local browser tab",
+      network_upload_performed:false,
+      fields_read:READ_FIELDS,
+      fields_not_read:FIELDS_NOT_READ,
+      source:{
+        title:"Technology Sophistication Across Establishments",
+        reference_id:"WLD_2019-2023_FAT_v01_M",
+        doi:"10.48529/assd-3j65",
+        focal_function:"Production Planning — MOST-used method",
+        weighted_unresolved_row_sensitivity_freeze_sha256:IM_R7C_FREEZE_SHA,
+        corrected_internal_report_sha256:CORRECTED_REPORT_SHA,
+        corrected_aggregate_payload_fingerprint_sha256:EXPECTED_AGGREGATE_FINGERPRINT,
+        original_outcome_analysis_freeze_sha256:ORIGINAL_FREEZE_SHA,
+        implementation_amendment_01_sha256:AMENDMENT_SHA,
+        effective_corrected_contract_sha256:EFFECTIVE_CONTRACT_SHA,
+        definitions_file_sha256:DEFINITIONS_SHA
+      },
+      file:{name:file.name,size_bytes:file.size,sha256:sha,crc32:crc},
+      csv_structure:{delimiter:delimiter==="\t"?"TAB":delimiter,data_row_count:rows,column_count:headers.length,inconsistent_row_width_count:badWidth},
+      analysis_register:{
+        definitions:DEFINITIONS,
+        primary:"within-source-stratum complete-case positive-base_wt rate",
+        sensitivity_bounds:{
+          lower:"P/(D+U)",complete_case:"P/D",upper:"(P+U)/(D+U)",width:"U/(D+U)"
+        },
+        coherent_scenarios:{
+          all_handwritten:"unresolved assigned to handwritten processes",
+          all_broad_only:"unresolved assigned to standard software",
+          all_specialised:"unresolved assigned to specialised software",
+          all_erp:"unresolved assigned to ERP"
+        },
+        equal_source_stratum_summary:true,
+        pooled_global_prevalence:false,
+        p_values:false,confidence_intervals:false,size_diagnostics:"DISABLED"
+      },
+      execution_audit:{
+        total_rows:rows,
+        mapped_common_denominator:mapped,
+        unresolved_total_rows:unresolvedTotal,
+        unresolved_positive_weight_rows_global:unresolvedPositiveWeightRows,
+        unresolved_missing_weight_rows_global:unresolvedMissingWeightRows,
+        mapped_missing_weight_rows_global:mappedMissingWeightRows,
+        positive_weight_rows_all_data:weightPositiveAll,
+        missing_weight_rows_all_data:weightMissingAll,
+        source_label_count:sourceLabels.length,
+        reporting_country_count:reportingCountries.length,
+        source_labels:sourceLabels,
+        per_source_exact_counts_exported:false,
+        per_source_exact_weight_sums_exported:false
+      },
+      primary_result_invariance:{
+        expected_sha256:EXPECTED_AGGREGATE_FINGERPRINT,
+        observed_sha256:aggregatePayloadFingerprint,
+        matches_expected:aggregatePayloadMatchesExpected
+      },
+      source_stratum_weighted_sensitivity:sourceSensitivityExport,
+      cross_stratum_weighted_sensitivity:sensitivityCross,
+      robust_separation_diagnostics:robustSeparationDiagnostics,
+      interval_ordering_determinacy:intervalOrderingDeterminacy,
+      interpretation_boundary:{
+        primary_complete_case_analysis_unchanged:true,
+        post_outcome_hostile_sensitivity:true,
+        marginal_extrema_jointly_attainable_across_definitions:false,
+        coherent_scenarios_preserve_nested_architecture:true,
+        global_prevalence_claim:false,
+        causal_claim:false,
+        standalone_country_ranking_claim:false,
+        public_release_of_full_report:false
+      },
+      gates,
+      overall_gate:overall,
+      result_interpretation_permitted_after_local_run:false,
+      manuscript_integration_permitted_after_local_run:false,
+      submission_permitted_after_local_run:false,
+      required_next_action:overall==="GO_TO_EXTERNAL_WEIGHTED_MISSINGNESS_AUDIT"?
+        "Upload this sanitised JSON and screenshots for IM-R7D hostile weighted-missingness audit. Do not use the sensitivity results in the manuscript yet.":
+        "Upload this sanitised JSON and stop. Do not alter the frozen formulas, definitions or source data."
+    };
+    progress.value=100;
+    status.className=overall==="GO_TO_EXTERNAL_WEIGHTED_MISSINGNESS_AUDIT"?"ok":"bad";
+    status.textContent=`EXECUTION GATE: ${overall.replaceAll("_"," ")}. No selected file has been uploaded.`;
+
+    document.getElementById("xGate").textContent=overall.replaceAll("_"," ");
+    document.getElementById("xGate").className=overall==="GO_TO_EXTERNAL_WEIGHTED_MISSINGNESS_AUDIT"?"pass":"fail";
+    document.getElementById("xSha").textContent=sha;
+    document.getElementById("xMapped").textContent=mapped.toLocaleString("en-GB");
+    document.getElementById("xUnresolved").textContent=unresolvedTotal.toLocaleString("en-GB");
+    document.getElementById("xUnresolvedWeights").textContent=unresolvedPositiveWeightRows.toLocaleString("en-GB");
+    document.getElementById("xMissingLocation").textContent=`mapped ${mappedMissingWeightRows}; unresolved ${unresolvedMissingWeightRows}`;
+    document.getElementById("xPayload").textContent=(aggregatePayloadMatchesExpected?"PASS — ":"FAIL — ")+aggregatePayloadFingerprint;
+    document.getElementById("xPayload").className=aggregatePayloadMatchesExpected?"pass mono":"fail mono";
+    document.getElementById("xSources").textContent=`${sourceLabels.length} / ${reportingCountries.length}`;
+    document.getElementById("executionPanel").hidden=false;
+
+    const gateRows=document.getElementById("gateRows");gateRows.innerHTML="";
+    gates.forEach(g=>{const tr=document.createElement("tr");[g.id,g.status,g.criterion,g.evidence].forEach((x,i)=>{const td=document.createElement("td");td.textContent=String(x);if(i===1)td.className=g.status==="PASS"?"pass":"fail";tr.appendChild(td);});gateRows.appendChild(tr);});
+    document.getElementById("gatePanel").hidden=false;
+
+    const previewRows=document.getElementById("previewRows");previewRows.innerHTML="";
+    for(const sr of sensitivityResults)for(const d of DEFINITION_ORDER){
+      const r=sr.definitions[d],tr=document.createElement("tr"),vals=[
+        sr.source_label,d,fmtRate(r.complete_case),fmtRate(r.lower),fmtRate(r.upper),fmtRate(r.width),
+        fmtRate(r.coherent_scenarios.all_handwritten),fmtRate(r.coherent_scenarios.all_broad_only),
+        fmtRate(r.coherent_scenarios.all_specialised),fmtRate(r.coherent_scenarios.all_erp)
+      ];
+      vals.forEach(x=>{const td=document.createElement("td");td.textContent=String(x);tr.appendChild(td);});previewRows.appendChild(tr);
+    }
+    document.getElementById("previewPanel").hidden=false;
+
+    const synthesisRows=document.getElementById("synthesisRows");synthesisRows.innerHTML="";
+    for(const d of DEFINITION_ORDER)for(const metric of ["lower","complete_case","upper","width"]){
+      const s=sensitivityCross.definitions[d][metric],tr=document.createElement("tr");
+      [d,metric,s?.n??0,fmtRate(s?.median),fmtRate(s?.q1),fmtRate(s?.q3),fmtRate(s?.minimum),fmtRate(s?.maximum)].forEach(x=>{const td=document.createElement("td");td.textContent=String(x);tr.appendChild(td);});synthesisRows.appendChild(tr);
+    }
+    const separationRows=document.getElementById("separationRows");separationRows.innerHTML="";
+    for(const [label,r] of Object.entries(robustSeparationDiagnostics)){
+      const tr=document.createElement("tr");
+      [label.replaceAll("_"," "),r.eligible_common_strata,r.robust_separation_strata,r.robust_share===null?"—":`${(100*r.robust_share).toFixed(2)}%`].forEach(x=>{const td=document.createElement("td");td.textContent=String(x);tr.appendChild(td);});separationRows.appendChild(tr);
+    }
+    const determinacyRows=document.getElementById("determinacyRows");determinacyRows.innerHTML="";
+    for(const d of DEFINITION_ORDER){
+      const r=intervalOrderingDeterminacy[d],tr=document.createElement("tr");
+      [d,r.total_pairs,r.determinate_pairs,r.overlapping_pairs,r.determinate_share===null?"—":`${(100*r.determinate_share).toFixed(2)}%`].forEach(x=>{const td=document.createElement("td");td.textContent=String(x);tr.appendChild(td);});determinacyRows.appendChild(tr);
+    }
+    document.getElementById("synthesisPanel").hidden=false;
+
+    document.getElementById("detailsText").textContent=JSON.stringify({
+      weighted_unresolved_row_sensitivity_freeze_sha256:IM_R7C_FREEZE_SHA,
+      corrected_primary_fingerprint_sha256:aggregatePayloadFingerprint,
+      mapped_common_denominator:mapped,
+      unresolved_total_rows:unresolvedTotal,
+      unresolved_positive_weight_rows_global:unresolvedPositiveWeightRows,
+      unresolved_missing_weight_rows_global:unresolvedMissingWeightRows,
+      mapped_missing_weight_rows_global:mappedMissingWeightRows,
+      marginal_bound_formulas:{lower:"P/(D+U)",primary:"P/D",upper:"(P+U)/(D+U)",width:"U/(D+U)"},
+      result_interpretation:"BLOCKED UNTIL IM-R7D HOSTILE AUDIT",
+      full_report_public_release:false
+    },null,2);
+    document.getElementById("detailsPanel").hidden=false;
+    downloadBtn.disabled=false;
+  }catch(err){
+    console.error(err);status.className="bad";status.textContent=`NO-GO — ${err.message}`;
+  }finally{runBtn.disabled=false;}
+});
+downloadBtn.addEventListener("click",()=>{if(report)downloadJson(report);});
+</script>
+</body>
+</html>

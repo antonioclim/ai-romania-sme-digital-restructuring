@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7C",
+  "status": "FROZEN_POST_OUTCOME_HOSTILE_SENSITIVITY_BEFORE_WEIGHTED_UNRESOLVED_MASS_INSPECTION",
+  "freeze_file": "examples/study2_fat_production_planning/weighted_unresolved_row_sensitivity_freeze.yml",
+  "freeze_sha256": "b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc",
+  "corrected_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+  "corrected_aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "original_outcome_analysis_freeze_sha256": "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be",
+  "implementation_amendment_01_sha256": "03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef",
+  "effective_corrected_contract_sha256": "f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87",
+  "definitions_file_sha256": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa",
+  "r7b_public_summary_sha256": "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3",
+  "r7b_public_result_contract_sha256": "bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018",
+  "substantive_outcomes_previously_rendered": true,
+  "unresolved_weight_mass_previously_inspected": false,
+  "analytical_contract_changed": false,
+  "result_interpretation_permitted_after_local_run": false,
+  "submission_permitted_after_local_run": false,
+  "local_browser_tool_sha256": "72f4dea52a586f8c59c5fc60fe9834154c1ba3065d517ada930d2c83593549c8"
+}

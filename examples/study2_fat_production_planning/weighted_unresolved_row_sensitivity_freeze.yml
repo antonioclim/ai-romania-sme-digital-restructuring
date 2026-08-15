@@ -1,0 +1,160 @@
+schema_version: "1.0"
+phase: "IM-R7C"
+status: "FROZEN_POST_OUTCOME_HOSTILE_SENSITIVITY_BEFORE_WEIGHTED_UNRESOLVED_MASS_INSPECTION"
+freeze_date: "2026-08-15"
+
+purpose: >
+  Quantify the sensitivity of the frozen within-source-stratum weighted
+  production-planning estimates to the 986 unresolved ib9b1–ib9b5 rows. This
+  is a post-outcome hostile audit. It does not replace or modify the corrected
+  complete-case analysis.
+
+post_outcome_transparency:
+  substantive_outcomes_previously_rendered: true
+  unresolved_weight_mass_previously_inspected: false
+  outcome_definitions_changed: false
+  mapped_denominator_membership_changed: false
+  weighting_policy_changed: false
+  suppression_policy_changed: false
+  estimands_changed: false
+  thresholds_changed: false
+
+provenance:
+  corrected_internal_report_sha256: "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0"
+  corrected_aggregate_payload_fingerprint_sha256: "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0"
+  original_outcome_analysis_freeze_sha256: "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be"
+  implementation_amendment_01_sha256: "03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef"
+  effective_corrected_contract_sha256: "f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87"
+  definitions_file_sha256: "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa"
+  r7b_public_summary_sha256: "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3"
+  r7b_public_result_contract_sha256: "bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018"
+
+source:
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  focal_function: "Production Planning — MOST-used method"
+  csv_name: "fat0_raw_data_qje.csv"
+  csv_sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
+  expected_rows: 21055
+  expected_columns: 723
+  expected_mapped_rows: 20069
+  expected_unresolved_rows: 986
+  expected_source_strata: 16
+  expected_reporting_countries: 15
+
+permitted_fields:
+  - "country"
+  - "base_wt"
+  - "ib9b1"
+  - "ib9b2"
+  - "ib9b3"
+  - "ib9b4"
+  - "ib9b5"
+
+prohibited_fields:
+  - "firmid"
+  - "s1b"
+  - "s7"
+  - "e1"
+
+locked_definitions:
+  integrated_planning:
+    positive_states: ["erp"]
+  specialised_planning:
+    positive_states: ["specialised_software", "erp"]
+  digitally_enabled_planning:
+    positive_states:
+      - "standard_software"
+      - "mobile_apps_or_digital_platforms"
+      - "specialised_software"
+      - "erp"
+
+weight_policy:
+  scope: "within source stratum only"
+  valid_weight: "finite numeric base_wt strictly greater than zero"
+  missing_invalid_or_nonpositive_weight: "excluded from weighted denominators"
+  cross_source_weight_pooling: false
+  complete_case_weighted_result_remains_primary: true
+
+notation:
+  D_s: "sum of positive base_wt among mapped rows in source stratum s"
+  U_s: "sum of positive base_wt among unresolved rows in source stratum s"
+  P_sd: "sum of positive base_wt among mapped positive rows for definition d in stratum s"
+
+marginal_bounds:
+  lower_formula: "P_sd / (D_s + U_s)"
+  complete_case_formula: "P_sd / D_s"
+  upper_formula: "(P_sd + U_s) / (D_s + U_s)"
+  width_formula: "U_s / (D_s + U_s)"
+  interpretation: >
+    Lower assigns every unresolved positive-weight row to a negative state for
+    the definition. Upper assigns every unresolved positive-weight row to a
+    positive state. The two extrema are definition-specific marginal bounds
+    and need not be jointly attainable across nested definitions.
+
+coherent_extreme_scenarios:
+  all_handwritten:
+    assigned_state: "handwritten_processes"
+    positive_for: []
+  all_broad_only:
+    assigned_state: "standard_software"
+    positive_for: ["digitally_enabled_planning"]
+  all_specialised:
+    assigned_state: "specialised_software"
+    positive_for:
+      - "specialised_planning"
+      - "digitally_enabled_planning"
+  all_erp:
+    assigned_state: "erp"
+    positive_for:
+      - "integrated_planning"
+      - "specialised_planning"
+      - "digitally_enabled_planning"
+
+frozen_outputs:
+  internal_source_stratum_rates:
+    - "complete-case weighted rate"
+    - "marginal lower bound"
+    - "marginal upper bound"
+    - "bound width"
+    - "four coherent scenario rates"
+  cross_stratum_summaries:
+    - "eligible source-stratum count"
+    - "median"
+    - "first quartile"
+    - "third quartile"
+    - "minimum"
+    - "maximum"
+  diagnostics:
+    - "marginal-bound arithmetic identities"
+    - "nested monotonicity under every coherent scenario"
+    - "pairwise interval-order determinacy"
+    - "broad-lower versus narrow-upper separation counts"
+
+suppression_and_release:
+  original_definition_suppression_carried_forward: true
+  source_level_small_cell_endpoint_release: false
+  exact_source_level_mapped_counts_exported: false
+  exact_source_level_unresolved_counts_exported: false
+  exact_source_level_weight_sums_exported: false
+  full_sensitivity_report_public_release: false
+  public_summary_requires_separate_hardening: true
+
+prohibited_outputs:
+  - "global pooled prevalence"
+  - "cross-source pooled weighted estimate"
+  - "p-values"
+  - "confidence intervals"
+  - "Cramér's V"
+  - "size diagnostics"
+  - "causal effects"
+  - "row-level material"
+  - "full source-stratum rankings"
+
+execution_gate:
+  success_value: "GO_TO_EXTERNAL_WEIGHTED_MISSINGNESS_AUDIT"
+  failure_value: "NO-GO"
+  result_interpretation_after_local_run: false
+  manuscript_integration_after_local_run: false
+  submission_after_local_run: false
+  next_phase_after_pass: "IM-R7D_HOSTILE_WEIGHTED_MISSINGNESS_AUDIT"
