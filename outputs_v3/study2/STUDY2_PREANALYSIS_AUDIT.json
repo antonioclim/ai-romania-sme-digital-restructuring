@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6C",
+  "generated_at_utc": "2026-08-15T09:52:07.847Z",
+  "privacy_statement": "Non-outcome structural aggregates only. No microdata rows, technology-state counts, ODSA rates, associations or country-level technology outcomes are included.",
+  "processing_location": "local browser tab",
+  "network_upload_performed": false,
+  "fields_read": [
+    "country",
+    "s1b",
+    "s7",
+    "e1",
+    "base_wt"
+  ],
+  "outcome_fields_read": [],
+  "source": {
+    "reference_id": "WLD_2019-2023_FAT_v01_M",
+    "doi": "10.48529/assd-3j65",
+    "selected_function": "Production Planning — MOST-used method",
+    "preanalysis_freeze_sha256": "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727"
+  },
+  "file": {
+    "name": "fat0_raw_data_qje.csv",
+    "size_bytes": 19633172,
+    "sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+    "crc32": "4418a02b"
+  },
+  "csv_structure": {
+    "delimiter": ",",
+    "data_row_count": 21055,
+    "column_count": 723,
+    "inconsistent_row_width_count": 0
+  },
+  "source_harmonisation": {
+    "source_label_count": 16,
+    "reporting_country_count": 15,
+    "source_labels": [
+      "Bangladesh",
+      "Brazil",
+      "BurkinaFaso",
+      "Cambodia",
+      "Chile",
+      "Croatia",
+      "Ethiopia",
+      "Georgia",
+      "Ghana",
+      "India",
+      "India_Wave2_New",
+      "Kenya",
+      "Korea",
+      "Poland",
+      "Senegal",
+      "Vietnam"
+    ],
+    "reporting_countries": [
+      "Bangladesh",
+      "Brazil",
+      "Burkina Faso",
+      "Cambodia",
+      "Chile",
+      "Croatia",
+      "Ethiopia",
+      "Georgia",
+      "Ghana",
+      "India",
+      "Kenya",
+      "Poland",
+      "Republic of Korea",
+      "Senegal",
+      "Viet Nam"
+    ],
+    "india_source_strata_preserved_separately": true,
+    "primary_india_merge": false
+  },
+  "field_summary": {
+    "s1b": {
+      "role": "sample-frame validation only",
+      "nonmissing_count": 21055,
+      "missing_count": 0,
+      "observed_values_and_counts": {
+        "1": 11595,
+        "2": 5830,
+        "3": 3630
+      }
+    },
+    "s7": {
+      "role": "primary numeric size candidate",
+      "valid_numeric_count": 21055,
+      "missing_or_special_count": 0,
+      "invalid_count": 0,
+      "noninteger_count": 0,
+      "below_five_count": 1538,
+      "eligible_ge5_count": 19517,
+      "valid_share": 1.0
+    },
+    "e1": {
+      "role": "secondary complete-case sensitivity",
+      "valid_numeric_count": 13399,
+      "missing_or_special_count": 7656,
+      "invalid_count": 0,
+      "noninteger_count": 0,
+      "below_five_count": 1435,
+      "eligible_ge5_count": 11964,
+      "valid_share": 0.6363809071479458
+    },
+    "base_wt": {
+      "positive_numeric_count": 21054,
+      "missing_count": 1,
+      "invalid_count": 0,
+      "nonpositive_count": 0,
+      "positive_share": 0.999952505343149
+    }
+  },
+  "s7_e1_consistency": {
+    "nonmissing_overlap_count": 13399,
+    "exact_equality_count": 8367,
+    "exact_equality_share": 0.6244495857899843,
+    "same_frozen_size_band_count": 12116,
+    "same_frozen_size_band_share": 0.9042465855660871,
+    "median_absolute_difference": 0
+  },
+  "source_stratum_summary": [
+    {"source_label":"Bangladesh","reporting_country":"Bangladesh","n":903,"s7_valid_count":903,"s7_valid_share":1.0,"s7_eligible_ge5_count":903,"e1_valid_count":0,"e1_valid_share":0.0,"e1_eligible_ge5_count":0,"base_wt_positive_count":903,"base_wt_positive_share":1.0,"s1b_nonmissing_count":903},
+    {"source_label":"Brazil","reporting_country":"Brazil","n":1531,"s7_valid_count":1531,"s7_valid_share":1.0,"s7_eligible_ge5_count":1531,"e1_valid_count":533,"e1_valid_share":0.3481384715871979,"e1_eligible_ge5_count":518,"base_wt_positive_count":1531,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1531},
+    {"source_label":"BurkinaFaso","reporting_country":"Burkina Faso","n":600,"s7_valid_count":600,"s7_valid_share":1.0,"s7_eligible_ge5_count":600,"e1_valid_count":600,"e1_valid_share":1.0,"e1_eligible_ge5_count":600,"base_wt_positive_count":600,"base_wt_positive_share":1.0,"s1b_nonmissing_count":600},
+    {"source_label":"Cambodia","reporting_country":"Cambodia","n":795,"s7_valid_count":795,"s7_valid_share":1.0,"s7_eligible_ge5_count":530,"e1_valid_count":760,"e1_valid_share":0.9559748427672956,"e1_eligible_ge5_count":746,"base_wt_positive_count":795,"base_wt_positive_share":1.0,"s1b_nonmissing_count":795},
+    {"source_label":"Chile","reporting_country":"Chile","n":1095,"s7_valid_count":1095,"s7_valid_share":1.0,"s7_eligible_ge5_count":1095,"e1_valid_count":266,"e1_valid_share":0.24292237442922374,"e1_eligible_ge5_count":255,"base_wt_positive_count":1095,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1095},
+    {"source_label":"Croatia","reporting_country":"Croatia","n":710,"s7_valid_count":710,"s7_valid_share":1.0,"s7_eligible_ge5_count":710,"e1_valid_count":702,"e1_valid_share":0.9887323943661972,"e1_eligible_ge5_count":671,"base_wt_positive_count":710,"base_wt_positive_share":1.0,"s1b_nonmissing_count":710},
+    {"source_label":"Ethiopia","reporting_country":"Ethiopia","n":1476,"s7_valid_count":1476,"s7_valid_share":1.0,"s7_eligible_ge5_count":1476,"e1_valid_count":1476,"e1_valid_share":1.0,"e1_eligible_ge5_count":1391,"base_wt_positive_count":1475,"base_wt_positive_share":0.9993224932249323,"s1b_nonmissing_count":1476},
+    {"source_label":"Georgia","reporting_country":"Georgia","n":1800,"s7_valid_count":1800,"s7_valid_share":1.0,"s7_eligible_ge5_count":1793,"e1_valid_count":1771,"e1_valid_share":0.9838888888888889,"e1_eligible_ge5_count":1754,"base_wt_positive_count":1800,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1800},
+    {"source_label":"Ghana","reporting_country":"Ghana","n":1262,"s7_valid_count":1262,"s7_valid_share":1.0,"s7_eligible_ge5_count":1261,"e1_valid_count":1262,"e1_valid_share":1.0,"e1_eligible_ge5_count":1262,"base_wt_positive_count":1262,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1262},
+    {"source_label":"India","reporting_country":"India","n":1519,"s7_valid_count":1519,"s7_valid_share":1.0,"s7_eligible_ge5_count":1519,"e1_valid_count":0,"e1_valid_share":0.0,"e1_eligible_ge5_count":0,"base_wt_positive_count":1519,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1519},
+    {"source_label":"India_Wave2_New","reporting_country":"India","n":1723,"s7_valid_count":1723,"s7_valid_share":1.0,"s7_eligible_ge5_count":1723,"e1_valid_count":1723,"e1_valid_share":1.0,"e1_eligible_ge5_count":1717,"base_wt_positive_count":1723,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1723},
+    {"source_label":"Kenya","reporting_country":"Kenya","n":1305,"s7_valid_count":1305,"s7_valid_share":1.0,"s7_eligible_ge5_count":1212,"e1_valid_count":1266,"e1_valid_share":0.9701149425287356,"e1_eligible_ge5_count":1199,"base_wt_positive_count":1305,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1305},
+    {"source_label":"Korea","reporting_country":"Republic of Korea","n":1551,"s7_valid_count":1551,"s7_valid_share":1.0,"s7_eligible_ge5_count":1551,"e1_valid_count":1546,"e1_valid_share":0.996776273372018,"e1_eligible_ge5_count":1525,"base_wt_positive_count":1551,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1551},
+    {"source_label":"Poland","reporting_country":"Poland","n":1500,"s7_valid_count":1500,"s7_valid_share":1.0,"s7_eligible_ge5_count":328,"e1_valid_count":1494,"e1_valid_share":0.996,"e1_eligible_ge5_count":326,"base_wt_positive_count":1500,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1500},
+    {"source_label":"Senegal","reporting_country":"Senegal","n":1786,"s7_valid_count":1786,"s7_valid_share":1.0,"s7_eligible_ge5_count":1786,"e1_valid_count":0,"e1_valid_share":0.0,"e1_eligible_ge5_count":0,"base_wt_positive_count":1786,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1786},
+    {"source_label":"Vietnam","reporting_country":"Viet Nam","n":1499,"s7_valid_count":1499,"s7_valid_share":1.0,"s7_eligible_ge5_count":1499,"e1_valid_count":0,"e1_valid_share":0.0,"e1_eligible_ge5_count":0,"base_wt_positive_count":1499,"base_wt_positive_share":1.0,"s1b_nonmissing_count":1499}
+  ],
+  "frozen_rule_decision": {
+    "preanalysis_gate": "NO-GO",
+    "primary_size_descriptor": "DISABLED",
+    "secondary_size_sensitivity": "e1 complete-case sensitivity",
+    "s1b_role": "sample-frame validation only",
+    "outcome_analysis_permitted_after_local_run": false,
+    "required_external_review": true
+  },
+  "gates": [
+    {"id":"P1","status":"PASS","criterion":"Exact pooled-file identity","evidence":"fat0_raw_data_qje.csv; 19633172 bytes; SHA-256 f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17; CRC-32 4418a02b"},
+    {"id":"P2","status":"PASS","criterion":"Required non-outcome fields and pooled dimensions","evidence":"country, s1b, s7, e1, base_wt; 21055 rows; 723 columns; 0 width errors"},
+    {"id":"P3","status":"PASS","criterion":"Sixteen source labels map to fifteen reporting countries","evidence":"16 source labels; 15 reporting countries"},
+    {"id":"P4","status":"PASS","criterion":"India source waves remain identifiable as separate strata","evidence":"India and India_Wave2_New both present"},
+    {"id":"P5","status":"PASS","criterion":"s7 valid on at least 95% of rows","evidence":"100.000%"},
+    {"id":"P6","status":"PASS","criterion":"s7 valid on at least 90% in every source stratum with N≥100","evidence":"all eligible source strata pass"},
+    {"id":"P7","status":"FAIL","criterion":"At most 1% of valid s7 values are below five","evidence":"7.305%"},
+    {"id":"P8","status":"PASS","criterion":"At most 0.1% of non-missing numeric s7 values are non-integer","evidence":"0.0000%"},
+    {"id":"P9","status":"PASS","criterion":"At least ten source strata have at least 100 records with s7≥5","evidence":"16 source strata"},
+    {"id":"P10","status":"PASS","criterion":"base_wt is positive numeric for at least 99.5% of rows","evidence":"99.9953%"},
+    {"id":"P11","status":"PASS","criterion":"Sanitised report excludes outcomes, rows and technology-state counts","evidence":"tool reads only country, s1b, s7, e1 and base_wt"}
+  ],
+  "next_action": "Upload this sanitised report and stop. Employee-size outcome analysis remains disabled.",
+  "source_report_sha256": "f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f"
+}
