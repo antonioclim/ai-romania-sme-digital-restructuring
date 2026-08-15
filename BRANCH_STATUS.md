@@ -5,13 +5,17 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6B is complete. The authorised user acquired the selected World Bank pooled
-CSV package, verified its archive and extracted-member identity in a local
-browser and executed the sanitised structural gate. No Study 2 outcome result
-has been inspected.
+IM-R6C-A is complete. The source-stratum, size-descriptor, weight and
+reporting rules for Study 2 have been frozen before any technology outcome is
+inspected. A browser-only local audit is now open for the non-outcome fields
+`country`, `s1b`, `s7`, `e1` and `base_wt`.
 
-The next phase is IM-R6C: source-stratum harmonisation, size-descriptor
-completeness audit and analysis-specification freeze.
+The IM-R5 registry nominated `e1` as the primary size descriptor. IM-R6B showed
+that `e1` is missing for 7,656 rows (36.36%). The pre-outcome amendment now
+nominates `s7` as the primary numeric size candidate, retains `e1` as a
+complete-case sensitivity descriptor and restricts `s1b` to sample-frame
+validation. If `s7` fails the frozen quality gates, employee-size association
+analysis is disabled rather than reassigned after outcomes are seen.
 
 The branch contains:
 
@@ -29,7 +33,9 @@ The branch contains:
   inspection;
 - browser-only acquisition, non-redistribution and structural-gate protocols;
 - verified sanitised acquisition and structural evidence;
-- executable regression tests that preserve the Study 2 analysis NO-GO gate.
+- a frozen pre-analysis harmonisation protocol and descriptor amendment;
+- executable regression tests that preserve the Study 2 outcome-analysis
+  NO-GO gate.
 
 ## Full-execution status
 
@@ -43,7 +49,7 @@ maximum event-probability MCSE:     0.007905694150420948
 undefined primary associations:     0
 nested-level violations:            0
 convergence failures:               0
-independent core rerun:              byte-identical
+independent core rerun:             byte-identical
 ```
 
 ## Study 2 status
@@ -71,24 +77,35 @@ microdata in repository:  no
 outcomes inspected:       no
 mechanical structural gate: PASS
 semantic structural gate: PASS WITH MANDATORY CAVEATS
+preanalysis freeze SHA-256: 8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727
+primary size candidate:   s7, subject to frozen local quality gates
+secondary sensitivity:   e1 complete cases
+s1b role:                 sample-frame validation only
+local preanalysis audit:  PENDING
 analysis gate:            NO-GO
 replication executed:     no
 submission gate:          NO-GO
 ```
 
-## Mandatory preanalysis decisions
+## Frozen preanalysis rules
 
-IM-R6C must be completed before any ODSA result is calculated. It must freeze:
-
-1. the treatment of `India` and `India_Wave2_New` as source strata;
-2. a non-outcome comparison of `s1b`, `s7` and `e1` for meaning,
-   completeness and source-stratum coverage;
-3. the primary size descriptor and source-stratum eligibility thresholds;
-4. within-stratum use of `base_wt` and the across-stratum synthesis;
-5. the conservative treatment of the 986 all-zero records, which cannot be
-   separated into other, missing, not applicable or structurally ineligible
-   states from `ib9b1`–`ib9b5` alone;
-6. the public-output and disclosure boundary.
+1. `India` and `India_Wave2_New` remain separate analytical source strata and
+   map to one reporting country, India.
+2. Results are described as sixteen source strata from fifteen documented
+   countries.
+3. The primary numeric size candidate is `s7`; the frozen bands are 5–19,
+   20–99 and 100 or more workers.
+4. `s7` must pass overall, within-stratum, below-universe and integer-quality
+   thresholds before size analysis is enabled.
+5. `e1` is a secondary complete-case sensitivity field and `s1b` is not a
+   numeric fallback.
+6. Weighted levels are calculated within source stratum using positive
+   `base_wt`; no pooled world estimate is permitted.
+7. Weighted and unweighted association diagnostics are descriptive and receive
+   no inferential p-values.
+8. The 986 unresolved all-zero outcome rows remain outside the primary
+   denominator and are not labelled `Other`, missing or non-users by
+   assumption.
 
 ## Isolation
 
@@ -100,7 +117,8 @@ IM-R6C must be completed before any ODSA result is calculated. It must freeze:
 
 ## Open scientific gates
 
-- IM-R6C preanalysis harmonisation and descriptor freeze;
+- local non-outcome IM-R6C audit and external review;
+- final Study 2 analysis-specification closure;
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
 - reconstruction of the Information & Management manuscript;
