@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7-A",
+  "status": "FROZEN_LOCAL_EXECUTION_OPEN",
+  "gate": "GO_TO_BROWSER_ONLY_STUDY2_OUTCOME_EXECUTION",
+  "outcome_analysis_gate": "GO_ONLY_UNDER_FROZEN_LOCAL_TOOL",
+  "result_interpretation_gate": "NO-GO",
+  "submission_gate": "NO-GO",
+  "dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+  "definitions_file_sha256": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa",
+  "outcome_analysis_freeze_sha256": "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be",
+  "locked_definitions": [
+    "integrated_planning",
+    "specialised_planning",
+    "digitally_enabled_planning"
+  ],
+  "fields_permitted_for_local_execution": [
+    "country",
+    "base_wt",
+    "ib9b1",
+    "ib9b2",
+    "ib9b3",
+    "ib9b4",
+    "ib9b5"
+  ],
+  "size_fields_permitted": [],
+  "association_outputs_permitted": [],
+  "pooled_global_estimate_permitted": false,
+  "source_microdata_must_remain_local": true,
+  "required_next_evidence": [
+    "IM_R7A_STUDY2_AGGREGATE_RESULT_REPORT_*.json",
+    "screenshots of E1-E12 and the aggregate preview"
+  ],
+  "next_phase_after_evidence": "IM-R7-B_HOSTILE_RESULT_AUDIT"
+}
