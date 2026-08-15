@@ -1,10 +1,19 @@
 # Study 2 size-free outcome-analysis protocol
 
+> **Implementation status, 15 August 2026.** The original analytical
+> specification remains frozen. The first IM-R7A browser execution is
+> quarantined because its row classifier labelled 986 structurally unresolved
+> one-hot rows as invalid. Corrective implementation amendment 01 changes only
+> that classification metadata and adds the aggregate-identity gate E13. It
+> does not change a definition, denominator membership rule, weight, estimand,
+> threshold, suppression rule or claim boundary.
+
 ## Purpose
 
-This protocol governs the first calculation of the World Bank FAT Study 2
-outcomes. It was frozen after the structural, descriptor and dictionary audits
-but before any production-planning outcome frequency was inspected.
+This protocol governs the calculation of the World Bank FAT Study 2 outcomes.
+Its scientific choices were frozen after the structural, descriptor and
+dictionary audits and before any production-planning outcome frequency was
+rendered.
 
 The analysis is intentionally **size-free**. The prior audits disabled `s7`,
 `e1` and `s1b` for Study 2 size diagnostics. No size-band rate, size-based
@@ -28,9 +37,20 @@ one-hot family:
 | `ib9b5` | ERP |
 
 A row enters the common primary denominator only when exactly one field equals
-one. The 986 previously identified all-zero rows remain excluded. Because
-`ib9b6` is absent, those rows are not relabelled as `Other`, missing,
+one and every remaining field is a documented zero. The previously established
+20,069 complete one-hot rows enter the common denominator. The remaining 986
+rows are retained outside that denominator as unresolved or structurally
+missing. Because `ib9b6` is absent, they are not relabelled as `Other`, missing,
 non-users or not applicable.
+
+Corrective amendment 01 distinguishes:
+
+1. complete one-hot rows;
+2. all-zero unresolved rows;
+3. structurally missing unresolved rows;
+4. one-positive rows with missing companion fields, which remain ambiguous;
+5. multiple-positive rows;
+6. non-missing non-binary invalid rows.
 
 ## Locked definitions
 
@@ -169,12 +189,13 @@ confidence intervals or causal statements are produced.
 
 ## Validation gates
 
-The execution report must pass E1–E12:
+The corrected execution report must pass E1–E13:
 
 1. exact file identity;
 2. expected rows, columns and row widths;
 3. required field presence;
-4. exact one-hot mapping totals;
+4. exact complete one-hot mapping and transparent unresolved-row
+   classification;
 5. source-stratum and reporting-country architecture;
 6. weight integrity;
 7. nested level monotonicity;
@@ -182,14 +203,29 @@ The execution report must pass E1–E12:
 9. composition identities;
 10. adequate unsuppressed cross-stratum support;
 11. absence of size, association, inferential and pooled-global outputs;
-12. disclosure and no-row contract.
+12. disclosure and no-row contract;
+13. byte-identical canonical aggregate-result fingerprint relative to the
+    quarantined failed run.
 
-## Freeze
+E13 is a post-exposure safeguard. It ensures that the implementation correction
+cannot silently change an aggregate result after the first run rendered
+outcomes.
+
+## Freeze and corrective amendment
 
 ```text
-outcome-analysis freeze SHA-256:
+original outcome-analysis freeze SHA-256:
 2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be
+
+implementation amendment 01 SHA-256:
+03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef
+
+effective corrected contract SHA-256:
+f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87
+
+quarantined aggregate payload fingerprint SHA-256:
+b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0
 ```
 
-A local result is not interpretation-ready until its sanitised JSON report has
-been reviewed externally.
+A local result is not interpretation-ready until its corrected sanitised JSON
+report passes E1–E13 and is reviewed externally in IM-R7B.
