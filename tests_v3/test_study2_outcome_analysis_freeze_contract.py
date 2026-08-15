@@ -44,10 +44,16 @@ def test_study2_outcome_analysis_freeze_contract() -> None:
     assert 'ib9b6_available: false' in text
     assert 'result_interpretation_permitted_after_local_run: false' in text
 
-    assert gate["status"] == "FROZEN_LOCAL_EXECUTION_OPEN"
+    # The scientific freeze remains authoritative even though the live gate
+    # has advanced to a corrective implementation rerun after a failed E4.
+    assert gate["status"] in {
+        "FROZEN_LOCAL_EXECUTION_OPEN",
+        "CORRECTIVE_RERUN_OPEN",
+    }
     assert gate["result_interpretation_gate"] == "NO-GO"
     assert gate["submission_gate"] == "NO-GO"
     assert gate["size_fields_permitted"] == []
     assert gate["association_outputs_permitted"] == []
     assert gate["pooled_global_estimate_permitted"] is False
+    assert gate["source_microdata_must_remain_local"] is True
     assert gate["outcome_analysis_freeze_sha256"] == observed
