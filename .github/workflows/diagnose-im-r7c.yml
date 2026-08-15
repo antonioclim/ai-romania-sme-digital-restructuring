@@ -1,0 +1,63 @@
+name: Diagnose IM-R7C materialisation patch
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - '.github/workflows/diagnose-im-r7c.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: im-v3.0.0-rc1
+          fetch-depth: 0
+
+      - name: Compute transfer diagnostics
+        shell: bash
+        run: |
+          set +e
+          {
+            echo 'EXPECTED PARTS'
+            echo 'part01 8000 a6c42084987c8037edbb854bc403ce6f98cc4df30d029623e75cd5fc6543b336'
+            echo 'part02 8000 48d229df1c89793547c94d1fd1dd48cb75fc1386e109790a33c9ff6fcdfdb00d'
+            echo 'part03 8000 097f0b47def76133280d50b8d4cac98583af8531e679a0434e1621330077a9be'
+            echo 'part04 8000 6b75d1d4cd6e38fb937567af27a566afde6a23edc49c40a35a0b1e62f1e00146'
+            echo 'part05 7668 e39ef82c7244d97dd49571e72062cfe60491ac148446231782a2c07143b89576'
+            echo
+            echo 'OBSERVED PARTS'
+            for f in .github/im-r7c-sync-patch.part*; do
+              printf '%s ' "$(basename "$f")"
+              wc -c < "$f" | tr -d '\n'
+              printf ' '
+              sha256sum "$f" | cut -d' ' -f1
+            done
+            echo
+            cat .github/im-r7c-sync-patch.part* > /tmp/raw.b64
+            tr -d '[:space:]' < /tmp/raw.b64 > /tmp/clean.b64
+            echo "raw_chars $(wc -c < /tmp/raw.b64)"
+            echo "clean_chars $(wc -c < /tmp/clean.b64)"
+            base64 --decode --ignore-garbage /tmp/clean.b64 > /tmp/patch.tar.gz
+            echo "decode_status $?"
+            echo "decoded_sha256 $(sha256sum /tmp/patch.tar.gz | cut -d' ' -f1)"
+            gzip -t /tmp/patch.tar.gz
+            echo "gzip_status $?"
+          } > .github/im-r7c-sync-diagnostic.txt 2>&1
+
+      - name: Commit diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/im-r7c-sync-diagnostic.txt
+          git commit -m 'Record IM-R7C patch transfer diagnostics'
+          git push origin HEAD:im-v3.0.0-rc1
