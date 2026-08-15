@@ -5,17 +5,23 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6C-A is complete. The source-stratum, size-descriptor, weight and
-reporting rules for Study 2 have been frozen before any technology outcome is
-inspected. A browser-only local audit is now open for the non-outcome fields
-`country`, `s1b`, `s7`, `e1` and `base_wt`.
+IM-R6C is complete. The authorised user executed the frozen browser-only
+pre-analysis audit on the non-outcome fields `country`, `s1b`, `s7`, `e1` and
+`base_wt`. The tool read no production-planning technology field and no Study 2
+outcome result has been inspected.
 
-The IM-R5 registry nominated `e1` as the primary size descriptor. IM-R6B showed
-that `e1` is missing for 7,656 rows (36.36%). The pre-outcome amendment now
-nominates `s7` as the primary numeric size candidate, retains `e1` as a
-complete-case sensitivity descriptor and restricts `s1b` to sample-frame
-validation. If `s7` fails the frozen quality gates, employee-size association
-analysis is disabled rather than reassigned after outcomes are seen.
+The audit returned `NO-GO` because 1,538 of 21,055 valid `s7` values (7.305%)
+are below the prespecified five-worker universe threshold, exceeding the frozen
+1% maximum. In accordance with the preanalysis freeze, `s7` is disabled as the
+primary numeric size descriptor. The threshold will not be relaxed, the
+below-five cases will not be repaired by assumption and `e1` will not be
+promoted to the primary descriptor after the failure.
+
+The next phase is IM-R6D: official code-label verification and cross-source-
+stratum invariance audit for `s1b`. `s1b` may be considered only as a
+categorical sampling-frame size stratum, never as a numeric worker count. If
+its official mapping cannot be verified and frozen before outcome inspection,
+all size-based Study 2 diagnostics remain disabled.
 
 The branch contains:
 
@@ -33,9 +39,10 @@ The branch contains:
   inspection;
 - browser-only acquisition, non-redistribution and structural-gate protocols;
 - verified sanitised acquisition and structural evidence;
-- a frozen pre-analysis harmonisation protocol and descriptor amendment;
-- executable regression tests that preserve the Study 2 outcome-analysis
-  NO-GO gate.
+- a frozen pre-analysis harmonisation protocol;
+- the sanitised IM-R6C audit and hostile external review;
+- executable regression tests preserving the Study 2 outcome-analysis NO-GO
+  gate.
 
 ## Full-execution status
 
@@ -78,32 +85,35 @@ outcomes inspected:       no
 mechanical structural gate: PASS
 semantic structural gate: PASS WITH MANDATORY CAVEATS
 preanalysis freeze SHA-256: 8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727
-primary size candidate:   s7, subject to frozen local quality gates
-secondary sensitivity:   e1 complete cases
-s1b role:                 sample-frame validation only
-local preanalysis audit:  PENDING
+IM-R6C report SHA-256:     f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
+s7 valid / below five:    21,055 / 1,538
+s7 below-five share:      7.305%
+IM-R6C frozen gate:       NO-GO
+primary numeric descriptor: DISABLED
+s7 threshold relaxation:  PROHIBITED
+e1 promotion to primary:  PROHIBITED
+s1b observed codes:       1, 2, 3; official categorical mapping audit pending
 analysis gate:            NO-GO
 replication executed:     no
 submission gate:          NO-GO
 ```
 
-## Frozen preanalysis rules
+## Frozen consequences of IM-R6C
 
-1. `India` and `India_Wave2_New` remain separate analytical source strata and
-   map to one reporting country, India.
-2. Results are described as sixteen source strata from fifteen documented
-   countries.
-3. The primary numeric size candidate is `s7`; the frozen bands are 5–19,
-   20–99 and 100 or more workers.
-4. `s7` must pass overall, within-stratum, below-universe and integer-quality
-   thresholds before size analysis is enabled.
-5. `e1` is a secondary complete-case sensitivity field and `s1b` is not a
-   numeric fallback.
-6. Weighted levels are calculated within source stratum using positive
-   `base_wt`; no pooled world estimate is permitted.
-7. Weighted and unweighted association diagnostics are descriptive and receive
-   no inferential p-values.
-8. The 986 unresolved all-zero outcome rows remain outside the primary
+1. `s7` is not used as a cross-source-stratum primary numeric descriptor.
+2. The 1% below-universe threshold is not relaxed after audit inspection.
+3. The 1,538 below-five `s7` values are not dropped, repaired or relabelled by
+   assumption.
+4. `e1` is not promoted to the primary descriptor; any complete-case role
+   remains secondary and requires a final scope decision.
+5. `s1b` is never interpreted as a numeric worker count.
+6. `s1b` may be considered only as a categorical sampling-frame size stratum
+   after official code-label and cross-source-stratum invariance verification.
+7. `India` and `India_Wave2_New` remain separate analytical source strata and
+   map to one reporting country.
+8. No pooled global prevalence or pooled cross-country association is
+   permitted.
+9. The 986 unresolved all-zero outcome rows remain outside the primary
    denominator and are not labelled `Other`, missing or non-users by
    assumption.
 
@@ -117,7 +127,7 @@ submission gate:          NO-GO
 
 ## Open scientific gates
 
-- local non-outcome IM-R6C audit and external review;
+- IM-R6D official `s1b` mapping and categorical-descriptor decision;
 - final Study 2 analysis-specification closure;
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
