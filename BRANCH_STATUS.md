@@ -1,14 +1,17 @@
 # Branch status — `im-v3.0.0-rc1`
 
-This branch is the active development branch for Outcome-Definition Sensitivity Analysis version `3.0.0-rc1`.
+This branch is the active development branch for Outcome-Definition
+Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6D-B is complete. The browser-only local audit passed its structural checks but the official pooled World Bank Data Dictionary XLSX does not contain `s1b` or value labels for codes 1, 2 and 3. The prespecified official-label gate D9 therefore failed.
+IM-R7-A is open. The Study 2 outcome definitions and size-free analytical
+contract have been frozen before the first production-planning outcome
+execution.
 
-The candidate mapping `1/2/3 → small/medium/large sampling-frame size strata` is rejected for the current Study 2 analysis. All Study 2 size-based diagnostics are disabled before any production-planning outcome is inspected.
-
-The next phase is IM-R7-A: freeze and implement the Study 2 outcome analysis without a size descriptor.
+The local browser-only tool is the only authorised execution route. Result
+interpretation remains blocked until the sanitised aggregate report passes the
+IM-R7-B hostile audit.
 
 ## Core package status
 
@@ -40,52 +43,51 @@ unresolved all-zero rows:          986
 source labels / countries:         16 / 15
 microdata in repository:           no
 outcomes inspected:                no
-IM-R6C report SHA-256:             f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
-s7 valid / below five:             21,055 / 1,538
-s7 below-five share:               7.305%
 s7 primary numeric descriptor:     DISABLED
-s7 threshold relaxation:           PROHIBITED
 e1 size analysis:                  DISABLED
-s1b observed codes:                1, 2, 3
-s1b local report SHA-256:           cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2
-official dictionary SHA-256:       bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac
-s1b official value labels:         NOT PROVIDED
 s1b candidate mapping:             REJECTED
 all size-based diagnostics:        DISABLED
-s1b audit freeze SHA-256:          1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88
 s1b final decision SHA-256:        b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b
-analysis gate:                     NO-GO pending IM-R7-A freeze
-replication executed:              no
+definitions file SHA-256:          100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa
+outcome-analysis freeze SHA-256:   2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be
+local outcome execution:           PENDING USER
+result interpretation gate:        NO-GO
 submission gate:                   NO-GO
 ```
 
-## Frozen methodological consequences
+## Locked outcome definitions
 
-1. `s7` is not used as a cross-source-stratum primary numeric descriptor.
-2. The 1% below-universe threshold is not relaxed after audit inspection.
-3. The 1,538 below-five `s7` values are not dropped, repaired or relabelled by assumption.
-4. `e1` is not used for a primary or secondary Study 2 size analysis.
-5. `s1b` is never interpreted as a numeric worker count or current firm size.
-6. `s1b` is not used as a categorical size descriptor because the official pooled dictionary does not provide its value labels.
-7. No size-band outcome rate, size-based Cramér's V or size-effect claim is permitted.
-8. `India` and `India_Wave2_New` remain separate analytical source strata and map to one reporting country.
-9. No pooled global prevalence or pooled cross-country association is permitted.
-10. The 986 unresolved all-zero outcome rows remain outside the primary denominator and are not relabelled by assumption.
+1. `integrated_planning` — ERP only;
+2. `specialised_planning` — specialised software or ERP;
+3. `digitally_enabled_planning` — standard software, mobile apps or digital
+   platforms, specialised software or ERP.
 
-## Retained Study 2 scope
+The definitions share one denominator and are strictly nested.
 
-The next prespecified analysis may include:
+## Frozen Study 2 outputs
 
-- weighted and unweighted outcome-definition levels within source stratum;
-- positive-class composition within source stratum;
-- exact contrasts between the frozen outcome definitions;
-- source-stratum ordering and ordering changes across definitions;
-- cross-stratum descriptive synthesis without a pooled global prevalence.
+Permitted:
+
+- weighted and unweighted levels within source stratum;
+- disclosure-screened positive-class composition;
+- exact adjacent and full definition contrasts;
+- composition total-variation distance;
+- pairwise source-stratum order disagreement;
+- equal-stratum medians, quartiles, minima and maxima.
+
+Prohibited:
+
+- any size diagnostic;
+- source-stratum Cramér's V;
+- p-values or confidence intervals;
+- global pooled prevalence;
+- pooled cross-country association;
+- row-level material or cells containing counts 1–4.
 
 ## Open scientific gates
 
-- IM-R7-A outcome-analysis specification and SHA-256 freeze without size diagnostics;
-- browser-only Study 2 execution and hostile result audit;
+- browser-only Study 2 execution;
+- IM-R7-B hostile result and disclosure audit;
 - secondary-use ethics and data-governance wording;
 - reconstruction of the Information & Management manuscript;
 - article–code–table–figure parity and final release audit;
@@ -97,5 +99,5 @@ The next prespecified analysis may include:
 - default branch `main`: not modified by RC development;
 - final tag `v3.0.0`: not created;
 - final GitHub release and Zenodo version: not created;
-- no respondent-level Study 1 data or World Bank microdata may enter the public workflow;
-- the public World Bank Data Dictionary XLSX was reviewed only as documentation and is not required in the release.
+- no respondent-level Study 1 data or World Bank microdata may enter the public
+  workflow.
