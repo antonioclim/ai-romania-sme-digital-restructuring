@@ -1,0 +1,50 @@
+schema_version: "1.0"
+phase: "IM-R7B"
+status: "FROZEN_PUBLIC_RESULT_CONTRACT"
+contract_date: "2026-08-15"
+
+authoritative_internal_result:
+  file: "IM_R7A_C1_STUDY2_AGGREGATE_RESULT_REPORT_20260815T181204Z.json"
+  sha256: "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0"
+  aggregate_payload_fingerprint_sha256: "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0"
+  public_distribution: "PROHIBITED"
+
+public_summary:
+  file: "outputs_v3/study2/STUDY2_PUBLIC_RESULT_SUMMARY.json"
+  sha256: "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3"
+  permitted: true
+
+required_public_sections:
+  - "source"
+  - "provenance"
+  - "analysis_population"
+  - "definitions"
+  - "cross_stratum_synthesis"
+  - "ordering_diagnostics"
+  - "weighting_sensitivity"
+  - "claim_boundaries"
+  - "posthoc_hostile_audit_sensitivities"
+  - "public_disclosure_boundary"
+  - "interpretation_status"
+
+prohibited_public_sections:
+  - "source_stratum_results"
+  - "left_ranking"
+  - "right_ranking"
+  - "firmid"
+  - "microdata_rows"
+  - "source_level_mapped_denominators"
+  - "source_level_respondent_counts"
+  - "source_level_excluded_status_counts"
+
+interpretation:
+  global_prevalence: false
+  causal_effects: false
+  country_rankings_as_substantive_conclusions: false
+  public_result_is_cross_stratum_descriptive_summary: true
+
+next_gate:
+  phase: "IM-R7C"
+  purpose: "Frozen weighted missingness sensitivity for the 986 unresolved rows."
+  manuscript_integration_before_pass: false
+  submission_gate: "NO-GO"
