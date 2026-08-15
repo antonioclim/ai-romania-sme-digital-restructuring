@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7B",
+  "status": "HOSTILE_RESULT_AUDIT_COMPLETE",
+  "internal_corrected_result_gate": "GO",
+  "public_summary_gate": "GO",
+  "full_internal_report_public_release_gate": "NO-GO",
+  "manuscript_integration_gate": "CONDITIONAL_GO_AFTER_IM_R7C_WEIGHTED_MISSINGNESS_SENSITIVITY",
+  "submission_gate": "NO-GO",
+  "corrected_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+  "aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "public_summary_sha256": "f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3",
+  "public_result_contract_sha256": "bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018",
+  "all_e1_to_e13_pass": true,
+  "protected_sections_equal_to_quarantined_run": {
+    "source_stratum_results": true,
+    "cross_stratum_synthesis": true,
+    "ordering_diagnostics": true,
+    "weighting_sensitivity": true,
+    "claim_boundaries": true
+  },
+  "hostile_audit_findings": {
+    "frozen_primary_arithmetic_recomputed": "PASS",
+    "cross_stratum_summaries_recomputed": "PASS",
+    "ordering_counts_recomputed": "PASS",
+    "weighting_sensitivity_recomputed": "PASS",
+    "single_file_small_cell_contract": "PASS",
+    "cross_artifact_complementary_recovery_risk": "DETECTED_AND_BLOCKED_BY_PUBLIC_SUMMARY",
+    "source_strata_with_recoverable_excluded_cells_1_to_4": 2,
+    "auxiliary_full_ranking_arrays": "OMITTED_FROM_PUBLIC_SUMMARY_BECAUSE_COMPARABILITY_SETS_DIFFER",
+    "unresolved_rows_overall_share": 0.04682973165518879,
+    "unresolved_share_maximum_across_source_strata": 0.1618141097424412
+  },
+  "next_phase": "IM-R7C",
+  "next_allowed_command": "next"
+}
