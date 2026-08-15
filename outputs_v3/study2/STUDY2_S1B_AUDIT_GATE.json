@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6D",
+  "status": "DOCUMENTATION_AND_LOCAL_AUDIT_OPEN",
+  "gate": "CONDITIONAL_GO_TO_BROWSER_ONLY_S1B_AUDIT",
+  "outcome_analysis_gate": "NO-GO",
+  "submission_gate": "NO-GO",
+  "dataset_reference": "WLD_2019-2023_FAT_v01_M",
+  "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
+  "s1b_audit_freeze_sha256": "1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88",
+  "official_mapping_status": "PENDING_PUBLIC_XLSX_REVIEW",
+  "candidate_mapping_status": "NOT_ACCEPTED",
+  "fields_permitted_for_local_audit": [
+    "country",
+    "s1b",
+    "s7",
+    "e1"
+  ],
+  "outcome_fields_permitted": [],
+  "required_next_evidence": [
+    "public World Bank Data Dictionary XLSX from record 8209",
+    "IM_R6D_S1B_INVARIANCE_REPORT_*.json",
+    "screenshots of D1-D10"
+  ],
+  "source_microdata_must_remain_local": true,
+  "next_phase_after_evidence": "IM-R6D-B_FINAL_DECISION"
+}
