@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6D-B",
+  "status": "FROZEN_FINAL_BEFORE_STUDY2_OUTCOME_INSPECTION",
+  "decision_file": "examples/study2_fat_production_planning/s1b_final_decision.yml",
+  "decision_sha256": "b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b",
+  "prior_audit_freeze_sha256": "1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88",
+  "official_dictionary_sha256": "bf26b87b4801f4f6e64df90bcc7a2738f3c674683b2b3b2045ef0410b59af8ac",
+  "local_s1b_report_sha256": "cb524fadcf64d43b84603b421ea717647c18458dd2261069bb7e38ce4d6338d2",
+  "outcome_results_inspected_before_final_decision": false,
+  "candidate_mapping_accepted": false,
+  "size_based_diagnostics_enabled": false,
+  "change_rule": "This article-level decision is final before outcome inspection. Any future use of a later official clarification belongs to a separately prespecified analysis and must not be introduced after Study 2 outcomes are viewed."
+}
