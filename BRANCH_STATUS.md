@@ -8,8 +8,8 @@ Sensitivity Analysis version `3.0.0-rc1`.
 IM-R6D-A is open. IM-R6C remains closed with a frozen descriptor failure:
 1,538 of 21,055 valid `s7` values (7.305%) were below the prespecified
 five-worker universe threshold, exceeding the frozen 1% maximum. `s7` is
-therefore disabled as the primary numeric size descriptor, the threshold will
-not be relaxed and `e1` will not be promoted to primary after the failure.
+disabled as the primary numeric size descriptor, the threshold will not be
+relaxed and `e1` will not be promoted to primary after the failure.
 
 IM-R6D asks whether `s1b` may be used only as a categorical sampling-frame size
 stratum. The candidate mapping `1/2/3 → small/medium/large` has been frozen but
@@ -18,114 +18,71 @@ audit and review of the official pooled World Bank Data Dictionary XLSX. `s1b`
 will never be interpreted as a numeric worker count or current establishment
 size. No production-planning outcome has been inspected.
 
-The branch contains:
-
-- a literature-collision and Information & Management conversation lock;
-- a SHA-256-frozen manuscript simulation protocol;
-- a full four-stream simulation engine;
-- 432 factorial cells and 4,000 pooled replications per cell;
-- compact manuscript-facing simulation summaries;
-- executable full-engine conformance tests;
-- a claim–evidence ledger and hostile result audit;
-- a prespecified Study 2 candidate register;
-- a conditionally selected independent World Bank FAT source;
-- locked Study 2 outcome states and nested definitions;
-- a SHA-256 selection freeze that preceded microdata acquisition and outcome
-  inspection;
-- browser-only acquisition, non-redistribution and structural-gate protocols;
-- verified sanitised acquisition and structural evidence;
-- the sanitised IM-R6C audit and hostile external review;
-- a frozen IM-R6D `s1b` documentation and invariance protocol;
-- an official-source audit that does not assume cross-country design identity;
-- executable regression tests preserving the Study 2 outcome-analysis NO-GO
-  gate.
-
-## Full-execution status
+## Core package status
 
 ```text
-protocol SHA-256:                   157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3
-streams:                            4
-cells:                              432
-replications per cell:              4,000
-replicate rows:                     1,728,000
-maximum event-probability MCSE:     0.007905694150420948
-undefined primary associations:     0
-nested-level violations:            0
-convergence failures:               0
-independent core rerun:             byte-identical
+simulation protocol SHA-256:       157bc88f41ff68261253fb19e79cc2c0aeebe63a4687d1f1073edd25ecc0b8f3
+streams / cells:                   4 / 432
+replications per cell:             4,000
+replicate rows:                    1,728,000
+maximum event-probability MCSE:    0.007905694150420948
+undefined primary associations:    0
+nested-level violations:           0
+convergence failures:              0
+independent core rerun:            byte-identical
 ```
 
 ## Study 2 status
 
 ```text
-selected source:          World Bank Technology Sophistication Across Establishments
-survey reference:         WLD_2019-2023_FAT_v01_M
-dataset DOI:              10.48529/assd-3j65
-focal function:           production-planning MOST-used method
-archive name:             WLD_2019-2023_FAT_v01_M_CSV.zip
-archive size:             1,752,618 bytes
-archive SHA-256:          6d77d3ffb9dcef2ca4534e1c438ddd2e0b357eb852e6c5b48aa5fa6c3cbe2f0e
-main CSV:                 fat0_raw_data_qje.csv
-main CSV size:            19,633,172 bytes
-main CSV SHA-256:         f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17
-rows / columns:           21,055 / 723
-state source:             complete one-hot ib9b1–ib9b5 family
-eligible state mappings:  20,069
-mapping failures:         0
-unresolved all-zero rows: 986
-source labels:            16 labels representing 15 documented countries
-e1 numeric / missing:     13,399 / 7,656
-base_wt positive / missing: 21,054 / 1
-microdata in repository:  no
-outcomes inspected:       no
-mechanical structural gate: PASS
-semantic structural gate: PASS WITH MANDATORY CAVEATS
-preanalysis freeze SHA-256: 8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727
-IM-R6C report SHA-256:     f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
-s7 valid / below five:    21,055 / 1,538
-s7 below-five share:      7.305%
-primary numeric descriptor: DISABLED
-s7 threshold relaxation:  PROHIBITED
-e1 promotion to primary:  PROHIBITED
-s1b observed codes:       1, 2, 3
-s1b candidate mapping:    1/2/3 → small/medium/large frame strata
-s1b candidate status:     NOT ACCEPTED
-s1b audit freeze SHA-256: 1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88
-official pooled dictionary: PENDING PUBLIC XLSX REVIEW
-local IM-R6D audit:       PENDING
-a nalysis gate:           NO-GO
-replication executed:     no
-submission gate:          NO-GO
+selected source:                   World Bank Technology Sophistication Across Establishments
+survey reference:                  WLD_2019-2023_FAT_v01_M
+dataset DOI:                       10.48529/assd-3j65
+focal function:                    production-planning MOST-used method
+main CSV SHA-256:                  f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17
+rows / columns:                    21,055 / 723
+state source:                      complete one-hot ib9b1–ib9b5 family
+eligible state mappings:           20,069
+mapping failures:                  0
+unresolved all-zero rows:          986
+source labels / countries:         16 / 15
+microdata in repository:           no
+outcomes inspected:                no
+IM-R6C report SHA-256:              f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f
+s7 valid / below five:             21,055 / 1,538
+s7 below-five share:               7.305%
+primary numeric descriptor:        DISABLED
+s7 threshold relaxation:           PROHIBITED
+e1 promotion to primary:           PROHIBITED
+s1b observed codes:                1, 2, 3
+s1b candidate mapping:             1/2/3 → small/medium/large frame strata
+s1b candidate status:              NOT ACCEPTED
+s1b audit freeze SHA-256:          1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88
+official pooled dictionary review: PENDING
+local IM-R6D audit:                PENDING
+analysis gate:                     NO-GO
+replication executed:              no
+submission gate:                   NO-GO
 ```
 
-## Frozen consequences of IM-R6C and IM-R6D
+## Frozen methodological consequences
 
 1. `s7` is not used as a cross-source-stratum primary numeric descriptor.
 2. The 1% below-universe threshold is not relaxed after audit inspection.
 3. The 1,538 below-five `s7` values are not dropped, repaired or relabelled by
    assumption.
-4. `e1` is not promoted to the primary descriptor; any complete-case role
-   remains secondary and requires a final scope decision.
+4. `e1` is not promoted to the primary descriptor.
 5. `s1b` is never interpreted as a numeric worker count or current firm size.
 6. The candidate `s1b` mapping remains unaccepted until the official pooled
    Data Dictionary and local invariance report are jointly reviewed.
-7. If the mapping cannot be verified before outcome inspection, all Study 2
+7. If that mapping cannot be verified before outcome inspection, all Study 2
    size-based diagnostics are disabled.
 8. `India` and `India_Wave2_New` remain separate analytical source strata and
    map to one reporting country.
 9. No pooled global prevalence or pooled cross-country association is
    permitted.
 10. The 986 unresolved all-zero outcome rows remain outside the primary
-    denominator and are not labelled `Other`, missing or non-users by
-    assumption.
-
-## Isolation
-
-- base lineage: published `v2.0.2`;
-- default branch `main`: not modified by RC development;
-- final tag `v3.0.0`: not created;
-- final GitHub release: not created;
-- final Zenodo version and DOI: not created.
+    denominator and are not relabelled by assumption.
 
 ## Open scientific gates
 
@@ -136,22 +93,16 @@ submission gate:          NO-GO
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
 - reconstruction of the Information & Management manuscript;
-- final article–code–table–figure crosswalk;
-- complete Elsevier AI disclosure and submission preflight;
-- frozen `v3.0.0` asset and version-specific DOI.
+- article–code–table–figure parity and final release audit;
+- final Elsevier disclosure and submission preflight.
 
-The full simulation is manuscript evidence under the frozen design. Study 2 is
-not yet empirical evidence. Smoke and CI outputs remain engineering evidence
-only.
+## Isolation and public-data boundary
 
-## Public-data boundary
-
-No respondent-level Study 1 data, free-text responses, direct identifiers, IP
-addresses, precise timestamps or paradata may be added to the version 3 public
-workflow.
-
-The selected Study 2 source microdata are governed by the World Bank Microdata
-Library terms and must not be redistributed through GitHub, Zenodo, email,
-cloud storage or an AI service without prior written permission. The public
-Data Dictionary XLSX is documentation and may be reviewed separately from the
-restricted microdata.
+- base lineage: published `v2.0.2`;
+- default branch `main`: not modified by RC development;
+- final tag `v3.0.0`: not created;
+- final GitHub release and Zenodo version: not created;
+- no respondent-level Study 1 data or World Bank microdata may enter the public
+  workflow;
+- the public World Bank Data Dictionary XLSX may be reviewed separately from
+  the restricted source microdata.
