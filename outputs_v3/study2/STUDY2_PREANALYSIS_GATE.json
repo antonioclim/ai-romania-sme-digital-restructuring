@@ -1,25 +1,63 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "phase": "IM-R6C",
-  "status": "PENDING_LOCAL_NON_OUTCOME_AUDIT",
-  "gate": "CONDITIONAL_GO_TO_LOCAL_PREANALYSIS_AUDIT",
+  "status": "COMPLETE_WITH_FROZEN_DESCRIPTOR_FAILURE",
+  "gate": "GO_TO_IM_R6D_DOCUMENTATION_AUDIT",
   "outcome_analysis_gate": "NO-GO",
   "submission_gate": "NO-GO",
   "dataset_reference": "WLD_2019-2023_FAT_v01_M",
   "pooled_file_sha256": "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17",
   "preanalysis_freeze_sha256": "8c8743a5c4757f6eb8f56fc3dda91fc89d82bcb506847fe35efd4e448e3ab727",
-  "fields_permitted_for_local_audit": [
+  "local_report_path": "outputs_v3/study2/STUDY2_PREANALYSIS_AUDIT.json",
+  "local_report_sha256": "f1a2197a8a60e37ffa6664f3e512beea448c875ddc9c86d60cadda1fa5250e8f",
+  "fields_read": [
     "country",
     "s1b",
     "s7",
     "e1",
     "base_wt"
   ],
-  "outcome_fields_permitted": [],
-  "required_next_evidence": [
-    "IM_R6C_PREANALYSIS_AUDIT_REPORT_*.json",
-    "screenshot of the local decision and gates"
-  ],
-  "user_action": "Run the local browser-only audit on fat0_raw_data_qje.csv.",
-  "source_microdata_must_remain_local": true
+  "outcome_fields_read": [],
+  "frozen_gate_results": {
+    "passed": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P8",
+      "P9",
+      "P10",
+      "P11"
+    ],
+    "failed": [
+      "P7"
+    ],
+    "P7": {
+      "criterion": "At most 1% of valid s7 values are below five.",
+      "observed_below_five_count": 1538,
+      "observed_below_five_share": 0.07304796960341962,
+      "threshold": 0.01
+    }
+  },
+  "descriptor_decision": {
+    "s7_primary_numeric_descriptor": "DISABLED",
+    "s7_threshold_relaxation": "PROHIBITED",
+    "e1_primary_descriptor": "PROHIBITED",
+    "e1_complete_case_sensitivity": "PENDING_FINAL_SCOPE_DECISION",
+    "s1b_numeric_worker_count": "PROHIBITED",
+    "s1b_sampling_frame_category": "PENDING_OFFICIAL_CODE_LABEL_AND_INVARIANCE_AUDIT"
+  },
+  "source_stratum_decision": {
+    "source_label_count": 16,
+    "documented_country_count": 15,
+    "india_source_strata_preserved_separately": true,
+    "primary_india_merge": false
+  },
+  "next_phase": "IM-R6D",
+  "next_phase_objective": "Verify the official s1b code labels and cross-source-stratum invariance before deciding whether a categorical sampling-frame size-stratum audit is admissible.",
+  "source_microdata_must_remain_local": true,
+  "user_action_now": "NONE",
+  "next_allowed_command": "next"
 }
