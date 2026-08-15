@@ -4,6 +4,43 @@ All notable changes to the public reproducibility workflow are documented here.
 
 ## [3.0.0-rc1] — development
 
+### IM-R5 independent Study 2 selection and replication lock — 2026-08-15
+
+#### Added
+
+- a five-candidate Study 2 register with prespecified scoring and exclusion
+  rules;
+- a source-evidence dossier using official dataset, methodology and access
+  records;
+- a conditionally selected World Bank FAT production-planning replication
+  source;
+- locked source states, three nested outcome definitions and claim boundaries;
+- a country-specific weighting and cross-country synthesis policy;
+- a ten-condition structural acquisition gate;
+- a fixed reserve order;
+- a SHA-256 selection freeze created before microdata acquisition and outcome
+  inspection;
+- executable tests preventing silent changes to the Study 2 selection record.
+
+#### Selection boundary
+
+- no Study 2 microdata were downloaded during selection;
+- no Study 2 ODSA levels, compositions, associations or rankings were
+  inspected;
+- selection remains conditional on field, denominator, mapping and legal-use
+  checks;
+- World Bank source microdata may not be redistributed in the public release.
+
+#### Not yet final
+
+- lawful browser acquisition and checksum capture;
+- structural verification of the selected source;
+- secondary-use ethics wording;
+- Study 2 execution and hostile result audit;
+- the reconstructed Information & Management manuscript;
+- article–code–table–figure parity;
+- the frozen `v3.0.0` asset and version-specific Zenodo DOI.
+
 ### IM-R4 full-engine execution and result audit — 2026-08-14
 
 #### Added
