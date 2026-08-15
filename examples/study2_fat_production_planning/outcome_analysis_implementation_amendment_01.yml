@@ -1,0 +1,93 @@
+schema_version: "1.0"
+phase: "IM-R7A-C1"
+status: "FROZEN_CORRECTIVE_IMPLEMENTATION_AMENDMENT_AFTER_FAILED_RUN"
+amendment_date: "2026-08-15"
+
+prior_contract:
+  outcome_analysis_freeze_sha256: "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be"
+  definitions_file_sha256: "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa"
+  s1b_final_decision_sha256: "b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b"
+
+failed_run:
+  report_file: "IM_R7A_STUDY2_AGGREGATE_RESULT_REPORT_20260815T172946Z.json"
+  report_sha256: "c2331d544a131d414736aa049ba13fbce723b56c3889030ef2fb069ea9c777ae"
+  overall_gate: "NO-GO"
+  failed_gate: "E4"
+  aggregates_were_rendered: true
+  aggregates_admitted_to_manuscript_or_release: false
+  quarantine_status: "INVALID_FOR_INTERPRETATION_AND_RELEASE"
+  aggregate_payload_fingerprint_sha256: "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0"
+
+root_cause:
+  component: "browser-only one-hot row classifier"
+  former_behaviour: >
+    Any missing or special token in ib9b1–ib9b5 was counted as an invalid
+    non-binary value before the classifier distinguished unresolved rows.
+  observed_effect: >
+    The same 20,069 complete one-hot rows were mapped, while the 986 rows
+    previously established as unmapped or structurally missing were reported
+    incorrectly as invalid.
+  outcome_arithmetic_effect: "NONE EXPECTED"
+  denominator_membership_effect: "NONE EXPECTED"
+
+unchanged_after_outcome_exposure:
+  state_fields:
+    - "ib9b1"
+    - "ib9b2"
+    - "ib9b3"
+    - "ib9b4"
+    - "ib9b5"
+  locked_definitions:
+    - "integrated_planning"
+    - "specialised_planning"
+    - "digitally_enabled_planning"
+  common_mapped_denominator_expected: 20069
+  weighting_policy: "UNCHANGED"
+  source_strata: "UNCHANGED"
+  size_diagnostics: "DISABLED"
+  small_cell_suppression: "UNCHANGED"
+  estimands: "UNCHANGED"
+  thresholds: "UNCHANGED"
+  pooled_global_prevalence: false
+  p_values: false
+  confidence_intervals: false
+
+corrected_row_classifier:
+  mapped_complete_one_hot: >
+    Exactly one field is 1 and every remaining field is a valid 0.
+  unresolved_all_zero: >
+    All five fields are valid 0.
+  unresolved_structurally_missing: >
+    No field is 1, at least one field is missing or special and no field
+    contains a non-missing non-binary token.
+  ambiguous_positive_with_missing: >
+    Exactly one field is 1 but at least one remaining field is missing or
+    special; the row is excluded because a second positive state cannot be
+    ruled out.
+  multiple_positive: >
+    More than one field is 1.
+  invalid_nonbinary: >
+    At least one non-missing token is not a documented binary value.
+
+corrected_gate_expectations:
+  mapped_complete_one_hot: 20069
+  unresolved_total: 986
+  ambiguous_positive_with_missing: 0
+  multiple_positive: 0
+  invalid_nonbinary: 0
+  source_labels: 16
+  reporting_countries: 15
+
+post_failure_non_substantive_check:
+  gate_id: "E13"
+  rule: >
+    The canonical fingerprint of all aggregate result sections must be
+    byte-identical to the quarantined failed-run fingerprint.
+  expected_aggregate_payload_fingerprint_sha256: "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0"
+  failure_action: "NO-GO and stop."
+
+release_rule:
+  failed_report_publication: "PROHIBITED"
+  corrected_report_interpretation: "PROHIBITED UNTIL IM-R7B"
+  corrected_report_required: true
+  source_microdata_upload: "PROHIBITED"
