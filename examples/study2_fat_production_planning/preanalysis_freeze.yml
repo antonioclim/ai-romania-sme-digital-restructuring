@@ -1,0 +1,110 @@
+schema_version: "1.0"
+phase: "IM-R6C"
+status: "FROZEN_BEFORE_STUDY2_OUTCOME_INSPECTION"
+freeze_date: "2026-08-15"
+source:
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  pooled_file: "fat0_raw_data_qje.csv"
+  pooled_file_sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
+outcome_access:
+  outcome_fields_read_by_im_r6c: false
+  outcome_results_inspected: false
+  outcome_analysis_permitted: false
+descriptor_amendment:
+  original_primary_field: "e1"
+  reason: "IM-R6B established 7656 missing e1 values (36.36%) before outcome inspection."
+  primary_candidate: "s7"
+  primary_candidate_label: "Number of workers (screener)"
+  secondary_complete_case_field: "e1"
+  validation_only_field: "s1b"
+  prohibited_fallback: "Do not use s1b as a numeric worker count."
+s7_quality_gate:
+  minimum_overall_valid_share: 0.95
+  minimum_valid_share_each_source_stratum: 0.90
+  maximum_below_five_share_among_valid: 0.01
+  maximum_noninteger_share_among_nonmissing_numeric: 0.001
+  minimum_source_strata_with_100_eligible: 10
+  failure_action: "Disable employee-size association analysis."
+size_bands:
+  small:
+    minimum: 5
+    maximum: 19
+  medium:
+    minimum: 20
+    maximum: 99
+  large:
+    minimum: 100
+    maximum: null
+source_strata:
+  expected_source_label_count: 16
+  documented_country_count: 15
+  preserve_separately:
+    - "India"
+    - "India_Wave2_New"
+  reporting_country_map:
+    Bangladesh: "Bangladesh"
+    Brazil: "Brazil"
+    BurkinaFaso: "Burkina Faso"
+    Cambodia: "Cambodia"
+    Chile: "Chile"
+    Croatia: "Croatia"
+    Ethiopia: "Ethiopia"
+    Georgia: "Georgia"
+    Ghana: "Ghana"
+    India: "India"
+    India_Wave2_New: "India"
+    Kenya: "Kenya"
+    Korea: "Republic of Korea"
+    Poland: "Poland"
+    Senegal: "Senegal"
+    Vietnam: "Viet Nam"
+  primary_india_merge: false
+weighting:
+  primary_level_estimate: "within-source-stratum weighted rate using positive base_wt"
+  sensitivity_level_estimate: "unweighted rate"
+  association_diagnostics:
+    - "unweighted Cramer's V"
+    - "within-stratum weight-normalised descriptive Cramer's V"
+  inferential_p_values: false
+  missing_weight_rule: "Exclude only from weighted estimates."
+  pooled_world_estimate: false
+eligibility:
+  minimum_source_stratum_n: 100
+  minimum_displayed_size_band_n: 30
+  minimum_positive_cases_for_association: 20
+  minimum_negative_cases_for_association: 20
+  minimum_size_bands_for_association: 2
+synthesis:
+  unit: "source stratum"
+  report_documented_country_count: 15
+  report_source_stratum_count: 16
+  summaries:
+    - eligible_stratum_count
+    - median
+    - interquartile_range
+    - minimum
+    - maximum
+    - definition_contrast_direction_counts
+    - subgroup_order_stability_counts
+  prohibited:
+    - global_prevalence
+    - naive_pooled_cross_country_association
+    - causal_size_effect
+unresolved_all_zero_rows:
+  count_from_im_r6b: 986
+  action: "Exclude from the primary outcome denominator."
+  prohibited_labels:
+    - other
+    - non_user
+    - missing
+  reason: "ib9b6 is absent and the all-zero cause is not recoverable."
+public_boundary:
+  source_microdata_in_repository: false
+  source_microdata_in_zenodo: false
+  row_level_extracts: false
+  permitted_outputs:
+    - structural_metadata
+    - field_completeness_aggregates
+    - frozen_analysis_code
+    - non_disclosive_derived_aggregates
