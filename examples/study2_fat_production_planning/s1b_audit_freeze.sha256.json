@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R6D",
+  "status": "FROZEN_BEFORE_LOCAL_S1B_AUDIT_AND_OUTCOME_INSPECTION",
+  "freeze_file": "examples/study2_fat_production_planning/s1b_audit_freeze.yml",
+  "freeze_sha256": "1e1169c2e8e85428fa28c48d3f792795dce09d52c153173b2a0af3a0c21daa88",
+  "outcome_results_inspected_before_freeze": false,
+  "candidate_mapping_accepted": false,
+  "required_external_evidence": [
+    "official pooled Data Dictionary XLSX",
+    "IM_R6D_S1B_INVARIANCE_REPORT_*.json"
+  ],
+  "change_rule": "Any change requires a dated amendment, old and new hashes and a statement of whether any Study 2 outcome had been inspected."
+}
