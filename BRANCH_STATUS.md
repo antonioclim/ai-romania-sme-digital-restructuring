@@ -5,8 +5,10 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R6 browser-only World Bank acquisition has been prepared and is waiting for
-the user-controlled download and sanitised local evidence report.
+IM-R6B local structural verification is open. The authorised user has acquired
+the selected World Bank pooled CSV package, verified its archive identity in a
+local browser and supplied a sanitised metadata report. No Study 2 outcome
+result has been inspected.
 
 The branch now contains:
 
@@ -24,8 +26,9 @@ The branch now contains:
 - a SHA-256 selection freeze that precedes microdata acquisition and outcome
   inspection;
 - a browser-only acquisition and non-redistribution protocol;
-- a pending acquisition gate that prohibits result inspection before
-  structural verification.
+- verified sanitised acquisition evidence for the pooled CSV archive;
+- a local structural-gate protocol that prohibits outcome calculation before
+  field, denominator and state-source verification.
 
 ## Full-execution status
 
@@ -50,20 +53,24 @@ survey reference:       WLD_2019-2023_FAT_v01_M
 dataset DOI:            10.48529/assd-3j65
 focal function:         production-planning MOST-used method
 selection score:        20/21
-browser guide:          prepared
-local hash tool:        prepared outside the repository
-microdata acquired:     no
-microdata redistributed:no
+archive acquired:       yes, by the authorised user
+archive name:           WLD_2019-2023_FAT_v01_M_CSV.zip
+archive size:           1,752,618 bytes
+archive SHA-256:        6d77d3ffb9dcef2ca4534e1c438ddd2e0b357eb852e6c5b48aa5fa6c3cbe2f0e
+container verification: PASS
+main CSV:               fat0_raw_data_qje.csv
+main CSV size:          19,633,172 bytes
+microdata in repository:no
 outcomes inspected:     no
-structural gate:        NOT_STARTED
+structural gate:        PENDING_LOCAL_BROWSER_EXECUTION
 replication executed:   no
 acquisition gate:       CONDITIONAL_GO
 submission gate:        NO-GO
 ```
 
-Only a sanitised report containing file metadata, SHA-256 and archive member
-names may be shared for verification. The source microdata and extracted files
-must remain under the authorised user's control.
+Only sanitised reports containing file metadata and non-disclosive structural
+aggregates may be shared for verification. The source microdata and extracted
+files remain under the authorised user's control.
 
 ## Isolation
 
@@ -75,9 +82,7 @@ must remain under the authorised user's control.
 
 ## Open scientific gates
 
-- user-controlled browser acquisition of the exact pooled Study 2 source;
-- checksum and container-inventory verification;
-- structural field, denominator and state-mapping verification;
+- local field, denominator and state-source verification;
 - secondary-use ethics and data-governance wording;
 - locked Study 2 execution and hostile result audit;
 - reconstruction of the Information & Management manuscript;
