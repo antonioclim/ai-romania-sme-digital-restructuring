@@ -1,50 +1,49 @@
 # Study 2 — FAT production-planning replication
 
-## Status
+## Current status
 
-This directory records the **conditionally selected** independent Study 2
-source before microdata acquisition and before any ODSA output is inspected.
+The source, structural mapping, descriptor exclusions and final size-free
+outcome specification have been frozen before outcome inspection.
 
 ```text
 source: World Bank Technology Sophistication Across Establishments
 survey reference: WLD_2019-2023_FAT_v01_M
 dataset DOI: https://doi.org/10.48529/assd-3j65
-focal function: production planning
-selection date: 2026-08-15
+focal function: production planning — MOST-used method
+mapped denominator established structurally: 20,069
+unresolved all-zero rows: 986
+analytical source strata / reporting countries: 16 / 15
+size diagnostics: disabled
 microdata included here: no
-results included here: no
+outcome results included here: no
+outcome-analysis freeze SHA-256: 2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be
 ```
 
-## Why this source was selected
+## Locked definitions
 
-The source preserves a finite set of documented production-planning methods,
-supports nested definitions, provides establishment size and country
-descriptors and is independent of the Romanian organisational AI application.
+1. `integrated_planning` — ERP;
+2. `specialised_planning` — specialised software or ERP;
+3. `digitally_enabled_planning` — standard software, mobile apps or digital
+   platforms, specialised software or ERP.
 
-The source microdata are not redistributed. A replicator must obtain them from
-the World Bank Microdata Library and accept the applicable terms.
+The three definitions use one common mapped denominator and are strictly
+nested.
 
-## Files
+## Analysis scope
 
-- `selection_registry.yml` — source identity, acquisition gate and analysis
-  policy;
-- `definitions.yml` — harmonised states, locked definitions and claim
-  boundaries.
+The local execution may produce only disclosure-screened aggregate outputs:
 
-Later phases may add transformation code and derived aggregate outputs only
-after the structural gate passes.
+- weighted and unweighted levels within source stratum;
+- positive-class composition;
+- exact definition contrasts;
+- source-stratum order diagnostics;
+- equal-stratum descriptive synthesis.
 
-## No-result boundary
+It may not produce size-based diagnostics, p-values, confidence intervals,
+global pooled prevalence or pooled cross-country association.
 
-This directory must not contain:
+## Source-data boundary
 
-- source microdata;
-- firm or establishment identifiers;
-- row-level extracts;
-- outcome frequencies created before the selection freeze;
-- post hoc alternative definitions;
-- unverified claims about variable names.
-
-## Acquisition page
-
-https://microdata.worldbank.org/catalog/8209/get-microdata
+The World Bank source microdata are not redistributed and must remain local.
+The repository may contain the source citation, hashes, frozen rules, analysis
+code and derived non-disclosive aggregates only.
