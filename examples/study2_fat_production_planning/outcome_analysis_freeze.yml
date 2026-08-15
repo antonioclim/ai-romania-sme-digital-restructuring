@@ -1,0 +1,196 @@
+schema_version: "1.0"
+phase: "IM-R7-A"
+status: "FROZEN_BEFORE_STUDY2_OUTCOME_EXECUTION"
+freeze_date: "2026-08-15"
+
+source:
+  title: "Technology Sophistication Across Establishments"
+  reference_id: "WLD_2019-2023_FAT_v01_M"
+  doi: "10.48529/assd-3j65"
+  focal_business_function: "Production Planning — MOST-used method"
+  pooled_file: "fat0_raw_data_qje.csv"
+  pooled_file_size_bytes: 19633172
+  pooled_file_sha256: "f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c2d833b79d728152bd17"
+  pooled_file_crc32: "4418a02b"
+  expected_rows: 21055
+  expected_columns: 723
+
+prior_frozen_evidence:
+  structural_mapped_rows: 20069
+  structural_mapping_failures: 0
+  unresolved_all_zero_rows: 986
+  source_labels: 16
+  reporting_countries: 15
+  size_diagnostics: "DISABLED"
+  s1b_final_decision_sha256: "b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b"
+  outcome_results_inspected_before_this_freeze: false
+
+state_reconstruction:
+  source_fields:
+    handwritten_processes: "ib9b1"
+    standard_software: "ib9b2"
+    mobile_apps_or_digital_platforms: "ib9b3"
+    specialised_software: "ib9b4"
+    erp: "ib9b5"
+  permitted_binary_tokens:
+    - 0
+    - 1
+  mapped_row_rule: "Exactly one of ib9b1–ib9b5 equals 1."
+  unresolved_rule: "All-zero rows are excluded from the common primary denominator."
+  multiple_positive_rule: "Any row with more than one positive indicator is a mapping failure."
+  ib9b6_available: false
+  prohibited_unresolved_labels:
+    - "Other"
+    - "missing"
+    - "non-user"
+    - "not applicable"
+
+definition_register:
+  source_file: "examples/study2_fat_production_planning/definitions.yml"
+  source_file_sha256: "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa"
+  definitions:
+    integrated_planning:
+      positive_states:
+        - "erp"
+      claim_boundary: "ERP is the establishment's most-used production-planning method."
+    specialised_planning:
+      positive_states:
+        - "specialised_software"
+        - "erp"
+      claim_boundary: "Specialised or integrated software is the most-used method."
+    digitally_enabled_planning:
+      positive_states:
+        - "standard_software"
+        - "mobile_apps_or_digital_platforms"
+        - "specialised_software"
+        - "erp"
+      claim_boundary: "The most-used method is computer- or platform-enabled rather than handwritten."
+  locked_relations:
+    - "integrated_planning strict subset specialised_planning"
+    - "specialised_planning strict subset digitally_enabled_planning"
+
+common_denominator:
+  included_states:
+    - "handwritten_processes"
+    - "standard_software"
+    - "mobile_apps_or_digital_platforms"
+    - "specialised_software"
+    - "erp"
+  definition_specific_denominators: false
+  minimum_total_mapped_n: 5000
+  minimum_mapped_n_per_source_stratum: 100
+
+source_strata:
+  analytical_source_label_count: 16
+  documented_reporting_country_count: 15
+  preserve_separately:
+    - "India"
+    - "India_Wave2_New"
+  reporting_country_map:
+    Bangladesh: "Bangladesh"
+    Brazil: "Brazil"
+    BurkinaFaso: "Burkina Faso"
+    Cambodia: "Cambodia"
+    Chile: "Chile"
+    Croatia: "Croatia"
+    Ethiopia: "Ethiopia"
+    Georgia: "Georgia"
+    Ghana: "Ghana"
+    India: "India"
+    India_Wave2_New: "India"
+    Kenya: "Kenya"
+    Korea: "Republic of Korea"
+    Poland: "Poland"
+    Senegal: "Senegal"
+    Vietnam: "Viet Nam"
+  primary_india_merge: false
+
+weighting:
+  primary_rates: "Within-source-stratum weighted rates using positive base_wt."
+  sensitivity_rates: "Within-source-stratum unweighted rates."
+  missing_or_nonpositive_weight_rule: "Exclude only from weighted estimates."
+  rate_formula: "sum(base_wt * outcome) / sum(base_wt) within source stratum."
+  cross_stratum_unit: "source stratum"
+  cross_stratum_equal_stratum_weighting: true
+  pooled_global_prevalence: false
+  pooled_cross_country_association: false
+  normalise_weight_totals_across_strata: false
+
+estimands:
+  per_source_stratum:
+    - "weighted and unweighted level for each locked definition"
+    - "weighted and unweighted positive-class composition"
+    - "exact adjacent and full level contrasts"
+    - "composition total-variation distance"
+    - "weighted-minus-unweighted sensitivity"
+  ordering:
+    metric: "pairwise source-stratum order disagreement"
+    tolerance: 1.0e-12
+    outputs:
+      - "concordant pairs"
+      - "tie changes"
+      - "strict reversals"
+      - "strict-reversal share"
+      - "total-instability share"
+  cross_stratum_synthesis:
+    summaries:
+      - "eligible source-stratum count"
+      - "median"
+      - "first quartile"
+      - "third quartile"
+      - "minimum"
+      - "maximum"
+    quantile_method: "linear interpolation at h=(n-1)p"
+    weighting_sensitivity_near_zero_absolute_threshold: 0.01
+
+association_and_inference:
+  size_based_association: "DISABLED"
+  source_stratum_cramers_v: "NOT ESTIMATED"
+  p_values: false
+  confidence_intervals: false
+  reason: "The available base weights do not by themselves reconstruct full design-based variance estimation, and source-stratum membership is not treated as a conventional causal predictor."
+
+sparsity_and_disclosure:
+  minimum_source_strata_for_cross_stratum_summary: 10
+  minimum_positive_class_n_for_composition: 30
+  suppress_integer_cells_from: 1
+  suppress_integer_cells_to: 4
+  definition_rate_rule: "Suppress a source-stratum rate when either positive or negative unweighted count is 1–4."
+  composition_rule: "Suppress the complete source-stratum composition when any contributing state count is 1–4 or the positive class has fewer than 30 rows."
+  contrast_rule: "Suppress a contrast when its added-state count is 1–4 or either endpoint rate is suppressed."
+  small_cell_complementary_recovery_prevention: true
+  identifiers_in_output: false
+  row_level_material_in_output: false
+
+cross_definition_checks:
+  require_unweighted_level_monotonicity_each_stratum: true
+  require_weighted_level_monotonicity_each_stratum: true
+  require_exact_unweighted_added_state_identity: true
+  require_weighted_added_state_identity_tolerance: 1.0e-12
+  require_composition_sum_tolerance: 1.0e-12
+
+public_output_contract:
+  permitted:
+    - "source and freeze metadata"
+    - "aggregate source-stratum denominators"
+    - "disclosure-screened source-stratum rates"
+    - "disclosure-screened compositions"
+    - "definition contrasts"
+    - "ordering diagnostics"
+    - "equal-stratum descriptive synthesis"
+    - "validation gates"
+  prohibited:
+    - "source microdata"
+    - "row-level extracts"
+    - "firmid or other identifiers"
+    - "size-based results"
+    - "p-values"
+    - "global pooled prevalence"
+    - "pooled cross-country association"
+    - "unsuppressed cells with counts 1–4"
+
+execution_gate:
+  outcome_execution_permitted_only_with_exact_freeze_hash: true
+  result_interpretation_permitted_after_local_run: false
+  required_external_result_audit: true
+  submission_gate: "NO-GO"
