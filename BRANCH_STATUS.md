@@ -5,13 +5,41 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R7-A is open. The Study 2 outcome definitions and size-free analytical
-contract have been frozen before the first production-planning outcome
-execution.
+IM-R7A-C1 is open. The first browser-only Study 2 outcome execution rendered
+aggregate results but failed gate E4. The tool mapped the expected 20,069
+complete one-hot rows and classified the remaining 986 rows incorrectly as
+invalid rather than unresolved or structurally missing.
 
-The local browser-only tool is the only authorised execution route. Result
-interpretation remains blocked until the sanitised aggregate report passes the
-IM-R7-B hostile audit.
+The failed report is quarantined. No result from it is admitted to the
+manuscript, a release or Zenodo. A corrected browser-only rerun is required
+before the IM-R7B hostile result audit.
+
+## Failed-run and correction status
+
+```text
+failed report SHA-256:             c2331d544a131d414736aa049ba13fbce723b56c3889030ef2fb069ea9c777ae
+failed overall gate:               NO-GO
+failed gate:                       E4
+E1–E3 and E5–E12:                 PASS
+mapped common denominator:         20,069
+misclassified invalid rows:           986
+prior structural mapping failures:      0
+prior unresolved/structural rows:      986
+failed report status:              QUARANTINED
+aggregate results were rendered:   yes
+aggregate results admitted:        no
+```
+
+The correction changes only row-classification metadata and the E4 gate. It
+does not change source fields, definitions, denominator membership, source
+strata, weighting, estimands, thresholds, suppression or claim boundaries.
+
+The corrected tool adds E13. E13 must reproduce the canonical aggregate
+payload fingerprint from the failed run exactly:
+
+```text
+b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0
+```
 
 ## Core package status
 
@@ -27,7 +55,7 @@ convergence failures:              0
 independent core rerun:            byte-identical
 ```
 
-## Study 2 status
+## Study 2 frozen scientific status
 
 ```text
 selected source:                   World Bank Technology Sophistication Across Establishments
@@ -38,19 +66,19 @@ main CSV SHA-256:                  f61a2c6e09f4763818ae1d4db8b330e97bffd8bb0824c
 rows / columns:                    21,055 / 723
 state source:                      complete one-hot ib9b1–ib9b5 family
 eligible state mappings:           20,069
-mapping failures:                  0
-unresolved all-zero rows:          986
+unresolved or structural rows:        986
 source labels / countries:         16 / 15
 microdata in repository:           no
-outcomes inspected:                no
 s7 primary numeric descriptor:     DISABLED
 e1 size analysis:                  DISABLED
 s1b candidate mapping:             REJECTED
 all size-based diagnostics:        DISABLED
 s1b final decision SHA-256:        b2a89a389ea24508c40a1ea4d08577c0393fce170129557c708487866ac6a09b
 definitions file SHA-256:          100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa
-outcome-analysis freeze SHA-256:   2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be
-local outcome execution:           PENDING USER
+original outcome freeze SHA-256:   2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be
+implementation amendment SHA-256:  03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef
+effective corrected contract:      f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87
+corrected local rerun:              PENDING USER
 result interpretation gate:        NO-GO
 submission gate:                   NO-GO
 ```
@@ -66,7 +94,7 @@ The definitions share one denominator and are strictly nested.
 
 ## Frozen Study 2 outputs
 
-Permitted:
+Permitted after an E1–E13 PASS and the IM-R7B audit:
 
 - weighted and unweighted levels within source stratum;
 - disclosure-screened positive-class composition;
@@ -82,12 +110,13 @@ Prohibited:
 - p-values or confidence intervals;
 - global pooled prevalence;
 - pooled cross-country association;
-- row-level material or cells containing counts 1–4.
+- row-level material or cells containing counts 1–4;
+- interpretation of the quarantined first report.
 
 ## Open scientific gates
 
-- browser-only Study 2 execution;
-- IM-R7-B hostile result and disclosure audit;
+- corrected browser-only Study 2 rerun under E1–E13;
+- IM-R7B hostile result and disclosure audit;
 - secondary-use ethics and data-governance wording;
 - reconstruction of the Information & Management manuscript;
 - article–code–table–figure parity and final release audit;
