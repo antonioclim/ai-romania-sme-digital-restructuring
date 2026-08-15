@@ -1,0 +1,37 @@
+name: Materialise IM-R7B and IM-R7C public patch
+
+on:
+  push:
+    branches:
+      - im-v3.0.0-rc1
+    paths:
+      - .github/workflows/materialise-im-r7b-r7c.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialise:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the release-candidate branch
+        uses: actions/checkout@v4
+        with:
+          ref: im-v3.0.0-rc1
+          fetch-depth: 0
+
+      - name: Materialise and verify the frozen patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/im-r7c-sync-patch.part* > /tmp/im-r7c-sync-patch.b64
+          base64 --decode /tmp/im-r7c-sync-patch.b64 > /tmp/im-r7c-sync-patch.tar.gz
+          echo "b3f833e0c7a06e8e84f78372ccab4d6f4dd40f23882f7e8f0a007a0cfc82c67d  /tmp/im-r7c-sync-patch.tar.gz" | sha256sum --check --strict
+          tar -xzf /tmp/im-r7c-sync-patch.tar.gz -C .
+          rm -f .github/im-r7c-sync-patch.part*
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Record IM-R7B and freeze IM-R7C weighted sensitivity"
+          git push origin HEAD:im-v3.0.0-rc1
