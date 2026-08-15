@@ -58,6 +58,33 @@ jobs:
           assert odsa.__version__ == "3.0.0rc1"
           PY
 
+      - name: Verify frozen full-result contract
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          protocol = Path("simulations/manuscript_protocol.yml")
+          freeze = json.loads(
+              Path("simulations/manuscript_protocol.freeze.json")
+              .read_text(encoding="utf-8")
+          )
+          assert hashlib.sha256(protocol.read_bytes()).hexdigest() == freeze[
+              "protocol_sha256"
+          ]
+
+          gate = json.loads(
+              Path("outputs_v3/full_simulation/IM_R4_GATE.json")
+              .read_text(encoding="utf-8")
+          )
+          assert gate["gate"] == "GO"
+          assert gate["submission_gate"] == "NO-GO"
+          assert gate["cell_count"] == 432
+          assert gate["replicate_row_count"] == 1_728_000
+          assert gate["core_rerun_byte_identical"] is True
+          PY
+
       - name: Verify factorial audit boundary
         run: |
           python - <<'PY'
