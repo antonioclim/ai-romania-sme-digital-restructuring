@@ -5,67 +5,57 @@ Sensitivity Analysis version `3.0.0-rc1`.
 
 ## Current phase
 
-IM-R7B is complete. The corrected Study 2 execution passed E1–E13 and the
-hostile result audit validated the internal result. A hardened cross-stratum
-public summary is registered, while the complete internal corrected report
-remains private because of complementary disclosure risk.
+IM-R7D is complete. The weighted unresolved-row sensitivity passed M1–M14 and
+the hostile audit independently reproduced the bounds, cross-stratum
+summaries, robust-separation counts and interval-ordering determinacy.
 
-IM-R7C is open. Its post-outcome weighted unresolved-row sensitivity was frozen
-before the distribution of `base_wt` among the 986 unresolved rows was
-inspected. Local browser-only execution is pending.
+The complete IM-R7C report remains private. A hardened cross-stratum-only
+public summary is registered.
+
+IM-R8 manuscript integration is open.
 
 ## Study 2 status
 
 ```text
-corrected internal report SHA-256: 020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0
-corrected aggregate fingerprint:   b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0
-corrected E1–E13:                  PASS
-IM-R7B internal result gate:       GO
-full internal JSON public release: NO-GO
-R7B public summary SHA-256:        f656b1049d5e21e9a950ddb6bdcfe748ce06671e84d72aa979f1b58599d1aad3
-R7B public contract SHA-256:       bb9fd7f65b9323c76c7362a4d4c39a24500d1ac1e97ee90b0dcda93c4a6ca018
-IM-R7C freeze SHA-256:             b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc
-IM-R7C browser execution:          PENDING USER
-manuscript integration:            NO-GO pending IM-R7D
-submission gate:                   NO-GO
+authoritative IM-R7C report SHA-256: be55bcbe804768136abe18ef64aa87df6267d9b7dfd4271a2a989711f7f1c9f3
+IM-R7C M1–M14:                      PASS
+primary aggregate fingerprint:       b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0
+mapped common denominator:           20,069
+unresolved rows:                         986
+source strata / countries:           16 / 15
+median unresolved-weight share:      4.16%
+maximum unresolved-weight share:     19.08%
+broad > specialised robust strata:   15 / 16
+broad > ERP robust strata:           13 / 14
+specialised > ERP robust strata:      9 / 14
+internal weighted sensitivity:       GO
+full internal JSON public release:   NO-GO
+public weighted summary SHA-256:     a78301a4d75adbb462bd7d9a596eefac8a5c6ef81d1fff99c254f32de08c845c
+public weighted contract SHA-256:    4dd2e4540d3e8609beb4e4929bf6dc9a27a87f920d35517e2004a254faa8c4c4
+manuscript integration:              GO WITH CONDITIONS
+submission gate:                     NO-GO
 ```
 
-## Frozen IM-R7C sensitivity
+## Interpretation boundary
 
-Within each source stratum, let `D` be mapped positive-weight mass, `U` be
-unresolved positive-weight mass and `P` be mapped positive weight for the
-outcome definition.
-
-```text
-lower    = P / (D + U)
-primary  = P / D
-upper    = (P + U) / (D + U)
-width    = U / (D + U)
-```
-
-Four coherent assignments are retained: all handwritten, all broad-only, all
-specialised and all ERP. The corrected complete-case analysis remains primary.
-
-## Public-data boundary
-
-- no World Bank microdata are present in the repository;
-- the complete corrected IM-R7A-C1 report is not public;
-- the complete IM-R7C sensitivity report will not be public;
-- only separately hardened cross-stratum summaries may enter a release;
-- source-level exact respondent counts, unresolved counts and weight sums are
-  prohibited from public sensitivity artefacts.
+- the complete-case result remains primary;
+- weighted bounds are deterministic worst-case assignment bounds, not
+  confidence intervals;
+- marginal extrema are not jointly attainable across definitions;
+- joint cross-definition interpretation uses only coherent scenarios;
+- no global prevalence, causal effect or standalone country ranking;
+- the complete IM-R7C JSON is not a public or supplementary artefact.
 
 ## Open gates
 
-- local browser-only IM-R7C execution;
-- IM-R7D hostile weighted-missingness audit;
-- Information & Management manuscript reconstruction;
+- IM-R8 Information & Management manuscript integration;
 - article–code–table–figure parity;
-- final GitHub and Zenodo release;
+- final GitHub and Zenodo release audit;
 - Elsevier submission preflight.
 
 ## Isolation
 
 - default branch `main`: unchanged;
 - final tag `v3.0.0`: not created;
-- final GitHub release and Zenodo version: not created.
+- final GitHub release and Zenodo version: not created;
+- no World Bank source microdata are present in the repository.

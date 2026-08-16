@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7D",
+  "status": "AUDITED_HARDENED_PUBLIC_WEIGHTED_MISSINGNESS_SUMMARY",
+  "source": {
+    "title": "Technology Sophistication Across Establishments",
+    "reference_id": "WLD_2019-2023_FAT_v01_M",
+    "doi": "10.48529/assd-3j65",
+    "focal_function": "Production Planning — MOST-used method"
+  },
+  "provenance": {
+    "authoritative_internal_im_r7c_report_sha256": "be55bcbe804768136abe18ef64aa87df6267d9b7dfd4271a2a989711f7f1c9f3",
+    "weighted_unresolved_row_sensitivity_freeze_sha256": "b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc",
+    "corrected_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+    "corrected_aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+    "primary_result_invariance_pass": true
+  },
+  "analysis_scope": {
+    "total_rows": 21055,
+    "mapped_common_denominator": 20069,
+    "unresolved_rows": 986,
+    "analytical_source_strata": 16,
+    "documented_reporting_countries": 15,
+    "primary_complete_case_analysis_unchanged": true,
+    "sensitivity_type": "deterministic weighted worst-case assignment sensitivity"
+  },
+  "cross_stratum_weighted_bounds": {
+    "integrated_planning": {
+      "lower": {
+        "n": 14,
+        "median": 0.037800570798843594,
+        "q1": 0.011364378568906635,
+        "q3": 0.055054810740971794,
+        "minimum": 0.003523486147690558,
+        "maximum": 0.18815646159902755
+      },
+      "complete_case": {
+        "n": 14,
+        "median": 0.03780094415905093,
+        "q1": 0.011387036751379167,
+        "q3": 0.05881986591452812,
+        "minimum": 0.004354103426235813,
+        "maximum": 0.22932469087317814
+      },
+      "upper": {
+        "n": 14,
+        "median": 0.0721637450103636,
+        "q1": 0.029940880331279132,
+        "q3": 0.17605046113740902,
+        "minimum": 0.010978917614619315,
+        "maximum": 0.3676758544624745
+      },
+      "width": {
+        "n": 14,
+        "median": 0.04158880651610718,
+        "q1": 0.005175795891682432,
+        "q3": 0.08305064862810906,
+        "minimum": 0,
+        "maximum": 0.19076654760664155
+      }
+    },
+    "specialised_planning": {
+      "lower": {
+        "n": 16,
+        "median": 0.1027603261086816,
+        "q1": 0.05496165298726832,
+        "q3": 0.20623796954235035,
+        "minimum": 0.0017133695222774342,
+        "maximum": 0.2807965722105892
+      },
+      "complete_case": {
+        "n": 16,
+        "median": 0.10664255785150895,
+        "q1": 0.055226864841758976,
+        "q3": 0.21242976979427075,
+        "minimum": 0.001922346025963054,
+        "maximum": 0.34223425851655265
+      },
+      "upper": {
+        "n": 16,
+        "median": 0.16850918991709668,
+        "q1": 0.09310356365719158,
+        "q3": 0.23783498126875194,
+        "minimum": 0.029822765397090417,
+        "maximum": 0.46031596507403616
+      },
+      "width": {
+        "n": 16,
+        "median": 0.04158880651610718,
+        "q1": 0.003951959203429381,
+        "q3": 0.09265255985127933,
+        "minimum": 0,
+        "maximum": 0.19076654760664155
+      }
+    },
+    "digitally_enabled_planning": {
+      "lower": {
+        "n": 16,
+        "median": 0.6569701828963863,
+        "q1": 0.48948868240624954,
+        "q3": 0.7728906077468392,
+        "minimum": 0.1512306491047232,
+        "maximum": 0.8912268644369785
+      },
+      "complete_case": {
+        "n": 16,
+        "median": 0.7321759478234249,
+        "q1": 0.5139830453970904,
+        "q3": 0.8094396534648758,
+        "minimum": 0.1868813611911978,
+        "maximum": 0.9764733600941357
+      },
+      "upper": {
+        "n": 16,
+        "median": 0.7404952380525116,
+        "q1": 0.5227439003586727,
+        "q3": 0.8111822061465785,
+        "minimum": 0.23479661221948084,
+        "maximum": 0.9785272447043306
+      },
+      "width": {
+        "n": 16,
+        "median": 0.04158880651610718,
+        "q1": 0.003951959203429381,
+        "q3": 0.09265255985127933,
+        "minimum": 0,
+        "maximum": 0.19076654760664155
+      }
+    }
+  },
+  "unresolved_weight_share_across_source_strata": {
+    "n": 16,
+    "median": 0.04158880651610718,
+    "q1": 0.003951959203429381,
+    "q3": 0.09265255985127933,
+    "minimum": 0,
+    "maximum": 0.19076654760664155
+  },
+  "robust_separation": {
+    "integrated_to_specialised": {
+      "left_definition": "integrated_planning",
+      "right_definition": "specialised_planning",
+      "eligible_common_strata": 14,
+      "robust_separation_strata": 9,
+      "robust_share": 0.6428571428571429
+    },
+    "specialised_to_digitally_enabled": {
+      "left_definition": "specialised_planning",
+      "right_definition": "digitally_enabled_planning",
+      "eligible_common_strata": 16,
+      "robust_separation_strata": 15,
+      "robust_share": 0.9375
+    },
+    "integrated_to_digitally_enabled": {
+      "left_definition": "integrated_planning",
+      "right_definition": "digitally_enabled_planning",
+      "eligible_common_strata": 14,
+      "robust_separation_strata": 13,
+      "robust_share": 0.9285714285714286
+    }
+  },
+  "interval_ordering_determinacy": {
+    "integrated_planning": {
+      "eligible_strata": 14,
+      "total_pairs": 91,
+      "determinate_pairs": 63,
+      "overlapping_pairs": 28,
+      "determinate_share": 0.6923076923076923
+    },
+    "specialised_planning": {
+      "eligible_strata": 16,
+      "total_pairs": 120,
+      "determinate_pairs": 86,
+      "overlapping_pairs": 34,
+      "determinate_share": 0.7166666666666667
+    },
+    "digitally_enabled_planning": {
+      "eligible_strata": 16,
+      "total_pairs": 120,
+      "determinate_pairs": 101,
+      "overlapping_pairs": 19,
+      "determinate_share": 0.8416666666666667
+    }
+  },
+  "interpretation": {
+    "broad_vs_specialised": "Strongly robust: the broad-definition lower bound exceeds the specialised-definition upper bound in 15 of 16 eligible source strata.",
+    "broad_vs_integrated": "Strongly robust: the broad-definition lower bound exceeds the ERP-only upper bound in 13 of 14 eligible source strata.",
+    "specialised_vs_integrated": "Partially robust: the specialised-definition lower bound exceeds the ERP-only upper bound in 9 of 14 eligible source strata.",
+    "ranking": "Source-stratum ordering remains only partially determinate under the bounds; standalone league-table or country-ranking claims remain prohibited.",
+    "bound_meaning": "These are deterministic assignment bounds, not confidence intervals and not sampling-uncertainty estimates."
+  },
+  "claim_boundary": {
+    "global_prevalence_claim": false,
+    "causal_claim": false,
+    "standalone_country_ranking_claim": false,
+    "marginal_extrema_jointly_attainable_across_definitions": false,
+    "use_coherent_scenarios_for_joint_cross_definition_interpretation": true
+  },
+  "public_disclosure_boundary": {
+    "full_internal_im_r7c_report_publication": "PROHIBITED",
+    "source_stratum_result_rows_included": false,
+    "source_level_exact_counts_included": false,
+    "source_level_exact_weight_sums_included": false,
+    "source_level_bound_rows_included": false,
+    "microdata_included": false,
+    "permitted_public_object": "this cross-stratum-only hardened summary"
+  },
+  "decision": {
+    "technical_weighted_missingness_sensitivity": "GO",
+    "hardened_public_summary": "GO",
+    "manuscript_integration": "GO_WITH_CONDITIONS",
+    "submission": "NO_GO",
+    "next_phase": "IM-R8_MANUSCRIPT_INTEGRATION"
+  }
+}

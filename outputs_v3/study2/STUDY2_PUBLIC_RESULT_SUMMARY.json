@@ -1,0 +1,589 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7B",
+  "status": "AUDITED_PUBLIC_AGGREGATE_SUMMARY",
+  "source": {
+    "title": "Technology Sophistication Across Establishments",
+    "reference_id": "WLD_2019-2023_FAT_v01_M",
+    "doi": "10.48529/assd-3j65",
+    "focal_function": "Production Planning — MOST-used method"
+  },
+  "provenance": {
+    "corrected_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+    "aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+    "original_outcome_analysis_freeze_sha256": "2491149bcc41596d8dbb9e509ee731447da70100de380d909daf45a4c46603be",
+    "implementation_amendment_01_sha256": "03244a3761052b294ab122999ff061b8f5932b4332b2ad7bd713e5f2f255e1ef",
+    "effective_corrected_contract_sha256": "f096825efd95c0afc699410d174517e3797ee4610b8a392c5809bdfd20789d87",
+    "definitions_file_sha256": "100d7a17cf415aa5faad4a3ec55787e224d29b04fe1ba9ee357db9647ecc77fa"
+  },
+  "analysis_population": {
+    "total_rows": 21055,
+    "mapped_common_denominator": 20069,
+    "unresolved_total_rows": 986,
+    "unresolved_share": 0.04682973165518879,
+    "analytical_source_strata": 16,
+    "documented_reporting_countries": 15,
+    "india_waves_preserved_separately": true
+  },
+  "definitions": {
+    "integrated_planning": {
+      "states": [
+        4
+      ],
+      "label": "ERP"
+    },
+    "specialised_planning": {
+      "states": [
+        3,
+        4
+      ],
+      "label": "Specialised software or ERP"
+    },
+    "digitally_enabled_planning": {
+      "states": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "label": "Computer- or platform-enabled"
+    }
+  },
+  "cross_stratum_synthesis": {
+    "weighted": {
+      "definitions": {
+        "integrated_planning": {
+          "n": 14,
+          "median": 0.03780094415905093,
+          "q1": 0.011387036751379167,
+          "q3": 0.05881986591452812,
+          "minimum": 0.004354103426235813,
+          "maximum": 0.22932469087317814
+        },
+        "specialised_planning": {
+          "n": 16,
+          "median": 0.10664255785150895,
+          "q1": 0.055226864841758976,
+          "q3": 0.21242976979427075,
+          "minimum": 0.001922346025963054,
+          "maximum": 0.34223425851655265
+        },
+        "digitally_enabled_planning": {
+          "n": 16,
+          "median": 0.7321759478234249,
+          "q1": 0.5139830453970904,
+          "q3": 0.8094396534648758,
+          "minimum": 0.1868813611911978,
+          "maximum": 0.9764733600941357
+        }
+      },
+      "contrasts": {
+        "integrated_planning__to__specialised_planning": {
+          "n": 14,
+          "median": 0.08137401407729858,
+          "q1": 0.04199900317816449,
+          "q3": 0.13852724070154573,
+          "minimum": 0.017565437144668898,
+          "maximum": 0.19453845395484515
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "n": 16,
+          "median": 0.5097459245119949,
+          "q1": 0.3868195874845349,
+          "q3": 0.6510981834800438,
+          "minimum": 0.15487318957002488,
+          "maximum": 0.7901637024938265
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "n": 14,
+          "median": 0.6893676055574716,
+          "q1": 0.5236656965490545,
+          "q3": 0.8002473030171331,
+          "minimum": 0.18252725776496198,
+          "maximum": 0.8424293770988124
+        }
+      },
+      "composition": {
+        "integrated_planning": {
+          "erp": {
+            "n": 10,
+            "median": 1,
+            "q1": 1,
+            "q3": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "specialised_planning": {
+          "specialised_software": {
+            "n": 14,
+            "median": 0.7264934787648616,
+            "q1": 0.47856434076974574,
+            "q3": 0.8568833368726709,
+            "minimum": 0.268907864688846,
+            "maximum": 0.949203985051297
+          },
+          "erp": {
+            "n": 14,
+            "median": 0.27350652123513847,
+            "q1": 0.14311666312732907,
+            "q3": 0.5214356592302543,
+            "minimum": 0.050796014948702964,
+            "maximum": 0.731092135311154
+          }
+        },
+        "digitally_enabled_planning": {
+          "standard_software": {
+            "n": 13,
+            "median": 0.7813013849518541,
+            "q1": 0.6706509720449462,
+            "q3": 0.8120312356795192,
+            "minimum": 0.4513950448967741,
+            "maximum": 0.9365792218120331
+          },
+          "mobile_apps_or_digital_platforms": {
+            "n": 13,
+            "median": 0.02306410122006529,
+            "q1": 0.011650123876657207,
+            "q3": 0.05618189161340718,
+            "minimum": 0.003844655864201616,
+            "maximum": 0.1527801705125211
+          },
+          "specialised_software": {
+            "n": 13,
+            "median": 0.14751627025312536,
+            "q1": 0.10019822573369452,
+            "q3": 0.17542970599134394,
+            "minimum": 0.04377152961914953,
+            "maximum": 0.2573093369870097
+          },
+          "erp": {
+            "n": 13,
+            "median": 0.048036224498071725,
+            "q1": 0.01787256325475067,
+            "q3": 0.10662573301558219,
+            "minimum": 0.008767520500046035,
+            "maximum": 0.30625203143544566
+          }
+        }
+      },
+      "composition_tv": {
+        "integrated_planning__to__specialised_planning": {
+          "n": 10,
+          "median": 0.6628306443684414,
+          "q1": 0.47856434076974574,
+          "q3": 0.7716642428884685,
+          "minimum": 0.268907864688846,
+          "maximum": 0.949203985051297
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "n": 13,
+          "median": 0.7985294897332291,
+          "q1": 0.7322005548044334,
+          "q3": 0.8287246442494314,
+          "minimum": 0.5429627028017666,
+          "maximum": 0.9466610400845423
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "n": 10,
+          "median": 0.9373673118111382,
+          "q1": 0.8932058676677588,
+          "q3": 0.9555264411731645,
+          "minimum": 0.6937479685645543,
+          "maximum": 0.9863968553785916
+        }
+      }
+    },
+    "unweighted": {
+      "definitions": {
+        "integrated_planning": {
+          "n": 14,
+          "median": 0.05797631962516056,
+          "q1": 0.030453418183519723,
+          "q3": 0.10306963369391858,
+          "minimum": 0.008684034736138945,
+          "maximum": 0.30654338549075394
+        },
+        "specialised_planning": {
+          "n": 16,
+          "median": 0.15280571832114978,
+          "q1": 0.06365329456163185,
+          "q3": 0.23096668828762046,
+          "minimum": 0.017167381974248927,
+          "maximum": 0.4907539118065434
+        },
+        "digitally_enabled_planning": {
+          "n": 16,
+          "median": 0.7274932075983032,
+          "q1": 0.46848873864567625,
+          "q3": 0.8244138957728423,
+          "minimum": 0.23833333333333334,
+          "maximum": 0.980218281036835
+        }
+      },
+      "contrasts": {
+        "integrated_planning__to__specialised_planning": {
+          "n": 14,
+          "median": 0.09605772936890272,
+          "q1": 0.05340443873677638,
+          "q3": 0.17326217927153736,
+          "minimum": 0.013289036544850495,
+          "maximum": 0.24105865522174535
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "n": 16,
+          "median": 0.48238534003158656,
+          "q1": 0.27955553249205833,
+          "q3": 0.6022886860027092,
+          "minimum": 0.20166666666666666,
+          "maximum": 0.7653131452167928
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "n": 14,
+          "median": 0.6511009516700876,
+          "q1": 0.5114509670273495,
+          "q3": 0.765879811115385,
+          "minimum": 0.2513842746400886,
+          "maximum": 0.8280499519692603
+        }
+      },
+      "composition": {
+        "integrated_planning": {
+          "erp": {
+            "n": 10,
+            "median": 1,
+            "q1": 1,
+            "q3": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "specialised_planning": {
+          "specialised_software": {
+            "n": 14,
+            "median": 0.6296341305334111,
+            "q1": 0.40882235262736727,
+            "q3": 0.8122972972972973,
+            "minimum": 0.20959147424511546,
+            "maximum": 0.8627450980392157
+          },
+          "erp": {
+            "n": 14,
+            "median": 0.3703658694665889,
+            "q1": 0.1877027027027027,
+            "q3": 0.5911776473726327,
+            "minimum": 0.13725490196078433,
+            "maximum": 0.7904085257548845
+          }
+        },
+        "digitally_enabled_planning": {
+          "standard_software": {
+            "n": 13,
+            "median": 0.7197802197802198,
+            "q1": 0.6340579710144928,
+            "q3": 0.7991543340380549,
+            "minimum": 0.32564575645756455,
+            "maximum": 0.9117161716171617
+          },
+          "mobile_apps_or_digital_platforms": {
+            "n": 13,
+            "median": 0.019027484143763214,
+            "q1": 0.01282051282051282,
+            "q3": 0.036334913112164295,
+            "minimum": 0.0048712595685455815,
+            "maximum": 0.16069489685124863
+          },
+          "specialised_software": {
+            "n": 13,
+            "median": 0.1543340380549683,
+            "q1": 0.10918114143920596,
+            "q3": 0.22733516483516483,
+            "minimum": 0.046703296703296704,
+            "maximum": 0.2935540069686411
+          },
+          "erp": {
+            "n": 13,
+            "median": 0.08690744920993228,
+            "q1": 0.03914835164835165,
+            "q3": 0.1213768115942029,
+            "minimum": 0.017369727047146403,
+            "maximum": 0.39760147601476015
+          }
+        }
+      },
+      "composition_tv": {
+        "integrated_planning__to__specialised_planning": {
+          "n": 10,
+          "median": 0.5975360815641965,
+          "q1": 0.40882235262736727,
+          "q3": 0.6779159478627563,
+          "minimum": 0.20959147424511548,
+          "maximum": 0.8530927835051546
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "n": 13,
+          "median": 0.7494356659142212,
+          "q1": 0.7047101449275364,
+          "q3": 0.8181818181818181,
+          "minimum": 0.3634686346863468,
+          "maximum": 0.9174917491749175
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "n": 10,
+          "median": 0.8863244389560179,
+          "q1": 0.8265808842094632,
+          "q3": 0.9302275350916537,
+          "minimum": 0.6023985239852399,
+          "maximum": 0.9608516483516483
+        }
+      }
+    }
+  },
+  "ordering_diagnostics": {
+    "weighted": {
+      "integrated_planning__to__specialised_planning": {
+        "comparable_strata": 14,
+        "total_pairs": 91,
+        "concordant_pairs": 70,
+        "tie_changes": 0,
+        "strict_reversals": 21,
+        "strict_reversal_share": 0.23076923076923078,
+        "total_instability_share": 0.23076923076923078
+      },
+      "specialised_planning__to__digitally_enabled_planning": {
+        "comparable_strata": 16,
+        "total_pairs": 120,
+        "concordant_pairs": 89,
+        "tie_changes": 0,
+        "strict_reversals": 31,
+        "strict_reversal_share": 0.25833333333333336,
+        "total_instability_share": 0.25833333333333336
+      },
+      "integrated_planning__to__digitally_enabled_planning": {
+        "comparable_strata": 14,
+        "total_pairs": 91,
+        "concordant_pairs": 58,
+        "tie_changes": 0,
+        "strict_reversals": 33,
+        "strict_reversal_share": 0.3626373626373626,
+        "total_instability_share": 0.3626373626373626
+      }
+    },
+    "unweighted": {
+      "integrated_planning__to__specialised_planning": {
+        "comparable_strata": 14,
+        "total_pairs": 91,
+        "concordant_pairs": 72,
+        "tie_changes": 0,
+        "strict_reversals": 19,
+        "strict_reversal_share": 0.2087912087912088,
+        "total_instability_share": 0.2087912087912088
+      },
+      "specialised_planning__to__digitally_enabled_planning": {
+        "comparable_strata": 16,
+        "total_pairs": 120,
+        "concordant_pairs": 99,
+        "tie_changes": 0,
+        "strict_reversals": 21,
+        "strict_reversal_share": 0.175,
+        "total_instability_share": 0.175
+      },
+      "integrated_planning__to__digitally_enabled_planning": {
+        "comparable_strata": 14,
+        "total_pairs": 91,
+        "concordant_pairs": 63,
+        "tie_changes": 0,
+        "strict_reversals": 28,
+        "strict_reversal_share": 0.3076923076923077,
+        "total_instability_share": 0.3076923076923077
+      }
+    }
+  },
+  "weighting_sensitivity": {
+    "definitions": {
+      "integrated_planning": {
+        "difference_summary": {
+          "n": 14,
+          "median": -0.01536960755292071,
+          "q1": -0.04423989307462917,
+          "q3": -0.006789036880121444,
+          "minimum": -0.13183404422424044,
+          "maximum": 0.011329641771844319
+        },
+        "absolute_difference_summary": {
+          "n": 14,
+          "median": 0.01536960755292071,
+          "q1": 0.009441631667041487,
+          "q3": 0.04423989307462917,
+          "minimum": 0.0030709606336220595,
+          "maximum": 0.13183404422424044
+        },
+        "weighted_higher_count": 1,
+        "unweighted_higher_count": 9,
+        "near_zero_count": 4,
+        "near_zero_threshold": 0.01
+      },
+      "specialised_planning": {
+        "difference_summary": {
+          "n": 16,
+          "median": -0.02396940749505485,
+          "q1": -0.06143964020867222,
+          "q3": -0.010630309258778399,
+          "minimum": -0.14920833732628644,
+          "maximum": 0.03046807802498909
+        },
+        "absolute_difference_summary": {
+          "n": 16,
+          "median": 0.024870978400923175,
+          "q1": 0.015515790765818509,
+          "q3": 0.06143964020867222,
+          "minimum": 0.00684390126957625,
+          "maximum": 0.14920833732628644
+        },
+        "weighted_higher_count": 2,
+        "unweighted_higher_count": 13,
+        "near_zero_count": 1,
+        "near_zero_threshold": 0.01
+      },
+      "digitally_enabled_planning": {
+        "difference_summary": {
+          "n": 16,
+          "median": -0.003640821028275898,
+          "q1": -0.019985635684002995,
+          "q3": 0.01058422403754436,
+          "minimum": -0.12908390266985764,
+          "maximum": 0.09324912989187645
+        },
+        "absolute_difference_summary": {
+          "n": 16,
+          "median": 0.02071414303580127,
+          "q1": 0.004114908208782492,
+          "q3": 0.07463876689778476,
+          "minimum": 0.0005486586469335419,
+          "maximum": 0.12908390266985764
+        },
+        "weighted_higher_count": 4,
+        "unweighted_higher_count": 6,
+        "near_zero_count": 6,
+        "near_zero_threshold": 0.01
+      }
+    }
+  },
+  "claim_boundaries": {
+    "integrated_planning": {
+      "supports": "ERP is the most-used production-planning method.",
+      "does_not_support": [
+        "enterprise-wide transformation",
+        "causal performance effect"
+      ]
+    },
+    "specialised_planning": {
+      "supports": "Specialised or integrated software is the most-used method.",
+      "does_not_support": [
+        "all positive establishments use ERP",
+        "enterprise-wide transformation"
+      ]
+    },
+    "digitally_enabled_planning": {
+      "supports": "The most-used method is computer- or platform-enabled rather than handwritten.",
+      "does_not_support": [
+        "all positive establishments use specialised software",
+        "all positive establishments use ERP",
+        "integrated planning architecture"
+      ]
+    }
+  },
+  "posthoc_hostile_audit_sensitivities": {
+    "status": "POST_HOC_AUDIT_ONLY_NOT_A_REPLACEMENT_FOR_THE_FROZEN_ANALYSIS",
+    "practical_pairwise_tie_sensitivity_at_one_percentage_point": {
+      "weighted": {
+        "integrated_planning__to__specialised_planning": {
+          "comparable_strata": 14,
+          "total_pairs": 91,
+          "concordant_pairs": 59,
+          "tie_changes": 17,
+          "strict_reversals": 15,
+          "strict_reversal_share": 0.16483516483516483,
+          "total_instability_share": 0.3516483516483517,
+          "practical_tie_tolerance": 0.01
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "comparable_strata": 16,
+          "total_pairs": 120,
+          "concordant_pairs": 86,
+          "tie_changes": 7,
+          "strict_reversals": 27,
+          "strict_reversal_share": 0.225,
+          "total_instability_share": 0.2833333333333333,
+          "practical_tie_tolerance": 0.01
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "comparable_strata": 14,
+          "total_pairs": 91,
+          "concordant_pairs": 48,
+          "tie_changes": 17,
+          "strict_reversals": 26,
+          "strict_reversal_share": 0.2857142857142857,
+          "total_instability_share": 0.4725274725274725,
+          "practical_tie_tolerance": 0.01
+        }
+      },
+      "unweighted": {
+        "integrated_planning__to__specialised_planning": {
+          "comparable_strata": 14,
+          "total_pairs": 91,
+          "concordant_pairs": 70,
+          "tie_changes": 6,
+          "strict_reversals": 15,
+          "strict_reversal_share": 0.16483516483516483,
+          "total_instability_share": 0.23076923076923078,
+          "practical_tie_tolerance": 0.01
+        },
+        "specialised_planning__to__digitally_enabled_planning": {
+          "comparable_strata": 16,
+          "total_pairs": 120,
+          "concordant_pairs": 93,
+          "tie_changes": 6,
+          "strict_reversals": 21,
+          "strict_reversal_share": 0.175,
+          "total_instability_share": 0.225,
+          "practical_tie_tolerance": 0.01
+        },
+        "integrated_planning__to__digitally_enabled_planning": {
+          "comparable_strata": 14,
+          "total_pairs": 91,
+          "concordant_pairs": 57,
+          "tie_changes": 11,
+          "strict_reversals": 23,
+          "strict_reversal_share": 0.25274725274725274,
+          "total_instability_share": 0.37362637362637363,
+          "practical_tie_tolerance": 0.01
+        }
+      }
+    },
+    "conservative_unweighted_unresolved_assignment": {
+      "broad_lower_exceeds_strict_upper_source_strata": 16,
+      "broad_lower_exceeds_middle_upper_source_strata": 16,
+      "middle_lower_exceeds_strict_upper_source_strata": 13,
+      "total_source_strata": 16,
+      "interpretation": "The broad-versus-narrow ordering survives the most conservative unweighted assignment of every unresolved row in every source stratum. This audit does not provide weighted missingness bounds."
+    }
+  },
+  "public_disclosure_boundary": {
+    "source_level_mapped_denominators_included": false,
+    "source_level_respondent_counts_included": false,
+    "source_level_full_rank_arrays_included": false,
+    "source_level_excluded_status_counts_included": false,
+    "reason": "The internal corrected report is retained privately. Combining exact source totals from structural records with exact mapped denominators could recover excluded-status cells of size 1–4.",
+    "full_internal_report_publication": "PROHIBITED"
+  },
+  "interpretation_status": {
+    "technical_result_validated": true,
+    "core_definition_sensitivity_supported": true,
+    "public_summary_release_permitted": true,
+    "manuscript_integration": "CONDITIONAL_ON_IM_R7C_WEIGHTED_MISSINGNESS_SENSITIVITY",
+    "global_prevalence_claim": "PROHIBITED",
+    "causal_claim": "PROHIBITED",
+    "country_ranking_claim": "PROHIBITED_AS_A_STANDALONE_SUBSTANTIVE_CONCLUSION"
+  }
+}

@@ -1,0 +1,55 @@
+schema_version: "1.0"
+phase: "IM-R7D"
+status: "FROZEN_PUBLIC_WEIGHTED_MISSINGNESS_CONTRACT"
+contract_date: "2026-08-15"
+
+authoritative_internal_result:
+  file: "IM_R7C_STUDY2_WEIGHTED_UNRESOLVED_SENSITIVITY_REPORT_20260815T200447Z.json"
+  sha256: "be55bcbe804768136abe18ef64aa87df6267d9b7dfd4271a2a989711f7f1c9f3"
+  public_distribution: "PROHIBITED"
+
+public_summary:
+  file: "outputs_v3/study2/STUDY2_PUBLIC_WEIGHTED_MISSINGNESS_SUMMARY.json"
+  sha256: "a78301a4d75adbb462bd7d9a596eefac8a5c6ef81d1fff99c254f32de08c845c"
+  permitted: true
+
+required_public_sections:
+  - "source"
+  - "provenance"
+  - "analysis_scope"
+  - "cross_stratum_weighted_bounds"
+  - "unresolved_weight_share_across_source_strata"
+  - "robust_separation"
+  - "interval_ordering_determinacy"
+  - "interpretation"
+  - "claim_boundary"
+  - "public_disclosure_boundary"
+  - "decision"
+
+prohibited_public_content:
+  - "source_stratum_weighted_sensitivity"
+  - "source_label"
+  - "source-level exact respondent counts"
+  - "source-level unresolved counts"
+  - "source-level weight sums"
+  - "microdata rows"
+  - "full ranking arrays"
+
+interpretation_rules:
+  bounds_are_confidence_intervals: false
+  bounds_are_sampling_uncertainty: false
+  global_prevalence_permitted: false
+  causal_claims_permitted: false
+  standalone_country_rankings_permitted: false
+  coherent_scenarios_required_for_joint_definition_claims: true
+
+manuscript_gate:
+  status: "GO_WITH_CONDITIONS"
+  primary_complete_case_analysis_remains_primary: true
+  sensitivity_reported_separately: true
+  full_internal_report_as_supplement: false
+  submission_gate: "NO-GO"
+
+next_phase:
+  id: "IM-R8"
+  purpose: "Information & Management manuscript integration and article–code–table–figure reconstruction."

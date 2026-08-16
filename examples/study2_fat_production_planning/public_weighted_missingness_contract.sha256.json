@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7D",
+  "public_summary_file": "outputs_v3/study2/STUDY2_PUBLIC_WEIGHTED_MISSINGNESS_SUMMARY.json",
+  "public_summary_sha256": "a78301a4d75adbb462bd7d9a596eefac8a5c6ef81d1fff99c254f32de08c845c",
+  "public_contract_file": "examples/study2_fat_production_planning/public_weighted_missingness_contract.yml",
+  "public_contract_sha256": "4dd2e4540d3e8609beb4e4929bf6dc9a27a87f920d35517e2004a254faa8c4c4",
+  "authoritative_internal_im_r7c_report_sha256": "be55bcbe804768136abe18ef64aa87df6267d9b7dfd4271a2a989711f7f1c9f3",
+  "full_internal_im_r7c_report_publication": "PROHIBITED",
+  "manuscript_integration": "GO_WITH_CONDITIONS",
+  "next_phase": "IM-R8"
+}

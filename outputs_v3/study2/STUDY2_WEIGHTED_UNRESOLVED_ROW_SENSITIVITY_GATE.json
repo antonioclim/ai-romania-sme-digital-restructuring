@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "phase": "IM-R7C",
+  "status": "FROZEN_LOCAL_WEIGHTED_UNRESOLVED_SENSITIVITY_EXECUTION_OPEN",
+  "weighted_unresolved_row_sensitivity_freeze_sha256": "b36347ac18c77790a57ae4d1cac3c5917005a31f35030afcf9b68f57f23e09fc",
+  "corrected_internal_report_sha256": "020902d6242b2f801cc613de0e1dd0e86fc189a6d6d18b4d1ae8b871791820d0",
+  "corrected_aggregate_payload_fingerprint_sha256": "b18fa495616d28bcb315634c6247e2c8c94aa10724759e82cabed19a03251fe0",
+  "permitted_fields": [
+    "country",
+    "base_wt",
+    "ib9b1",
+    "ib9b2",
+    "ib9b3",
+    "ib9b4",
+    "ib9b5"
+  ],
+  "source_microdata_must_remain_local": true,
+  "full_sensitivity_report_public_release": false,
+  "result_interpretation_gate": "NO-GO",
+  "manuscript_integration_gate": "NO-GO",
+  "submission_gate": "NO-GO",
+  "required_next_evidence": [
+    "IM_R7C_STUDY2_WEIGHTED_UNRESOLVED_SENSITIVITY_REPORT_*.json",
+    "screenshots of M1-M14 and weighted-bound summaries"
+  ],
+  "next_phase_after_pass": "IM-R7D_HOSTILE_WEIGHTED_MISSINGNESS_AUDIT"
+}
